@@ -1,0 +1,498 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/crypto-js/3.1.9/core.min.js"></script>
+    <script src="https://cdn.bootcss.com/crypto-js/3.1.9/md5.min.js"></script>
+    <title>lipapay收单demo</title>
+	    <script type="text/javascript">
+        var configurations = {
+			"45-kes": {
+				postAction: "http://demo45.net.kili.co/api/excashier.html",
+				merchantId : "2016051112014649173095",
+				signKey: 'He4AXjdOmq1G2YH3RKVSS4kqU5VFa4aK',
+				countryCode: 'KE',
+				currency: 'KES',
+			},
+			"45-NGN": {
+				postAction: "http://demo45.net.kili.co/api/excashier.html",
+				merchantId: '2016051112014649173097',
+				signKey: 'Bk351bgXMDgeKHBdvbsBUYJZPi6830XN',
+				countryCode: 'NG',
+				currency: 'NGN',
+			},
+			"45-UGX": {
+				postAction: "http://demo45.net.kili.co/api/excashier.html",
+				merchantId: '2016051112014649173096',
+				signKey: 'Zb1rjLMvcKQeYOzYsiIQHGWpVWsQMVYU',
+				countryCode: 'UG',
+				currency: 'UGX',
+			},
+			"44-kes": {
+				postAction: "http://payment.dev.lipapay.net/api/excashier.html",
+				merchantId: 'LP1545807515939',
+				signKey: 'Jm7mrcrbS1wJiDr3LBOjqxtpk7aEzP70',
+				countryCode: 'KE',
+				currency: 'KES',
+			},
+			"docker": {
+				postAction: "http://www.lipapay.de/api/excashier.html",
+				merchantId: 'test',
+				signKey: 'Gw416RCMO8tD5MSUg5dok5uQGvR3rPpx',
+				countryCode: 'KE',
+				currency: 'KES',
+			},
+            "44-kes1": {
+				postAction: "http://demo.net.kili.co/api/excashier.html",
+				merchantId : '2016051112014649173095',
+				signKey: 'He4AXjdOmq1G2YH3RKVSS4kqU5VFa4aK',
+				countryCode: 'KE',
+				currency: 'KES',
+			},
+			"44-NGN": {
+				postAction: "http://demo.net.kili.co/api/excashier.html",
+				merchantId: '2016051112014649173097',
+				signKey: 'Bk351bgXMDgeKHBdvbsBUYJZPi6830XN',
+				countryCode: 'NG',
+				currency: 'NGN',
+			},
+			"44-UGX": {
+				postAction: "http://demo.net.kili.co/api/excashier.html",
+				merchantId: '2016051112014649173096',
+				signKey: 'Zb1rjLMvcKQeYOzYsiIQHGWpVWsQMVYU',
+				countryCode: 'UG',
+				currency: 'UGX',
+			},
+			"46-kes": {
+				postAction: "http://demo46.net.kili.co/api/excashier.html",
+				merchantId : "LP1543366",
+				signKey: 'Nq6HT4BAQl8PTVPrpVLeLSgkVKkQMPdx',
+				countryCode: 'KE',
+				currency: 'KES',
+			},			
+			"46-kesip": {
+				postAction: "http://10.0.0.46:8081/api/excashier.html",
+				merchantId : "LP1543366",
+				signKey: 'Nq6HT4BAQl8PTVPrpVLeLSgkVKkQMPdx',
+				countryCode: 'KE',
+				currency: 'KES',
+			},
+			"46-NGN": {
+				postAction: "http://demo46.net.kili.co/api/excashier.html",
+				merchantId: 'LP1543367',
+				signKey: 'De9Wy7Fjyl0JKsVuYhZpEScI99s6P8JX',
+				countryCode: 'NG',
+				currency: 'NGN',
+			},
+			"46-UGX": {
+				postAction: "http://demo46.net.kili.co/api/excashier.html",
+				merchantId: 'LP1543368',
+				signKey: 'Hr2mnfNdUrNufDLBeDEQYVhX62vRMvLA',
+				countryCode: 'UG',
+				currency: 'UGX',
+			},
+			"prod-test": {
+				postAction: "https://www.lipapay.com/api/excashier.html",
+				merchantId: 'prod_test',
+				signKey: 'Ws8S0y0HBDwIb4eSDwblwCsKZ4uN1KKV',
+				countryCode: 'KE',
+				currency: 'KES',
+			},
+			"prod-1000": {
+				postAction: "https://www.lipapay.com/api/excashier.html",
+				merchantId: '1000',
+				signKey: 'Rh9H36ZjaSf7Hbafg1wAUxtv49J9o0Kf',
+				countryCode: 'KE',
+				currency: 'KES',
+			},
+			"sandbox-1000": {
+				postAction: "http://www.lipapay.net/api/excashier.html",
+				merchantId: 'test',
+				signKey: 'Gw416RCMO8tD5MSUg5dok5uQGvR3rPpx',
+				countryCode: 'KE',
+				currency: 'KES',
+			},
+			"APUS_KE": {
+				postAction: "http://demo46.net.kili.co/api/excashier.html",
+				merchantId: 'APUS_KE',
+				signKey: 'Zb5gf7OV08JnAPQhQoRn40QxwQ89rc8A',
+				countryCode: 'KE',
+				currency: 'KES',
+			},
+			"kilimall-test": {
+				postAction: "http://demo45.net.kili.co/api/excashier.html",
+				merchantId: 'kilimall-test',
+				signKey: 'Mf2SqBC2kujXJ4S6qjCu8qulTlmt6F7z',
+				countryCode: 'KE',
+				currency: 'KES',
+			},
+			"de": {
+				postAction: "http://www.lipapay.de/api/excashier.html",
+				merchantId: 'test',
+				signKey: 'Gw416RCMO8tD5MSUg5dok5uQGvR3rPpx',
+				countryCode: 'KE',
+				currency: 'KES',
+			},
+			"45-kes-ip": {
+				postAction: "http://10.0.0.45:8081/lipapay-web-home-1.0/api/excashier.html",
+				merchantId: '2016051112014649173095',
+				signKey: 'He4AXjdOmq1G2YH3RKVSS4kqU5VFa4aK',
+				countryCode: 'KE',
+				currency: 'KES',
+			},
+			"45-kes-test": {
+				postAction: "http://demo45.net.kili.co/api/excashier.html",
+				merchantId: 'test',
+				signKey: 'Gw416RCMO8tD5MSUg5dok5uQGvR3rPpx',
+				countryCode: 'KE',
+				currency: 'KES',
+			}
+        };
+    </script>
+	
+    <style>
+        input, select {
+            width: 36em;
+            height: 1.75em;
+        }
+
+        button, input[type=button] {
+            width: 8em;
+            height: 2.5em;
+        }
+    </style>
+</head>
+<body>
+<form id="mainForm" method="post" action="" target="_blank">
+    <table align="center" border='0'>
+        <tr>
+            <td>选择服务器地址</td>
+            <td>
+                <select id="postAction" name="postAction"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>接口版本:</td>
+            <td>
+                <select name="version" id="version">
+				    <option value="1.1">1.1</option>
+                    <option value="1.1">1.1</option>
+                    <option value="1.2">1.2</option>
+					<option value="1.3">1.3</option>
+					<option value="1.4" selected>1.4</option>
+                </select>
+        </tr>
+        <tr>
+            <td>商户号merchantId:</td>
+            <td>
+                <input name="merchantId" id="merchantId" type="text" value="">
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td>加签类型signType:</td>
+            <td>
+                <input name="signType" id="signType" type="text" value="MD5">
+            </td>
+        </tr>
+        <tr>
+            <td>加签密钥signKey:</td>
+            <td>
+                <input name="signKey" id="signKey" type="text">
+                <input name="sign" id="sign" type="hidden">
+            </td>
+        </tr>
+        <tr>
+            <td> 后台通知notifyUrl:</td>
+            <td>
+                <input name="notifyUrl" id="notifyUrl" type="text"
+                       value="http://mobile.kili.co/index.php?act=lipapay_notify">
+            </td>
+        </tr>
+        <tr>
+            <td>前台通知returnUrl:</td>
+            <td>
+                <input name="returnUrl" id="returnUrl" type="text"
+                       value="http://www.kilimall.co.ke/item-45239-elegant-women-s-super-high-heels-ladies-s-shoes-golden-37.html">
+            </td>
+        </tr>
+        <tr>
+            <td> 商户订单号merchantOrderNo:</td>
+            <td>
+                <input name="merchantOrderNo" id="merchantOrderNo" type="text" value="">
+            </td>
+        </tr>
+        <tr>
+            <td>商品金额amount:</td>
+            <td>
+                <input name="amount" id="amount" type="text" value="30000">
+            </td>
+        </tr>
+        <tr>
+            <td>卖家sellerId:</td>
+            <td>
+                <input name="sellerId" id="sellerId" type="text" value="254796362662">
+            </td>
+        </tr>
+        <tr>
+            <td>卖家账号sellerAccount:</td>
+            <td>
+                <input name="sellerAccount" id="sellerAccount" type="text" value="254796362662">
+            </td>
+        </tr>
+        <tr>
+            <td>买家buyerId:</td>
+            <td>
+				<input name="buyerId" id="buyerId" type="text" value="999999">
+            </td>
+        </tr>
+        <tr>
+            <td>买家账号buyerAccount:</td>
+            <td>
+				<input name="buyerAccount" id="buyerAccount" type="text" value="888888">
+            </td>
+        </tr>
+        
+        <tr>
+            <td>客户customerIp :</td>
+            <td>
+                <input name="customerIP" id="customerIP" type="text" value="10.0.0.140">
+            </td>
+        </tr>
+        <tr>
+            <td>订单有效时长expirationTime:</td>
+            <td>
+                <input name="expirationTime" id="expirationTime" type="text" value="1000000">
+            </td>
+        </tr>
+        <tr>
+            <td>终端类型sourceType:</td>
+            <td>
+                <input name="sourceType" id="sourceType" type="text" value="B">
+            </td>
+        </tr>
+        <tr>
+            <td>所属国家countryCode:</td>
+            <td>
+                <select name="countryCode" id="countryCode">
+                    <option value="KE">KE</option>
+                    <option value="UG">UG</option>
+                    <option value="NG">NG</option>
+                    <option value="EG">EG</option>
+                    <option value="CN">CN</option>
+                </select>
+            </td>
+        </tr>
+		<tr>
+            <td>币种：</td>
+            <td>
+                <input name="currency" id="currency" type="text" value="KES">
+            </td>
+        </tr>
+        <tr>
+            <td>支持的渠道channels:</td>
+            <td>
+                <input name="channels" id="channels" type="text" value="">
+            </td>
+        </tr>
+        <tr>
+            <td>支付类型paymentMethod:</td>
+            <td>
+                <input name="paymentMethod" id="paymentMethod" type="text" value="">
+            </td>
+        </tr>
+        <tr>
+            <td>email:</td>
+            <td>
+                <input name="email" id="email" type="text" value="">
+            </td>
+        </tr>
+        <tr>
+            <td>mobile</td>
+            <td>
+                <input name="mobile" id="mobile" type="text" value="">
+            </td>
+        </tr>
+        <tr>
+            <td>remark</td>
+            <td>
+                <input name="remark" id="remark" type="text" value="">
+            </td>
+        </tr>
+		<tr>
+            <td>自定义参数</td>
+            <td>
+                <input name="p1" id="p1" type="text" value=""><br/>
+				<input name="p2" id="p2" type="text" value=""><br/>
+				<input name="p3" id="p3" type="text" value="">
+            </td>
+        </tr>
+		<tr>
+            <td>是否使用分期付</td>
+            <td> <input type="text" name="useInstallment" value="false" id="useInstallment"/></td>
+        </tr>
+		
+		<tr id="goodsId">
+			<td>goods</td>
+            <td>
+                <input name="goods[0].goodsId" id="goods[0].goodsId" type="text" value="1" placeholder="goods[0].goodsId"><br/>
+				<input name="goods[0].goodsName" id="goods[0].goodsName" type="text" value="Apple" placeholder="goods[0].goodsName"><br/>
+				<input name="goods[0].goodsType" id="goods[0].goodsType" type="text" value="1" placeholder="goods[0].goodsType"><br/>
+				<input name="goods[0].goodsQuantity" id="goods[0].goodsQuantity" type="text" value="2" placeholder="goods[0].goodsQuantity"><br/>
+				<input name="goods[0].goodsPrice" id="goods[0].goodsPrice" type="text" value="100" placeholder="goods[0].goodsPrice"><br/>
+				<input name="goods[0].goodsInfo" id="goods[0].goodsInfo" type="text" value="Apple info" placeholder="goods[0].goodsInfo"><br/>
+				<input name="goods[0].goodsUrl" id="goods[0].goodsUrl" type="text" value="http://www.baidu.com" placeholder="goods[0].goodsUrl">
+            </td>
+        </tr> 
+		<input type="hidden" id="countGoods" name="countGoods" value="1"/>
+        <tr>
+            <td colspan="2" align="center">
+				<input type="button" value="添加商品" id="generateGoodsList">
+                <input type="button" value="生成订单号" id="btn_generateMerchantOrderNo">
+                <button type="submit">提交</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+		var $$ = function(id) {
+			return document.getElementById(id);
+		};
+		
+        // init postAction
+        var portSelect = $('#postAction');
+        for (var key in configurations) {
+            var opt = document.createElement('option');
+			opt['data-name'] = key;
+            opt.value = configurations[key]['postAction'];
+            opt.innerHTML = key + ' ' + opt.value;
+            portSelect.append(opt);
+        }
+
+		portSelect.on('change', function(){
+			var key = this.selectedOptions[0]['data-name'];
+			var config = configurations[key];
+			for (var id in config) {
+				$$(id).value = config[id];
+			}
+		});
+		// portSelect.val(portSelect.children().get(1).value);
+		portSelect.trigger('change');
+
+        // begin definitions
+
+        function updateByVersion() {
+            if ($$("version").value === "1.0") {
+                $$("email").value = $$("mobile").value = "";
+            }
+        }
+
+        function updateFormAction() {
+            $$('mainForm').action = $$("postAction").value;
+        }
+
+        function doSign() {
+            var arr = [
+                "merchantId",
+                "signType",
+                "notifyUrl",
+                "returnUrl",
+                "merchantOrderNo",
+                "amount",
+                "sellerId",
+                "sellerAccount",
+                "buyerId",
+                "buyerAccount",
+                "customerIP",
+                "expirationTime",
+                "sourceType",
+                "countryCode",
+                "channels",
+                "paymentMethod",
+                "email",
+                "mobile",
+                "remark",
+				"currency",
+				"p1",
+				"p2",
+				"p3",
+				"useInstallment"
+            ];
+
+			$("#goodsId input").each(function(){
+				arr.push($(this).attr("name"));
+			})
+
+            arr.sort();
+            var str = "";
+            for (var i = 0; i < arr.length; i++) {
+				var version = $$("version").value;
+				if("1.4" == version && arr[i] == "countryCode"){
+					continue;
+				}
+				if("1.3" == version && arr[i] == "countryCode"){
+					continue;
+				}
+				if("1.2" == version && arr[i] == "currency"){
+					continue;
+				}
+
+                var value = $$(arr[i]).value;
+                if (value!= "") {
+                    str += arr[i] + "=" + value + "&";
+                }
+            }
+            str = str.substring(0, str.length - 1) + $$("signKey").value;
+            var signStr = CryptoJS.MD5(str);
+            console.log(str);
+            console.log(signStr);
+            $$("sign").value = signStr;
+        }
+
+        var generateMerchantOrderNo = function () {
+            var possible = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var rand = "";
+            for (var i = 0; i < 16; i++) {
+                rand += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            $$("merchantOrderNo").value = rand;
+        };
+
+		var generateGoodsList = function () {
+			var countGoods = $("#countGoods").val();
+			$("#goodsId").append("<td>goods</td>");
+			$("#goodsId").append("<td>");
+			$("#goodsId").append('<input name="goods['+countGoods+'].goodsId" id="goods['+countGoods+'].goodsId" type="text" value="" placeholder="goods['+countGoods+'].goodsId"><br/>');
+			$("#goodsId").append('<input name="goods['+countGoods+'].goodsName" id="goods['+countGoods+'].goodsName" type="text" value="" placeholder="goods['+countGoods+'].goodsName"><br/>');
+			$("#goodsId").append('<input name="goods['+countGoods+'].goodsType" id="goods['+countGoods+'].goodsType" type="text" value="" placeholder="goods['+countGoods+'].goodsType"><br/>');
+			$("#goodsId").append('<input name="goods['+countGoods+'].goodsQuantity" id="goods['+countGoods+'].goodsQuantity" type="text" value="" placeholder="goods['+countGoods+'].goodsQuantity"><br/>');
+			$("#goodsId").append('<input name="goods['+countGoods+'].goodsPrice" id="goods['+countGoods+'].goodsPrice" type="text" value="" placeholder="goods['+countGoods+'].goodsPrice"><br/>');
+			$("#goodsId").append('<input name="goods['+countGoods+'].goodsInfo" id="goods['+countGoods+'].goodsInfo" type="text" value="" placeholder="goods['+countGoods+'].goodsInfo"><br/>');
+			$("#goodsId").append('<input name="goods['+countGoods+'].goodsUrl" id="goods['+countGoods+'].goodsUrl" type="text" value="" placeholder="goods['+countGoods+'].goodsUrl">');
+			$("#goodsId").append('</td>');
+			countGoods = Number(countGoods) + 1;
+			$("#countGoods").val(countGoods);
+        };
+
+        var preSubmit = function () {
+            !$$("merchantOrderNo").value && generateMerchantOrderNo();
+            updateFormAction();
+            updateByVersion();
+            doSign();
+        };
+		
+		$('#btn_generateMerchantOrderNo').click(generateMerchantOrderNo);
+		$('#generateGoodsList').click(generateGoodsList);
+		$('#mainForm').submit(preSubmit);
+		console.log(preSubmit);
+
+    });
+
+    //-->
+</script>
+</body>
+</html>

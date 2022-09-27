@@ -1,0 +1,4529 @@
+{
+    "code": "MA",
+    "children": [
+        {
+            "code": "R008",
+            "name": "Béni Mellal - Khénifra",
+            "type": 1,
+            "parentCode": "MA",
+            "children": [
+                {
+                    "code": "C066",
+                    "name": "Azilal",
+                    "type": 2,
+                    "parentCode": "R008",
+                    "children": [
+                        {
+                            "code": "A0620",
+                            "name": "Azilal",
+                            "type": 3,
+                            "parentCode": "C066"
+                        }
+                    ]
+                },
+                {
+                    "code": "C057",
+                    "name": "Beni Mellal",
+                    "type": 2,
+                    "parentCode": "R008",
+                    "children": [
+                        {
+                            "code": "A0606",
+                            "name": "Beni Mellal",
+                            "type": 3,
+                            "parentCode": "C057"
+                        },
+                        {
+                            "code": "A0608",
+                            "name": "Kasba Tadla",
+                            "type": 3,
+                            "parentCode": "C057"
+                        }
+                    ]
+                },
+                {
+                    "code": "C056",
+                    "name": "Fquih Ben Salah",
+                    "type": 2,
+                    "parentCode": "R008",
+                    "children": [
+                        {
+                            "code": "A0619",
+                            "name": "Dar Ould Zidouh",
+                            "type": 3,
+                            "parentCode": "C056"
+                        },
+                        {
+                            "code": "A0605",
+                            "name": "Fquih Ben Salah",
+                            "type": 3,
+                            "parentCode": "C056"
+                        },
+                        {
+                            "code": "A0610",
+                            "name": "Souk Sebt Oulad Nemma",
+                            "type": 3,
+                            "parentCode": "C056"
+                        }
+                    ]
+                },
+                {
+                    "code": "C067",
+                    "name": "Khenifra",
+                    "type": 2,
+                    "parentCode": "R008",
+                    "children": [
+                        {
+                            "code": "A0310",
+                            "name": "Khenifra",
+                            "type": 3,
+                            "parentCode": "C067"
+                        },
+                        {
+                            "code": "A0621",
+                            "name": "M Rirt",
+                            "type": 3,
+                            "parentCode": "C067"
+                        }
+                    ]
+                },
+                {
+                    "code": "C055",
+                    "name": "Khouribga",
+                    "type": 2,
+                    "parentCode": "R008",
+                    "children": [
+                        {
+                            "code": "A0609",
+                            "name": "Bejaad",
+                            "type": 3,
+                            "parentCode": "C055"
+                        },
+                        {
+                            "code": "A0604",
+                            "name": "Khouribga",
+                            "type": 3,
+                            "parentCode": "C055"
+                        },
+                        {
+                            "code": "A0607",
+                            "name": "Oued Zem",
+                            "type": 3,
+                            "parentCode": "C055"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R001",
+            "name": "Casablanca-Settat",
+            "type": 1,
+            "parentCode": "MA",
+            "children": [
+                {
+                    "code": "C009",
+                    "name": "Benslimane",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": [
+                        {
+                            "code": "A0116",
+                            "name": "benslimane",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0113",
+                            "name": "bouznika",
+                            "type": 3,
+                            "parentCode": "C009"
+                        }
+                    ]
+                },
+                {
+                    "code": "C003",
+                    "name": "Berrechid",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": [
+                        {
+                            "code": "A0091",
+                            "name": "berrechid",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0090",
+                            "name": "DEROUA",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0628",
+                            "name": "sidi rahal ",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0017",
+                            "name": "SOUALEM",
+                            "type": 3,
+                            "parentCode": "C003"
+                        }
+                    ]
+                },
+                {
+                    "code": "C001",
+                    "name": "casablanca",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": [
+                        {
+                            "code": "A0038",
+                            "name": "Ahl Loughlam",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0081",
+                            "name": "Ain Borja",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0076",
+                            "name": "Ain Chock",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0051",
+                            "name": "Ain Diab",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0024",
+                            "name": "Ain Sbàa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0067",
+                            "name": "Al Fida",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0064",
+                            "name": "Al Idrissia",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0030",
+                            "name": "Anassi",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0047",
+                            "name": "Ancien Maarif",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0048",
+                            "name": "Anfa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0025",
+                            "name": "Attacharouk",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0031",
+                            "name": "Azhar",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0008",
+                            "name": "Bachkou",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0043",
+                            "name": "Bd Abdlhadi Boutalab",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0045",
+                            "name": "Bd Bouabid",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0009",
+                            "name": "Bd Makka",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0082",
+                            "name": "Belveder",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0072",
+                            "name": "Ben Msik",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0084",
+                            "name": "benjdya",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0071",
+                            "name": "Bournazel",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0061",
+                            "name": "Burger",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0010",
+                            "name": "California",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0005",
+                            "name": "Casa nearshore",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0055",
+                            "name": "Cil",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0073",
+                            "name": "Cite Djemaa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0037",
+                            "name": "Dar Laman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0059",
+                            "name": "Derb Ghallef",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0066",
+                            "name": "Derb Milan",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0087",
+                            "name": "Derb Omar",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0049",
+                            "name": "El Hank",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0032",
+                            "name": "El Qods",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0014",
+                            "name": "ferme Bertrone",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0004",
+                            "name": "Florida",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0063",
+                            "name": "Guathier",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0035",
+                            "name": "Hadika",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0074",
+                            "name": "Hay Al Wahda",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0033",
+                            "name": "Hay Baraka",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0034",
+                            "name": "Hay El Houda",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0080",
+                            "name": "Hay Farah",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0054",
+                            "name": "Hay Hassani",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0027",
+                            "name": "Hay Mohammadi",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0068",
+                            "name": "Hay Moulay Rachid",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0069",
+                            "name": "Hay Tissir",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0085",
+                            "name": "Hobous",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0065",
+                            "name": "Inara",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0079",
+                            "name": "Jamila 1/2",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0029",
+                            "name": "Jawhara",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0052",
+                            "name": "La Corniche",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0083",
+                            "name": "La gironde",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0015",
+                            "name": "Lissasfa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0077",
+                            "name": "Lmkansa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0003",
+                            "name": "Lot Kenza 2",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0046",
+                            "name": "Maarif",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0058",
+                            "name": "Madinat arrahma",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0011",
+                            "name": "Mandarona",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0012",
+                            "name": "Miamar",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0001",
+                            "name": "Nassim 2",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0007",
+                            "name": "Oasis",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0013",
+                            "name": "Oulad Taleb",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0056",
+                            "name": "Oulfa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0026",
+                            "name": "Paloma",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0088",
+                            "name": "Polo",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0053",
+                            "name": "Quartier el Hana",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0057",
+                            "name": "quartier hopitaux",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0006",
+                            "name": "Quartier Laayoun",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0050",
+                            "name": "Racine",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0002",
+                            "name": "Res Chaimaa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0062",
+                            "name": "Riviera",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0039",
+                            "name": "Roches Noires",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0044",
+                            "name": "Route Moulay Thami ",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0075",
+                            "name": "Salmia 1/2",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0078",
+                            "name": "Sbata",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0028",
+                            "name": "Sidi Moumen ",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0070",
+                            "name": "Sidi Othman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0036",
+                            "name": "Takadoum",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0060",
+                            "name": "Val Fleure",
+                            "type": 3,
+                            "parentCode": "C001"
+                        }
+                    ]
+                },
+                {
+                    "code": "C004",
+                    "name": "El Jadida",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": [
+                        {
+                            "code": "A0020",
+                            "name": "azemmour",
+                            "type": 3,
+                            "parentCode": "C004"
+                        },
+                        {
+                            "code": "A0018",
+                            "name": "Bir Jdid",
+                            "type": 3,
+                            "parentCode": "C004"
+                        },
+                        {
+                            "code": "A0022",
+                            "name": "Chaibate",
+                            "type": 3,
+                            "parentCode": "C004"
+                        },
+                        {
+                            "code": "A0019",
+                            "name": "CHTOUKA",
+                            "type": 3,
+                            "parentCode": "C004"
+                        },
+                        {
+                            "code": "A0021",
+                            "name": "EL JADIDA",
+                            "type": 3,
+                            "parentCode": "C004"
+                        },
+                        {
+                            "code": "A0525",
+                            "name": "Sidi Smail",
+                            "type": 3,
+                            "parentCode": "C004"
+                        }
+                    ]
+                },
+                {
+                    "code": "C006",
+                    "name": "Médiouna",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": [
+                        {
+                            "code": "A0086",
+                            "name": "Mediouna",
+                            "type": 3,
+                            "parentCode": "C006"
+                        },
+                        {
+                            "code": "A0042",
+                            "name": "Tit Mellil",
+                            "type": 3,
+                            "parentCode": "C006"
+                        }
+                    ]
+                },
+                {
+                    "code": "C005",
+                    "name": "Mohammedia",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": [
+                        {
+                            "code": "A0041",
+                            "name": "Ain Harouda",
+                            "type": 3,
+                            "parentCode": "C005"
+                        },
+                        {
+                            "code": "A0040",
+                            "name": "Mohammedia",
+                            "type": 3,
+                            "parentCode": "C005"
+                        }
+                    ]
+                },
+                {
+                    "code": "C002",
+                    "name": "Nouaceur",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": [
+                        {
+                            "code": "A0023",
+                            "name": "BOUSKOURA",
+                            "type": 3,
+                            "parentCode": "C002"
+                        },
+                        {
+                            "code": "A0629",
+                            "name": "dar bouazza",
+                            "type": 3,
+                            "parentCode": "C002"
+                        },
+                        {
+                            "code": "A0089",
+                            "name": "Nouaceur",
+                            "type": 3,
+                            "parentCode": "C002"
+                        },
+                        {
+                            "code": "A0016",
+                            "name": "Tamaris",
+                            "type": 3,
+                            "parentCode": "C002"
+                        }
+                    ]
+                },
+                {
+                    "code": "C007",
+                    "name": "Settat",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": [
+                        {
+                            "code": "A0601",
+                            "name": "Ben ahmed",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0603",
+                            "name": "Loulad",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0093",
+                            "name": "settat",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0092",
+                            "name": "sidi aidi",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0602",
+                            "name": "Sidi Hajjaj",
+                            "type": 3,
+                            "parentCode": "C007"
+                        }
+                    ]
+                },
+                {
+                    "code": "C047",
+                    "name": "Sidi Bennour",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": [
+                        {
+                            "code": "A0523",
+                            "name": "Oualidia",
+                            "type": 3,
+                            "parentCode": "C047"
+                        },
+                        {
+                            "code": "A0526",
+                            "name": "sidi bennour",
+                            "type": 3,
+                            "parentCode": "C047"
+                        },
+                        {
+                            "code": "A0527",
+                            "name": "ZEMAMRA",
+                            "type": 3,
+                            "parentCode": "C047"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R011",
+            "name": "Dakhla-Oued Ed-Dahab",
+            "type": 1,
+            "parentCode": "MA",
+            "children": [
+                {
+                    "code": "C065",
+                    "name": "Oued Ed-Dahab",
+                    "type": 2,
+                    "parentCode": "R011",
+                    "children": [
+                        {
+                            "code": "A0618",
+                            "name": "Dakhla",
+                            "type": 3,
+                            "parentCode": "C065"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R012",
+            "name": "Drâa - Tafilalet",
+            "type": 1,
+            "parentCode": "MA",
+            "children": [
+                {
+                    "code": "C071",
+                    "name": "Errachidia",
+                    "type": 2,
+                    "parentCode": "R012",
+                    "children": [
+                        {
+                            "code": "A0627",
+                            "name": "Erfoud",
+                            "type": 3,
+                            "parentCode": "C071"
+                        },
+                        {
+                            "code": "A0626",
+                            "name": "Errachidia",
+                            "type": 3,
+                            "parentCode": "C071"
+                        }
+                    ]
+                },
+                {
+                    "code": "C070",
+                    "name": "Midelt",
+                    "type": 2,
+                    "parentCode": "R012",
+                    "children": [
+                        {
+                            "code": "A0625",
+                            "name": "Midelt",
+                            "type": 3,
+                            "parentCode": "C070"
+                        }
+                    ]
+                },
+                {
+                    "code": "C072",
+                    "name": "Tinghir",
+                    "type": 2,
+                    "parentCode": "R012",
+                    "children": [
+                        {
+                            "code": "A0630",
+                            "name": "Tinghir",
+                            "type": 3,
+                            "parentCode": "C072"
+                        }
+                    ]
+                },
+                {
+                    "code": "C073",
+                    "name": "Zagora",
+                    "type": 2,
+                    "parentCode": "R012",
+                    "children": [
+                        {
+                            "code": "A0631",
+                            "name": "Zagora",
+                            "type": 3,
+                            "parentCode": "C073"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R003",
+            "name": "Fès - Meknès",
+            "type": 1,
+            "parentCode": "MA",
+            "children": [
+                {
+                    "code": "C069",
+                    "name": "Boulemane",
+                    "type": 2,
+                    "parentCode": "R003",
+                    "children": [
+                        {
+                            "code": "A0624",
+                            "name": "Boulemane",
+                            "type": 3,
+                            "parentCode": "C069"
+                        }
+                    ]
+                },
+                {
+                    "code": "C024",
+                    "name": "El Hajeb",
+                    "type": 2,
+                    "parentCode": "R003",
+                    "children": [
+                        {
+                            "code": "A0623",
+                            "name": "Ain Taoujdate",
+                            "type": 3,
+                            "parentCode": "C024"
+                        },
+                        {
+                            "code": "A0371",
+                            "name": "El-Hajeb",
+                            "type": 3,
+                            "parentCode": "C024"
+                        }
+                    ]
+                },
+                {
+                    "code": "C016",
+                    "name": "FES",
+                    "type": 2,
+                    "parentCode": "R003",
+                    "children": [
+                        {
+                            "code": "A0297",
+                            "name": "AIN ALLAH",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0301",
+                            "name": "AIN BIDA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0286",
+                            "name": "AIN NOKBI",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0304",
+                            "name": "AIN SHIKH",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0288",
+                            "name": "AL AYOUN",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0267",
+                            "name": "AL MOURABITIN",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0256",
+                            "name": "AOUINAT HAJJAJ",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0279",
+                            "name": "BAB BOUJLOUD",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0259",
+                            "name": "BATHA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0285",
+                            "name": "BENZAKOUR",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0262",
+                            "name": "BOURMANA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0302",
+                            "name": "DOUAR EL GAADA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0298",
+                            "name": "DOUAR MACHERAA KRIM",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0296",
+                            "name": "DOUAR TLAHA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0277",
+                            "name": "EL ADOUA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0270",
+                            "name": "EL KEDDAN",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0289",
+                            "name": "EL MAKHFIYA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0280",
+                            "name": "ERAC",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0271",
+                            "name": "HAFAT MOULAY IDRISS",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0261",
+                            "name": "HAY AIT SKATO",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0275",
+                            "name": "HAY BENZAKOUR",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0265",
+                            "name": "HAY CHOUHADA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0257",
+                            "name": "HAY ESSAADA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0273",
+                            "name": "HAY GRIYOU",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0274",
+                            "name": "HAY JDID",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0293",
+                            "name": "HAY LHANDIYA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0278",
+                            "name": "HAY MASSIRA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0258",
+                            "name": "HAY TARIK 1",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0295",
+                            "name": "HAY TARIK 2",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0282",
+                            "name": "HEY ESSALAM",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0272",
+                            "name": "JNAN ADDAR",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0255",
+                            "name": "JNAN LWARD",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0269",
+                            "name": "KESBA EN NOUAR",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0252",
+                            "name": "MECHOUR JDID",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0276",
+                            "name": "MELLAH",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0260",
+                            "name": "MONT FLEURI",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0283",
+                            "name": "MOULAY ABDALLAH",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0305",
+                            "name": "MOULAY YAAKOUB",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0251",
+                            "name": "NARJIS HAY EL AMAL",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0254",
+                            "name": "OUED FES",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0300",
+                            "name": "OULAD TAYEB",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0284",
+                            "name": "QUARTIER AGADIR",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0263",
+                            "name": "QUARTIER AL ADARISSA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0266",
+                            "name": "QUARTIER AL WAFAA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0292",
+                            "name": "QUARTIER BELKHIYAT",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0291",
+                            "name": "QUARTIER DES POTIERS",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0294",
+                            "name": "QUARTIER ERRACHIDIA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0264",
+                            "name": "QUETTANINE",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0290",
+                            "name": "R'HABET ZBIB",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0303",
+                            "name": "SIDI HRAZEM",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0287",
+                            "name": "TALAA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0268",
+                            "name": "TGHAT",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0281",
+                            "name": "ZAZA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        },
+                        {
+                            "code": "A0253",
+                            "name": "ZOUAGHA",
+                            "type": 3,
+                            "parentCode": "C016"
+                        }
+                    ]
+                },
+                {
+                    "code": "C020",
+                    "name": "Ifrane",
+                    "type": 2,
+                    "parentCode": "R003",
+                    "children": [
+                        {
+                            "code": "A0309",
+                            "name": "Azrou",
+                            "type": 3,
+                            "parentCode": "C020"
+                        },
+                        {
+                            "code": "A0308",
+                            "name": "Ifrane",
+                            "type": 3,
+                            "parentCode": "C020"
+                        }
+                    ]
+                },
+                {
+                    "code": "C022",
+                    "name": "Meknes",
+                    "type": 2,
+                    "parentCode": "R003",
+                    "children": [
+                        {
+                            "code": "A0311",
+                            "name": "20 Aout",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0312",
+                            "name": "Agdal",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0313",
+                            "name": "Al Bassatine",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0314",
+                            "name": "Al Manar",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0315",
+                            "name": "Ancienne Médina",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0317",
+                            "name": "Bab El Khmiss",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0316",
+                            "name": "Bassatine",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0318",
+                            "name": "Bel Air",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0319",
+                            "name": "Belle Vue (1, 2 et 3)",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0320",
+                            "name": "Berrima",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0321",
+                            "name": "Bni-Mhmmed",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0322",
+                            "name": "Borj Meshqoq",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0323",
+                            "name": "Borj Moulay Omar",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0369",
+                            "name": "BOUFEKRAN",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0324",
+                            "name": "Camilia",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0325",
+                            "name": "Diour Jedad",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0326",
+                            "name": "Diour Salam",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0327",
+                            "name": "Dkhissa",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0368",
+                            "name": "DOUAR ALAOUI",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0367",
+                            "name": "DOUAR KAID HOUSSAIN ETOUALA",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0366",
+                            "name": "DOUAR RIAFA",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0328",
+                            "name": "El Hedim (Place)",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0329",
+                            "name": "El Malah Lakdim",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0330",
+                            "name": "El Mansour (1, 2, 3 et 4)",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0331",
+                            "name": "El Menzeh",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0332",
+                            "name": "Ennasre",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0335",
+                            "name": "Hacienda",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0333",
+                            "name": "Hamria (ville nouvelle)",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0336",
+                            "name": "Hay El Fakharin",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0337",
+                            "name": "Hay Moulay Smail",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0334",
+                            "name": "Hay Salam",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0338",
+                            "name": "Kasbat Hadress",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0360",
+                            "name": "MAJJATE",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0339",
+                            "name": "Marjane",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0340",
+                            "name": "Mellah",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0374",
+                            "name": "Moulay Driss Zerhoun",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0341",
+                            "name": "Neejarine",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0365",
+                            "name": "OUARZIGHA",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0363",
+                            "name": "OUED JDIDA",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0342",
+                            "name": "Ouislane (municipalité)",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0362",
+                            "name": "Ouled Ben Sidehoume",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0343",
+                            "name": "Place d'Armes",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0344",
+                            "name": "Plaisance",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0345",
+                            "name": "Riad (¤)",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0346",
+                            "name": "Roua",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0347",
+                            "name": "Rouamzine",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0348",
+                            "name": "Sbata",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0349",
+                            "name": "Sidi Amar",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0350",
+                            "name": "Sidi Baba",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0351",
+                            "name": "Sidi Bouzekri",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0352",
+                            "name": "Sidi Said",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0361",
+                            "name": "SIDI SLIMAN MOUL LKIFANE",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0353",
+                            "name": "Touargua",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0354",
+                            "name": "Toulal (municipalité)",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0355",
+                            "name": "Volubilis",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0356",
+                            "name": "Wjeh Arouss",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0358",
+                            "name": "Zehoua",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0357",
+                            "name": "Zerhounia",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0359",
+                            "name": "Zitoune",
+                            "type": 3,
+                            "parentCode": "C022"
+                        },
+                        {
+                            "code": "A0364",
+                            "name": "ZOUALETH DKHISSA",
+                            "type": 3,
+                            "parentCode": "C022"
+                        }
+                    ]
+                },
+                {
+                    "code": "C017",
+                    "name": "Moulay Yaâcoub",
+                    "type": 2,
+                    "parentCode": "R003",
+                    "children": [
+                        {
+                            "code": "A0299",
+                            "name": "AIN CHKEF",
+                            "type": 3,
+                            "parentCode": "C017"
+                        }
+                    ]
+                },
+                {
+                    "code": "C019",
+                    "name": "Sefrou",
+                    "type": 2,
+                    "parentCode": "R003",
+                    "children": [
+                        {
+                            "code": "A0307",
+                            "name": "Sefrou",
+                            "type": 3,
+                            "parentCode": "C019"
+                        }
+                    ]
+                },
+                {
+                    "code": "C068",
+                    "name": "Taounate",
+                    "type": 2,
+                    "parentCode": "R003",
+                    "children": [
+                        {
+                            "code": "A0622",
+                            "name": "Taounate",
+                            "type": 3,
+                            "parentCode": "C068"
+                        }
+                    ]
+                },
+                {
+                    "code": "C018",
+                    "name": "Taza",
+                    "type": 2,
+                    "parentCode": "R003",
+                    "children": [
+                        {
+                            "code": "A0306",
+                            "name": "Taza",
+                            "type": 3,
+                            "parentCode": "C018"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R009",
+            "name": "Guelmim - Oued Noun",
+            "type": 1,
+            "parentCode": "MA",
+            "children": [
+                {
+                    "code": "C059",
+                    "name": "Guelmim",
+                    "type": 2,
+                    "parentCode": "R009",
+                    "children": [
+                        {
+                            "code": "A0612",
+                            "name": "Guelmim",
+                            "type": 3,
+                            "parentCode": "C059"
+                        }
+                    ]
+                },
+                {
+                    "code": "C060",
+                    "name": "Tan-Tan",
+                    "type": 2,
+                    "parentCode": "R009",
+                    "children": [
+                        {
+                            "code": "A0613",
+                            "name": "Tan Tan",
+                            "type": 3,
+                            "parentCode": "C060"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R010",
+            "name": "Laayoune-Sakia El Hamra",
+            "type": 1,
+            "parentCode": "MA",
+            "children": [
+                {
+                    "code": "C064",
+                    "name": "Boujdour",
+                    "type": 2,
+                    "parentCode": "R010",
+                    "children": [
+                        {
+                            "code": "A0617",
+                            "name": "Boujdour",
+                            "type": 3,
+                            "parentCode": "C064"
+                        }
+                    ]
+                },
+                {
+                    "code": "C062",
+                    "name": "Laayoune ",
+                    "type": 2,
+                    "parentCode": "R010",
+                    "children": [
+                        {
+                            "code": "A0615",
+                            "name": "Samara",
+                            "type": 3,
+                            "parentCode": "C062"
+                        }
+                    ]
+                },
+                {
+                    "code": "C063",
+                    "name": "Laayoune",
+                    "type": 2,
+                    "parentCode": "R010",
+                    "children": [
+                        {
+                            "code": "A0616",
+                            "name": "Laayoune",
+                            "type": 3,
+                            "parentCode": "C063"
+                        }
+                    ]
+                },
+                {
+                    "code": "C061",
+                    "name": "Tarfaya",
+                    "type": 2,
+                    "parentCode": "R010",
+                    "children": [
+                        {
+                            "code": "A0614",
+                            "name": "Tarfaya",
+                            "type": 3,
+                            "parentCode": "C061"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R004",
+            "name": "Marrakech - Safi",
+            "type": 1,
+            "parentCode": "MA",
+            "children": [
+                {
+                    "code": "C028",
+                    "name": "Al Haouz",
+                    "type": 2,
+                    "parentCode": "R004",
+                    "children": [
+                        {
+                            "code": "A0430",
+                            "name": "Tameslohte",
+                            "type": 3,
+                            "parentCode": "C028"
+                        }
+                    ]
+                },
+                {
+                    "code": "C032",
+                    "name": "Chichaoua",
+                    "type": 2,
+                    "parentCode": "R004",
+                    "children": [
+                        {
+                            "code": "A0437",
+                            "name": "Chichaoua",
+                            "type": 3,
+                            "parentCode": "C032"
+                        }
+                    ]
+                },
+                {
+                    "code": "C027",
+                    "name": "El Kelaa des Sraghna",
+                    "type": 2,
+                    "parentCode": "R004",
+                    "children": [
+                        {
+                            "code": "A0428",
+                            "name": "DOUAR LAATAOUIA",
+                            "type": 3,
+                            "parentCode": "C027"
+                        },
+                        {
+                            "code": "A0432",
+                            "name": "El Kelaa des Sraghna",
+                            "type": 3,
+                            "parentCode": "C027"
+                        }
+                    ]
+                },
+                {
+                    "code": "C033",
+                    "name": "Essaouira",
+                    "type": 2,
+                    "parentCode": "R004",
+                    "children": [
+                        {
+                            "code": "A0439",
+                            "name": "essaouira",
+                            "type": 3,
+                            "parentCode": "C033"
+                        },
+                        {
+                            "code": "A0438",
+                            "name": "OUNAGHA",
+                            "type": 3,
+                            "parentCode": "C033"
+                        }
+                    ]
+                },
+                {
+                    "code": "C026",
+                    "name": "Marrakech",
+                    "type": 2,
+                    "parentCode": "R004",
+                    "children": [
+                        {
+                            "code": "A0402",
+                            "name": "Ain Itti",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0423",
+                            "name": "AIN JDID",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0385",
+                            "name": "Ain Mezouar",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0407",
+                            "name": "Amerchich",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0380",
+                            "name": "AZLI",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0400",
+                            "name": "Bab Aylan",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0381",
+                            "name": "Bab Doukala",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0386",
+                            "name": "Bab Ghemat",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0415",
+                            "name": "Bab Ighli",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0391",
+                            "name": "Bab Taghazout",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0416",
+                            "name": "Bin Lkchali",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0377",
+                            "name": "Daoudiat",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0409",
+                            "name": "Dar Tounsi",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0401",
+                            "name": "Derb Dabachi",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0418",
+                            "name": "Douar Ain Slim",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0413",
+                            "name": "Douar Dlam",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0406",
+                            "name": "Douar el Koudia",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0417",
+                            "name": "Douar Graoua",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0387",
+                            "name": "Douar Iziki",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0411",
+                            "name": "Douar Laaskar",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0390",
+                            "name": "EL Azzouzia",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0375",
+                            "name": "Gueliz",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0379",
+                            "name": "Hay AL Massar",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0398",
+                            "name": "Hay Charaf",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0393",
+                            "name": "Hay Lbehja",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0395",
+                            "name": "Hay Zitoun",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0405",
+                            "name": "Issil",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0392",
+                            "name": "Izdihar",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0388",
+                            "name": "Jnan Awrad",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0376",
+                            "name": "L'Hivermage",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0424",
+                            "name": "LAGOUASSEM",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0384",
+                            "name": "Les Portes De Marrakesh",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0433",
+                            "name": "LOUDAYA",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0378",
+                            "name": "Massira 1",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0389",
+                            "name": "Mhamid",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0394",
+                            "name": "Mouassine",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0427",
+                            "name": "OUAHAT SIDI BRAHIM",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0425",
+                            "name": "OULAD SAID",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0422",
+                            "name": "OULED HASSOUN",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0403",
+                            "name": "Quartier Mabrouka",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0419",
+                            "name": "Rahba Lekdima",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0397",
+                            "name": "Riad Salam",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0404",
+                            "name": "Riad Zitoun Jdid",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0396",
+                            "name": "Rmila",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0414",
+                            "name": "Rouidat",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0408",
+                            "name": "Sanaoubar",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0382",
+                            "name": "Semlalia",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0399",
+                            "name": "Sidi Abad ",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0410",
+                            "name": "Sidi Amara",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0383",
+                            "name": "Sidi Moumen",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0412",
+                            "name": "Socoma",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0429",
+                            "name": "SOUIHLA",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0420",
+                            "name": "TAMENSOURT",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0426",
+                            "name": "TAZAKOURTE",
+                            "type": 3,
+                            "parentCode": "C026"
+                        },
+                        {
+                            "code": "A0421",
+                            "name": "ZAOUIET BEN SASSI",
+                            "type": 3,
+                            "parentCode": "C026"
+                        }
+                    ]
+                },
+                {
+                    "code": "C030",
+                    "name": "Ouarzazate",
+                    "type": 2,
+                    "parentCode": "R004",
+                    "children": [
+                        {
+                            "code": "A0434",
+                            "name": "ouarzazate",
+                            "type": 3,
+                            "parentCode": "C030"
+                        }
+                    ]
+                },
+                {
+                    "code": "C029",
+                    "name": "Rehamna",
+                    "type": 2,
+                    "parentCode": "R004",
+                    "children": [
+                        {
+                            "code": "A0431",
+                            "name": "Ben guerir",
+                            "type": 3,
+                            "parentCode": "C029"
+                        }
+                    ]
+                },
+                {
+                    "code": "C046",
+                    "name": "SAFI",
+                    "type": 2,
+                    "parentCode": "R004",
+                    "children": [
+                        {
+                            "code": "A0509",
+                            "name": "AL-MOGHITIN",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0500",
+                            "name": "ANDALOUS",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0501",
+                            "name": "ANNAHDA",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0502",
+                            "name": "ASSALAM",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0516",
+                            "name": "AZIB DRAI",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0508",
+                            "name": "BIYADA",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0503",
+                            "name": "CHANKIT",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0507",
+                            "name": "COOPERATIVE 3 MARS SAFI",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0524",
+                            "name": "EL BEDDOUZA",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0506",
+                            "name": "EL MASSIRA",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0504",
+                            "name": "ERRAHMA",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0514",
+                            "name": "ESSAADA",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0519",
+                            "name": "HAY BOUAB",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0521",
+                            "name": "JERIFAT",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0510",
+                            "name": "JNAN FESYAN",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0513",
+                            "name": "LALLA HNIA AL-HAMRIYA",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0511",
+                            "name": "LAMIA",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0518",
+                            "name": "MESTARI",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0505",
+                            "name": "NAJAH AMIR",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0515",
+                            "name": "NOUVELLE VILLE",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0512",
+                            "name": "OLD MEDINA",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0522",
+                            "name": "QARIAT SHAMSH",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0517",
+                            "name": "QUARTIER INDUSTRIEL",
+                            "type": 3,
+                            "parentCode": "C046"
+                        },
+                        {
+                            "code": "A0520",
+                            "name": "SAIDA 2",
+                            "type": 3,
+                            "parentCode": "C046"
+                        }
+                    ]
+                },
+                {
+                    "code": "C031",
+                    "name": "Youssoufia",
+                    "type": 2,
+                    "parentCode": "R004",
+                    "children": [
+                        {
+                            "code": "A0435",
+                            "name": "Echemmaia",
+                            "type": 3,
+                            "parentCode": "C031"
+                        },
+                        {
+                            "code": "A0436",
+                            "name": "youssoufia",
+                            "type": 3,
+                            "parentCode": "C031"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R006",
+            "name": "Oriental",
+            "type": 1,
+            "parentCode": "MA",
+            "children": [
+                {
+                    "code": "C042",
+                    "name": "Berkane",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0495",
+                            "name": "Ahfir ",
+                            "type": 3,
+                            "parentCode": "C042"
+                        },
+                        {
+                            "code": "A0494",
+                            "name": "berkane",
+                            "type": 3,
+                            "parentCode": "C042"
+                        },
+                        {
+                            "code": "A0498",
+                            "name": "Saidia",
+                            "type": 3,
+                            "parentCode": "C042"
+                        }
+                    ]
+                },
+                {
+                    "code": "C074",
+                    "name": "Driouch",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0633",
+                            "name": "Driouch",
+                            "type": 3,
+                            "parentCode": "C074"
+                        },
+                        {
+                            "code": "A0635",
+                            "name": "Midar",
+                            "type": 3,
+                            "parentCode": "C074"
+                        },
+                        {
+                            "code": "A0636",
+                            "name": "Tafersit",
+                            "type": 3,
+                            "parentCode": "C074"
+                        }
+                    ]
+                },
+                {
+                    "code": "C075",
+                    "name": "Figuig",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0638",
+                            "name": "Bouarfa",
+                            "type": 3,
+                            "parentCode": "C075"
+                        }
+                    ]
+                },
+                {
+                    "code": "C040",
+                    "name": "Guercif",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0489",
+                            "name": "Guercif",
+                            "type": 3,
+                            "parentCode": "C040"
+                        }
+                    ]
+                },
+                {
+                    "code": "C045",
+                    "name": "Jerada",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0499",
+                            "name": "Ain bni mathar",
+                            "type": 3,
+                            "parentCode": "C045"
+                        },
+                        {
+                            "code": "A0639",
+                            "name": "Jerada",
+                            "type": 3,
+                            "parentCode": "C045"
+                        }
+                    ]
+                },
+                {
+                    "code": "C043",
+                    "name": "Nador",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0637",
+                            "name": "Al Aaroui",
+                            "type": 3,
+                            "parentCode": "C043"
+                        },
+                        {
+                            "code": "A0496",
+                            "name": "NADOR",
+                            "type": 3,
+                            "parentCode": "C043"
+                        }
+                    ]
+                },
+                {
+                    "code": "C039",
+                    "name": "oujda",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0479",
+                            "name": "CTRE VILLE",
+                            "type": 3,
+                            "parentCode": "C039"
+                        },
+                        {
+                            "code": "A0484",
+                            "name": "DRB ESSAYH",
+                            "type": 3,
+                            "parentCode": "C039"
+                        },
+                        {
+                            "code": "A0481",
+                            "name": "HAY EL QODS",
+                            "type": 3,
+                            "parentCode": "C039"
+                        },
+                        {
+                            "code": "A0482",
+                            "name": "HAY EL-ANDALOUSS",
+                            "type": 3,
+                            "parentCode": "C039"
+                        },
+                        {
+                            "code": "A0480",
+                            "name": "HAY RABAT",
+                            "type": 3,
+                            "parentCode": "C039"
+                        },
+                        {
+                            "code": "A0485",
+                            "name": "HAY ZITOUNE",
+                            "type": 3,
+                            "parentCode": "C039"
+                        },
+                        {
+                            "code": "A0488",
+                            "name": "LAZARET",
+                            "type": 3,
+                            "parentCode": "C039"
+                        },
+                        {
+                            "code": "A0493",
+                            "name": "Naima",
+                            "type": 3,
+                            "parentCode": "C039"
+                        },
+                        {
+                            "code": "A0487",
+                            "name": "QUARTIER AL FATH",
+                            "type": 3,
+                            "parentCode": "C039"
+                        },
+                        {
+                            "code": "A0483",
+                            "name": "SIDI YAHYA",
+                            "type": 3,
+                            "parentCode": "C039"
+                        },
+                        {
+                            "code": "A0486",
+                            "name": "TOBA",
+                            "type": 3,
+                            "parentCode": "C039"
+                        },
+                        {
+                            "code": "A0478",
+                            "name": "VILLAGE SI LAKHDER",
+                            "type": 3,
+                            "parentCode": "C039"
+                        }
+                    ]
+                },
+                {
+                    "code": "C041",
+                    "name": "Taourirt",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0491",
+                            "name": "El Aioun Sidi Mellouk",
+                            "type": 3,
+                            "parentCode": "C041"
+                        },
+                        {
+                            "code": "A0492",
+                            "name": "mghizrate",
+                            "type": 3,
+                            "parentCode": "C041"
+                        },
+                        {
+                            "code": "A0490",
+                            "name": "TAOURIRT",
+                            "type": 3,
+                            "parentCode": "C041"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R002",
+            "name": "Rabat - Salé - Kénitra",
+            "type": 1,
+            "parentCode": "MA",
+            "children": [
+                {
+                    "code": "C013",
+                    "name": "Kenitra",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": [
+                        {
+                            "code": "A0244",
+                            "name": "CAMPUS UNIVERSITAIRE",
+                            "type": 3,
+                            "parentCode": "C013"
+                        },
+                        {
+                            "code": "A0240",
+                            "name": "KASBAT EL MEHDIA",
+                            "type": 3,
+                            "parentCode": "C013"
+                        },
+                        {
+                            "code": "A0241",
+                            "name": "LOTISSEMENT MEHDIA",
+                            "type": 3,
+                            "parentCode": "C013"
+                        },
+                        {
+                            "code": "A0239",
+                            "name": "MEHDYA",
+                            "type": 3,
+                            "parentCode": "C013"
+                        },
+                        {
+                            "code": "A0248",
+                            "name": "N'KHAKHSA",
+                            "type": 3,
+                            "parentCode": "C013"
+                        },
+                        {
+                            "code": "A0247",
+                            "name": "OULED BERJAL",
+                            "type": 3,
+                            "parentCode": "C013"
+                        },
+                        {
+                            "code": "A0245",
+                            "name": "QUARTIER ANCIENNE MEDINA",
+                            "type": 3,
+                            "parentCode": "C013"
+                        },
+                        {
+                            "code": "A0243",
+                            "name": "QUARTIER DE BIR RAMI",
+                            "type": 3,
+                            "parentCode": "C013"
+                        },
+                        {
+                            "code": "A0246",
+                            "name": "QUARTIER INDUSTRIEL",
+                            "type": 3,
+                            "parentCode": "C013"
+                        },
+                        {
+                            "code": "A0242",
+                            "name": "QUARTIER O'OULED OUJIH",
+                            "type": 3,
+                            "parentCode": "C013"
+                        }
+                    ]
+                },
+                {
+                    "code": "C015",
+                    "name": "Kénitra",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": [
+                        {
+                            "code": "A0250",
+                            "name": "sidi taibi",
+                            "type": 3,
+                            "parentCode": "C015"
+                        }
+                    ]
+                },
+                {
+                    "code": "C012",
+                    "name": "Khémisset",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": [
+                        {
+                            "code": "A0237",
+                            "name": "Sidi Allal El Bahraoui",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0238",
+                            "name": "Tiflet",
+                            "type": 3,
+                            "parentCode": "C012"
+                        }
+                    ]
+                },
+                {
+                    "code": "C023",
+                    "name": "Khemisset",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": [
+                        {
+                            "code": "A0370",
+                            "name": "KHEMISSAT",
+                            "type": 3,
+                            "parentCode": "C023"
+                        },
+                        {
+                            "code": "A0632",
+                            "name": "Oulmes",
+                            "type": 3,
+                            "parentCode": "C023"
+                        }
+                    ]
+                },
+                {
+                    "code": "C010",
+                    "name": "Rabat",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": [
+                        {
+                            "code": "A0120",
+                            "name": "ABI REKRAK",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0123",
+                            "name": "AIN KHALLOUIA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0124",
+                            "name": "AKKARI",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0126",
+                            "name": "AL INBIAT",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0127",
+                            "name": "AL WAHDA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0128",
+                            "name": "AMAL",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0129",
+                            "name": "AMAL 1",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0130",
+                            "name": "AMAL 2",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0131",
+                            "name": "AMAL 3",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0132",
+                            "name": "AMAL 4",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0133",
+                            "name": "AMAL 5",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0134",
+                            "name": "AMAL 6",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0135",
+                            "name": "ANCIENNE MÉDINA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0136",
+                            "name": "AV. ALLAL BEN ABDELLAH",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0137",
+                            "name": "AV. BOUREGREG",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0138",
+                            "name": "AVENUE FÈS ET TAREK IBN ZYAD",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0139",
+                            "name": "AVIATION",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0121",
+                            "name": "BAS AGDAL (AVENUE DE FRANCE - AVENUE DE LA VICTOIRE)",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0140",
+                            "name": "BD. MOHAMED V",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0141",
+                            "name": "BIR KACEM",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0142",
+                            "name": "BOUHLAL",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0143",
+                            "name": "BOUITATE",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0144",
+                            "name": "CENTRE VILLE",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0145",
+                            "name": "CITÉ ADMINISTRATIVE",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0146",
+                            "name": "CITÉ FOCH",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0147",
+                            "name": "CITÉ OLM",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0148",
+                            "name": "CITE YAACOUB AL MANSOUR",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0149",
+                            "name": "CYM",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0150",
+                            "name": "DAR ESSALAM",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0151",
+                            "name": "DIOUR JAMAA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0152",
+                            "name": "DOUAR RJA FELLAH",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0153",
+                            "name": "EL MENZEH",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0154",
+                            "name": "EL MOUADDA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0155",
+                            "name": "EL OUFIR",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0156",
+                            "name": "ENNAHDA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0157",
+                            "name": "ENNAHDA I",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0158",
+                            "name": "ENNAHDA II",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0159",
+                            "name": "ENNAHDA III",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0160",
+                            "name": "ERRACHAD",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0161",
+                            "name": "ESSABAH",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0162",
+                            "name": "FADESA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0125",
+                            "name": "FARAH",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0163",
+                            "name": "GUICH LOUDAYA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0164",
+                            "name": "HAJ KACEM",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0165",
+                            "name": "HAJ SLIMANE",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0166",
+                            "name": "HASSAN",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0122",
+                            "name": "HAUT AGDAL (AVENUE DE FRANCE- AVENUE, IBN ROCH)",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0167",
+                            "name": "HAY EL FATH",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0168",
+                            "name": "HAY EL KHEIR",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0169",
+                            "name": "IMMEUBLE KARRAKCHOU",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0171",
+                            "name": "KAMRA NORD",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0172",
+                            "name": "KAMRA SUD",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0173",
+                            "name": "KARYOUNE",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0174",
+                            "name": "KASBAT OUDAYA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0175",
+                            "name": "KEBIBAT",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0176",
+                            "name": "Kénitra",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0177",
+                            "name": "KOUASS",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0178",
+                            "name": "KSAR LABHAR",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0179",
+                            "name": "LA CIGOGNE",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0180",
+                            "name": "LA CORNICHE",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0181",
+                            "name": "LAALOU",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0182",
+                            "name": "LAGZA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0183",
+                            "name": "LES AMBASSADEURS",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0184",
+                            "name": "LES ORANGERS",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0185",
+                            "name": "LOT TAZI",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0186",
+                            "name": "MABILLA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0187",
+                            "name": "MARASSA SANIAT GHARBIA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0188",
+                            "name": "MASSIRA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0189",
+                            "name": "MECHOUAR",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0190",
+                            "name": "MEDINA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0191",
+                            "name": "MELLAH",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0192",
+                            "name": "MOUNTALAK",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0193",
+                            "name": "MOUNTAZAH",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0194",
+                            "name": "OCÉAN",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0195",
+                            "name": "OLM",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0196",
+                            "name": "OUM KALTHOUM",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0197",
+                            "name": "PLACE ABDELLAH CHEFCHAOUNI",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0198",
+                            "name": "PLACE ABRAHAM LINCON",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0199",
+                            "name": "PLACE AL BARID",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0200",
+                            "name": "PLACE AL JOULANE",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0201",
+                            "name": "PLACE AL OUAHDA AL IFRIQUIA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0202",
+                            "name": "PLACE BAB TAMESNA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0203",
+                            "name": "PLACE BRUXELLES",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0204",
+                            "name": "PLACE PIETRI",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0205",
+                            "name": "QUARTIER INDUSTRIEL",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0206",
+                            "name": "ROUTE CASABLANCA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0207",
+                            "name": "RYAD BAS (AV, JACARANDA- AV. IBN ROCHD)",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0208",
+                            "name": "RYAD HAUT (AV, JACARANDA- AUTOROUTE CASA-FÈS)",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0209",
+                            "name": "SAHAT AL ALAOUINE",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0210",
+                            "name": "SIDI FATEH",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0211",
+                            "name": "SOUIKA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0212",
+                            "name": "SOUISSI",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0170",
+                            "name": "TAKADDOUM",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0215",
+                            "name": "YOUSSOUFI OUEST",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0213",
+                            "name": "YOUSSOUFIA",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0214",
+                            "name": "YOUSSOUFIA EST",
+                            "type": 3,
+                            "parentCode": "C010"
+                        }
+                    ]
+                },
+                {
+                    "code": "C011",
+                    "name": "SALE",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": [
+                        {
+                            "code": "A0224",
+                            "name": "Addoha Abwab Sale",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0236",
+                            "name": "bouknadel",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0233",
+                            "name": "Cité Militaire",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0229",
+                            "name": "Groupe Residantiel Annaim",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0219",
+                            "name": "Haja",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0220",
+                            "name": "Hay Al Qoriaa",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0232",
+                            "name": "Hay Chemaaou",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0221",
+                            "name": "Hay Houria",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0218",
+                            "name": "Hay Moulay Smail",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0223",
+                            "name": "Hay Rahma",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0222",
+                            "name": "Hay Sakani",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0227",
+                            "name": "Kariat",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0230",
+                            "name": "Lotissement Assalam",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0226",
+                            "name": "Lotissement Fath AL Khayr",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0234",
+                            "name": "Lotissement Rouid",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0217",
+                            "name": "Lotissement Said Haji",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0225",
+                            "name": "Lotissement Villa",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0228",
+                            "name": "Nahda",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0216",
+                            "name": "Quartier Betana",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0235",
+                            "name": "SALE AL JADIDA",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0642",
+                            "name": "Sale Bettana",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0643",
+                            "name": "Sale Medina",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0641",
+                            "name": "Sale Tabriquet",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0231",
+                            "name": "Sehb",
+                            "type": 3,
+                            "parentCode": "C011"
+                        }
+                    ]
+                },
+                {
+                    "code": "C025",
+                    "name": "Sidi Kacem",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": [
+                        {
+                            "code": "A0640",
+                            "name": "Mechra Bel Ksiri",
+                            "type": 3,
+                            "parentCode": "C025"
+                        },
+                        {
+                            "code": "A0373",
+                            "name": "Sidi kacem",
+                            "type": 3,
+                            "parentCode": "C025"
+                        }
+                    ]
+                },
+                {
+                    "code": "C014",
+                    "name": "Sidi Slimane",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": [
+                        {
+                            "code": "A0372",
+                            "name": "Sidi slimane",
+                            "type": 3,
+                            "parentCode": "C014"
+                        },
+                        {
+                            "code": "A0249",
+                            "name": "Sidi Yahya El Gharb",
+                            "type": 3,
+                            "parentCode": "C014"
+                        }
+                    ]
+                },
+                {
+                    "code": "C008",
+                    "name": "Skhirate - Témara",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": [
+                        {
+                            "code": "A0107",
+                            "name": "11 Janvier",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0117",
+                            "name": "AIN AOUDA",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0108",
+                            "name": "Beni Brour",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0112",
+                            "name": "block 2",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0118",
+                            "name": "CENTRE COMUNE EL MENZEH",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0105",
+                            "name": "Cité Al Andalouss",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0100",
+                            "name": "Firdaous",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0096",
+                            "name": "Guich Oudaya",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0094",
+                            "name": "Harhoura",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0101",
+                            "name": "Hay Abbadi",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0099",
+                            "name": "Hay Nahda 1",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0102",
+                            "name": "Hay Nahda 2",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0111",
+                            "name": "lotissement beethoven",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0110",
+                            "name": "lotissement laayoune",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0095",
+                            "name": "Massira 1",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0104",
+                            "name": "Massira 3",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0103",
+                            "name": "Oued Eddahab",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0097",
+                            "name": "Oulad Mtaa",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0119",
+                            "name": "OUM AZZA",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0109",
+                            "name": "Résidance momosas",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0106",
+                            "name": "Résidance Taoufiq",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0114",
+                            "name": "SKHIRAT",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0115",
+                            "name": "Tamesna",
+                            "type": 3,
+                            "parentCode": "C008"
+                        },
+                        {
+                            "code": "A0098",
+                            "name": "Wifaq 2",
+                            "type": 3,
+                            "parentCode": "C008"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R005",
+            "name": "Souss - Massa",
+            "type": 1,
+            "parentCode": "MA",
+            "children": [
+                {
+                    "code": "C034",
+                    "name": "AGADIR",
+                    "type": 2,
+                    "parentCode": "R005",
+                    "children": [
+                        {
+                            "code": "A0455",
+                            "name": " Alhouda",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0453",
+                            "name": " Massira",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0451",
+                            "name": "Adrar ",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0449",
+                            "name": "Al-Houda ",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0466",
+                            "name": "Anza",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0443",
+                            "name": "Baie des palmiers ",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0459",
+                            "name": "Bensergao",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0462",
+                            "name": "Bouargane",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0446",
+                            "name": "Charaf ",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0448",
+                            "name": "Dakhla ",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0470",
+                            "name": "DCHIRA",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0454",
+                            "name": "Drarga",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0444",
+                            "name": "Haut-Founty ",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0450",
+                            "name": "Hay Mohammadi",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0445",
+                            "name": "Illigh ",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0463",
+                            "name": "Islane",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0447",
+                            "name": "Les amicales",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0456",
+                            "name": "lkhyam",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0465",
+                            "name": "Nahda",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0440",
+                            "name": "Quartier Boutchakkat ",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0441",
+                            "name": "Quartier suisse ",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0460",
+                            "name": "Riad Assalam",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0442",
+                            "name": "Secteur Résidentiel ",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0461",
+                            "name": "Sidi Youssef",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0458",
+                            "name": "Tacila",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0467",
+                            "name": "Taddart",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0464",
+                            "name": "tchira",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0452",
+                            "name": "Tikiouine ",
+                            "type": 3,
+                            "parentCode": "C034"
+                        },
+                        {
+                            "code": "A0457",
+                            "name": "Tilila",
+                            "type": 3,
+                            "parentCode": "C034"
+                        }
+                    ]
+                },
+                {
+                    "code": "C058",
+                    "name": "Chtouka - Ait Baha",
+                    "type": 2,
+                    "parentCode": "R005",
+                    "children": [
+                        {
+                            "code": "A0611",
+                            "name": "Biougra",
+                            "type": 3,
+                            "parentCode": "C058"
+                        }
+                    ]
+                },
+                {
+                    "code": "C035",
+                    "name": "Inezgane - Ait Melloul",
+                    "type": 2,
+                    "parentCode": "R005",
+                    "children": [
+                        {
+                            "code": "A0469",
+                            "name": "AIT MELLOUL",
+                            "type": 3,
+                            "parentCode": "C035"
+                        },
+                        {
+                            "code": "A0468",
+                            "name": "INEZGANE",
+                            "type": 3,
+                            "parentCode": "C035"
+                        }
+                    ]
+                },
+                {
+                    "code": "C036",
+                    "name": "Taroudant",
+                    "type": 2,
+                    "parentCode": "R005",
+                    "children": [
+                        {
+                            "code": "A0475",
+                            "name": "Oulad Teima",
+                            "type": 3,
+                            "parentCode": "C036"
+                        },
+                        {
+                            "code": "A0474",
+                            "name": "Taroudannt",
+                            "type": 3,
+                            "parentCode": "C036"
+                        }
+                    ]
+                },
+                {
+                    "code": "C038",
+                    "name": "Tata",
+                    "type": 2,
+                    "parentCode": "R005",
+                    "children": [
+                        {
+                            "code": "A0477",
+                            "name": "Tata",
+                            "type": 3,
+                            "parentCode": "C038"
+                        }
+                    ]
+                },
+                {
+                    "code": "C037",
+                    "name": "TIZNIT",
+                    "type": 2,
+                    "parentCode": "R005",
+                    "children": [
+                        {
+                            "code": "A0476",
+                            "name": "TIZNIT",
+                            "type": 3,
+                            "parentCode": "C037"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R007",
+            "name": "Tanger - Tétouan - Al Hoceïma",
+            "type": 1,
+            "parentCode": "MA",
+            "children": [
+                {
+                    "code": "C044",
+                    "name": "Al Hoceïma",
+                    "type": 2,
+                    "parentCode": "R007",
+                    "children": [
+                        {
+                            "code": "A0497",
+                            "name": "Al Hoceima",
+                            "type": 3,
+                            "parentCode": "C044"
+                        },
+                        {
+                            "code": "A0634",
+                            "name": "Imzouren",
+                            "type": 3,
+                            "parentCode": "C044"
+                        }
+                    ]
+                },
+                {
+                    "code": "C053",
+                    "name": "Chefchaouen",
+                    "type": 2,
+                    "parentCode": "R007",
+                    "children": [
+                        {
+                            "code": "A0597",
+                            "name": "Chefchaouen",
+                            "type": 3,
+                            "parentCode": "C053"
+                        }
+                    ]
+                },
+                {
+                    "code": "C049",
+                    "name": "Larache",
+                    "type": 2,
+                    "parentCode": "R007",
+                    "children": [
+                        {
+                            "code": "A0593",
+                            "name": "Ksar el kebir",
+                            "type": 3,
+                            "parentCode": "C049"
+                        },
+                        {
+                            "code": "A0591",
+                            "name": "Larache",
+                            "type": 3,
+                            "parentCode": "C049"
+                        }
+                    ]
+                },
+                {
+                    "code": "C052",
+                    "name": "M Diq - Fnideq",
+                    "type": 2,
+                    "parentCode": "R007",
+                    "children": [
+                        {
+                            "code": "A0599",
+                            "name": "Fnideq",
+                            "type": 3,
+                            "parentCode": "C052"
+                        },
+                        {
+                            "code": "A0598",
+                            "name": "MARTIL",
+                            "type": 3,
+                            "parentCode": "C052"
+                        },
+                        {
+                            "code": "A0596",
+                            "name": "Mdiq",
+                            "type": 3,
+                            "parentCode": "C052"
+                        }
+                    ]
+                },
+                {
+                    "code": "C054",
+                    "name": "Ouezzane",
+                    "type": 2,
+                    "parentCode": "R007",
+                    "children": [
+                        {
+                            "code": "A0600",
+                            "name": "ouazzane",
+                            "type": 3,
+                            "parentCode": "C054"
+                        }
+                    ]
+                },
+                {
+                    "code": "C048",
+                    "name": "Tanger",
+                    "type": 2,
+                    "parentCode": "R007",
+                    "children": [
+                        {
+                            "code": "A0532",
+                            "name": "ACHAKAR",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0539",
+                            "name": "ADDOHA VAL FLEURI",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0553",
+                            "name": "AHAMMAR",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0531",
+                            "name": "AHARRARINE",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0554",
+                            "name": "AHLAN",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0584",
+                            "name": "AIN DALIA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0547",
+                            "name": "AIN EL HIYANI",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0578",
+                            "name": "AIN MEZNOUD",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0568",
+                            "name": "AL MIZAN",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0542",
+                            "name": "AOUAMA GHARBIA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0566",
+                            "name": "BAB AL ANDALOUS 1",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0535",
+                            "name": "BELLA VISTA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0534",
+                            "name": "BEN DIBAN",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0587",
+                            "name": "BENI MEJMEL",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0536",
+                            "name": "BIRCHIFA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0560",
+                            "name": "BNI MAKADA LEKDIMA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0586",
+                            "name": "BNI WASSIN",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0552",
+                            "name": "BOUCHTA-ABDELATIF",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0583",
+                            "name": "BOUGDOUR",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0541",
+                            "name": "BRANS KDIMA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0533",
+                            "name": "CHARF",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0581",
+                            "name": "CHRAKA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0585",
+                            "name": "DAIMOUSS",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0577",
+                            "name": "DEHAR JAYDI",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0556",
+                            "name": "EL AOUDA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0589",
+                            "name": "El Hajriyine",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0561",
+                            "name": "EL IFRAN 2",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0537",
+                            "name": "EL MERS 2",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0564",
+                            "name": "EL MRABET",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0567",
+                            "name": "ENNASR",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0575",
+                            "name": "FRISHA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0559",
+                            "name": "GANBORIA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0543",
+                            "name": "GOURZIANA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0580",
+                            "name": "Gueznaia",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0574",
+                            "name": "HAJR LASFAR",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0573",
+                            "name": "HOUMAT FATMA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0548",
+                            "name": "JBILA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0576",
+                            "name": "JIRRARI",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0540",
+                            "name": "KHANDEK EL WARD",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0563",
+                            "name": "KOUDIAT LAHCEN",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0530",
+                            "name": "LEAOUAMA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0558",
+                            "name": "LUXUS",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0565",
+                            "name": "MERS ACHENAD",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0529",
+                            "name": "MESNANA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0551",
+                            "name": "MOUBARIKA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0590",
+                            "name": "NOUVELLE VILLE IBN BATOUTA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0579",
+                            "name": "NZAHA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0550",
+                            "name": "OUDAYA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0549",
+                            "name": "Q.REGAYE2 ",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0544",
+                            "name": "Q.ZEMMOURI ",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0571",
+                            "name": "QUARTIER AL MAJD",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0557",
+                            "name": "QUARTIER HANAA 1",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0570",
+                            "name": "QUARTIER HASSANI",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0562",
+                            "name": "QUARTIER MIRADOR",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0555",
+                            "name": "QUARTIER QUESSIBAT",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0538",
+                            "name": "RIAD ESSALAM",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0582",
+                            "name": "SIDI HSSAIN",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0545",
+                            "name": "STAR HILL",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0588",
+                            "name": "TALAA LAKRAA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0572",
+                            "name": "TERRASSE SLOUQUIA",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0569",
+                            "name": "ZEMMOURI ZIATEN",
+                            "type": 3,
+                            "parentCode": "C048"
+                        },
+                        {
+                            "code": "A0546",
+                            "name": "ZIATEN",
+                            "type": 3,
+                            "parentCode": "C048"
+                        }
+                    ]
+                },
+                {
+                    "code": "C050",
+                    "name": "Tanger - Assilah",
+                    "type": 2,
+                    "parentCode": "R007",
+                    "children": [
+                        {
+                            "code": "A0592",
+                            "name": "Asilah",
+                            "type": 3,
+                            "parentCode": "C050"
+                        }
+                    ]
+                },
+                {
+                    "code": "C051",
+                    "name": "Tetouan",
+                    "type": 2,
+                    "parentCode": "R007",
+                    "children": [
+                        {
+                            "code": "A0594",
+                            "name": "DAR CHAOUI",
+                            "type": 3,
+                            "parentCode": "C051"
+                        },
+                        {
+                            "code": "A0595",
+                            "name": "Tetouan",
+                            "type": 3,
+                            "parentCode": "C051"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "name": "Morocco",
+    "type": 0
+}

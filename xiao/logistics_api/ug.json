@@ -1,0 +1,756 @@
+{
+    "code": "UG",
+    "children": [
+        {
+            "code": "CR",
+            "name": "Central Region",
+            "type": 1,
+            "parentCode": "UG",
+            "children": [
+                {
+                    "code": "SCR",
+                    "name": "Central region",
+                    "type": 2,
+                    "parentCode": "CR",
+                    "children": [
+                        {
+                            "code": "CR07",
+                            "name": "Buikwe",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR19",
+                            "name": "Bukomansimbi",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR21",
+                            "name": "Butambala",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR23",
+                            "name": "Buvuma",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR18",
+                            "name": "Gomba",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR24",
+                            "name": "Kalangala",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR16",
+                            "name": "Kalungu",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR02",
+                            "name": "Kampala",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR08",
+                            "name": "Kayunga",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR20",
+                            "name": "Kiboga",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR14",
+                            "name": "Kyankwanzi",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR06",
+                            "name": "Luweero",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR11",
+                            "name": "Lwengo",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR22",
+                            "name": "Lyantonde",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR09",
+                            "name": "Mityana",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR13",
+                            "name": "Mpigi",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR03",
+                            "name": "Mubende",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR04",
+                            "name": "Mukono",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR15",
+                            "name": "Nakaseke",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR17",
+                            "name": "Nakasongola",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR05",
+                            "name": "Rakai",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR12",
+                            "name": "Sembabule",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        },
+                        {
+                            "code": "CR01",
+                            "name": "Wakiso",
+                            "type": 3,
+                            "parentCode": "SCR"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "ER",
+            "name": "Eastern Region",
+            "type": 1,
+            "parentCode": "UG",
+            "children": [
+                {
+                    "code": "SER",
+                    "name": "Eastern Region",
+                    "type": 2,
+                    "parentCode": "ER",
+                    "children": [
+                        {
+                            "code": "ER14",
+                            "name": "Amuria",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER24",
+                            "name": "Budaka",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER23",
+                            "name": "Bududa",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER08",
+                            "name": "Bugiri",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER25",
+                            "name": "Bukedea",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER32",
+                            "name": "Bukwa",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER27",
+                            "name": "Bulambuli",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER10",
+                            "name": "Busia",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER20",
+                            "name": "Butaleja",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER11",
+                            "name": "Buyende",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER02",
+                            "name": "Iganga",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER06",
+                            "name": "Jinja",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER22",
+                            "name": "Kaberamaido",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER19",
+                            "name": "Kaliro",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER04",
+                            "name": "Kamuli",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER30",
+                            "name": "Kapchorwa",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER28",
+                            "name": "Katakwi",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER26",
+                            "name": "Kibuku",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER17",
+                            "name": "Kumi",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER31",
+                            "name": "Kween",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER18",
+                            "name": "Luuka",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER09",
+                            "name": "Manafwa",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER05",
+                            "name": "Mayuge",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER03",
+                            "name": "Mbale",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER21",
+                            "name": "Namayingo",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER15",
+                            "name": "Namutumba",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER29",
+                            "name": "Ngora",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER07",
+                            "name": "Pallisa",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER13",
+                            "name": "Serere",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER16",
+                            "name": "Sironko",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER12",
+                            "name": "Soroti",
+                            "type": 3,
+                            "parentCode": "SER"
+                        },
+                        {
+                            "code": "ER01",
+                            "name": "Tororo",
+                            "type": 3,
+                            "parentCode": "SER"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "ZG",
+            "name": "guangdong",
+            "type": 1,
+            "parentCode": "UG"
+        },
+        {
+            "code": "NR",
+            "name": "Northern Region",
+            "type": 1,
+            "parentCode": "UG",
+            "children": [
+                {
+                    "code": "SNR",
+                    "name": "Northern Region",
+                    "type": 2,
+                    "parentCode": "NR",
+                    "children": [
+                        {
+                            "code": "NR27",
+                            "name": "Abim",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR12",
+                            "name": "Adjumani",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR10",
+                            "name": "Agago",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR11",
+                            "name": "Alebtong",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR22",
+                            "name": "Amolatar",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR28",
+                            "name": "Amudat",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR15",
+                            "name": "Amuru",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR07",
+                            "name": "Apac",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR01",
+                            "name": "Arua",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR17",
+                            "name": "Dokolo",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR03",
+                            "name": "Gulu",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR20",
+                            "name": "Kaabong",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR14",
+                            "name": "Kitgum",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR13",
+                            "name": "Koboko",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR09",
+                            "name": "Kole",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR18",
+                            "name": "Kotido",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR25",
+                            "name": "Lamwo",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR04",
+                            "name": "Lira",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR16",
+                            "name": "Maracha",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR30",
+                            "name": "Moroto",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR24",
+                            "name": "Moyo",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR21",
+                            "name": "Nakapiripirit",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR23",
+                            "name": "Napak",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR05",
+                            "name": "Nebbi",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR26",
+                            "name": "Nwoya",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR29",
+                            "name": "Otuke",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR06",
+                            "name": "Oyam",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR19",
+                            "name": "Pader",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR02",
+                            "name": "Yumbe",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        },
+                        {
+                            "code": "NR08",
+                            "name": "Zombo",
+                            "type": 3,
+                            "parentCode": "SNR"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "WR",
+            "name": "Western Region",
+            "type": 1,
+            "parentCode": "UG",
+            "children": [
+                {
+                    "code": "SWR",
+                    "name": "Western Region",
+                    "type": 2,
+                    "parentCode": "WR",
+                    "children": [
+                        {
+                            "code": "WR24",
+                            "name": "Buhweju",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR25",
+                            "name": "Buliisa",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR20",
+                            "name": "Bundibugyo",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR19",
+                            "name": "Bushenyi",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR08",
+                            "name": "Fortportal",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR03",
+                            "name": "Hoima",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR18",
+                            "name": "Ibanda",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR05",
+                            "name": "Isingiro",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR04",
+                            "name": "Kabale",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR10",
+                            "name": "Kamwenge",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR17",
+                            "name": "Kanungu",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR02",
+                            "name": "Kasese",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR01",
+                            "name": "Kibaale",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR11",
+                            "name": "Kiruhura",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR16",
+                            "name": "Kiryandongo",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR14",
+                            "name": "Kisoro",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR15",
+                            "name": "Kyegegwa",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR09",
+                            "name": "Kyenjojo",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "CR10",
+                            "name": "Masaka",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR13",
+                            "name": "Masindi",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR07",
+                            "name": "Mbarara",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR22",
+                            "name": "Mitooma",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR26",
+                            "name": "Ntoroko",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR06",
+                            "name": "Ntungamo",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR23",
+                            "name": "Rubirizi",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR12",
+                            "name": "Rukungiri",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        },
+                        {
+                            "code": "WR21",
+                            "name": "Sheema",
+                            "type": 3,
+                            "parentCode": "SWR"
+                        }
+                    ]
+                },
+                {
+                    "code": "GZS",
+                    "name": "广州市",
+                    "type": 2,
+                    "parentCode": "WR",
+                    "children": []
+                }
+            ]
+        }
+    ],
+    "name": "Uganda",
+    "type": 0
+}

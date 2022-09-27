@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.com">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <ws:uploadData>
+      <!--Optional:-->
+      <ws:handler>
+        <DATA>
+          <ADDRESS>
+            <BOXID>test8989</BOXID>
+            <SHIPDATE>2020/12/24</SHIPDATE>
+            <KANA>xiao</KANA>
+            <POSTAL>0600000</POSTAL>
+            <JPADDRESS1>東京都品川区勝島１－１－１</JPADDRESS1>
+            <JPADDRESS2>test2</JPADDRESS2>
+            <CONTEL>0438432345</CONTEL>
+            <KBN>TEST4286</KBN>
+            <SHINADAI>4000</SHINADAI>
+            <TTLAMOUNT>4500</TTLAMOUNT>
+            <TESURYO>500</TESURYO>
+            <CODFLG>1</CODFLG>
+            <WGT>2</WGT>
+            <SHITEIBI>2020/12/26</SHITEIBI>
+            <SHITEIJIKAN>1200</SHITEIJIKAN>
+            <TRACKINGNO>test0000001</TRACKINGNO>
+            <BIKO>test</BIKO>
+          </ADDRESS>
+          <ITEM>
+            <ITEMCD>432532532</ITEMCD>
+            <ITEMNAME>test xiao</ITEMNAME>
+            <PIECE>2</PIECE>
+            <ORIGIN>JP</ORIGIN>
+            <UNITPRICE>1000</UNITPRICE>
+          </ITEM>
+          <ITEM>
+            <ITEMCD>432532542</ITEMCD>
+            <ITEMNAME>test 222</ITEMNAME>
+            <PIECE>2</PIECE>
+            <ORIGIN>JP</ORIGIN>
+            <UNITPRICE>1000</UNITPRICE>
+          </ITEM>
+        </DATA>
+      </ws:handler>
+    </ws:uploadData>
+  </soapenv:Body>
+</soapenv:Envelope>

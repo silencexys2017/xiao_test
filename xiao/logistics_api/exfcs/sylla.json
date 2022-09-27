@@ -1,0 +1,134 @@
+[
+    {
+        "state_id": 19,
+        "state_name": "Kachin State",
+        "cities": [
+            {
+                "city_id": 82,
+                "city_name": "Myitkyina"
+            }
+        ]
+    },
+    {
+        "state_id": 14,
+        "state_name": "Shan State",
+        "cities": [
+            {
+                "city_id": 54,
+                "city_name": "Taunggyi"
+            },
+            {
+                "city_id": 64,
+                "city_name": "Muse"
+            },
+            {
+                "city_id": 57,
+                "city_name": "Lashio"
+            },
+            {
+                "city_id": 75,
+                "city_name": "Taunggyi ATY"
+            },
+            {
+                "city_id": 78,
+                "city_name": "Muse"
+            }
+        ]
+    },
+    {
+        "state_id": 22,
+        "state_name": "Mon State",
+        "cities": [
+            {
+                "city_id": 86,
+                "city_name": "Mawlamyine"
+            }
+        ]
+    },
+    {
+        "state_id": 13,
+        "state_name": "Sagaing Region",
+        "cities": [
+            {
+                "city_id": 50,
+                "city_name": "Sagaing"
+            },
+            {
+                "city_id": 49,
+                "city_name": "Monywa"
+            },
+            {
+                "city_id": 77,
+                "city_name": "Sagaing Zone 2"
+            }
+        ]
+    },
+    {
+        "state_id": 17,
+        "state_name": "Naypyitaw",
+        "cities": [
+            {
+                "city_id": 69,
+                "city_name": "Naypyitaw"
+            },
+            {
+                "city_id": 76,
+                "city_name": "Naypyitaw Zone 2"
+            }
+        ]
+    },
+    {
+        "state_id": 4,
+        "state_name": "Bago Region",
+        "cities": [
+            {
+                "city_id": 8,
+                "city_name": "Bago"
+            }
+        ]
+    },
+    {
+        "state_id": 10,
+        "state_name": "Mandalay Region",
+        "cities": [
+            {
+                "city_id": 72,
+                "city_name": "Moegok"
+            },
+            {
+                "city_id": 39,
+                "city_name": "Kyauksel"
+            },
+            {
+                "city_id": 40,
+                "city_name": "Pyin Oo Lwin"
+            },
+            {
+                "city_id": 35,
+                "city_name": "Mandalay"
+            },
+            {
+                "city_id": 74,
+                "city_name": "Mandalay Zone 2"
+            }
+        ]
+    },
+    {
+        "state_id": 16,
+        "state_name": "Yangon Region",
+        "cities": [
+            {
+                "city_id": 80,
+                "city_name": "Epost"
+            },
+            {
+                "city_id": 68,
+                "city_name": "Yangon City"
+            },
+            {
+                "city_id": 73,
+                "city_name": "Yangon Zone 2"
+            }
+        ]
+    }
+]

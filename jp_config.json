@@ -1,0 +1,65 @@
+{
+  "dev": {
+    "mongodb": {
+      "uri": "mongodb://pf_dev_dbo:Bp2Q5j3Jb2cmQvn8L4kW@mongodb.x-paas.svc.cluster.local/admin?replicaSet=rs0"
+    },
+    "progresql": {
+      "uri": "postgresql://postgres:31415926@114.119.182.192:5432/"
+    },
+    "mq": {
+      "host": "94.74.107.74",
+      "port": 15672,
+      "user": "rmq-dev",
+      "password": "7M9Yrym4L9G6cxhNe9Xf",
+      "virtual-host": "perfee-dev"
+    },
+    "services": {
+      "goods": {
+        "host": "10.20.207.25",
+        "port": 8000
+      }
+    }
+  },
+  "test": {
+    "mongodb": {
+      "uri": "mongodb://pf_test_dbo:3f4k8aDHeQJBKmd3z7c9@mongodb-jp/admin?replicaSet=rs0"
+    },
+    "progresql": {
+      "uri": "postgresql://postgres:31415926@114.119.182.192:5432/"
+    },
+    "mq": {
+      "host": "94.74.107.74",
+      "port": 15672,
+      "user": "rmq-test",
+      "password": "ALpW854bZ29HrAzjce8v",
+      "virtual-host": "perfee-test"
+    },
+    "services": {
+      "goods": {
+        "host": "10.20.200.141",
+        "port": 8000
+      }
+    }
+  },
+  "prd": {
+    "mongodb": {
+      "uri": "mongodb://pf_prd_dbo:m2w9ZNZP4gUsx9b2hu6L@mongodb-jp/admin?replicaSet=rs0"
+    },
+    "progresql": {
+      "uri": "postgresql://postgres:31415926@114.119.182.192:5432/"
+    },
+    "mq": {
+      "host": "94.74.107.74",
+      "port": 15672,
+      "user": "rmq-prd",
+      "password": "a3zWdf2X7xuEPWg259Xb",
+      "virtual-host": "perfee-prd"
+    },
+    "services": {
+      "goods": {
+        "host": "10.20.175.236",
+        "port": 8000
+      }
+    }
+  }
+}

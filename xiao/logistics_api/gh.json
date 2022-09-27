@@ -1,0 +1,4075 @@
+{
+    "code": "GH",
+    "children": [
+        {
+            "code": "R002",
+            "name": "Ashanti",
+            "type": 1,
+            "parentCode": "GH",
+            "children": [
+                {
+                    "code": "C007",
+                    "name": "Kumasi",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": [
+                        {
+                            "code": "A0284",
+                            "name": "Aberem",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0224",
+                            "name": "Aboabo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0265",
+                            "name": "Abrepo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0263",
+                            "name": "Abuakwa",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0242",
+                            "name": "Achiase",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0236",
+                            "name": "Adako Jachie",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0267",
+                            "name": "Adehyeman",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0206",
+                            "name": "Adenyase",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0180",
+                            "name": "Adiebeba",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0194",
+                            "name": "Adiemmra",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0288",
+                            "name": "Adoato",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0207",
+                            "name": "Adukrom",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0200",
+                            "name": "Adum",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0283",
+                            "name": "Afrancho",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0177",
+                            "name": "Agogo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0257",
+                            "name": "Agric",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0248",
+                            "name": "Ahenmma Kokobeng",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0171",
+                            "name": "Ahodwo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0279",
+                            "name": "Ahwiaa",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0222",
+                            "name": "Akwatialine",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0209",
+                            "name": "Amakom",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0266",
+                            "name": "Amanfrom",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0246",
+                            "name": "Ampabame",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0264",
+                            "name": "Anloga",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0213",
+                            "name": "Anwomaso",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0211",
+                            "name": "Anyenam",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0247",
+                            "name": "Anyinam",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0218",
+                            "name": "Apemso",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0176",
+                            "name": "Apere",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0219",
+                            "name": "Appiadu",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0235",
+                            "name": "Aprade",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0175",
+                            "name": "Aprama",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0191",
+                            "name": "Apraman",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0199",
+                            "name": "Asafo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0220",
+                            "name": "Asawasi",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0241",
+                            "name": "Asebi",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0281",
+                            "name": "Asenua",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0203",
+                            "name": "Ashtown",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0205",
+                            "name": "Asokore Mampong",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0210",
+                            "name": "Asokwa",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0197",
+                            "name": "Asuofua",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0190",
+                            "name": "Asuoyeboa",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0193",
+                            "name": "Atasomanso",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0280",
+                            "name": "Atimatim",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0179",
+                            "name": "Atonsu",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0214",
+                            "name": "Ayeduase",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0234",
+                            "name": "Ayigya",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0202",
+                            "name": "Bantama",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0208",
+                            "name": "Bimpeh Hill",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0221",
+                            "name": "Block 8",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0287",
+                            "name": "Bohyen",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0285",
+                            "name": "Bomso",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0278",
+                            "name": "Bremang",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0251",
+                            "name": "Brofoyedu",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0277",
+                            "name": "Buoho",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0275",
+                            "name": "Buokrom",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0286",
+                            "name": "Buokrom Estate",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0290",
+                            "name": "Buokurom",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0249",
+                            "name": "Daban",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0245",
+                            "name": "Dakodwom",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0181",
+                            "name": "Dakodwon",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0292",
+                            "name": "Danyame",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0217",
+                            "name": "Deduako",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0272",
+                            "name": "Dichemso",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0291",
+                            "name": "Dompoase",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0187",
+                            "name": "Edwenase",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0244",
+                            "name": "Ejisu",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0174",
+                            "name": "Fankyenbra",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0195",
+                            "name": "Fankyenebra",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0258",
+                            "name": "Fante New Town",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0223",
+                            "name": "Fanti New Town",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0282",
+                            "name": "Fawode",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0237",
+                            "name": "Fumasuea",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0216",
+                            "name": "Gyenyasi",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0509",
+                            "name": "IPT",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0178",
+                            "name": "Kaase",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0510",
+                            "name": "Karmo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0259",
+                            "name": "Kejetia",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0511",
+                            "name": "Kentikrono",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0276",
+                            "name": "Kenyase",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0172",
+                            "name": "Knust",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0192",
+                            "name": "Konkromase",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0229",
+                            "name": "Korum",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0512",
+                            "name": "Kotei",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0252",
+                            "name": "Kotwi",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0239",
+                            "name": "Krapa",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0271",
+                            "name": "Krofrom",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0184",
+                            "name": "Kromuase",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0513",
+                            "name": "Kronum",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0189",
+                            "name": "Kwadaso",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0238",
+                            "name": "Kwamo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0514",
+                            "name": "Lobito",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0228",
+                            "name": "Maakro",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0231",
+                            "name": "Maduma",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0270",
+                            "name": "Mamponteng",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0269",
+                            "name": "Manhyia",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0198",
+                            "name": "Maxima",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0516",
+                            "name": "Mayanka",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0515",
+                            "name": "Medoma",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0517",
+                            "name": "Moeshie Zongo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0268",
+                            "name": "Mpatasie",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0232",
+                            "name": "New Tafo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0215",
+                            "name": "New Zongo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0253",
+                            "name": "Nkronsa",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0201",
+                            "name": "North Suntreso",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0212",
+                            "name": "Nsenie",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0185",
+                            "name": "Nzema",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0196",
+                            "name": "Odeneho Kwadaso",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0243",
+                            "name": "Odum",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0519",
+                            "name": "Oduom",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0173",
+                            "name": "Oforikurom",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0186",
+                            "name": "Ohwimase",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0233",
+                            "name": "Old Tafo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0225",
+                            "name": "Owusu Ansa",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0255",
+                            "name": "Pakyi No.1",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0256",
+                            "name": "Pakyi No.2",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0518",
+                            "name": "Pankrono",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0240",
+                            "name": "Parkoso",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0188",
+                            "name": "Patasi",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0183",
+                            "name": "Santasi",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0520",
+                            "name": "Sawaba",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0521",
+                            "name": "Sawaba",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0289",
+                            "name": "Sepe",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0523",
+                            "name": "Sepe Brokrom",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0273",
+                            "name": "Sepe dote",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0274",
+                            "name": "Sepe Timpom",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0226",
+                            "name": "Sipetimpom",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0261",
+                            "name": "Sofoline",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0182",
+                            "name": "Sokoban",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0522",
+                            "name": "South Suntreso",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0260",
+                            "name": "South SUntreso",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0227",
+                            "name": "Suame",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0230",
+                            "name": "Tafo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0262",
+                            "name": "Tanoso",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0254",
+                            "name": "Trede",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0250",
+                            "name": "Woamoase",
+                            "type": 3,
+                            "parentCode": "C007"
+                        },
+                        {
+                            "code": "A0204",
+                            "name": "Zongo",
+                            "type": 3,
+                            "parentCode": "C007"
+                        }
+                    ]
+                },
+                {
+                    "code": "C005",
+                    "name": "Kumasi East",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": []
+                },
+                {
+                    "code": "C008",
+                    "name": "Kumasi North",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": []
+                },
+                {
+                    "code": "C006",
+                    "name": "Kumasi South",
+                    "type": 2,
+                    "parentCode": "R002",
+                    "children": []
+                }
+            ]
+        },
+        {
+            "code": "R007",
+            "name": "Brong Ahafo",
+            "type": 1,
+            "parentCode": "GH",
+            "children": [
+                {
+                    "code": "C013",
+                    "name": "Sunyani",
+                    "type": 2,
+                    "parentCode": "R007",
+                    "children": [
+                        {
+                            "code": "A0497",
+                            "name": "Sunyani",
+                            "type": 3,
+                            "parentCode": "C013"
+                        }
+                    ]
+                },
+                {
+                    "code": "C014",
+                    "name": "Techiman",
+                    "type": 2,
+                    "parentCode": "R007",
+                    "children": [
+                        {
+                            "code": "A0498",
+                            "name": "Techiman",
+                            "type": 3,
+                            "parentCode": "C014"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R005",
+            "name": "Central",
+            "type": 1,
+            "parentCode": "GH",
+            "children": [
+                {
+                    "code": "C011",
+                    "name": "Cape Coast",
+                    "type": 2,
+                    "parentCode": "R005",
+                    "children": [
+                        {
+                            "code": "A0440",
+                            "name": "Abra",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0449",
+                            "name": "Abura",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0446",
+                            "name": "Adisadel",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0423",
+                            "name": "Akotokyire",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0433",
+                            "name": "Akyim",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0422",
+                            "name": "Amamoa",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0414",
+                            "name": "Ankaful",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0413",
+                            "name": "Ayensu",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0419",
+                            "name": "Ayensudo",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0437",
+                            "name": "Bakano",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0435",
+                            "name": "Brafoyaw",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0425",
+                            "name": "C-poly",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0445",
+                            "name": "Cape Coast",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0444",
+                            "name": "Duakuro",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0438",
+                            "name": "Eguase",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0434",
+                            "name": "Ekon",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0418",
+                            "name": "Elmina",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0453",
+                            "name": "Esuekyir",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0427",
+                            "name": "Eyifua",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0428",
+                            "name": "First Ridge",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0432",
+                            "name": "Green Hill",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0451",
+                            "name": "Kakumdo",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0426",
+                            "name": "Kingsway",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0452",
+                            "name": "Komenda",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0415",
+                            "name": "Kotokoraba",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0442",
+                            "name": "Kwapro",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0424",
+                            "name": "Kwaprow",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0441",
+                            "name": "Mfanstipim",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0436",
+                            "name": "Moree",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0416",
+                            "name": "Mpeasem",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0431",
+                            "name": "Nkanfoa",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0439",
+                            "name": "Nyamoransa",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0417",
+                            "name": "Ola",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0447",
+                            "name": "Pedu",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0450",
+                            "name": "Post Office ",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0429",
+                            "name": "Second Ridge",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0443",
+                            "name": "Swidu",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0448",
+                            "name": "Tantri",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0430",
+                            "name": "third Ridge",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0420",
+                            "name": "Ucc new site",
+                            "type": 3,
+                            "parentCode": "C011"
+                        },
+                        {
+                            "code": "A0421",
+                            "name": "Ucc old site",
+                            "type": 3,
+                            "parentCode": "C011"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R003",
+            "name": "Eastern",
+            "type": 1,
+            "parentCode": "GH",
+            "children": [
+                {
+                    "code": "C009",
+                    "name": "Koforidua",
+                    "type": 2,
+                    "parentCode": "R003",
+                    "children": [
+                        {
+                            "code": "A0337",
+                            "name": "Aboabo",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0380",
+                            "name": "Aboado",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0315",
+                            "name": "Abogri",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0331",
+                            "name": "Abrewa Nkwanta",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0338",
+                            "name": "Ada",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0366",
+                            "name": "Adweso",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0320",
+                            "name": "Agavenya",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0328",
+                            "name": "Akwadum",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0329",
+                            "name": "All Nations New Site",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0344",
+                            "name": "Anlo Town",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0359",
+                            "name": "Antotown",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0301",
+                            "name": "Apenkwa",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0340",
+                            "name": "Asokore",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0323",
+                            "name": "Asokore Kuma",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0347",
+                            "name": "Asorko",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0302",
+                            "name": "Atekyem",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0333",
+                            "name": "Baakokrom",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0375",
+                            "name": "Barrier",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0296",
+                            "name": "Betom",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0352",
+                            "name": "Bohye",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0299",
+                            "name": "Charlie Junction",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0293",
+                            "name": "Daasebre Estates",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0322",
+                            "name": "Dabi asem",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0354",
+                            "name": "Dalriasem",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0348",
+                            "name": "Effichale",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0324",
+                            "name": "Effiduase",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0304",
+                            "name": "Galaway",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0330",
+                            "name": "Highways",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0325",
+                            "name": "Jumapo",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0365",
+                            "name": "K. Poly",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0298",
+                            "name": "Kantudu",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0303",
+                            "name": "Kasadjan",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0377",
+                            "name": "Kentekre",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0312",
+                            "name": "Kentenkren",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0378",
+                            "name": "Kofikrom",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0346",
+                            "name": "Koforidua",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0374",
+                            "name": "Korle Nkra",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0318",
+                            "name": "Korley",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0321",
+                            "name": "Korley Newtown",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0319",
+                            "name": "Korley Nkwanta",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0305",
+                            "name": "KTU",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0342",
+                            "name": "Kukurantumi",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0368",
+                            "name": "Kurakan",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0309",
+                            "name": "Liberty",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0370",
+                            "name": "Lowcost",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0358",
+                            "name": "Magazine",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0308",
+                            "name": "Mile 50",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0363",
+                            "name": "Monroua",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0300",
+                            "name": "Monrovia",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0336",
+                            "name": "Nkurakan",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0327",
+                            "name": "Nsukwao",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0373",
+                            "name": "Nurse",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0332",
+                            "name": "Nyamekrom",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0295",
+                            "name": "Oguaa",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0313",
+                            "name": "Okorase",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0294",
+                            "name": "Old Estate",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0310",
+                            "name": "Opoku Nsiah",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0311",
+                            "name": "Osabene",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0326",
+                            "name": "Oyoko",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0345",
+                            "name": "Pipeline",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0306",
+                            "name": "Rasta down",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0297",
+                            "name": "Srodae",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0367",
+                            "name": "SSNIT",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0334",
+                            "name": "St James",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0361",
+                            "name": "St.James",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0343",
+                            "name": "Suhyen",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0341",
+                            "name": "Tafo",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0314",
+                            "name": "Tei Nkwanta",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0317",
+                            "name": "Trom",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0316",
+                            "name": "Two Streams",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0335",
+                            "name": "Water works",
+                            "type": 3,
+                            "parentCode": "C009"
+                        },
+                        {
+                            "code": "A0339",
+                            "name": "Zongo",
+                            "type": 3,
+                            "parentCode": "C009"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R001",
+            "name": "Greater Accra",
+            "type": 1,
+            "parentCode": "GH",
+            "children": [
+                {
+                    "code": "C001",
+                    "name": "Accra",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": [
+                        {
+                            "code": "A0074",
+                            "name": "Abease",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0091",
+                            "name": "Abeka",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0120",
+                            "name": "Abelemkpe",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0048",
+                            "name": "Ablekuma",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0045",
+                            "name": "Ablekuma Fan-Milk",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0065",
+                            "name": "Abokobi",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0044",
+                            "name": "Abosseyokai",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0005",
+                            "name": "Accra New Town",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0073",
+                            "name": "Achiaman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0089",
+                            "name": "Achimota",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0100",
+                            "name": "Adabraka",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0564",
+                            "name": "Adade",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0574",
+                            "name": "Adam nana",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0034",
+                            "name": "Adenta",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0035",
+                            "name": "Adenta",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0036",
+                            "name": "Adenta Municipality",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0534",
+                            "name": "Adenta Village",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0525",
+                            "name": "Adenta West",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0033",
+                            "name": "Adjiringanor",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0549",
+                            "name": "Agbogba",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0079",
+                            "name": "Agbogba",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0552",
+                            "name": "Agbogba Junction",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0013",
+                            "name": "Airport City",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0019",
+                            "name": "Airport Hills",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0015",
+                            "name": "Airport Residential Area",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0639",
+                            "name": "Airport West",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0569",
+                            "name": "Akweley",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0088",
+                            "name": "Akweteyman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0003",
+                            "name": "Alajo",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0560",
+                            "name": "Amanfrom",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0062",
+                            "name": "Amanhia",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0077",
+                            "name": "Amasaman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0032",
+                            "name": "Ashaley Botwe",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0109",
+                            "name": "Ashiedu Keteke",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0071",
+                            "name": "Ashiyie",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0067",
+                            "name": "Ashongman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0545",
+                            "name": "Ashongman Estates",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0099",
+                            "name": "Asylum Down",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0042",
+                            "name": "Awoshie",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0578",
+                            "name": "Broadcasting",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0052",
+                            "name": "Bubiashie",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0656",
+                            "name": "Bukom",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0016",
+                            "name": "Burkie",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0017",
+                            "name": "Burma Camp",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0020",
+                            "name": "Burma Hills",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0111",
+                            "name": "Cantonments",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0027",
+                            "name": "Cfc Estates, Taifa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0537",
+                            "name": "Cfc Estates, Taifa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0084",
+                            "name": "Chorkor",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0106",
+                            "name": "Christian Borg",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0025",
+                            "name": "Christian Village",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0535",
+                            "name": "Christian Village",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0002",
+                            "name": "Circle",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0526",
+                            "name": "Commandos",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0069",
+                            "name": "Danfa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0082",
+                            "name": "Dansoman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0059",
+                            "name": "Darkuman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0531",
+                            "name": "Dodowa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0028",
+                            "name": "Dome",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0538",
+                            "name": "Dome",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0572",
+                            "name": "Domeabra.",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0012",
+                            "name": "Dzorwulu",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0022",
+                            "name": "East Legon",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0648",
+                            "name": "East Legon Hills",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0060",
+                            "name": "Ecomog",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0543",
+                            "name": "Ecomog",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0063",
+                            "name": "Frafraha",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0046",
+                            "name": "Gbawe",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0637",
+                            "name": "GIMPA",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0102",
+                            "name": "Gold Coast City",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0066",
+                            "name": "Haatso",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0548",
+                            "name": "Haatso",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0115",
+                            "name": "High Street",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0528",
+                            "name": "Housing down",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0098",
+                            "name": "James Town",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0053",
+                            "name": "Janman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0541",
+                            "name": "John Teye",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0575",
+                            "name": "Kaff university",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0118",
+                            "name": "Kanda",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0040",
+                            "name": "Kaneshie",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0051",
+                            "name": "Kaneshie Maket",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0117",
+                            "name": "Kantamanto",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0058",
+                            "name": "Kasoa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0565",
+                            "name": "Kasoa C. P",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0112",
+                            "name": "Kinbu",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0544",
+                            "name": "Kissieman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0006",
+                            "name": "Kokomlemle",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0576",
+                            "name": "Kokrobite",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0056",
+                            "name": "Korle Bu",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0086",
+                            "name": "Korle Gonno",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0004",
+                            "name": "Kotobabi",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0566",
+                            "name": "Krispol city",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0121",
+                            "name": "Kuku Hill",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0068",
+                            "name": "Kwabenya.",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0547",
+                            "name": "Kwabenya.",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0041",
+                            "name": "Kwashieman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0110",
+                            "name": "Labadi",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0108",
+                            "name": "Labone",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0650",
+                            "name": "Lakeside Estate",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0573",
+                            "name": "Lamprey mills",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0087",
+                            "name": "Lapaz",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0096",
+                            "name": "Lartebiokorshie",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0030",
+                            "name": "Legon",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0561",
+                            "name": "Liberia camp",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0532",
+                            "name": "Lybia Quarters",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0008",
+                            "name": "Maamobi",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0031",
+                            "name": "Madina",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0114",
+                            "name": "Makola",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0093",
+                            "name": "Mallam",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0085",
+                            "name": "Mamprobi",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0529",
+                            "name": "Manet courts ",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0043",
+                            "name": "Mataheko",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0094",
+                            "name": "McCarthy Hill",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0095",
+                            "name": "Mile 11",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0577",
+                            "name": "Millennium city",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0113",
+                            "name": "Ministries",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0655",
+                            "name": "Mpoase",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0651",
+                            "name": "Nana Krom",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0527",
+                            "name": "New Legon",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0568",
+                            "name": "New market",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0092",
+                            "name": "Nii Okaiman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0090",
+                            "name": "Nii Okaiman East",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0007",
+                            "name": "Nima",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0652",
+                            "name": "Nmai Djor",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0024",
+                            "name": "North Dzorwulu",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0054",
+                            "name": "North Industrial Area",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0080",
+                            "name": "North Kaneshie",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0037",
+                            "name": "North Legon",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0104",
+                            "name": "North Ridge",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0038",
+                            "name": "Norwood City",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0009",
+                            "name": "Nungua Central",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0562",
+                            "name": "Nyanyano",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0563",
+                            "name": "Nyanyano kakraba",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0057",
+                            "name": "Odorkor",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0570",
+                            "name": "Ofaakor",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0072",
+                            "name": "Ofankor",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0540",
+                            "name": "Ofankor",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0076",
+                            "name": "Ogbodjo",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0011",
+                            "name": "Okpoi Gonno",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0546",
+                            "name": "Old Ashongman",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0557",
+                            "name": "Old barrier",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0567",
+                            "name": "Opeikuma",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0107",
+                            "name": "Osu",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0119",
+                            "name": "Osu Ako-adjei",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0122",
+                            "name": "Osu Oxford Street",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0116",
+                            "name": "Osu-re",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0070",
+                            "name": "Oyarifa",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0530",
+                            "name": "Oyibi",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0064",
+                            "name": "Pantang",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0571",
+                            "name": "Papaase",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0026",
+                            "name": "Parakuo Estates",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0536",
+                            "name": "Parakuo Estates",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0550",
+                            "name": "Pleasant Hill",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0061",
+                            "name": "Pleasant Hill",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0075",
+                            "name": "Pokoasi",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0078",
+                            "name": "Pokuase",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0001",
+                            "name": "Rawlings Park",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0123",
+                            "name": "Ring Road",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0533",
+                            "name": "Ritz Junction",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0014",
+                            "name": "Roman Ridge",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0081",
+                            "name": "Sabon Zongo",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0647",
+                            "name": "Santeo",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0023",
+                            "name": "Shiashie",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0050",
+                            "name": "South Industrial Area",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0097",
+                            "name": "Sowutoum",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0039",
+                            "name": "Sun City",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0542",
+                            "name": "Sun City",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0047",
+                            "name": "Tesano",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0010",
+                            "name": "Teshi",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0018",
+                            "name": "Teshie",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0649",
+                            "name": "Trassacco",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0559",
+                            "name": "Tuba",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0101",
+                            "name": "Tudu",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0083",
+                            "name": "Tunga",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0638",
+                            "name": "UG-Legon",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0524",
+                            "name": "UPSA",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0049",
+                            "name": "Ussher Town",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0105",
+                            "name": "Victoriaborg",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0021",
+                            "name": "VIP Station",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0055",
+                            "name": "Weija",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0551",
+                            "name": "West land",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0029",
+                            "name": "West Legon",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0539",
+                            "name": "West Legon",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0103",
+                            "name": "West Ridge",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0558",
+                            "name": "Westhills",
+                            "type": 3,
+                            "parentCode": "C001"
+                        },
+                        {
+                            "code": "A0553",
+                            "name": "Winconsin Int.",
+                            "type": 3,
+                            "parentCode": "C001"
+                        }
+                    ]
+                },
+                {
+                    "code": "C002",
+                    "name": "Accra East",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": []
+                },
+                {
+                    "code": "C004",
+                    "name": "Accra North",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": []
+                },
+                {
+                    "code": "C016",
+                    "name": "Accra West",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": []
+                },
+                {
+                    "code": "C003",
+                    "name": "Tema",
+                    "type": 2,
+                    "parentCode": "R001",
+                    "children": [
+                        {
+                            "code": "A0154",
+                            "name": "Adjei kojo",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0153",
+                            "name": "Afariwa",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0128",
+                            "name": "Akorley-dzor",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0163",
+                            "name": "Ashaiman",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0642",
+                            "name": "Attah Dika",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0125",
+                            "name": "Baatsonaa",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0155",
+                            "name": "Borteyman",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0653",
+                            "name": "Central University",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0137",
+                            "name": "CMB Village",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0170",
+                            "name": "Community 17",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0644",
+                            "name": "Community 21",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0169",
+                            "name": "Community 22",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0646",
+                            "name": "Community 23",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0156",
+                            "name": "Community 25",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0145",
+                            "name": "Community Eight",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0150",
+                            "name": "Community Eighteen",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0148",
+                            "name": "Community Eleven",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0142",
+                            "name": "Community Five",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0141",
+                            "name": "Community Four",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0146",
+                            "name": "Community Nine",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0151",
+                            "name": "Community Nineteen",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0138",
+                            "name": "Community One",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0144",
+                            "name": "Community Seven",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0143",
+                            "name": "Community Six",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0147",
+                            "name": "Community Ten",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0140",
+                            "name": "Community Three",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0149",
+                            "name": "Community Twelve",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0152",
+                            "name": "Community Twenty",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0139",
+                            "name": "Community Two",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0168",
+                            "name": "Dawhenya",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0133",
+                            "name": "Golf City",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0161",
+                            "name": "Heavy Industrial Area",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0643",
+                            "name": "Katamanso",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0166",
+                            "name": "Klagon",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0159",
+                            "name": "Kortu-gon",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0162",
+                            "name": "Kpone",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0131",
+                            "name": "Kwambla Gon",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0164",
+                            "name": "Lashibi",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0641",
+                            "name": "Lebanon",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0165",
+                            "name": "Mlichakpo",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0136",
+                            "name": "Neighbourhood 3",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0645",
+                            "name": "New York",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0158",
+                            "name": "Podoku",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0654",
+                            "name": "Prampram",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0124",
+                            "name": "Reg Gray Est",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0126",
+                            "name": "Sakumono",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0127",
+                            "name": "Sakumono ESTATE",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0157",
+                            "name": "Sebrepor",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0132",
+                            "name": "Sraha",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0160",
+                            "name": "Tema New Town",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0129",
+                            "name": "Tsinai-agbe",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0135",
+                            "name": "V.R.A Estates",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0130",
+                            "name": "Valco Estates",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0134",
+                            "name": "Valco Park",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0167",
+                            "name": "Zeetech Light Industrial Area",
+                            "type": 3,
+                            "parentCode": "C003"
+                        },
+                        {
+                            "code": "A0640",
+                            "name": "Zenu",
+                            "type": 3,
+                            "parentCode": "C003"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R009",
+            "name": "Guangdong",
+            "type": 1,
+            "parentCode": "GH",
+            "children": [
+                {
+                    "code": "C017",
+                    "name": "Guangzhou",
+                    "type": 2,
+                    "parentCode": "R009",
+                    "children": [
+                        {
+                            "code": "A0508",
+                            "name": "Guangzhou",
+                            "type": 3,
+                            "parentCode": "C017"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R008",
+            "name": "Northern",
+            "type": 1,
+            "parentCode": "GH",
+            "children": [
+                {
+                    "code": "C015",
+                    "name": "Tamale",
+                    "type": 2,
+                    "parentCode": "R008",
+                    "children": [
+                        {
+                            "code": "A0499",
+                            "name": "Checko",
+                            "type": 3,
+                            "parentCode": "C015"
+                        },
+                        {
+                            "code": "A0505",
+                            "name": "Jekeriyili",
+                            "type": 3,
+                            "parentCode": "C015"
+                        },
+                        {
+                            "code": "A0506",
+                            "name": "Kaakpayilli",
+                            "type": 3,
+                            "parentCode": "C015"
+                        },
+                        {
+                            "code": "A0503",
+                            "name": "Kalpohin Estates",
+                            "type": 3,
+                            "parentCode": "C015"
+                        },
+                        {
+                            "code": "A0504",
+                            "name": "Lamashigu",
+                            "type": 3,
+                            "parentCode": "C015"
+                        },
+                        {
+                            "code": "A0500",
+                            "name": "Moshie Zongo",
+                            "type": 3,
+                            "parentCode": "C015"
+                        },
+                        {
+                            "code": "A0501",
+                            "name": "Nyanshegu",
+                            "type": 3,
+                            "parentCode": "C015"
+                        },
+                        {
+                            "code": "A0502",
+                            "name": "Sakasak",
+                            "type": 3,
+                            "parentCode": "C015"
+                        },
+                        {
+                            "code": "A0507",
+                            "name": "Tamale",
+                            "type": 3,
+                            "parentCode": "C015"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R004",
+            "name": "Volta",
+            "type": 1,
+            "parentCode": "GH",
+            "children": [
+                {
+                    "code": "C010",
+                    "name": "Ho",
+                    "type": 2,
+                    "parentCode": "R004",
+                    "children": [
+                        {
+                            "code": "A0407",
+                            "name": "Ahoe",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0385",
+                            "name": "Akpenamawu",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0388",
+                            "name": "Alaye",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0393",
+                            "name": "Area 52",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0403",
+                            "name": "Bankoe",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0401",
+                            "name": "Barracks New Town",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0400",
+                            "name": "Bentotal",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0392",
+                            "name": "Civic Center",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0398",
+                            "name": "CK Road",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0399",
+                            "name": "Dabra",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0411",
+                            "name": "Dave",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0396",
+                            "name": "Deme",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0408",
+                            "name": "Dome",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0382",
+                            "name": "Godokpe",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0402",
+                            "name": "Guinness",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0381",
+                            "name": "Ho",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0405",
+                            "name": "Ho Market Area",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0386",
+                            "name": "Ho Poly",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0383",
+                            "name": "Lokoe",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0387",
+                            "name": "Mawuli Estate",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0389",
+                            "name": "Medical Village",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0384",
+                            "name": "Mirage",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0391",
+                            "name": "Muwuli School Area",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0390",
+                            "name": "Ola",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0406",
+                            "name": "Power House",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0394",
+                            "name": "PWD",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0404",
+                            "name": "Redeem",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0412",
+                            "name": "SSNIT Flats",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0395",
+                            "name": "Total",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0409",
+                            "name": "Trafalgar",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0410",
+                            "name": "UHAS New Site",
+                            "type": 3,
+                            "parentCode": "C010"
+                        },
+                        {
+                            "code": "A0397",
+                            "name": "Zongo",
+                            "type": 3,
+                            "parentCode": "C010"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "R006",
+            "name": "Western",
+            "type": 1,
+            "parentCode": "GH",
+            "children": [
+                {
+                    "code": "C020",
+                    "name": "Agona Swedru",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0556",
+                            "name": "Agona Swedru",
+                            "type": 3,
+                            "parentCode": "C020"
+                        }
+                    ]
+                },
+                {
+                    "code": "C019",
+                    "name": "Mankessim",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0555",
+                            "name": "Mankessim",
+                            "type": 3,
+                            "parentCode": "C019"
+                        }
+                    ]
+                },
+                {
+                    "code": "C012",
+                    "name": "Takoradi",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0496",
+                            "name": "Aboadze",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0485",
+                            "name": "Abutumagyebu",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0474",
+                            "name": "Adiembra",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0472",
+                            "name": "Adientan",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0468",
+                            "name": "Adientsem",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0461",
+                            "name": "Airforce BU",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0482",
+                            "name": "Airport Ridge",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0491",
+                            "name": "Anaji",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0479",
+                            "name": "Apolo",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0477",
+                            "name": "Apowa",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0473",
+                            "name": "Apremdo",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0475",
+                            "name": "Assakae",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0493",
+                            "name": "Bankyiase",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0476",
+                            "name": "Beach Road",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0483",
+                            "name": "Bronyikrom",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0486",
+                            "name": "Chapel Hill",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0487",
+                            "name": "Effia Nkwanta",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0480",
+                            "name": "Effiakuma",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0478",
+                            "name": "Essia",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0488",
+                            "name": "Essikado",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0489",
+                            "name": "Essipon",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0470",
+                            "name": "Fijai",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0484",
+                            "name": "Inehaban",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0457",
+                            "name": "Kasawurdo",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0458",
+                            "name": "Kegedir",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0490",
+                            "name": "Keteen",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0464",
+                            "name": "Kojokrom",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0481",
+                            "name": "Kweikuma",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0494",
+                            "name": "Kwesimintsim",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0454",
+                            "name": "Mapees",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0492",
+                            "name": "Market Circle",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0495",
+                            "name": "Mpatado",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0460",
+                            "name": "Mpintsin",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0471",
+                            "name": "New Amanful",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0459",
+                            "name": "New Takoradi",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0467",
+                            "name": "Ngyiresia",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0465",
+                            "name": "Nkroful",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0456",
+                            "name": "Ntankoful",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0466",
+                            "name": "Pipe Ano",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0463",
+                            "name": "Secondi",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0469",
+                            "name": "Takoradi",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0462",
+                            "name": "Tanakrom",
+                            "type": 3,
+                            "parentCode": "C012"
+                        },
+                        {
+                            "code": "A0455",
+                            "name": "Whindo",
+                            "type": 3,
+                            "parentCode": "C012"
+                        }
+                    ]
+                },
+                {
+                    "code": "C021",
+                    "name": "Takoradi Airport",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0620",
+                            "name": "Aboadze",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0635",
+                            "name": "Abuesi",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0598",
+                            "name": "Adiembra",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0631",
+                            "name": "Adiembra",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0621",
+                            "name": "Agona",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0591",
+                            "name": "Airport Ridge",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0608",
+                            "name": "Airport Ridge",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0589",
+                            "name": "Anaji",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0593",
+                            "name": "Apowaa",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0611",
+                            "name": "Apremdo",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0599",
+                            "name": "Baka-Ekyir",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0632",
+                            "name": "Bakaekyir",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0602",
+                            "name": "Beach Road",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0615",
+                            "name": "Beahu",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0619",
+                            "name": "Bokoro",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0587",
+                            "name": "BU",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0624",
+                            "name": "Diabene",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0585",
+                            "name": "Effia",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0596",
+                            "name": "Effia nkwanta",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0627",
+                            "name": "Effia Nkwanta Hospital",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0584",
+                            "name": "Effiakuma",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0617",
+                            "name": "Egyam",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0603",
+                            "name": "Ekuase",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0601",
+                            "name": "Esaaman",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0629",
+                            "name": "Essaman",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0605",
+                            "name": "Essikado",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0634",
+                            "name": "Essikado",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0607",
+                            "name": "Essipong",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0636",
+                            "name": "Essipong",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0618",
+                            "name": "Ewusiejo",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0586",
+                            "name": "Fijai",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0614",
+                            "name": "Funko",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0623",
+                            "name": "Kansaworodo",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0616",
+                            "name": "Kejabil",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0606",
+                            "name": "Ketan",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0625",
+                            "name": "Ketan",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0597",
+                            "name": "Kweikuma",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0630",
+                            "name": "Kweikuma",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0592",
+                            "name": "Kwesimintim",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0610",
+                            "name": "Kwesimintsim",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0590",
+                            "name": "Lagos Town",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0609",
+                            "name": "Lagos town",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0582",
+                            "name": "Market Circle",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0626",
+                            "name": "Mpintsin",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0613",
+                            "name": "New Amanful",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0595",
+                            "name": "New Tardi",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0628",
+                            "name": "Nkontompo",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0604",
+                            "name": "Nkotonpo",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0588",
+                            "name": "Nkroful Junction",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0583",
+                            "name": "Pipe Ano",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0612",
+                            "name": "Race course",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0600",
+                            "name": "Sekondi",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0633",
+                            "name": "Sekondi",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0580",
+                            "name": "Shama",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0594",
+                            "name": "T Poly",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0581",
+                            "name": "Tano Krom",
+                            "type": 3,
+                            "parentCode": "C021"
+                        },
+                        {
+                            "code": "A0622",
+                            "name": "Tanokrom",
+                            "type": 3,
+                            "parentCode": "C021"
+                        }
+                    ]
+                },
+                {
+                    "code": "C018",
+                    "name": "Winneba",
+                    "type": 2,
+                    "parentCode": "R006",
+                    "children": [
+                        {
+                            "code": "A0554",
+                            "name": "Winneba",
+                            "type": 3,
+                            "parentCode": "C018"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "name": "Ghana",
+    "type": 0
+}

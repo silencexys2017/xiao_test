@@ -1,0 +1,2 @@
+docker build -t bee/hive-api:latest .
+docker run -itd --env=_ZK_HOSTS=zookeeper --env=_APP_NAME=bee --env=_APP_ENV=dev --env=_DEBUG=1 --network=bee-dev -p 0.0.0.0:5000:5000 --name=bee_hive-api --hostname=hive-api  bee/hive-api
