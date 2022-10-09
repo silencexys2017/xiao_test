@@ -95,7 +95,16 @@ if __name__ == "__main__":
     es_db = get_db(K_DB_URL, env, "Es")
     goods_db = get_db(K_DB_URL, env, "Goods")
     if env == "prd":
-        wms_warehouse_db = get_db(X_DB_URL, env, "WmsWarehouse")
+        mongodb_setting = dict(
+            host='159.138.90.30',
+            port=30734,
+            username='pf_prd_dbo',
+            password='m2w9ZNZP4gUsx9b2hu6L',
+            authSource='admin',
+        )
+        wms_warehouse_db = pymongo.MongoClient(
+            **mongodb_setting)[env + "WmsWarehouse"]
+        # wms_warehouse_db = get_db(X_DB_URL, env, "WmsWarehouse")
     else:
         wms_warehouse_db = get_db(K_DB_URL, env, "WmsWarehouse")
 
