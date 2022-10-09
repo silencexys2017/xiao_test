@@ -118,8 +118,8 @@ if __name__ == "__main__":
         sys.exit(-1)
 
     env = sys.argv[1]
-    es_db = get_db(K_DB_URL, env, "Es")
-    goods_db = get_db(K_DB_URL, env, "Goods")
+    # es_db = get_db(K_DB_URL, env, "Es")
+    # goods_db = get_db(K_DB_URL, env, "Goods")
     if env == "prd":
         wms_warehouse_db = get_db(X_DB_URL, env, "WmsWarehouse")
     else:
@@ -127,5 +127,5 @@ if __name__ == "__main__":
 
     # update_es_cod()
     get_sku_ids()
-    update_sku_cod()
+    # update_sku_cod()
 
