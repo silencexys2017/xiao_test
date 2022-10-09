@@ -5,7 +5,7 @@ import logging
 import pymongo
 import json
 from openpyxl import load_workbook
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 _DEFAULT_CONFIG_FILE = '../config.json'
 
@@ -67,15 +67,20 @@ def utc2local(utc_datetime):
 
 
 def update_es_cod():
+    utc_now = datetime.utcnow()
     for it in wms_warehouse_db.WarehouseProductItem.find(
             {"userId": {"$ne": -1}, "partnerId": 5}):
-        sku_id = it["skuId"]
+        sku_id = int(it["skuId"])
         sku = goods_db.SpecOfSku.find_one_and_update(
-            {"_id": sku_id}, {"$set": {"paymentMethodsMask": 7}})
+            {"_id": sku_id},
+            {"$set": {"paymentMethodsMask": 7, "updatedAt": utc_now}})
         if not sku:
             print("sku not found %s" % sku_id)
-        es_db.Es.update_one({"_id": sku["listingId"]},
-                            {'$set': {"codSupported": True}})
+            continue
+        es_db.Es.update_one(
+            {"_id": sku["listingId"]},
+            {'$set': {"codSupported": True, "updatedAt": utc_now}})
+        print("listing %s success" % sku["listingId"])
 
 
 if __name__ == "__main__":
@@ -86,7 +91,7 @@ if __name__ == "__main__":
         logging.error(usage)
         sys.exit(-1)
 
-    env, xed = sys.argv[1], sys.argv[2]
+    env = sys.argv[1]
     es_db = get_db(K_DB_URL, env, "Es")
     goods_db = get_db(K_DB_URL, env, "Goods")
     if env == "prd":
