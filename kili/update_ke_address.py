@@ -120,6 +120,14 @@ def update_pickup_station_support_cod(is_update_xed=False):
             {"$set": {"isSupportCOD": True}})
 
 
+def pickup_stations_update():
+    common_db.PickupStation.delete_many({})
+    for it in bee_common_db.PickupStation.find({}):
+        if not it.get("phone"):
+            it["phone"] = "132434342"
+        common_db.PickupStation.insert_one(it)
+
+
 if __name__ == "__main__":
     usage = 'python3 Sxx.py prd|dev|test'
 
@@ -140,11 +148,13 @@ if __name__ == "__main__":
         is_update_xed = True
     else:
         is_update_xed = False
-    wb_obj = load_workbook(FILE_NAME)
+    # wb_obj = load_workbook(FILE_NAME)
+    #
+    # update_excel_data(wb_obj, is_update_xed)
+    # update_pickup_station_support_cod(is_update_xed)
+    # # 保存文件，也可覆盖原文件
+    # wb_obj.save(FILE_NAME)
 
-    update_excel_data(wb_obj, is_update_xed)
-    update_pickup_station_support_cod(is_update_xed)
-    # 保存文件，也可覆盖原文件
-    wb_obj.save(FILE_NAME)
+    pickup_stations_update()
 
 

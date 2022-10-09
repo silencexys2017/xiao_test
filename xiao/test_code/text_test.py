@@ -1,2 +1,20 @@
-docker build -t bee/hive-api:latest .
-docker run -itd --env=_ZK_HOSTS=zookeeper --env=_APP_NAME=bee --env=_APP_ENV=dev --env=_DEBUG=1 --network=bee-dev -p 0.0.0.0:5000:5000 --name=bee_hive-api --hostname=hive-api  bee/hive-api
+import thriftpy2
+import thrift_connector.connection_pool as connection_pool
+import thriftpy2.protocol.json as proto
+
+DEF = thriftpy2.load("./thrift_app/order_struct.thrift")
+
+class VoucherObj:
+    def __init__(self, voucher_id, sku_ids, amount, owner_type):
+        self.voucherId = voucher_id
+        self.skuIds = sku_ids
+        self.amount = amount
+        self.ownerType = owner_type
+
+voucher_1 = DEF.Voucher(100000549, [10000100108], 100, 2)
+voucher_2 = DEF.Voucher(100000542, [10000100060, 10000100108], 100, 1)
+
+vouchers = [voucher_1, voucher_2]
+
+vouchers = sorted(vouchers, key=lambda x: len(x.skuIds), reverse=True)
+print(vouchers)

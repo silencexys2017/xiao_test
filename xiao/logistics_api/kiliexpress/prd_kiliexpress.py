@@ -205,14 +205,30 @@ def waybill_track_notify(order_no):
     return res
 
 
+# def tracks_format_conversion(data):
+#     tracks = []
+#     for waybill in data.get("waybillList") or []:
+#         for node in waybill.get("nodeInfos") or []:
+#             for track in node.get("trackingInfo") or []:
+#                 tracks.append({
+#                     "createdAt": datetime.utcfromtimestamp(
+#                         float(track["trackingTime"])/1000),
+#                     "description": track["tracking"],
+#                     "operator": "DLS.Operator.SYSTEM",
+#                     "operateCode": "DLS.OperateCode.IN_DELIVERING",
+#                     "operatorId": -1})
+#     return tracks
+
 def tracks_format_conversion(data):
     tracks = []
     for waybill in data.get("waybillList") or []:
         for node in waybill.get("nodeInfos") or []:
             for track in node.get("trackingInfo") or []:
+                if track.get("trackingCode") in ["103"]:
+                    continue
                 tracks.append({
                     "createdAt": datetime.utcfromtimestamp(
-                        float(track["trackingTime"])/1000),
+                        float(track["trackingTime"])),
                     "description": track["tracking"],
                     "operator": "DLS.Operator.SYSTEM",
                     "operateCode": "DLS.OperateCode.IN_DELIVERING",
@@ -328,8 +344,8 @@ if __name__ == "__main__":
     # res = waybill_state_notify(
     #     waybill_no="KE313248870", status=90, business_type="SO", remark=None)
     # res = waybill_track_notify(order_no="KEESSOSX2635426317")
-    # res = get_tracks(
-    #     auth_token, merchant_order_no="", waybill_no="KEESSOXD2125406577")
-    res = get_area_tree(token=token)
+    res = get_tracks(
+        token, merchant_order_no="", waybill_no="KEFBSOXD0437534201")
+    # res = get_area_tree(token=token)
     # res = get_pick_up_stations("100123")
     print(res)

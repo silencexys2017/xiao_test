@@ -769,8 +769,12 @@ struct PaymentProduct {
      3: optional string qrCode
 }
 
-const map<set<i16>, i16> LOG_STATE_MAP_AF_STATE_BEFORE_AND_AFTER = {
-(1, 2): 34
+struct Voucher {
+    1: i64 voucherId,
+    2: list<i64> skuIds,
+    3: i64 amount,
+    4: i16 ownerType
 }
+
 
 
