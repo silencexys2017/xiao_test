@@ -12,8 +12,7 @@ _DEFAULT_CONFIG_FILE = '../config.json'
 X_DB_URL = {
     "dev": "mongodb://pf_dev_dbo:Bp2Q5j3Jb2cmQvn8L4kW@mongodb-paas-service/admin?replicaSet=rs0",
 	"test": "mongodb://pf_test_dbo:3f4k8aDHeQJBKmd3z7c9@159.138.90.30:30734/admin",
-	"prd": "mongodb://pf_prd_dbo:m2w9ZNZP4gUsx9b2hu6L@159.138.90.30:30734",
-    # "prd": "mongodb://pf_prd_dbo:m2w9ZNZP4gUsx9b2hu6L@mongodb-paas-service/admin?replicaSet=rs0"
+    "prd": "mongodb://pf_prd_dbo:m2w9ZNZP4gUsx9b2hu6L@mongodb-paas-service/admin?replicaSet=rs0"
 }
 
 K_DB_URL = {
@@ -83,6 +82,33 @@ def update_es_cod():
         print("listing %s success" % sku["listingId"])
 
 
+def get_sku_ids():
+    sku_ids = []
+    for it in wms_warehouse_db.WarehouseProductItem.find(
+            {"userId": {"$ne": -1}, "partnerId": 5}):
+        sku_id = int(it["skuId"])
+        sku_ids.append(sku_id)
+    with open("wms_sku_ids.json", "w", encoding="utf-8") as f:
+        f.write(json.dumps({"skuIds": sku_ids}, indent=4, ensure_ascii=False))
+
+
+def update_sku_cod():
+    with open("wms_sku_ids.json", "r") as f:
+        sku_ids = json.loads(f.read())["skuIds"]
+    utc_now = datetime.utcnow()
+    for it in sku_ids:
+        sku = goods_db.SpecOfSku.find_one_and_update(
+            {"_id": it},
+            {"$set": {"paymentMethodsMask": 7, "updatedAt": utc_now}})
+        if not sku:
+            print("sku not found %s" % it)
+            continue
+        es_db.Es.update_one(
+            {"_id": sku["listingId"]},
+            {'$set': {"codSupported": True, "updatedAt": utc_now}})
+        print("listing %s success" % sku["listingId"])
+
+
 if __name__ == "__main__":
     usage = 'python3 Sxx.py prd|dev|test'
 
@@ -95,19 +121,11 @@ if __name__ == "__main__":
     es_db = get_db(K_DB_URL, env, "Es")
     goods_db = get_db(K_DB_URL, env, "Goods")
     if env == "prd":
-        mongodb_setting = dict(
-            host='159.138.90.30',
-            port=30734,
-            username='pf_prd_dbo',
-            password='m2w9ZNZP4gUsx9b2hu6L',
-            authSource='admin',
-        )
-        wms_warehouse_db = pymongo.MongoClient(
-            **mongodb_setting)[env + "WmsWarehouse"]
-        # wms_warehouse_db = get_db(X_DB_URL, env, "WmsWarehouse")
+        wms_warehouse_db = get_db(X_DB_URL, env, "WmsWarehouse")
     else:
         wms_warehouse_db = get_db(K_DB_URL, env, "WmsWarehouse")
 
-    update_es_cod()
-
+    # update_es_cod()
+    get_sku_ids()
+    update_sku_cod()
 
