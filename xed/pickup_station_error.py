@@ -209,18 +209,23 @@ if __name__ == "__main__":
         logging.error(usage)
         sys.exit(-1)
 
-    env = sys.argv[1]
+    env, source = sys.argv[1], sys.argv[2]
     # config = load_config(_DEFAULT_CONFIG_FILE, env)
     # southx_config = load_config(_SOUTHX_CONFIG_FILE, env)
     if env == "prd":
         url = X_DB_URL
     else:
         url = K_DB_URL
-    # bee_common_db = get_db(url, env, "BeeCommon")
-    bee_common_db = get_db(url, env, "Common")
-    member_db = get_db(url, env, "Member")
+    if source == "xed":
+        bee_common_db = get_db(url, env, "BeeCommon")
+        from_seller = False
+        member_db = {}
+    else:
+        bee_common_db = get_db(url, env, "Common")
+        from_seller = True
+        member_db = get_db(url, env, "Member")
 
-    pull_pickup_station("./address Update V6.xlsx")
+    pull_pickup_station("./address Update V6.xlsx", from_seller=from_seller)
     push_pickup_station("./address Update V6.xlsx")
 
 
