@@ -1,0 +1,56 @@
+@startuml
+title S2B2C 供应商代发订单流程图
+autonumber
+participant Reseller     as reseller order 1
+actor    Customer        as cus      order 2
+entity   S2B平台         as s2b      order 4
+entity   2C平台端        as 2c       order 3
+entity   OFS             as ofs      order 5
+entity   WMS             as wms      order 6
+entity   XED             as xed      order 7
+entity   Logisticians    as lg       order 8
+
+reseller -> s2b: 刊登商品
+activate reseller
+activate s2b
+s2b -> 2c : 商品同步
+activate 2c
+note left: reseller刊登商品到2c平台店铺
+
+
+2c -> 2c : 定价，上架
+|||
+cus -> 2c: 下单并付款
+activate cus
+|||
+s2b -> 2c: 根据规则拉取订单
+s2b -> s2b: 根据配置是否生成供应商代发订单\n（流程图为代发订单）
+reseller -> s2b: 支付订单
+deactivate reseller
+|||
+s2b -> ofs: 订单下发
+activate ofs
+ofs -> xed: 创建运单
+activate xed
+ofs -> wms: 是否创建出库单
+deactivate ofs
+activate wms
+wms -> xed: 是否出库
+deactivate wms
+xed -> xed: 可能存在合包，\n收件,运输清关操作
+|||
+xed -> lg: 生成派送单
+activate lg
+|||
+lg -> cus: 交付订单
+lg --> xed: 结果通知
+deactivate lg
+xed --> s2b: 状态通知
+deactivate xed
+s2b --> 2c: 状态通知
+deactivate s2b
+2c --> cus: 消息通知
+deactivate 2c
+deactivate cus
+destroy s2b
+@enduml
