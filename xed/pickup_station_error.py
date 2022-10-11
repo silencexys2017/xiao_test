@@ -106,7 +106,7 @@ def strip_string_name(name):
     return name
 
 
-def pull_pickup_station(file_route):
+def pull_pickup_station(file_route, from_seller=False):
     wb_obj = load_workbook(file_route, data_only=True)
     ks_sheet = wb_obj.get_sheet_by_name("KS&ward")
     total_count = 0
@@ -139,6 +139,10 @@ def pull_pickup_station(file_route):
         bee_common_db.Areas.update_one(
             {"_id": res_area["_id"]},
             {"$pull": {"pickupIds": shop_id}})
+        if from_seller is True:
+            member_db.address.update_many(
+                {"addressType": 2, "pickupStationId": shop_id},
+                {"$set": {"status": 2}})
         print("update success area=%s,sourceStationId=%s,line=%s" % (
             area, shop_id, total_count))
     print("loop count=%s" % total_count)
@@ -214,6 +218,7 @@ if __name__ == "__main__":
         url = K_DB_URL
     # bee_common_db = get_db(url, env, "BeeCommon")
     bee_common_db = get_db(url, env, "Common")
+    member_db = get_db(url, env, "Member")
 
     pull_pickup_station("./address Update V6.xlsx")
     push_pickup_station("./address Update V6.xlsx")
