@@ -212,7 +212,7 @@ if __name__ == "__main__":
     env, source = sys.argv[1], sys.argv[2]
     # config = load_config(_DEFAULT_CONFIG_FILE, env)
     # southx_config = load_config(_SOUTHX_CONFIG_FILE, env)
-    if env == "prd":
+    if env == "prd" and source == "xed":
         url = X_DB_URL
     else:
         url = K_DB_URL
