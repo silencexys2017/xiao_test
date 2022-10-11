@@ -226,7 +226,7 @@ if __name__ == "__main__":
         member_db = get_db(url, env, "Member")
 
     pull_pickup_station("./address Update V6.xlsx", from_seller=from_seller)
-    push_pickup_station("./address Update V6.xlsx")
+    # push_pickup_station("./address Update V6.xlsx")
 
 
 
