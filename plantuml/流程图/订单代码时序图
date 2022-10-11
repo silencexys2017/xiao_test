@@ -1,0 +1,101 @@
+@startuml
+title 订单的代码时序图
+autonumber
+participant Seller       as seller   order 1
+actor    Customer        as cus      order 2
+entity   商城用户端      as 2c       order 3
+entity   OrderService    as od       order 4
+entity   LipaPay         as pay      order 5
+entity   OFS             as ofs      order 6
+entity   WMS             as wms      order 7
+entity   XED             as xed      order 8
+entity   Logisticians    as lg       order 9
+
+
+cus -> 2c: 下单
+activate cus
+activate 2c
+autonumber stop
+2c -> od: dispatcher.OrderDispatcher.place_order
+od --> 2c: success
+|||
+autonumber resume
+cus -> 2c: 发起支付（注：如果是纯cod订单，则跳过2的过程)
+autonumber stop
+2c -> od: dispatcher.OrderDispatcher.\ninitiate_online_payment
+od --> 2c: success,返回唤醒lipaPay支付的参数
+2c -> pay: 用户在lipaPapy界面完成支付
+deactivate 2c
+pay --> od: 通知支付结果:dispatcher.OrderDispatcher.\nvalidate_payment_with_ipn
+|||
+autonumber resume
+alt 自动取消订单
+od -> od: 自动取消订单:dispatcher.OrderDispatcher.\ncancel_sale_order
+autonumber stop
+else 用户取消订单
+cus -> 2c: 用户取消订单
+2c -> od: dispatcher.OrderDispatcher.cancel_sale_order
+else seller取消订单
+seller -> od: seller取消订单: dispatcher.OrderDispatcher.cancel_sale_order
+end
+|||
+|||
+autonumber resume
+alt 非纯cod订单
+od -> od: 自动确认订单:dispatcher.OrderDispatcher.\nconfirm_order
+autonumber stop
+else 纯cod订单
+seller -> od: 手动确认订单: dispatcher.OrderDispatcher.confirm_order
+end
+|||
+alt FBK订单
+autonumber resume
+od -> od: 订单发货:dispatcher.OrderDispatcher.\ndispatch_package
+autonumber stop
+else 其他订单
+seller -> od: 订单发货:dispatcher.OrderDispatcher.dispatch_package
+end
+od -> ofs: 订单下发
+activate ofs
+ofs -> xed: 创建运单
+activate xed
+|||
+alt FBK订单
+ofs -> wms: 创建出库单
+deactivate ofs
+activate wms
+wms -> xed: 出库
+deactivate wms
+else 其他订单
+seller -> xed: 出库
+end
+
+
+xed -> xed: 可能存在合包，\n收件,运输清关操作
+|||
+xed -> lg: 生成派送单
+activate lg
+autonumber resume
+xed -> od: 开始派送通知: dispatcher.OrderDispatcher.delivery_package
+autonumber stop
+|||
+lg -> cus: 交付订单
+alt 交付订单
+autonumber resume
+cus -> lg: 签收（注：如果是cod交付并在用户端界面支付，则重复2的过程支付完成后，才能签收)
+autonumber stop
+lg --> xed: 结果通知
+xed --> od: 签收通知: dispatcher.OrderDispatcher.receive_package
+
+else 拒收订单
+autonumber resume
+cus -> lg: 拒收
+autonumber stop
+lg --> xed: 结果通知
+deactivate lg
+xed --> od: 拒收通知: dispatcher.OrderDispatcher.reject_package
+end
+
+deactivate xed
+deactivate cus
+@enduml
