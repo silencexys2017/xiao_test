@@ -2,7 +2,12 @@ import json
 from math import ceil
 from decimal import Decimal, ROUND_UP
 from functools import wraps
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
+
+import base64
 import hashlib
+
 
 
 def currency_converter(
@@ -152,25 +157,14 @@ def ki_li_api_address_update(data, msg_body=None):
     print(data, msg_body)
 
 
-if __name__ == "__main__":
-    # res = currency_converter(0.54347824 * 92)
-    # print(res)
-    # sku_item = {8000: 34}
-    # sku_postage = _ratio_split_integer(
-    #     multiplication_operation(res, 100),
-    #     {it: float(1) / len(sku_item) for it in sku_item.keys()})
-    # print(sku_postage)
-    # postage = division_operation(sku_postage.get(8000), 100)
-    # print(postage)
-    # res = deduction_value_currency_converter(11314, 92, 92, "BDT")
-    # res = ki_li_api_address_update(4343, msg_body=343434)
+def network_encode():
     params = [{
         "networkBaseInfoVo": {
-            "address":"Street one",
-            "areaCode":"112548",
-            "areaId":2003,
-            "areaName":None,
-            "businessName":"LIUYY",
+            "address": "Street one",
+            "areaCode": "112548",
+            "areaId": 2003,
+            "areaName": None,
+            "businessName": "LIUYY",
             "businessTime": "12",
             "businessType": 2,
             "cityId": None,
@@ -211,8 +205,8 @@ if __name__ == "__main__":
             "id": 42615,
             "identifyNo": "4305548755457878",
             "identifyType": 1,
-            "lastName":"YY",
-            "mobileNo":"13677395687",
+            "lastName": "YY",
+            "mobileNo": "13677395687",
             "parentId": None,
             "positionId": None,
             "stationId": 718864910,
@@ -220,16 +214,72 @@ if __name__ == "__main__":
             "telephoneNo": "07310823548"
         }]
     }]
-    params = [{"networkBaseInfoVo": {"address": "Joy 622 address over.  120001.0001   6210000003", "areaCode": "100109", "areaId": 304, "areaName": "Karen01011029", "businessName": None, "businessTime": "Mon-Fri\n09:00-18:00;Sat09:00-15:00", "businessType": 3, "cityId": 1, "cityName": "Nairobi_1", "countryCode": "KE", "createdAt": 1583387399, "id": 1000149, "isSupportBigPackage": None, "latitude": -0.1044620, "longitude": 34.7528711, "parentId": 304, "pauseEndTime": 1609027200, "pauseStartTime": 1608456058, "pickingCode": "3-402", "remark": "http://k.kili.co/rj9r", "stationCode": "3-402", "stationDesc": " AL IMRAN PLAZA 1st Floor Oginga Odinga street Kisumu222221  111", "stationDescRid": None, "stationLevel": "1", "stationName": "Joy 622-1120", "stationNameRid": None, "stationScore": None, "stationSize": "9", "stationSubType": None, "stationType": 2, "status": 1, "supplierId": None, "updatedAt": 1655798225}, "networkCoverageVoList": [{"areaCode": "100109", "areaName": "Karen01011029", "createdAt": 1655797149, "id": 5926, "remark": None, "stationId": 1000149, "status": 0, "updatedAt": 1655797149}], "networkStaffInfoVoList": [{"address": "", "age": None, "createdAt": 1637373885, "email": "", "firstName": "Joy", "gender": "1", "id": 42614, "identifyNo": "", "identifyType": None, "lastName": "1", "mobileNo": "13412341234", "parentId": None, "positionId": None, "stationId": 1000149, "status": None, "telephoneNo": ""}]}]
+    params = [{"networkBaseInfoVo": {
+        "address": "Joy 622 address over.  120001.0001   6210000003",
+        "areaCode": "100109", "areaId": 304, "areaName": "Karen01011029",
+        "businessName": None,
+        "businessTime": "Mon-Fri\n09:00-18:00;Sat09:00-15:00",
+        "businessType": 3, "cityId": 1, "cityName": "Nairobi_1",
+        "countryCode": "KE", "createdAt": 1583387399, "id": 1000149,
+        "isSupportBigPackage": None, "latitude": -0.1044620,
+        "longitude": 34.7528711, "parentId": 304, "pauseEndTime": 1609027200,
+        "pauseStartTime": 1608456058, "pickingCode": "3-402",
+        "remark": "http://k.kili.co/rj9r", "stationCode": "3-402",
+        "stationDesc": " AL IMRAN PLAZA 1st Floor Oginga Odinga street Kisumu222221  111",
+        "stationDescRid": None, "stationLevel": "1",
+        "stationName": "Joy 622-1120", "stationNameRid": None,
+        "stationScore": None, "stationSize": "9", "stationSubType": None,
+        "stationType": 2, "status": 1, "supplierId": None,
+        "updatedAt": 1655798225}, "networkCoverageVoList": [
+        {"areaCode": "100109", "areaName": "Karen01011029",
+         "createdAt": 1655797149, "id": 5926, "remark": None,
+         "stationId": 1000149, "status": 0, "updatedAt": 1655797149}],
+               "networkStaffInfoVoList": [
+                   {"address": "", "age": None, "createdAt": 1637373885,
+                    "email": "", "firstName": "Joy", "gender": "1", "id": 42614,
+                    "identifyNo": "", "identifyType": None, "lastName": "1",
+                    "mobileNo": "13412341234", "parentId": None,
+                    "positionId": None, "stationId": 1000149, "status": None,
+                    "telephoneNo": ""}]}]
     params = json.dumps(params, separators=(',', ':'), ensure_ascii=False)
     print(params)
-    sign_1 = hashlib.md5((params+"12345678").encode(
+    sign_1 = hashlib.md5((params + "12345678").encode(
         encoding='utf-8')).hexdigest()
     print(sign_1)
-    sign_2 = hashlib.md5((json.dumps(params) + "Ih55t85cdMz7iXWiGLhv1X1i5YjX0srp").encode(
-        encoding='utf-8')).hexdigest()
+    sign_2 = hashlib.md5(
+        (json.dumps(params) + "Ih55t85cdMz7iXWiGLhv1X1i5YjX0srp").encode(
+            encoding='utf-8')).hexdigest()
     "b114826ade26fde648f47daf3ac6f06b"
-    print("3c063786e09fcb4376c9328f3ddf1f81", "a46860a6929c57b6a2185749514fefb0")
-
+    print("3c063786e09fcb4376c9328f3ddf1f81",
+          "a46860a6929c57b6a2185749514fefb0")
     print(sign_2)
+
+
+def encrypt(plain_text, key, mode, kwargs=None):
+    # 选择pkcs7补全
+    pad_pkcs7 = pad(plain_text.encode('utf-8'), AES.block_size)
+    encrypt_data = AES.new(
+        key.encode('utf-8'), mode, **kwargs).encrypt(pad_pkcs7)
+    return str(base64.b64encode(encrypt_data), encoding='utf-8')
+
+
+
+if __name__ == "__main__":
+    # res = currency_converter(0.54347824 * 92)
+    # print(res)
+    # sku_item = {8000: 34}
+    # sku_postage = _ratio_split_integer(
+    #     multiplication_operation(res, 100),
+    #     {it: float(1) / len(sku_item) for it in sku_item.keys()})
+    # print(sku_postage)
+    # postage = division_operation(sku_postage.get(8000), 100)
+    # print(postage)
+    # res = deduction_value_currency_converter(11314, 92, 92, "BDT")
+    # res = ki_li_api_address_update(4343, msg_body=343434)
+    key = "Gs6GmD0PFWgdOfaC"
+    aes_str = "123456"
+
+    res = encrypt(aes_str, key, AES.MODE_ECB, {})
+
+    print(res)
 

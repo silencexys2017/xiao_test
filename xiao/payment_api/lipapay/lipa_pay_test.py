@@ -5,6 +5,9 @@ import requests
 import hashlib
 from urllib.parse import unquote
 
+
+get_wallet_info = "http://demo45.net.kili.co/api/getWalletInfo.htm"
+wallet_payment = "http://demo45.net.kili.co/api/walletPayment.htm"
 order_checkout_url = "http://demo45.net.kili.co/api/excashier.html"
 query_transaction_url = "https://demo45.net.kili.co/api/queryExcashierOrder.htm"
 cancel_order_url = "http://demo45.net.kili.co/api/cancelOrder.htm"
@@ -110,22 +113,23 @@ def checkout_order(
     for k, v in data.items():
         if v in [True, False] or v:
             response_url = response_url + str(k) + "=" + str(v) + "&"
-    return response_url[:-1]
-    # result = requests.post(
-    #     url=order_checkout_url, headers=Headers, params=data,
-    #     allow_redirects=False)
-    # if str(result.status_code).startswith("5"):
-    #     raise Exception("Request method not recognised or implemented.")
-    # print(result.url)
-    # print(result.reason)
-    # print(result.history)
-    # print(result.headers['Location'])
-    # # result.encoding = "utf-8"
-    # response = {}
-    # save_html(result.text)
-    # if payment_method == "OF":
-    #     response = result.json()
-    # return response, result.url
+    response_url = response_url[:-1]
+
+    result = requests.post(
+        url=order_checkout_url, headers=Headers, params=data,
+        allow_redirects=False)
+    if str(result.status_code).startswith("5"):
+        raise Exception("Request method not recognised or implemented.")
+    print("result.url=%r" % result.url)
+    print("result.reason=%r" % result.reason)
+    print("result.history=%r" % result.history)
+    # result.encoding = "utf-8"
+    response = {}
+    save_html(result.text)
+    if payment_method != "OL":
+        response = result.json()
+    print(response)
+    return response, result.url
 
 
 def query_transaction(order_no):
@@ -168,6 +172,27 @@ def cancel_order(order_no, amount):
     # return response
 
 
+def get_wallet_info(merchant_user_id):
+    params = {
+        "merchantId": merchant_id,
+        "signType": "MD5",
+        "merchantUserId": merchant_user_id,
+        "currencyCode": currency_code,
+        "countryCode": country_code,
+        "phoneNo": phone_no
+    }
+    params["sign"] = get_signature(params)
+    result = requests.post(
+        url=query_transaction_url, data=params, timeout=30)
+    print(result.text)
+    if str(result.status_code).startswith("5"):
+        raise Exception("Request method not recognised or implemented.")
+    response = result.json()
+    if response.get("status") is False:
+        raise Exception(response.get("message"))
+    return response
+
+
 def refund_order(
         merchant_refund_id, order_id, merchant_order_id, amount, reason=None,
         p0=None, payment_trans_id=None, org_name=None, is_use_wallet="N"):
@@ -201,6 +226,7 @@ def refund_order(
 
 
 if __name__ == "__main__":
+    get_wallet_info()
     goods_list = [{
                 "goodsId": "32423432",
                 "goodsName": "goodsName test",
@@ -210,17 +236,18 @@ if __name__ == "__main__":
                 "goodsType": "1",
                 "goodsUrl": "https://www.kilitest.com/item-900429.html"
             }]
-    # res = checkout_order(
-    #     amount=60000, currency="KES", merchant_id=merchant_id,
-    #     merchant_order_no="343435F3464217",
-    #     expiration_time="1000000", source_type="B", goods_list=goods_list,
-    #     email="",  mobile="",
-    #     seller_id="33333333", seller_account="33333333", buyer_id="4444444",
-    #     buyer_account="4444444", customer_ip="10.0.0.140", channels="",
-    #     payment_method="OL", custom_field_1=None, custom_field_2=None,
-    #     custom_field_3=None, country_code="KE", remark="",
-    #     use_installment=False)
-    res = query_transaction(order_no="C120220426000015")
+    #  payment_method(OL[线上], OF[线下], AP[钱包], OP[m-pesa])
+    res = checkout_order(
+        amount=60000, currency="KES", merchant_id=merchant_id,
+        merchant_order_no="343435F3464217",
+        expiration_time="1000000", source_type="B", goods_list=goods_list,
+        email="",  mobile="",
+        seller_id="33333333", seller_account="33333333", buyer_id="4444444",
+        buyer_account="4444444", customer_ip="10.0.0.140", channels="",
+        payment_method="AP", custom_field_1=None, custom_field_2=None,
+        custom_field_3=None, country_code="KE", remark="",
+        use_installment=False)
+    # res = query_transaction(order_no="C120220426000015")
     # res = cancel_order(order_no="C120220427000047", amount="23")
     # res = refund_order(
     #     merchant_refund_id="4", order_id="K2204220344557447114",
