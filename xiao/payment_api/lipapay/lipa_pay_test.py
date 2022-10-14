@@ -3,11 +3,14 @@
 
 import requests
 import hashlib
-from urllib.parse import unquote
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
+import base64
 
 
-get_wallet_info = "http://demo45.net.kili.co/api/getWalletInfo.htm"
-wallet_payment = "http://demo45.net.kili.co/api/walletPayment.htm"
+get_wallet_info_api = "http://walletdemo45.net.kili.co/api/getWalletInfo.htm"
+update_wallet_phone_api = "http://walletdemo45.net.kili.co/api/user/updateBindPhoneNo.html"
+wallet_payment_api = "http://demo45.net.kili.co/api/walletPayment.htm"
 order_checkout_url = "http://demo45.net.kili.co/api/excashier.html"
 query_transaction_url = "https://demo45.net.kili.co/api/queryExcashierOrder.htm"
 cancel_order_url = "http://demo45.net.kili.co/api/cancelOrder.htm"
@@ -16,6 +19,7 @@ merchant_id = "2016051112014649173095"
 # merchant_id = "kilimall-ke"
 password = "1234567890"
 sign_key = "He4AXjdOmq1G2YH3RKVSS4kqU5VFa4aK"
+wallet_key = "Lx0PuHxEOcIzaQbo"
 # sign_key = "Gw416RCMO8tD5MSUg5dok5uQGvR3rPpx"
 notify_url = "https://uomnify-test.perfee.com/api/payment/lipapay/webhook"
 return_url = "https://uomnify-test.perfee.com/api/payment/lipapay/callback"
@@ -28,11 +32,13 @@ Headers = {
 }
 
 
-def get_signature(data_dict):
+def get_signature(data_dict, ignore_country_code=True):
     sorted_keys = sorted(data_dict)
     plain_text = ""
     for key in sorted_keys:
-        if data_dict[key] is None or key in ["version", "sign", "countryCode"]:
+        if data_dict[key] is None or key in ["version", "sign"]:
+            continue
+        if key == "countryCode" and ignore_country_code is True:
             continue
         value = str(data_dict[key])
         plain_text = plain_text + str(key) + "=" + value + "&"
@@ -172,25 +178,74 @@ def cancel_order(order_no, amount):
     # return response
 
 
-def get_wallet_info(merchant_user_id):
+def get_wallet_info(merchant_user_id, currency_code, country_code,
+                    phone_no=None):
     params = {
         "merchantId": merchant_id,
         "signType": "MD5",
-        "merchantUserId": merchant_user_id,
+        "merchantUserId": str(merchant_user_id),
         "currencyCode": currency_code,
-        "countryCode": country_code,
-        "phoneNo": phone_no
+        "countryCode": country_code
     }
-    params["sign"] = get_signature(params)
+    if phone_no:
+        params["phoneNo"] = phone_no
+    params["sign"] = get_signature(params, ignore_country_code=False)
     result = requests.post(
-        url=query_transaction_url, data=params, timeout=30)
-    print(result.text)
+        url=get_wallet_info_api, data=params, timeout=30)
+    print(result.status_code)
     if str(result.status_code).startswith("5"):
         raise Exception("Request method not recognised or implemented.")
     response = result.json()
     if response.get("status") is False:
         raise Exception(response.get("message"))
     return response
+
+
+def update_wallet_phone(member_id, phone_no):
+    params = {
+        "merchantId": merchant_id,
+        # "signType": "MD5",
+        "memberId": member_id,
+        "mobile": phone_no
+    }
+    params["sign"] = get_signature(params)
+    result = requests.post(
+        url=update_wallet_phone_api, data=params, timeout=30)
+    print(result.status_code)
+    if str(result.status_code).startswith("5"):
+        raise Exception("Request method not recognised or implemented.")
+    response = result.json()
+    if response.get("status") is False:
+        raise Exception(response.get("message"))
+    return response
+
+
+def wallet_payment(merchant_order_id, order_id, password):
+    params = {
+        "password": password,
+        "signType": "MD5",
+        "orderId": order_id,
+        "merchantOrderId": merchant_order_id,
+        "merchantId": merchant_id
+    }
+    params["sign"] = get_signature(params)
+    result = requests.post(
+        url=wallet_payment_api, data=params, timeout=30)
+    print(result.status_code)
+    if str(result.status_code).startswith("5"):
+        raise Exception("Request method not recognised or implemented.")
+    response = result.json()
+    if response.get("status") is False:
+        raise Exception(response.get("message"))
+    return response
+
+
+def encrypt(plain_text, kwargs={}):
+    # 选择pkcs7补全
+    pad_pkcs7 = pad(plain_text.encode('utf-8'), AES.block_size)
+    encrypt_data = AES.new(
+        wallet_key.encode('utf-8'), AES.MODE_ECB, **kwargs).encrypt(pad_pkcs7)
+    return str(base64.b64encode(encrypt_data), encoding='utf-8')
 
 
 def refund_order(
@@ -226,7 +281,11 @@ def refund_order(
 
 
 if __name__ == "__main__":
-    get_wallet_info()
+    # res = get_wallet_info(
+    #     merchant_user_id="100100013", currency_code="KES", country_code="KE",
+    #     phone_no="")
+    res = update_wallet_phone(
+        member_id="100100032", phone_no="254714456859")
     goods_list = [{
                 "goodsId": "32423432",
                 "goodsName": "goodsName test",
@@ -237,16 +296,21 @@ if __name__ == "__main__":
                 "goodsUrl": "https://www.kilitest.com/item-900429.html"
             }]
     #  payment_method(OL[线上], OF[线下], AP[钱包], OP[m-pesa])
-    res = checkout_order(
-        amount=60000, currency="KES", merchant_id=merchant_id,
-        merchant_order_no="343435F3464217",
-        expiration_time="1000000", source_type="B", goods_list=goods_list,
-        email="",  mobile="",
-        seller_id="33333333", seller_account="33333333", buyer_id="4444444",
-        buyer_account="4444444", customer_ip="10.0.0.140", channels="",
-        payment_method="AP", custom_field_1=None, custom_field_2=None,
-        custom_field_3=None, country_code="KE", remark="",
-        use_installment=False)
+    # res = checkout_order(
+    #     amount=60000, currency="KES", merchant_id=merchant_id,
+    #     merchant_order_no="343435F3464252",
+    #     expiration_time="1000000", source_type="B", goods_list=goods_list,
+    #     email="",  mobile="254714456852",
+    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+    #     buyer_account="4444444", customer_ip="10.0.0.140", channels="!mkey010101",
+    #     payment_method="AP", custom_field_1=None, custom_field_2=None,
+    #     custom_field_3=None, country_code="KE", remark="",
+    #     use_installment=False)
+    password_encrypt = encrypt("123456")
+    # print(password_encrypt)
+    # res = wallet_payment(
+    #     merchant_order_id="343435F3464252", order_id="K2210140757251447125",
+    #     password=password_encrypt)
     # res = query_transaction(order_no="C120220426000015")
     # res = cancel_order(order_no="C120220427000047", amount="23")
     # res = refund_order(
