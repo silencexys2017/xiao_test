@@ -9,7 +9,7 @@ import base64
 
 
 get_wallet_info_api = "http://walletdemo45.net.kili.co/api/getWalletInfo.htm"
-update_wallet_phone_api = "http://walletdemo45.net.kili.co/api/user/updateBindPhoneNo.html"
+update_wallet_phone_api = "https://lipapay-wallet.kilitest.com/api/user/updateBindPhoneNo.html"
 wallet_payment_api = "http://demo45.net.kili.co/api/walletPayment.htm"
 order_checkout_url = "http://demo45.net.kili.co/api/excashier.html"
 query_transaction_url = "https://demo45.net.kili.co/api/queryExcashierOrder.htm"
@@ -210,8 +210,9 @@ def update_wallet_phone(member_id, phone_no):
     }
     params["sign"] = get_signature(params)
     result = requests.post(
-        url=update_wallet_phone_api, data=params, timeout=30)
+        url=update_wallet_phone_api, json=params, timeout=30)
     print(result.status_code)
+    print(result.request.body)
     if str(result.status_code).startswith("5"):
         raise Exception("Request method not recognised or implemented.")
     response = result.json()
@@ -285,7 +286,7 @@ if __name__ == "__main__":
     #     merchant_user_id="100100013", currency_code="KES", country_code="KE",
     #     phone_no="")
     res = update_wallet_phone(
-        member_id="100100032", phone_no="254714456859")
+        member_id="100100032", phone_no="254714456899")
     goods_list = [{
                 "goodsId": "32423432",
                 "goodsName": "goodsName test",
