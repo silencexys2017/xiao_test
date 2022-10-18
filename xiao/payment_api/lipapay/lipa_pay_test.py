@@ -249,14 +249,12 @@ def encrypt(plain_text, kwargs={}):
     return str(base64.b64encode(encrypt_data))
 
 def encrypt_1(text):
-    """
-    解密
-    """
-    bs = AES.block_size
-    pad_res = text + (bs - len(text) % bs) * chr(bs - len(text) % bs)
-
-    cipher = AES.new(wallet_key, AES.MODE_ECB)  # ECB模式
-    return cipher.encrypt(pad_res).encode("hex")
+    cipher = AES.new(wallet_key, AES.MODE_ECB)
+    x = AES.block_size - (len(text) % AES.block_size)
+    if x != 0:
+        text = text + chr(x)*x
+    msg = cipher.encrypt(text)
+    return base64.b64encode(msg)
 
 
 def refund_order(
@@ -292,9 +290,9 @@ def refund_order(
 
 
 if __name__ == "__main__":
-    # res = get_wallet_info(
-    #     merchant_user_id="100100013", currency_code="KES", country_code="KE",
-    #     phone_no="")
+    res = get_wallet_info(
+        merchant_user_id="100100013", currency_code="KES", country_code="KE",
+        phone_no="")
     # res = update_wallet_phone(
     #     member_id="100100032", phone_no="254714456899")
     goods_list = [{
@@ -318,9 +316,10 @@ if __name__ == "__main__":
     #     custom_field_3=None, country_code="KE", remark="",
     #     use_installment=False)
     password_encrypt = encrypt("123456")
-    res = wallet_payment(
-        merchant_order_id="343435F3464254", order_id="K2210180724381326032",
-        password=password_encrypt)
+    print password_encrypt
+    # res = wallet_payment(
+    #     merchant_order_id="343435F3464254", order_id="K2210180724381326032",
+    #     password=password_encrypt)
     # res = query_transaction(order_no="C120220426000015")
     # res = cancel_order(order_no="343435F3464253", amount="60001")
     # res = refund_order(
