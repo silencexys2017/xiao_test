@@ -246,7 +246,17 @@ def encrypt(plain_text, kwargs={}):
     pad_pkcs7 = pad(plain_text.encode('utf-8'), AES.block_size)
     encrypt_data = AES.new(
         wallet_key.encode('utf-8'), AES.MODE_ECB, **kwargs).encrypt(pad_pkcs7)
-    return str(base64.b64encode(encrypt_data), encoding='utf-8')
+    return str(base64.b64encode(encrypt_data))
+
+def encrypt_1(text):
+    """
+    解密
+    """
+    bs = AES.block_size
+    pad_res = text + (bs - len(text) % bs) * chr(bs - len(text) % bs)
+
+    cipher = AES.new(wallet_key, AES.MODE_ECB)  # ECB模式
+    return cipher.encrypt(pad_res).encode("hex")
 
 
 def refund_order(
@@ -285,8 +295,8 @@ if __name__ == "__main__":
     # res = get_wallet_info(
     #     merchant_user_id="100100013", currency_code="KES", country_code="KE",
     #     phone_no="")
-    res = update_wallet_phone(
-        member_id="100100032", phone_no="254714456899")
+    # res = update_wallet_phone(
+    #     member_id="100100032", phone_no="254714456899")
     goods_list = [{
                 "goodsId": "32423432",
                 "goodsName": "goodsName test",
@@ -299,7 +309,7 @@ if __name__ == "__main__":
     #  payment_method(OL[线上], OF[线下], AP[钱包], OP[m-pesa])
     # res = checkout_order(
     #     amount=60000, currency="KES", merchant_id=merchant_id,
-    #     merchant_order_no="343435F3464252",
+    #     merchant_order_no="343435F3464254",
     #     expiration_time="1000000", source_type="B", goods_list=goods_list,
     #     email="",  mobile="254714456852",
     #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
@@ -308,12 +318,11 @@ if __name__ == "__main__":
     #     custom_field_3=None, country_code="KE", remark="",
     #     use_installment=False)
     password_encrypt = encrypt("123456")
-    # print(password_encrypt)
-    # res = wallet_payment(
-    #     merchant_order_id="343435F3464252", order_id="K2210140757251447125",
-    #     password=password_encrypt)
+    res = wallet_payment(
+        merchant_order_id="343435F3464254", order_id="K2210180724381326032",
+        password=password_encrypt)
     # res = query_transaction(order_no="C120220426000015")
-    # res = cancel_order(order_no="C120220427000047", amount="23")
+    # res = cancel_order(order_no="343435F3464253", amount="60001")
     # res = refund_order(
     #     merchant_refund_id="4", order_id="K2204220344557447114",
     #     merchant_order_id="C120220422000071", amount="34342", reason=None,
