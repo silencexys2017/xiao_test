@@ -8,15 +8,6 @@ import json
 from datetime import datetime, timedelta
 from pymongo import ReturnDocument
 
-_DEFAULT_CONFIG_FILE = '../kili_config.json'
-_SOUTHX_CONFIG_FILE = '../config.json'
-
-REGION_MATCH = {1: "Bangladesh", 3: "Myanmar"}
-map_pay_method = {
-    1: 'Online',
-    2: 'COD',
-    3: 'Pre'
-}
 
 X_DB_URL = {
     "dev": "mongodb://pf_dev_dbo:Bp2Q5j3Jb2cmQvn8L4kW@mongodb-paas-service/admin?replicaSet=rs0",
