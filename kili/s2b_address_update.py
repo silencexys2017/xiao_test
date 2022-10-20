@@ -130,6 +130,10 @@ def update_s2b_address():
         )
 
 
+def update_s2b_user_address():
+    quark_auth.Address.update_many({}, {"$set": {"status": False}})
+
+
 if __name__ == "__main__":
     usage = 'python3 Sxx.py prd|dev|test'
     init_logging("release_ready.log")
@@ -142,7 +146,9 @@ if __name__ == "__main__":
 
     common_db = get_db(K_DB_URL, env, "Common")
     quark_common = get_db(K_DB_URL, env, "QuarkCommon")
+    quark_auth = get_db(K_DB_URL, env, "QuarkAuth")
 
     update_s2b_address()
-    print("update_pay_transactions success")
+    update_s2b_user_address()
+    print("update_s2b_address success")
 
