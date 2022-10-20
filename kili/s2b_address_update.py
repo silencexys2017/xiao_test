@@ -21,6 +21,9 @@ K_DB_URL = {
     "prd": "mongodb://sk2:Gmbz8i63mtswuMKz8Lk92zNM7UxwO5Txz1@ebes-db.cmxtf8qiglae.eu-central-1.docdb.amazonaws.com:27017/admin?replicaSet=rs0&retrywrites=false"
 }
 
+S2B_MONGO = {
+    "prd": "mongodb://rwuser:pUvn39maqw%rMcU8Kki9z#z@159.138.162.77:8635/test?authSource=admin&replicaSet=replica"
+}
 
 UTC_FORMAT = '%Y-%m-%dT%H:%M:%S.%fZ'
 LOCAL_FORMAT = '%Y-%m-%d %H:%M:%S'
@@ -134,10 +137,13 @@ if __name__ == "__main__":
 
     env = sys.argv[1]
     # config = load_config(_DEFAULT_CONFIG_FILE, env)
-
+    if env == "prd":
+        quark_common = get_db(S2B_MONGO, env, "QuarkCommon")
+        quark_auth = get_db(S2B_MONGO, env, "QuarkAuth")
+    else:
+        quark_common = get_db(K_DB_URL, env, "QuarkCommon")
+        quark_auth = get_db(K_DB_URL, env, "QuarkAuth")
     common_db = get_db(K_DB_URL, env, "Common")
-    quark_common = get_db(K_DB_URL, env, "QuarkCommon")
-    quark_auth = get_db(K_DB_URL, env, "QuarkAuth")
 
     update_s2b_address()
     update_s2b_user_address()
