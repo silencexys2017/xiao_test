@@ -22,7 +22,7 @@ K_DB_URL = {
 }
 
 S2B_MONGO = {
-    "prd": "mongodb://rwuser:pUvn39maqw%25rMcU8Kki9z#z@159.138.162.77:8635/test?authSource=admin&replicaSet=replica"
+    # "prd": "mongodb://rwuser:pUvn39maqw%25rMcU8Kki9z#z@159.138.162.77:8635/test?authSource=admin&replicaSet=replica"
 }
 
 UTC_FORMAT = '%Y-%m-%dT%H:%M:%S.%fZ'
