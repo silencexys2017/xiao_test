@@ -11,7 +11,8 @@ import base64
 get_wallet_info_api = "http://walletdemo45.net.kili.co/api/getWalletInfo.htm"
 update_wallet_phone_api = "https://lipapay-wallet.kilitest.com/api/user/updateBindPhoneNo.html"
 wallet_payment_api = "http://demo45.net.kili.co/api/walletPayment.htm"
-order_checkout_url = "http://demo45.net.kili.co/api/excashier.html"
+# order_checkout_url = "http://demo45.net.kili.co/api/excashier.html"
+order_checkout_url = "https://lipapay-cashier.kilitest.com/v2/app/excashierCreateOrder"
 query_transaction_url = "https://demo45.net.kili.co/api/queryExcashierOrder.htm"
 cancel_order_url = "http://demo45.net.kili.co/api/cancelOrder.htm"
 refund_order_url = "http://demo45.net.kili.co/api/orderRefund.htm"
@@ -290,9 +291,9 @@ def refund_order(
 
 
 if __name__ == "__main__":
-    res = get_wallet_info(
-        merchant_user_id="100100013", currency_code="KES", country_code="KE",
-        phone_no="")
+    # res = get_wallet_info(
+    #     merchant_user_id="100100013", currency_code="KES", country_code="KE",
+    #     phone_no="")
     # res = update_wallet_phone(
     #     member_id="100100032", phone_no="254714456899")
     goods_list = [{
@@ -305,16 +306,16 @@ if __name__ == "__main__":
                 "goodsUrl": "https://www.kilitest.com/item-900429.html"
             }]
     #  payment_method(OL[线上], OF[线下], AP[钱包], OP[m-pesa])
-    # res = checkout_order(
-    #     amount=60000, currency="KES", merchant_id=merchant_id,
-    #     merchant_order_no="343435F3464254",
-    #     expiration_time="1000000", source_type="B", goods_list=goods_list,
-    #     email="",  mobile="254714456852",
-    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
-    #     buyer_account="4444444", customer_ip="10.0.0.140", channels="!mkey010101",
-    #     payment_method="AP", custom_field_1=None, custom_field_2=None,
-    #     custom_field_3=None, country_code="KE", remark="",
-    #     use_installment=False)
+    res = checkout_order(
+        amount=60000, currency="KES", merchant_id=merchant_id,
+        merchant_order_no="343435F3464256",
+        expiration_time="1000000", source_type="B", goods_list=goods_list,
+        email="",  mobile="254714456852",
+        seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+        buyer_account="4444444", customer_ip="10.0.0.140", channels="!mkey010101",
+        payment_method="AP", custom_field_1=None, custom_field_2=None,
+        custom_field_3=None, country_code="KE", remark="",
+        use_installment=False)
     password_encrypt = encrypt("123456")
     print password_encrypt
     # res = wallet_payment(
