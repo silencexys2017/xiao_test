@@ -184,7 +184,7 @@ def get_wallet_info(merchant_user_id, currency_code, country_code,
     params = {
         "merchantId": merchant_id,
         "signType": "MD5",
-        "merchantUserId": str(merchant_user_id),
+        "merchantUserId": merchant_user_id,
         "currencyCode": currency_code,
         "countryCode": country_code
     }
@@ -263,7 +263,7 @@ def refund_order(
         p0=None, payment_trans_id=None, org_name=None, is_use_wallet="N"):
     params = {
         "merchantRefundId": merchant_refund_id,
-        "orderId": order_id,
+        # "orderId": order_id,
         "merchantOrderId": merchant_order_id,
         "merchantId": merchant_id,
         "amount": amount,
@@ -292,8 +292,8 @@ def refund_order(
 
 if __name__ == "__main__":
     # res = get_wallet_info(
-    #     merchant_user_id="100100013", currency_code="KES", country_code="KE",
-    #     phone_no="")
+    #     merchant_user_id=100101014, currency_code="KES", country_code="KE",
+    #     phone_no="714456852")
     # res = update_wallet_phone(
     #     member_id="100100032", phone_no="254714456899")
     goods_list = [{
@@ -306,16 +306,16 @@ if __name__ == "__main__":
                 "goodsUrl": "https://www.kilitest.com/item-900429.html"
             }]
     #  payment_method(OL[线上], OF[线下], AP[钱包], OP[m-pesa])
-    res = checkout_order(
-        amount=60000, currency="KES", merchant_id=merchant_id,
-        merchant_order_no="343435F3464256",
-        expiration_time="1000000", source_type="B", goods_list=goods_list,
-        email="",  mobile="254714456852",
-        seller_id="33333333", seller_account="33333333", buyer_id="100100013",
-        buyer_account="4444444", customer_ip="10.0.0.140", channels="!mkey010101",
-        payment_method="AP", custom_field_1=None, custom_field_2=None,
-        custom_field_3=None, country_code="KE", remark="",
-        use_installment=False)
+    # res = checkout_order(
+    #     amount=60000, currency="KES", merchant_id=merchant_id,
+    #     merchant_order_no="343435F3464256",
+    #     expiration_time="1000000", source_type="B", goods_list=goods_list,
+    #     email="",  mobile="254714456852",
+    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+    #     buyer_account="4444444", customer_ip="10.0.0.140", channels="!mkey010101",
+    #     payment_method="AP", custom_field_1=None, custom_field_2=None,
+    #     custom_field_3=None, country_code="KE", remark="",
+    #     use_installment=False)
     password_encrypt = encrypt("123456")
     print password_encrypt
     # res = wallet_payment(
@@ -323,9 +323,9 @@ if __name__ == "__main__":
     #     password=password_encrypt)
     # res = query_transaction(order_no="C120220426000015")
     # res = cancel_order(order_no="343435F3464253", amount="60001")
-    # res = refund_order(
-    #     merchant_refund_id="4", order_id="K2204220344557447114",
-    #     merchant_order_id="C120220422000071", amount="34342", reason=None,
-    #     p0=None, payment_trans_id=None, org_name=None, is_use_wallet="N")
+    res = refund_order(
+        merchant_refund_id="4", order_id="K2204220344557447114",
+        merchant_order_id="C120220422000071", amount="34342", reason=None,
+        p0=None, payment_trans_id=None, org_name=None, is_use_wallet="N")
 
     print(res)
