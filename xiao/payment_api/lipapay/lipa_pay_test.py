@@ -6,16 +6,21 @@ import hashlib
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 import base64
+import json
+import copy
 
 
-get_wallet_info_api = "http://walletdemo45.net.kili.co/api/getWalletInfo.htm"
+# get_wallet_info_api = "http://walletdemo45.net.kili.co/api/getWalletInfo.htm"
+get_wallet_info_api = "https://lipapay-wallet.kilitest.com/api/getWalletInfo.htm"
 update_wallet_phone_api = "https://lipapay-wallet.kilitest.com/api/user/updateBindPhoneNo.html"
-wallet_payment_api = "http://demo45.net.kili.co/api/walletPayment.htm"
-# order_checkout_url = "http://demo45.net.kili.co/api/excashier.html"
-order_checkout_url = "https://lipapay-cashier.kilitest.com/v2/app/excashierCreateOrder"
-query_transaction_url = "https://demo45.net.kili.co/api/queryExcashierOrder.htm"
-cancel_order_url = "http://demo45.net.kili.co/api/cancelOrder.htm"
-refund_order_url = "http://demo45.net.kili.co/api/orderRefund.htm"
+wallet_payment_api = "https://lipapay-cashier.kilitest.com/api/walletPayment.htm"
+order_checkout_url = "https://lipapay-cashier.kilitest.com/api/excashier.html"
+sdk_checkout_url = "https://lipapay-cashier.kilitest.com/v2/user/sdkSubmitPayment"
+# order_checkout_url = "https://lipapay-cashier.kilitest.com/v2/app/excashierCreateOrder"
+query_transaction_url = "http://demo45.net.kili.co/api/queryExcashierOrder.htm"
+query_transaction_url = "https://lipapay-cashier.kilitest.com/api/queryExcashierOrder.htm"
+cancel_order_url = "https://lipapay-cashier.kilitest.com/api/cancelOrder.htm"
+refund_order_url = "https://lipapay-cashier.kilitest.com/api/orderRefund.htm"
 merchant_id = "2016051112014649173095"
 # merchant_id = "kilimall-ke"
 password = "1234567890"
@@ -37,7 +42,9 @@ def get_signature(data_dict, ignore_country_code=True):
     sorted_keys = sorted(data_dict)
     plain_text = ""
     for key in sorted_keys:
-        if data_dict[key] is None or key in ["version", "sign"]:
+        # if data_dict[key] is None or key in ["version", "sign"]:
+        #     continue
+        if data_dict[key] in [None, ""] or key in ["version", "sign"]:
             continue
         if key == "countryCode" and ignore_country_code is True:
             continue
@@ -139,6 +146,91 @@ def checkout_order(
     return response, result.url
 
 
+def sdk_checkout_order(
+        amount, currency, merchant_id, merchant_order_no, expiration_time,
+        channel_code, goods_list, email=None, mobile=None, seller_id=None,
+        seller_account=None, buyer_id=None, buyer_account=None,
+        remark=None, custom_field_1=None, custom_field_2=None,
+        custom_field_3=None, password=None):
+    data = {
+            "signType": "MD5",
+            "merchantOrderNo": str(merchant_order_no),
+            "merchantId": merchant_id,
+            "amount": int(amount * 100),
+            "currency": currency,
+            "channelCode": channel_code,
+            "sellerId": seller_id,
+            "mobile": mobile,
+            "email": email,
+            "version": "1.4",
+            "notifyUrl": notify_url,
+            "returnUrl": return_url,
+            "firstName": "",
+            "lastName": "",
+            "password": password,
+            "sellerAccount": seller_account,
+            "buyerId": buyer_id,
+            "buyerAccount": buyer_account,
+            "expirationTime": expiration_time,
+            "remark": remark,
+            "p1": custom_field_1,
+            "p2": custom_field_2,
+            "p3": custom_field_3
+        }
+    sign_data = copy.deepcopy(data)
+    goods_index = 0
+    for goods in goods_list:
+        pre_name = "goods[" + str(goods_index) + "]."
+        sign_data[pre_name + "goodsId"] = goods.get("goodsId")[:32]
+        sign_data[pre_name + "goodsName"] = goods.get("goodsName")[:60]
+        sign_data[pre_name + "goodsQuantity"] = goods.get("goodsQuantity")
+        sign_data[pre_name + "goodsPrice"] = goods.get("goodsPrice")
+        sign_data[pre_name + "goodsInfo"] = goods.get("goodsInfo")[:2000]
+        sign_data[pre_name + "goodsType"] = goods.get("goodsType")
+        sign_data[pre_name + "goodsUrl"] = goods.get("goodsUrl")
+        goods_index += 1
+
+    data["sign"] = get_signature(sign_data)
+    goods_li = []
+    for goods in goods_list:
+        goods_li.append(
+            {
+                "id": "",
+                "requestId": "",
+                "goodsId": goods.get("goodsId")[:32],
+                "goodsName": goods.get("goodsName")[:60],
+                "goodsQuantity": goods.get("goodsQuantity"),
+                "goodsPrice": goods.get("goodsPrice"),
+                "goodsType": goods.get("goodsType"),
+                "goodsUrl": goods.get("goodsUrl"),
+                "goodsInfo": goods.get("goodsInfo")[:2000],
+                "createTime": "1662345678"
+            }
+        )
+    data["goods"] = goods_li
+
+    response_url = order_checkout_url + "?"
+    for k, v in data.items():
+        if v in [True, False] or v:
+            response_url = response_url + str(k) + "=" + str(v) + "&"
+    response_url = response_url[:-1]
+
+    result = requests.post(url=sdk_checkout_url,  json=data)
+    print(json.dumps(result.json()))
+    print(json.loads(result.request.body))
+    if str(result.status_code).startswith("5"):
+        raise Exception("Request method not recognised or implemented.")
+    print("result.url=%r" % result.url)
+    # result.encoding = "utf-8"
+    response = {}
+    save_html(result.text)
+    if channel_code != "OL":
+        response = result.json()
+    else:
+        res_url = response_url
+    print(response)
+    return response, result.url
+
 def query_transaction(order_no):
     params = {
         "merchantId": merchant_id,
@@ -194,6 +286,7 @@ def get_wallet_info(merchant_user_id, currency_code, country_code,
     result = requests.post(
         url=get_wallet_info_api, data=params, timeout=30)
     print(result.status_code)
+    print(result.request.url)
     if str(result.status_code).startswith("5"):
         raise Exception("Request method not recognised or implemented.")
     response = result.json()
@@ -263,7 +356,7 @@ def refund_order(
         p0=None, payment_trans_id=None, org_name=None, is_use_wallet="N"):
     params = {
         "merchantRefundId": merchant_refund_id,
-        # "orderId": order_id,
+        "orderId": order_id,
         "merchantOrderId": merchant_order_id,
         "merchantId": merchant_id,
         "amount": amount,
@@ -295,7 +388,7 @@ if __name__ == "__main__":
     #     merchant_user_id=100101014, currency_code="KES", country_code="KE",
     #     phone_no="714456852")
     # res = update_wallet_phone(
-    #     member_id="100100032", phone_no="254714456899")
+    #     member_id="100100032", phone_no="254714456839")
     goods_list = [{
                 "goodsId": "32423432",
                 "goodsName": "goodsName test",
@@ -308,24 +401,34 @@ if __name__ == "__main__":
     #  payment_method(OL[线上], OF[线下], AP[钱包], OP[m-pesa])
     # res = checkout_order(
     #     amount=60000, currency="KES", merchant_id=merchant_id,
-    #     merchant_order_no="343435F3464256",
+    #     merchant_order_no="343435F3464257",
     #     expiration_time="1000000", source_type="B", goods_list=goods_list,
     #     email="",  mobile="254714456852",
     #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
     #     buyer_account="4444444", customer_ip="10.0.0.140", channels="!mkey010101",
-    #     payment_method="AP", custom_field_1=None, custom_field_2=None,
+    #     payment_method="OL", custom_field_1=None, custom_field_2=None,
     #     custom_field_3=None, country_code="KE", remark="",
     #     use_installment=False)
-    password_encrypt = encrypt("123456")
-    print password_encrypt
+    """wallet020101,mpesa020106,mpesa020105,ipay010102"""
+    # res = sdk_checkout_order(
+    #     amount=60000, currency="KES", merchant_id=merchant_id,
+    #     merchant_order_no="343435F3464255", expiration_time="1000000",
+    #     channel_code="ipay010102", goods_list=goods_list,
+    #     email="", mobile="254714456852",
+    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+    #     buyer_account="4444444",
+    #     custom_field_1=None, custom_field_2=None,
+    #     custom_field_3=None,  remark="", password=""
+    # )
+    # password_encrypt = encrypt("123456")
     # res = wallet_payment(
     #     merchant_order_id="343435F3464254", order_id="K2210180724381326032",
     #     password=password_encrypt)
-    # res = query_transaction(order_no="C120220426000015")
+    res = query_transaction(order_no="C120220426000015")
     # res = cancel_order(order_no="343435F3464253", amount="60001")
-    res = refund_order(
-        merchant_refund_id="4", order_id="K2204220344557447114",
-        merchant_order_id="C120220422000071", amount="34342", reason=None,
-        p0=None, payment_trans_id=None, org_name=None, is_use_wallet="N")
+    # res = refund_order(
+    #     merchant_refund_id="4", order_id="K2204220344557447114",
+    #     merchant_order_id="C120220422000071", amount="34342", reason=None,
+    #     p0=None, payment_trans_id=None, org_name=None, is_use_wallet="N")
 
     print(res)
