@@ -139,10 +139,10 @@ def pull_pickup_station(file_route, from_seller=False):
         bee_common_db.Areas.update_one(
             {"_id": res_area["_id"]},
             {"$pull": {"pickupIds": shop_id}})
-        if from_seller is True:
-            member_db.address.update_many(
-                {"addressType": 2, "pickupStationId": shop_id},
-                {"$set": {"status": 2}})
+        # if from_seller is True:
+        #     member_db.address.update_many(
+        #         {"addressType": 2, "pickupStationId": shop_id},
+        #         {"$set": {"status": 2}})
         print("update success area=%s,sourceStationId=%s,line=%s" % (
             area, shop_id, total_count))
     print("loop count=%s" % total_count)
@@ -225,8 +225,8 @@ if __name__ == "__main__":
         from_seller = True
         member_db = get_db(url, env, "Member")
 
-    pull_pickup_station("./address Update V6.xlsx", from_seller=from_seller)
-    # push_pickup_station("./address Update V6.xlsx")
+    # pull_pickup_station("./address Update V6.xlsx", from_seller=from_seller)
+    push_pickup_station("./address Update V6.xlsx")
 
 
 
