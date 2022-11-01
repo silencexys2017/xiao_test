@@ -175,8 +175,8 @@ def push_pickup_station(file_route):
             station = bee_common_db.PickupStation.find_one_and_update(
                 {"sourceStationId": shop_id},
                 {"$addToSet": {"leafAreaIds": area_dict["_id"]}})
-            if not station:
-                continue
+            # if not station:
+            #     continue
             bee_common_db.Areas.update_one(
                 {"_id": area_dict["_id"]},
                 {"$addToSet": {"pickupIds": shop_id}})
@@ -191,8 +191,8 @@ def push_pickup_station(file_route):
                     station = bee_common_db.PickupStation.find_one_and_update(
                         {"sourceStationId": shop_id},
                         {"$addToSet": {"leafAreaIds": res_area["_id"]}})
-                    if not station:
-                        continue
+                    # if not station:
+                    #     continue
                     bee_common_db.Areas.update_one(
                         {"_id": res_area["_id"]},
                         {"$addToSet": {"pickupIds": shop_id}})
@@ -226,7 +226,7 @@ if __name__ == "__main__":
         member_db = get_db(url, env, "Member")
 
     # pull_pickup_station("./address Update V6.xlsx", from_seller=from_seller)
-    push_pickup_station("./address Update V6.xlsx")
+    push_pickup_station("./address Update V5.1.xlsx")
 
 
 
