@@ -151,8 +151,8 @@ def pull_pickup_station(file_route, from_seller=False):
 def push_pickup_station(file_route):
     wb_obj = load_workbook(file_route, data_only=True)
     ks_sheet = wb_obj.get_sheet_by_name("KS&ward")
-    total_count = 0
-    for row in list(ks_sheet.iter_rows(min_row=3, max_row=432)):
+    total_count = 612
+    for row in list(ks_sheet.iter_rows(min_row=612, max_row=678)):
         total_count += 1
         county, sub_county, area = strip_string_name(
             row[0].value), strip_string_name(row[1].value), strip_string_name(
