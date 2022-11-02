@@ -14,7 +14,7 @@ import copy
 get_wallet_info_api = "https://lipapay-wallet.kilitest.com/api/getWalletInfo.htm"
 update_wallet_phone_api = "https://lipapay-wallet.kilitest.com/api/user/updateBindPhoneNo.html"
 wallet_payment_api = "https://lipapay-cashier.kilitest.com/api/walletPayment.htm"
-order_checkout_url = "https://lipapay-cashier.kilitest.com/api/excashier.html"
+order_checkout_url = "http://demo45.net.kili.co/api/excashier.html"
 sdk_checkout_url = "https://lipapay-cashier.kilitest.com/v2/user/sdkSubmitPayment"
 # order_checkout_url = "https://lipapay-cashier.kilitest.com/v2/app/excashierCreateOrder"
 # query_transaction_url = "http://demo45.net.kili.co/api/queryExcashierOrder.htm"
@@ -80,7 +80,8 @@ def checkout_order(
         "sourceType": source_type,
         "currency": currency,
         "countryCode": country_code,
-        "version": "1.4"
+        "version": "1.4",
+        "buyerId": None
     }
     if remark:
         data["remark"] = remark
@@ -126,22 +127,114 @@ def checkout_order(
     response_url = order_checkout_url + "?"
     for k, v in data.items():
         if v in [True, False] or v:
+            print(k, v)
             response_url = response_url + str(k) + "=" + str(v) + "&"
     response_url = response_url[:-1]
-
+    return response_url
     result = requests.post(
         url=order_checkout_url, headers=Headers, params=data,
         allow_redirects=False)
     if str(result.status_code).startswith("5"):
         raise Exception("Request method not recognised or implemented.")
+    print("result.status_code=%r" % result.status_code)
     print("result.url=%r" % result.url)
     print("result.reason=%r" % result.reason)
     print("result.history=%r" % result.history)
     # result.encoding = "utf-8"
-    response = {}
     save_html(result.text)
-    if payment_method != "OL":
-        response = result.json()
+    response = result.json()
+    print(response)
+    return response, result.url
+
+
+def new_checkout_order(
+        amount, currency, merchant_id, merchant_order_no, expiration_time,
+        source_type, goods_list, email=None, mobile=None, seller_id=None,
+        seller_account=None, buyer_id=None, buyer_account=None,
+        customer_ip=None, channels=None, payment_method=None, country_code=None,
+        remark=None, use_installment=None, custom_field_1=None,
+        custom_field_2=None, custom_field_3=None):
+    data = {
+        "signType": "MD5",
+        "merchantId": merchant_id,
+        "notifyUrl": notify_url,
+        "returnUrl": return_url,
+        "merchantOrderNo": merchant_order_no,
+        "amount": amount,
+        "expirationTime": expiration_time,
+        "sourceType": source_type,
+        "currency": currency,
+        "countryCode": country_code,
+        "version": "1.4"
+    }
+    if remark:
+        data["remark"] = remark
+    if email:
+        data["email"] = email
+    if mobile:
+        data["mobile"] = mobile
+    if seller_id:
+        data["sellerId"] = seller_id
+    if seller_account:
+        data["sellerAccount"] = seller_account
+    if buyer_id:
+        data["buyerId"] = buyer_id
+    if buyer_account:
+        data["buyerAccount"] = buyer_account
+    if customer_ip:
+        data["customerIP"] = customer_ip
+    if channels:
+        data["channels"] = channels
+    if payment_method:
+        data["paymentMethod"] = payment_method
+    if use_installment in [False, True]:
+        data["useInstallment"] = use_installment
+    if custom_field_1:
+        data["p1"] = custom_field_1
+    if custom_field_2:
+        data["p2"] = custom_field_2
+    if custom_field_3:
+        data["p3"] = custom_field_3
+
+    sign_data = copy.deepcopy(data)
+    goods_index = 0
+    for goods in goods_list:
+        pre_name = "goods[" + str(goods_index) + "]."
+        sign_data[pre_name + "goodsId"] = goods.get("goodsId")[:32]
+        sign_data[pre_name + "goodsName"] = goods.get("goodsName")[:60]
+        sign_data[pre_name + "goodsQuantity"] = goods.get("goodsQuantity")
+        sign_data[pre_name + "goodsPrice"] = goods.get("goodsPrice")
+        sign_data[pre_name + "goodsInfo"] = goods.get("goodsInfo")[:2000]
+        sign_data[pre_name + "goodsType"] = goods.get("goodsType")
+        sign_data[pre_name + "goodsUrl"] = goods.get("goodsUrl")
+        goods_index += 1
+
+    data["sign"] = get_signature(sign_data)
+    goods_li = []
+    for goods in goods_list:
+        goods_li.append(
+            {
+                "goodsId": goods.get("goodsId")[:32],
+                "goodsName": goods.get("goodsName")[:60],
+                "goodsQuantity": goods.get("goodsQuantity"),
+                "goodsPrice": goods.get("goodsPrice"),
+                "goodsType": goods.get("goodsType"),
+                "goodsUrl": goods.get("goodsUrl"),
+                "goodsInfo": goods.get("goodsInfo")[:2000]
+            }
+        )
+    data["goods"] = goods_li
+
+    result = requests.post(url=order_checkout_url, json=data)
+    if str(result.status_code).startswith("5"):
+        raise Exception("Request method not recognised or implemented.")
+    print("result.status_code=%r" % result.status_code)
+    print("result.url=%r" % result.url)
+    print("result.reason=%r" % result.reason)
+    print(result.request.body)
+    # result.encoding = "utf-8"
+    save_html(result.text)
+    response = result.json()
     print(response)
     return response, result.url
 
@@ -163,7 +256,7 @@ def sdk_checkout_order(
             "mobile": mobile,
             "email": email,
             "version": "1.4",
-            "notifyUrl": notify_url,
+            "notifyUrl": "https://mall-api.kilitest.com/api/payment/lipapay/webhook",
             "returnUrl": return_url,
             "firstName": "",
             "lastName": "",
@@ -340,7 +433,7 @@ def encrypt(plain_text, kwargs={}):
     pad_pkcs7 = pad(plain_text.encode('utf-8'), AES.block_size)
     encrypt_data = AES.new(
         wallet_key.encode('utf-8'), AES.MODE_ECB, **kwargs).encrypt(pad_pkcs7)
-    return str(base64.b64encode(encrypt_data))
+    return base64.b64encode(encrypt_data).decode("utf-8")
 
 def encrypt_1(text):
     cipher = AES.new(wallet_key, AES.MODE_ECB)
@@ -401,24 +494,38 @@ if __name__ == "__main__":
     #  payment_method(OL[线上], OF[线下], AP[钱包], OP[m-pesa])
     # res = checkout_order(
     #     amount=60000, currency="KES", merchant_id=merchant_id,
-    #     merchant_order_no="343435F3464257",
+    #     merchant_order_no="343435F6464258",
     #     expiration_time="1000000", source_type="B", goods_list=goods_list,
     #     email="",  mobile="254714456852",
     #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
     #     buyer_account="4444444", customer_ip="10.0.0.140", channels="!mkey010101",
-    #     payment_method="OL4", custom_field_1=None, custom_field_2=None,
+    #     payment_method="OL", custom_field_1=None, custom_field_2=None,
     #     custom_field_3=None, country_code="KE", remark="",
     #     use_installment=False)
+
+    # res = new_checkout_order(
+    #     amount=60000, currency="KES", merchant_id=merchant_id,
+    #     merchant_order_no="343435F3464258",
+    #     expiration_time="1000000", source_type="B", goods_list=goods_list,
+    #     email="34324@qq.com",  mobile="254714456852",
+    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+    #     buyer_account="4444444", customer_ip="10.0.0.140", channels="",
+    #     payment_method="OL", custom_field_1="324324", custom_field_2=None,
+    #     custom_field_3=None, country_code="", remark="3432432",
+    #     use_installment=None)
+
     """wallet020101,mpesa020106,mpesa020105,ipay010102"""
+    password_encrypt = encrypt("123456")
+    print(password_encrypt)
     res = sdk_checkout_order(
         amount=60000, currency="KES", merchant_id=merchant_id,
-        merchant_order_no="343435F3464265", expiration_time="1000000",
+        merchant_order_no="343432F3264261", expiration_time="1000000",
         channel_code="wallet020101", goods_list=goods_list,
         email="", mobile="254714456852",
         seller_id="33333333", seller_account="33333333", buyer_id="100100013",
         buyer_account="4444444",
         custom_field_1=None, custom_field_2=None,
-        custom_field_3=None,  remark="", password="43434"
+        custom_field_3=None,  remark="", password=password_encrypt
     )
     # password_encrypt = encrypt("123456")
     # res = wallet_payment(
