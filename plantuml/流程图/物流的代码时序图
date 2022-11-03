@@ -1,0 +1,64 @@
+@startuml
+title 物流的代码时序图
+autonumber
+actor    Customer        as cus      order 1
+entity   OFS             as ofs      order 2
+entity   WMS             as wms      order 3
+entity   FMS             as fms      order 4
+entity   Logisticians    as lg       order 5
+
+
+
+alt 客户端创建物流订单
+cus -> fms: 创建物流单:dispatcher.Dispatcher.create_logistics_order
+autonumber 1
+else ofs下发订单
+ofs -> fms: 创建物流单: dispatcher.Dispatcher.create_logistics_order
+autonumber 1
+else wms备货单
+wms -> fms: 创建物流单: dispatcher.OrderDispatcher.create_logistics_order
+end
+
+|||
+autonumber stop
+cus -> fms: 取消订单（fms未收到货）：dispatcher.OrderDispatcher.cancel_logistics_order
+autonumber resume
+|||
+
+alt 国际运输gs订单
+alt 正常收件
+fms -> fms: 收件:dispatcher.Dispatcher.receive_logistics_orders
+else 问题单
+autonumber 2
+fms -> fms: 收到问题件:dispatcher.Dispatcher.receive_problem_order
+else 拒揽
+autonumber 2
+fms -> fms: 不支持该物件发运:dispatcher.Dispatcher.refusal_logistics_order
+end
+|||
+
+fms -> fms: 创建发运批次:dispatcher.Dispatcher.create_delivery_batch
+fms -> fms: 创建发运批次下的箱子:dispatcher.Dispatcher.create_delivery_batch_box
+fms -> fms: 分配订单到箱子:dispatcher.Dispatcher.logistics_orders_bind_box
+fms -> fms: 更新发运批次状态(打包->装箱->提运填写国际物流单号->发出->清关->待接件):\ndispatcher.Dispatcher.update_delivery_batch,update_delivery_batch_box
+fms -> fms: 接件：dispatcher.Dispatcher.update_logistics_order_confirmed_state
+fms -> lg: 创建尾程物流单：dispatcher.Dispatcher.create_kiliexpress_order
+|||
+autonumber 1
+else fbk和ds本地订单
+autonumber 8
+fms -> lg: 创建尾程物流单：dispatcher.Dispatcher.create_kiliexpress_order
+end
+|||
+
+fms -> fms: 尾程交付中:dispatcher.Dispatcher.start_terminal_delivery
+|||
+alt 成功交付
+lg -> fms: 订单送达:dispatcher.Dispatcher.update_terminal_delivery
+autonumber 10
+else 用户拒收
+lg -> fms: 交付失败:dispatcher.Dispatcher.update_terminal_delivery
+end
+
+
+@enduml
