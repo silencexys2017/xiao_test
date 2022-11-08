@@ -141,8 +141,8 @@ def checkout_order(
     print(result.history)
     # result.encoding = "utf-8"
     response = {}
-    if payment_method == "OF":
-        response = result.json()
+    # if payment_method == "OF":
+    response = result.json()
     return response, result.url
 
 
@@ -187,27 +187,38 @@ def cancel_order(order_no, amount):
 
 
 if __name__ == "__main__":
-    goods_name = 'S38 Smart Watch Men Women Full Touch Screen Sport Fitness Watch IP67 Waterproof Bluetooth For Android IOS Smartwatch Men'
-    goods_list = [{
-                "goodsId": "60000007470",
-                "goodsName": goods_name,
-                "goodsQuantity": "1",
-                "goodsPrice": "1817.0",
-                "goodsInfo": 'Blue',
-                "goodsType": 1,
-                "goodsUrl": 'https://s2b-public-prd.obs.ap-southeast-3.myhuaweicloud.com/goods/11358.jpg'
-            }]
-    # res = checkout_order(
-    #     amount=18200, currency="KES", merchant_id=merchant_id,
-    #     merchant_order_no="P120220226000013",
-    #     expiration_time="172800", source_type="B", goods_list=goods_list,
-    #     email='9991234036@perfeetest.com',  mobile='13052262256',
-    #     seller_id="", seller_account="", buyer_id="2",
-    #     buyer_account="9**********", customer_ip='172.16.1.49', channels="",
-    #     payment_method="OL", custom_field_1="1029", custom_field_2=None,
-    #     custom_field_3=None, country_code="KE", remark="",
-    #     use_installment=None)
-    res = query_transaction(order_no="P120220226000026")
+    goods_list = [
+        {
+            "goodsUrl": "https://image.kilimall.com/kenya/shop/store/goods/5824/2022/06/1655026020011e27ae0340f994d4bb326a871e04bcf3a.jpg",
+            "goodsId": "17659800",
+            "goodsQuantity": "1",
+            "goodsInfo": "White,M,100%polyester",
+            "goodsName": "2 PCS 2 in 1 Men Clothes TShirts",
+            "goodsPrice": "69900.0",
+            "goodsType": 1
+        },
+        {
+            "goodsUrl": "https://image.kilimall.com/kenya/shop/store/goods/5872/2020/11/5872_06577545305282980.jpg",
+            "goodsId": "15502161",
+            "goodsQuantity": "1",
+            "goodsInfo": "Black",
+            "goodsName": "JC Y30 Bluetooth Earphones Wirel",
+            "goodsPrice": "45900.0",
+            "goodsType": 1
+        }
+
+    ]
+    res = checkout_order(
+        amount=18200, currency="KES", merchant_id=merchant_id,
+        merchant_order_no="P12022022600013",
+        expiration_time="172800", source_type="B", goods_list=goods_list,
+        email='9991234036@perfeetest.com',  mobile='13052262256',
+        seller_id="", seller_account="", buyer_id="2",
+        buyer_account="9**********", customer_ip='172.16.1.49', channels="",
+        payment_method="AP", custom_field_1="1029", custom_field_2=None,
+        custom_field_3=None, country_code="KE", remark="",
+        use_installment=None)
+    # res = query_transaction(order_no="P120220226000026")
     # res = cancel_order(order_no="4WHDJ2UNAEQQF349", amount="2")
 
     print(res)

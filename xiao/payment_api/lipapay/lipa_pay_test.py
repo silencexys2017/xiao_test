@@ -14,9 +14,9 @@ import copy
 get_wallet_info_api = "https://lipapay-wallet.kilitest.com/api/getWalletInfo.htm"
 update_wallet_phone_api = "https://lipapay-wallet.kilitest.com/api/user/updateBindPhoneNo.html"
 wallet_payment_api = "https://lipapay-cashier.kilitest.com/api/walletPayment.htm"
-order_checkout_url = "http://demo45.net.kili.co/api/excashier.html"
+# order_checkout_url = "http://demo45.net.kili.co/api/excashier.html"
 sdk_checkout_url = "https://lipapay-cashier.kilitest.com/v2/user/sdkSubmitPayment"
-# order_checkout_url = "https://lipapay-cashier.kilitest.com/v2/app/excashierCreateOrder"
+order_checkout_url = "https://lipapay-cashier.kilitest.com/v2/app/excashierCreateOrder"
 # query_transaction_url = "http://demo45.net.kili.co/api/queryExcashierOrder.htm"
 query_transaction_url = "https://lipapay-cashier.kilitest.com/api/queryExcashierOrder.htm"
 cancel_order_url = "https://lipapay-cashier.kilitest.com/api/cancelOrder.htm"
@@ -127,10 +127,8 @@ def checkout_order(
     response_url = order_checkout_url + "?"
     for k, v in data.items():
         if v in [True, False] or v:
-            print(k, v)
             response_url = response_url + str(k) + "=" + str(v) + "&"
     response_url = response_url[:-1]
-    return response_url
     result = requests.post(
         url=order_checkout_url, headers=Headers, params=data,
         allow_redirects=False)
@@ -229,11 +227,9 @@ def new_checkout_order(
     if str(result.status_code).startswith("5"):
         raise Exception("Request method not recognised or implemented.")
     print("result.status_code=%r" % result.status_code)
-    print("result.url=%r" % result.url)
+    print("result.context=%r" % result.text)
     print("result.reason=%r" % result.reason)
     print(result.request.body)
-    # result.encoding = "utf-8"
-    save_html(result.text)
     response = result.json()
     print(response)
     return response, result.url
@@ -482,15 +478,27 @@ if __name__ == "__main__":
     #     phone_no="714456852")
     # res = update_wallet_phone(
     #     member_id="100100032", phone_no="254714456839")
-    goods_list = [{
-                "goodsId": "20000000004",
-                "goodsName": "after sale test",
-                "goodsQuantity": "1",
-                "goodsPrice": "125",
-                "goodsInfo": "black",
-                "goodsType": "1",
-                "goodsUrl": "https://kilimall-testing.s3.ap-northeast-1.amazonaws.com/lite-dev/public/store/200000011/goods/image/200000005.jpg"
-            }]
+    goods_list = [
+        {
+            "goodsUrl": "https://image.kilimall.com/kenya/shop/store/goods/5824/2022/06/1655026020011e27ae0340f994d4bb326a871e04bcf3a.jpg",
+            "goodsId": "17659800",
+            "goodsQuantity": "1",
+            "goodsInfo": "White,M,100%polyester",
+            "goodsName": "2 PCS 2 in 1 Men Clothes TShirts",
+            "goodsPrice": "69900.0",
+            "goodsType": 1
+        },
+        {
+            "goodsUrl": "https://image.kilimall.com/kenya/shop/store/goods/5872/2020/11/5872_06577545305282980.jpg",
+            "goodsId": "15502161",
+            "goodsQuantity": "1",
+            "goodsInfo": "Black",
+            "goodsName": "JC Y30 Bluetooth Earphones Wirel",
+            "goodsPrice": "45900.0",
+            "goodsType": 1
+        }
+
+    ]
     #  payment_method(OL[线上], OF[线下], AP[钱包], OP[m-pesa])
     # res = checkout_order(
     #     amount=60000, currency="KES", merchant_id=merchant_id,
@@ -505,36 +513,37 @@ if __name__ == "__main__":
 
     # res = new_checkout_order(
     #     amount=60000, currency="KES", merchant_id=merchant_id,
-    #     merchant_order_no="343435F3464258",
+    #     merchant_order_no="343435F3464252",
     #     expiration_time="1000000", source_type="B", goods_list=goods_list,
     #     email="34324@qq.com",  mobile="254714456852",
     #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
     #     buyer_account="4444444", customer_ip="10.0.0.140", channels="",
-    #     payment_method="OL", custom_field_1="324324", custom_field_2=None,
+    #     payment_method="AP", custom_field_1="324324", custom_field_2=None,
     #     custom_field_3=None, country_code="", remark="3432432",
     #     use_installment=None)
 
     """wallet020101,mpesa020106,mpesa020105,ipay010102"""
     password_encrypt = encrypt("123456")
     print(password_encrypt)
-    res = sdk_checkout_order(
-        amount=60000, currency="KES", merchant_id=merchant_id,
-        merchant_order_no="343432F3264261", expiration_time="1000000",
-        channel_code="wallet020101", goods_list=goods_list,
-        email="", mobile="254714456852",
-        seller_id="33333333", seller_account="33333333", buyer_id="100100013",
-        buyer_account="4444444",
-        custom_field_1=None, custom_field_2=None,
-        custom_field_3=None,  remark="", password=password_encrypt
-    )
+    # res = sdk_checkout_order(
+    #     amount=60000, currency="KES", merchant_id=merchant_id,
+    #     merchant_order_no="343432F3264261", expiration_time="1000000",
+    #     channel_code="wallet020101", goods_list=goods_list,
+    #     email="", mobile="254714456852",
+    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+    #     buyer_account="4444444",
+    #     custom_field_1=None, custom_field_2=None,
+    #     custom_field_3=None,  remark="", password=password_encrypt
+    # )
     # password_encrypt = encrypt("123456")
-    # res = wallet_payment(
-    #     merchant_order_id="343435F3464254", order_id="K2210180724381326032",
-    #     password=password_encrypt)
+    res = wallet_payment(
+        merchant_order_id="343435F3464254", order_id="K2210180724381326032",
+        password=password_encrypt)
     # res = query_transaction(order_no="C120220426000015")
     # res = cancel_order(order_no="343435F3464253", amount="60001")
     # res = refund_order(
     #     merchant_refund_id="4", order_id="K2204220344557447114",
     #     merchant_order_id="C120220422000071", amount="34342", reason=None,
     #     p0=None, payment_trans_id=None, org_name=None, is_use_wallet="N")
+
     print(res)
