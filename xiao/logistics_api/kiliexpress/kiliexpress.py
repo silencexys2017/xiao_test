@@ -14,8 +14,10 @@ account = "business-xedelivery-user"
 password = "diom5RBl4UaxMAsSz60VTnjrJwI9gO8P"
 
 base_url = "https://gw.kiliexpress.cn"
+base_url = "https://express-gw.kilitest.com"
 sign_in_api = "/uac/v1/auth/ability/sign-in"
 place_order_api = "/oms/omsExpress/v1.2/createOrder"
+create_return_order_api = "/oms/omsExpress/v1.0/createOrder"
 get_express_bill_api = "/oms/oms/expressBillPrintData"
 get_express_order_info_api = "/oms/omsExpress/v1.0/getExpressOrderInfo"
 cancel_order_api = "/oms/omsExpress/v1.0/cancelOrder"
@@ -110,6 +112,102 @@ def place_order(
     # headers["Authorization"] = token
     result = requests.post(
         base_url+place_order_api, json=data, headers=headers, timeout=60)
+    print(result.status_code)
+    res = result.json()
+    print(res)
+    if res.get("code") != 200:
+        raise Exception(res.get("error"))
+    return res
+
+
+def create_return_order(
+        token, order_type, country_code, is_to_door, merchant_no,
+        merchant_order_no, order_amount, goods_list, consignee_name,
+        consignee_mobile, consignee_country, consignee_province, consignee_city,
+        consignee_area_code, consignee_address, consignee_network_id,
+        shipper_country, consignee_email=None, consignee_postcode=None,
+        shipper_name=None, shipper_mobile=None, shipper_email=None,
+        shipper_province=None, shipper_city=None, shipper_area_code=None,
+        shipper_address=None, shipper_network_id=None, shipper_postcode=None,
+        notify_url=None):
+    data = {
+        "orderId": "",
+        "orderNo": "",
+        "appId": "",
+        "postFee": "",
+        "payMethod": 0,
+        "p1": "",
+        "p2": "",
+        "p3": "",
+        "isToDoor": is_to_door,  # 0自送到自提点，1上门
+        "orderType": order_type,   # 订单类型（FB：仓配类FBK订单,ES：快递类Express订单,CB：跨境类CrossBorder订单）
+        "countryCode": country_code,
+        # "platformBizType": platform_biz_type,  # 销售SO 售后RO 调拨AO
+        "merchantNo": merchant_no,   # 商户注册时的商户码(如：kilimall)
+        "merchantOrderNo": merchant_order_no,
+        "orderAmount": order_amount,
+        "shipperForm": {
+            "shipperName": shipper_name,
+            "shipperMobile": shipper_mobile,
+            "shipperEmail": shipper_email,
+            "shipperCountry": shipper_country,
+            "shipperProvince": shipper_province,
+            "shipperCity": shipper_city,
+            "shipperAreaCode": shipper_area_code,
+            "shipperAddress": shipper_address,
+            "networkId": shipper_network_id,  # 发货网点ID
+            "shipperPostcode": shipper_postcode,
+            "areaId": "",
+            "remark": ""
+        },
+        "receiveForm": {
+            "consigneeName": consignee_name,
+            "consigneeMobile": consignee_mobile,
+            "consigneeEmail": consignee_email,
+            "consigneeCountry": consignee_country,
+            "consigneeProvince": consignee_province,
+            "consigneeCity": consignee_city,
+            "consigneeAreaCode": consignee_area_code,  # 收货方地区code
+            "consigneeAddress": consignee_address,
+            "networkId": consignee_network_id,  # 收货网点
+            "consigneePostcode": consignee_postcode,
+            "areaId": "",
+            "remark": ""
+        },
+        "notifyUrl": notify_url,  # 通知地址
+        "remark": "",
+        "extContent": "",
+    }
+    goods_li = []
+    for item in goods_list:
+        goods_li.append(
+            {
+                "goodsName": item["goodsName"],
+                "goodsCount": item["goodsCount"],
+                "goodsUnit": item.get("goodsUnit"),
+                "goodsType": item.get("goodsType"),
+                "imageUrl": item.get("imageUrl"),
+                "skuId": item["skuId"],
+                "storeId": item.get("storeId"),
+                "goodsWeight": item.get("goodsWeight"),
+                "goodsAmount": item.get("goodsAmount"),
+                "currency": item.get("currency"),
+                "goodsVolume": item.get("goodsVolume"),
+                "stockOut": item.get("stockOut"),
+                "remark": item.get("remark"),
+                "isBattery": item.get("isBattery"),
+                "isPoison": item.get("isPoison"),  # 是否有毒
+                "isFragile": item.get("isFragile"),  # 是否易碎
+                "hsCode": item.get("hsCode"),  # 海关编码
+                "tradeName": item.get("tradeName"),
+                "ssAttribute": item.get("ssAttribute")
+            }
+        )
+    data["goodsList"] = goods_li
+    data["sign"] = hashlib_md5(json.dumps(data)+merchant_key)
+    # headers["Authorization"] = token
+    result = requests.post(base_url+create_return_order_api, json=data,
+                           headers=headers, timeout=60)
     print(result.status_code)
     res = result.json()
     print(res)
@@ -392,6 +490,42 @@ def transport_created_order(toten):
         ])
 
 
+def transport_create_return_order(token):
+    return create_return_order(
+        toten, order_type="ES", country_code="KE", platform_biz_type="SO",
+        merchant_no=merchant_no, merchant_order_no="test129",
+        order_amount="100", consignee_name="xiao", consignee_mobile="884384834",
+        consignee_country="Kenya", consignee_province="BUSIA",
+        consignee_city="Butula", consignee_area_code="Elugulu",
+        consignee_address="test address", consignee_network_id="",
+        consignee_email=None, consignee_postcode="101001", shipper_name=None,
+        shipper_mobile=None, shipper_email=None, shipper_country="KE",
+        shipper_province=None, shipper_city=None, shipper_area_code=None,
+        shipper_address=None, shipper_network_id=None, shipper_postcode=None,
+        buyer_id=None, seller_id=None, home_delivery=1, notify_url=notify_url,
+        warehouse=None,
+        goods_list=[
+            {
+                "goodsName": "goods name test",
+                "goodsCount": 2,
+                "goodsUnit": "piece",
+                "skuId": "890304343",
+                "storeId": "34",
+                "goodsWeight": "200",
+                "goodsAmount": "200",
+                "currency": "KES",
+                "goodsVolume": "100",
+                "remark": "remark test",
+                "isBattery": None,
+                "isPoison": 1,  # 是否有毒
+                "isFragile": None,  # 是否易碎
+                "hsCode": None,  # 海关编码
+                "tradeName": "XiaoMi",
+                "ssAttribute": None
+            }
+        ])
+
+
 def submit_shipment_info_test(merchant_order_no, order_no):
     params = {
         "merchantNo": merchant_no,
@@ -431,6 +565,7 @@ if __name__ == "__main__":
     token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsInN1YiI6IjIxMjciLCJuYmYiOjE2NDk2MzgzNTQsInNjb3BlcyI6W10sImV4cCI6MTY0OTcyNDc1NCwiaWF0IjoxNjQ5NjM4MzU0LCJqdGkiOiI2MjgyY2VlOS0zZjA3LTQyM2ItYThmZS0zNWM0NGQwNjllMGMifQ.tLxBK3kEwTVfqyjQziESk2m_3KCb2hRwVwM9KoH25Gs"
     # res = sign_in()
     # res = transport_created_order(token)
+    res = transport_create_return_order(token)
     # res = submit_shipment_info_test(
     #     merchant_order_no="XD1001324990", order_no="KEESSOSX1735117874")
     # res = submit_shipment_info(
@@ -449,3 +584,4 @@ if __name__ == "__main__":
     # res = get_area_tree()
     # res = get_pick_up_stations(100102)
     print(res)
+
