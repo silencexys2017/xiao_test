@@ -536,10 +536,10 @@ if __name__ == "__main__":
     #     custom_field_3=None,  remark="", password=password_encrypt
     # )
     # password_encrypt = encrypt("123456")
-    res = wallet_payment(
-        merchant_order_id="343435F3464254", order_id="K2210180724381326032",
-        password=password_encrypt)
-    # res = query_transaction(order_no="C120220426000015")
+    # res = wallet_payment(
+    #     merchant_order_id="343435F3464254", order_id="K2210180724381326032",
+    #     password=password_encrypt)
+    res = query_transaction(order_no="C120220426000015")
     # res = cancel_order(order_no="343435F3464253", amount="60001")
     # res = refund_order(
     #     merchant_refund_id="4", order_id="K2204220344557447114",
