@@ -6,6 +6,8 @@ import pymongo
 import json
 from datetime import datetime, timedelta
 from openpyxl import load_workbook
+import xlsxwriter
+
 
 
 _DEFAULT_CONFIG_FILE = '../kili_config.json'
@@ -22,7 +24,7 @@ map_pay_method = {
 X_DB_URL = {
     "dev": "mongodb://pf_dev_dbo:Bp2Q5j3Jb2cmQvn8L4kW@mongodb-paas-service/admin?replicaSet=rs0",
 	"test": "mongodb://pf_test_dbo:3f4k8aDHeQJBKmd3z7c9@159.138.90.30:30734/admin",
-    "prd": "mongodb://pf_prd_dbo:m2w9ZNZP4gUsx9b2hu6L@mongodb-paas-service/admin?replicaSet=rs0"
+    "prd": "mongodb://rwuser:pUvn39maqw%25rMcU8Kki9z#z@159.138.162.77:8635/test?authSource=admin&replicaSet=replica"
 }
 
 
@@ -201,6 +203,79 @@ def push_pickup_station(file_route):
                             it, shop_id, total_count))
 
 
+def get_not_match_address(file_route):
+    wb_obj = load_workbook(file_route, data_only=True)
+    ks_sheet = wb_obj.get_sheet_by_name("KS&ward")
+    current_row = 3
+    for row in list(ks_sheet.iter_rows(min_row=3, max_row=678)):
+        county, sub_county, area = strip_string_name(
+            row[0].value), strip_string_name(row[1].value), strip_string_name(
+            row[2].value)
+        # shop_id = strip_string_name(row[4].value)
+        # if not shop_id or not shop_id.isdigit():
+        #     continue
+        # shop_id = int(shop_id)
+        # address, shop_id, shop_name = row[3].value, row[4].value, row[5].value
+        res_county = bee_common_db.Areas.find_one({"deep": 1, "name": county})
+        if not res_county:
+            ks_sheet.cell(current_row, 8).value = county
+            current_row += 1
+            continue
+        res_sub_county = bee_common_db.Areas.find_one(
+            {"deep": 2, "name": sub_county, "parentId": res_county["_id"]})
+        if not res_sub_county:
+            ks_sheet.cell(current_row, 9).value = sub_county
+            current_row += 1
+            continue
+        area_dict = bee_common_db.Areas.find_one(
+            {"deep": 3, "name": area, "parentId": res_sub_county["_id"]})
+        not_find_area = []
+        if not area_dict:
+            not_find_area.append(area)
+        if row[6].value:
+            for it in row[6].value.split(","):
+                it = strip_string_name(it)
+                if it:
+                    res_area = bee_common_db.Areas.find_one(
+                        {"deep": 3, "name": it,
+                         "parentId": res_sub_county["_id"]})
+                    if not res_area:
+                        not_find_area.append(it)
+        ks_sheet.cell(current_row, 10).value = ",".join(not_find_area)
+        current_row += 1
+        print(current_row)
+    wb_obj.save(file_route)
+
+
+def get_xed_address(file_name):
+    workbook = xlsxwriter.Workbook(file_name)
+    worksheet_1 = workbook.add_worksheet("address")
+    bold = workbook.add_format(
+        {'bold': True, 'align': 'center', 'valign': 'vcenter'})
+    other_bold = workbook.add_format({'align': 'center', 'valign': 'vcenter'})
+    worksheet_1.write("A1", "ID", bold)
+    worksheet_1.write("B1", "County", bold)
+    worksheet_1.write("C1", "SubCounty", bold)
+    worksheet_1.write("D1", "Word", bold)
+    worksheet_1.set_column('A:D', 20, other_bold)
+    worksheet_1.set_row(0, 20)
+    current_row = 2
+    for it in bee_common_db.Areas.find({"regionCode": "KE", "deep": 3}).sort(
+            [("parentId", 1), ("name", 1)]):
+        sub_county = bee_common_db.Areas.find_one(
+            {"_id": it["parentId"]})
+        county = bee_common_db.Areas.find_one({"_id": sub_county["parentId"]})
+        worksheet_1.write('A%d' % current_row, it.get("_id"))
+        worksheet_1.write('B%d' % current_row, county["name"])
+        worksheet_1.write('C%d' % current_row, sub_county["name"])
+        worksheet_1.write('D%d' % current_row, it["name"])
+        current_row += 1
+        print(current_row, it.get("_id"))
+
+    workbook.close()
+
+
+
 if __name__ == "__main__":
     usage = 'python3 Sxx.py prd|dev|test'
     init_logging("release_ready.log")
@@ -226,8 +301,9 @@ if __name__ == "__main__":
         member_db = get_db(url, env, "Member")
 
     # pull_pickup_station("./address Update V6.xlsx", from_seller=from_seller)
-    push_pickup_station("./address Update V5.1.xlsx")
-
+    # push_pickup_station("./address Update V5.1.xlsx")
+    # get_not_match_address("./address Update V5.1.xlsx")
+    get_xed_address("ke_address.xlsx")
 
 
 
