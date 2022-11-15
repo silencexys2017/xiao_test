@@ -7,6 +7,7 @@ import json
 from datetime import datetime, timedelta
 from openpyxl import load_workbook
 import xlsxwriter
+from prd_kiliexpress import sign_in, get_area_tree
 
 
 
@@ -275,6 +276,68 @@ def get_xed_address(file_name):
     workbook.close()
 
 
+def update_express_address():
+    deep_1_id, deep_2_id = 0, 0
+    for it in bee_common_db.LogisticsAddress.find(
+            {"deep": 1}).sort([("_id", -1)]).limit(1):
+        deep_1_id = it["_id"] + 1
+    for it in bee_common_db.LogisticsAddress.find(
+            {"deep": 2}).sort([("_id", -1)]).limit(1):
+        deep_2_id = it["_id"] + 1
+    token = sign_in()["data"]
+    for region in get_area_tree(token)["data"]:
+        if region.get("country") == "KE":
+            for city in region.get("subAreaList"):
+                area_2 = bee_common_db.LogisticsAddress.find_one(
+                    {"selfAreaId": city["areaId"]})
+                if not area_2:
+                    print(city, 1)
+                    bee_common_db.LogisticsAddress.insert_one(
+                        {
+                            "_id": deep_1_id,
+                            "regionCode": region["code"],
+                            "parentId": 8,
+                            "selfAreaId": city.get("areaId"),
+                            "selfAreaCode": city.get("areaCode"),
+                            "providerId": "KiliExpress",
+                            "name": city.get("areaNameEn"),
+                            "deep": 1,
+                            "isSupportToDoor": bool(city.get("supportToDoor")),
+                            "isSupportPickup": False,
+                            "isLeaf": False,
+                            "state": 1,
+                            "areaIds": [],
+                            "leafAreaIds": [],
+                            "pickupIds": []
+                        }
+                    )
+                    deep_1_id += 1
+                deep_id_1 = area_2["_id"] if area_2 else deep_1_id
+                for area in city.get("subAreaList") or []:
+                    if not bee_common_db.LogisticsAddress.find_one(
+                            {"selfAreaId": area["areaId"]}):
+                        print(area, 2)
+                        bee_common_db.LogisticsAddress.insert_one(
+                            {
+                                "_id": deep_2_id,
+                                "regionCode": "KE",
+                                "parentId": deep_id_1,
+                                "selfAreaId": area["areaId"],
+                                "selfAreaCode": area["areaCode"],
+                                "providerId": "KiliExpress",
+                                "name": area["areaNameEn"],
+                                "deep": 2,
+                                "isSupportToDoor": bool(area["supportToDoor"]),
+                                "isSupportPickup": False,
+                                "isLeaf": True,
+                                "state": area["status"],
+                                "areaIds": [],
+                                "leafAreaIds": [],
+                                "pickupIds": []
+                            }
+                        )
+                        deep_2_id += 1
+
 
 if __name__ == "__main__":
     usage = 'python3 Sxx.py prd|dev|test'
@@ -303,7 +366,7 @@ if __name__ == "__main__":
     # pull_pickup_station("./address Update V6.xlsx", from_seller=from_seller)
     # push_pickup_station("./address Update V5.1.xlsx")
     # get_not_match_address("./address Update V5.1.xlsx")
-    get_xed_address("ke_address.xlsx")
-
+    # get_xed_address("ke_address.xlsx")
+    update_express_address()
 
 

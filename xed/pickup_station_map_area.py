@@ -6,7 +6,6 @@ import pymongo
 import json
 from datetime import datetime, timedelta
 from openpyxl import load_workbook
-from prd_kiliexpress import get_pick_up_stations, get_area_tree, sign_in
 
 
 _DEFAULT_CONFIG_FILE = '../kili_config.json'

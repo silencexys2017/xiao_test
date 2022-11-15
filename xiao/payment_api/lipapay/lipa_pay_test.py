@@ -527,9 +527,9 @@ if __name__ == "__main__":
     print(password_encrypt)
     res = sdk_checkout_order(
         amount=60000, currency="KES", merchant_id=merchant_id,
-        merchant_order_no="343432F3264231", expiration_time="1000000",
+        merchant_order_no="343432F3264232", expiration_time="1000000",
         channel_code="ipay010102", goods_list=goods_list,
-        email="", mobile="254714456852",
+        email="11599834@qq.com", mobile="254714456852",
         seller_id="33333333", seller_account="33333333", buyer_id="100100013",
         buyer_account="4444444",
         custom_field_1=None, custom_field_2=None,
