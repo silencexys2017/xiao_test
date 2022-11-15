@@ -525,21 +525,21 @@ if __name__ == "__main__":
     """wallet020101,mpesa020106,mpesa020105,ipay010102"""
     password_encrypt = encrypt("123456")
     print(password_encrypt)
-    # res = sdk_checkout_order(
-    #     amount=60000, currency="KES", merchant_id=merchant_id,
-    #     merchant_order_no="343432F3264261", expiration_time="1000000",
-    #     channel_code="wallet020101", goods_list=goods_list,
-    #     email="", mobile="254714456852",
-    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
-    #     buyer_account="4444444",
-    #     custom_field_1=None, custom_field_2=None,
-    #     custom_field_3=None,  remark="", password=password_encrypt
-    # )
+    res = sdk_checkout_order(
+        amount=60000, currency="KES", merchant_id=merchant_id,
+        merchant_order_no="343432F3264231", expiration_time="1000000",
+        channel_code="ipay010102", goods_list=goods_list,
+        email="", mobile="254714456852",
+        seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+        buyer_account="4444444",
+        custom_field_1=None, custom_field_2=None,
+        custom_field_3=None,  remark="", password=password_encrypt
+    )
     # password_encrypt = encrypt("123456")
     # res = wallet_payment(
     #     merchant_order_id="343435F3464254", order_id="K2210180724381326032",
     #     password=password_encrypt)
-    res = query_transaction(order_no="C120220426000015")
+    # res = query_transaction(order_no="C120220426000015")
     # res = cancel_order(order_no="343435F3464253", amount="60001")
     # res = refund_order(
     #     merchant_refund_id="4", order_id="K2204220344557447114",
