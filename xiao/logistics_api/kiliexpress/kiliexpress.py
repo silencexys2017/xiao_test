@@ -189,7 +189,7 @@ def create_return_order(
     data["goodsList"] = goods_li
     data = {
     "merchantNo": "kilimall",
-    "merchantOrderNo": "KEA20221026121481477",
+    "merchantOrderNo": "K0221026121481477",
     "isToDoor": 0,
     "payMethod": "1",
     "orderType": "FBK",
@@ -227,6 +227,45 @@ def create_return_order(
     ]
 }
     data["sign"] = hashlib_md5(json.dumps(data)+merchant_key)
+    data_1 = {
+	"merchantNo": "southx",
+	"merchantOrderNo": "100000153",
+	"isToDoor": 1,
+	"payMethod": 1,
+	"orderType": "FBK",
+	"notifyUrl": "https://queen-api.kilitest.com/open/express/kiliexpress/track/callback",
+	"countryCode": "KE",
+	"shipperForm": {
+		"shipperName": "de quanxinde",
+		"shipperMobile": "9991111656",
+		"shipperCountry": "KE",
+		"shipperProvince": "Nairobi",
+		"shipperCity": "307",
+		"shipperAreaCode": "100116",
+		"shipperAddress": "testsetestsetsetestsetset",
+		"shipperPostcode": None,
+		"networkId": None
+	},
+	"consigneeForm": {
+		"consigneeName": "Kilimall International Ltd(After sale)",
+		"consigneeMobile": "0792233051",
+		"consigneeCountry": "KE",
+		"consigneeProvince": "Machakos",
+		"consigneeCity": "448",
+		"consigneeAreaCode": "101109",
+		"consigneeAddress": "Athi 55 Business Park, Go Down No.18, Opposite Signature Mall, along Mombasa Road.",
+		"consigneePostcode": None
+	},
+	"goodsList": [{
+		"skuId": "10000100048",
+		"goodsName": "2022071502  testing goods lkjskfjlksjakfljksjfksend ",
+		"goodsCount": 1,
+		"goodsUnit": "piece",
+		"goodsType": "",
+		"goodsWeight": None
+	}],
+	"sign": "333d88994b02c799c9757dc11684b3eb"
+}
     print(data)
     # headers["Authorization"] = token
     result = requests.post(
@@ -592,8 +631,8 @@ if __name__ == "__main__":
     #                    waybill_no=None, remark=None, merchant_order_no=None)
     # res = waybill_state_notify(
     #     waybill_no="KE466431979", status=90, business_type="SO", remark=None)
-    # res = waybill_track_notify(order_no="KEESSOSX2635426317")
-    # res = get_tracks(merchant_order_no="XD1001425521", waybill_no="")
+    # res = waybill_track_notify(order_no="KEFBROSX0491844007")
+    # res = get_tracks(merchant_order_no="", waybill_no="KEFBROSX9102821336")
     # res = get_area_tree()
     # res = get_pick_up_stations(100102)
     print(res)

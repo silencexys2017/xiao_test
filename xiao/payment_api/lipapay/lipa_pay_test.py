@@ -16,6 +16,7 @@ update_wallet_phone_api = "https://lipapay-wallet.kilitest.com/api/user/updateBi
 wallet_payment_api = "https://lipapay-cashier.kilitest.com/api/walletPayment.htm"
 # order_checkout_url = "http://demo45.net.kili.co/api/excashier.html"
 sdk_checkout_url = "https://lipapay-cashier.kilitest.com/v2/user/sdkSubmitPayment"
+# sdk_checkout_url = "https://pay.kilimall.com/cashier/v2/user/sdkSubmitPayment"
 order_checkout_url = "https://lipapay-cashier.kilitest.com/v2/app/excashierCreateOrder"
 # query_transaction_url = "http://demo45.net.kili.co/api/queryExcashierOrder.htm"
 query_transaction_url = "https://lipapay-cashier.kilitest.com/api/queryExcashierOrder.htm"
@@ -24,7 +25,7 @@ refund_order_url = "https://lipapay-cashier.kilitest.com/api/orderRefund.htm"
 merchant_id = "2016051112014649173095"
 # merchant_id = "kilimall-ke"
 password = "1234567890"
-sign_key = "He4AXjdOmq1G2YH3RKVSS4kqU5VFa4aK"
+# sign_key = "He4AXjdOmq1G2YH3RKVSS4kqU5VFa4aK"
 wallet_key = "Lx0PuHxEOcIzaQbo"
 # sign_key = "Gw416RCMO8tD5MSUg5dok5uQGvR3rPpx"
 notify_url = "https://uomnify-test.perfee.com/api/payment/lipapay/webhook"
@@ -223,7 +224,7 @@ def new_checkout_order(
         )
     data["goods"] = goods_li
 
-    result = requests.post(url=order_checkout_url, json=data)
+    result = requests.post(url=order_checkout_url, json=data, verify=False)
     if str(result.status_code).startswith("5"):
         raise Exception("Request method not recognised or implemented.")
     print("result.status_code=%r" % result.status_code)
@@ -304,7 +305,7 @@ def sdk_checkout_order(
             response_url = response_url + str(k) + "=" + str(v) + "&"
     response_url = response_url[:-1]
 
-    result = requests.post(url=sdk_checkout_url,  json=data)
+    result = requests.post(url=sdk_checkout_url,  json=data, verify=False)
     print(json.dumps(result.json()))
     print(json.loads(result.request.body))
     if str(result.status_code).startswith("5"):
@@ -527,9 +528,9 @@ if __name__ == "__main__":
     print(password_encrypt)
     res = sdk_checkout_order(
         amount=60000, currency="KES", merchant_id=merchant_id,
-        merchant_order_no="343432F3264232", expiration_time="1000000",
+        merchant_order_no="343432F32343232", expiration_time="1000000",
         channel_code="ipay010102", goods_list=goods_list,
-        email="11599834@qq.com", mobile="254714456852",
+        email="1159983582@qq.com", mobile="254714456852",
         seller_id="33333333", seller_account="33333333", buyer_id="100100013",
         buyer_account="4444444",
         custom_field_1=None, custom_field_2=None,
