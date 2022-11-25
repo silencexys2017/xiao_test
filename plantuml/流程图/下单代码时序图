@@ -1,0 +1,166 @@
+@startuml
+title 下单流程时序图
+
+actor         客户端             as cus      order 1
+participant   mallAPI            as api      order 2
+participant   goodsService       as goods    order 3
+participant   memberService      as member   order 4
+participant   authService        as auth     order 5
+participant   commonService      as common   order 6
+participant   orderService       as order    order 7
+participant   promotionService   as pro    order 8
+participant   sellerService      as seller    order 9
+database      mongoDb            as db       order 10
+entity        ofs                as ofs      order 11
+queue         mq                 as mq       order 12
+database      redis              as redis       order 10
+database      kong               as kong     order 11
+
+
+cus -> api: [post] /v2/place-order
+opt 判断是否为cod，并验证手机
+autonumber 1.1
+api -> order: get_parameter 获取是否开启cod手机验证
+activate order
+order <-> db: parameter.find_one 查询是否开启cod手机验证
+order -> api: bool
+deactivate order
+api -> auth: get_contact_list 获取手机是否验证
+activate auth
+auth <-> db: contact.find 查询用户手机相关信息
+auth -> api: list<contact>
+deactivate auth
+api -> api: 验证手机
+end
+|||
+group 检测下单地址相关内容，自提点与area，判断地址是否有效，是否支持cod
+autonumber 2.1
+api -> member: getAddress 获取用户下单地址
+activate member
+member <-> db: address.find_one 查询下单地址
+member -> api: obj(address)
+deactivate member
+api ->api: 判断地址是否有效
+api ->common: getAreaById 获取地址最后一级area
+activate common
+common <-> db: Areas.find_one 查询area
+common -> api: boj(area)
+deactivate common
+opt 判断收货地址是否为自提点
+api -> common: get_pickup_station 获取自提点信息
+activate common
+common <-> db: PickupStation.find_one 查询自提点
+common -> api: ojb(pickupStation)
+deactivate common
+api -> api: 判断是否支持cod
+end
+end
+|||
+group 获取skus相关信息，检查获取skus参加的活动，确定商品仓库，检测库存是否满足
+autonumber 3.1
+api -> goods: getSkusByIds 获取skus信息
+activate goods
+goods <-> db: SpecOfSku.find 查询skus
+goods <-> db: SkuPrice.find 查询skus价格
+note over goods, db
+以下查询存在循环里面查询， SpecOfListing.find_one在单个循环里面多次查询
+end note
+goods <-> db: SpecOfListing.find_one 查询liting信息
+goods <-> db: Category.find_one 查询类目信息
+goods -> api: list<sku>
+deactivate goods
+api -> goods: get_sku_vendor_info 获取skus的供应商信息
+activate goods
+goods -> db: SpecOfSku.find 获取skus信息 重复+1=2
+goods -> api: list<SkuVendorInfo>
+deactivate goods
+note left of api
+get_sku_vendor_info 与getSkusByIds 查询表SpecOfSku一致，导致多次查询
+end note
+api -> common: getRegionById 查询地址国家
+common <-> db: region.find_one 查询国家
+common -> api: obj(Region)
+api -> pro: get_promotions_by_ids 获取sku所参加的活动信息
+activate pro
+pro <-> db: Promotion.find 查询活动
+pro -> api: list<Promotion>
+deactivate pro
+alt sku 有库存缓存
+api <-> redis: cache.redis_get 获取库存
+else sku没有库存缓存
+api <-> ofs: [get] ofc/open/warehouse-product-stocks-of-region 获取库存
+end
+api <-> ofs: [get] /ofc/open/warehouse/support/delivery 检查仓库是不是支持配送
+api <-> ofs: [get] /ofc/open/warehouses 查询仓库信息【一次查所有，然后根据id匹配】
+api -> goods: getSkuInventoryFromStoreWarehouse 如果本国物理仓、虚拟仓都没有， 查询卖家虚拟仓的库存
+activate goods
+goods <-> db: SkuInventory.find_one 查询卖家虚拟仓的库存
+goods <-> ofs: /ofc/open/warehouses 查询仓库信息 重复多次+1=4
+goods <-> db: Warehouse.find 查询卖家虚拟仓
+goods <->db: WarehouseConfig.find_one 查询仓库在商城的配置
+goods <->db: WarehouseConfig.find_one_and_update 如果没查不到，更新仓库商城配置
+goods -> api: obj(SkuInventory)
+deactivate goods
+api -> common: getRegionById 得到仓库的regionCode
+activate common
+common <-> db: region.find_one 查询国家 重复+1=2
+common -> api: obj(Region)
+deactivate common
+
+alt 有仓库发货配置缓存
+api <-> kong: config.get 获取仓库发货配置
+else 没有仓库发货配置缓存
+api <-> ofs: [get] /ofs/{region_code}/map.json 获取仓库发货配置
+end
+api -> api: 判断skus使用的仓库，库存是否够用等信息
+
+api -> goods: get_warehouse_by_id 获取仓库信息 存在循环调用
+activate goods
+goods <-> ofs: /ofc/open/warehouses 查询仓库信息 重复多次+1=4
+goods <-> db: Warehouse.find 查询卖家虚拟仓
+goods <->db: WarehouseConfig.find_one 查询仓库在商城的配置
+goods <->db: WarehouseConfig.find_one_and_update 如果没查不到，更新仓库商城配置
+goods -> api: obj(Warehouse)
+deactivate goods
+end
+|||
+group 获取店铺相关信息，并检测店铺是否在正常状态
+autonumber 4.1
+api -> seller: get_stores_by_ids 获取店铺相关信息
+api -> seller: get_sellers_by_ids 获取商户相关信息
+
+end
+|||
+group 获取skus参加活动的信息，判断活动是否失效
+autonumber 5.1
+api -> pro: get_valid_general_activities 获取skus参加活动的信息，判断活动是否失效
+api -> order: get_user_activity_skus 获取用户已经下单的商品及活动
+api -> pro: get_deal_skus 查看skus是否参加活动TODAY DEAL
+api -> pro: get_active_big_discount_sale_skus_by_sku_ids 查看skus是否参加活动 大促big sale
+api -> order: get_user_so_count 获取用户下单情况，是否能使用redeem抵扣订单
+api -> goods: get_categories_by_listing_ids 获取sku的类目信息 重复+1
+api -> member: get_valid_voucher 获取有效的优惠券
+api -> member: get_place_order_redeem 获取下单使用的coins
+end
+|||
+group 得到skus能够使用的支付方式 pre，cod，online
+autonumber 6.1
+api -> goods: get_skus_prepayment_setting 重复查询listing +1
+api -> order: get_parameter 获取预支付总开关,支付比例
+api -> api: 计算skus的预付比例
+end
+|||
+group 计算运费，在线支付免运费，满减等
+autonumber 7.1
+api -> goods: get_weight_of_listings 重复查询listing +1
+api -> goods: get_parameter_list 获取运费策略
+api -> order: get_parameter 获取预支付总开关,支付比例
+api -> api: 计算skus的预付比例
+api -> goods: get_product_postage 获取lising运费设置
+api -> seller: get_store_postage 获取运费店铺设置
+api -> common: getRegionById 获取国家 重复+1
+api <-> ofs: [get] /ofs/{region_code}/map.json 获取仓库发货配置 重复+1
+
+
+end
+@enduml

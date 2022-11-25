@@ -18,6 +18,7 @@ wallet_payment_api = "https://lipapay-cashier.kilitest.com/api/walletPayment.htm
 sdk_checkout_url = "https://lipapay-cashier.kilitest.com/v2/user/sdkSubmitPayment"
 # sdk_checkout_url = "https://pay.kilimall.com/cashier/v2/user/sdkSubmitPayment"
 order_checkout_url = "https://lipapay-cashier.kilitest.com/v2/app/excashierCreateOrder"
+# order_checkout_url = "https://pay.kilimall.com/cashier/v2/app/excashierCreateOrder"
 # query_transaction_url = "http://demo45.net.kili.co/api/queryExcashierOrder.htm"
 query_transaction_url = "https://lipapay-cashier.kilitest.com/api/queryExcashierOrder.htm"
 cancel_order_url = "https://lipapay-cashier.kilitest.com/api/cancelOrder.htm"
@@ -25,7 +26,7 @@ refund_order_url = "https://lipapay-cashier.kilitest.com/api/orderRefund.htm"
 merchant_id = "2016051112014649173095"
 # merchant_id = "kilimall-ke"
 password = "1234567890"
-# sign_key = "He4AXjdOmq1G2YH3RKVSS4kqU5VFa4aK"
+sign_key = "He4AXjdOmq1G2YH3RKVSS4kqU5VFa4aK"
 wallet_key = "Lx0PuHxEOcIzaQbo"
 # sign_key = "Gw416RCMO8tD5MSUg5dok5uQGvR3rPpx"
 notify_url = "https://uomnify-test.perfee.com/api/payment/lipapay/webhook"
@@ -224,8 +225,9 @@ def new_checkout_order(
         )
     data["goods"] = goods_li
 
-    result = requests.post(url=order_checkout_url, json=data, verify=False)
+    result = requests.post(url=order_checkout_url, json=data)
     if str(result.status_code).startswith("5"):
+        print(result)
         raise Exception("Request method not recognised or implemented.")
     print("result.status_code=%r" % result.status_code)
     print("result.context=%r" % result.text)
@@ -320,6 +322,8 @@ def sdk_checkout_order(
         res_url = response_url
     print(response)
     return response, result.url
+"""{"paymentResult": "failure", "p2": null, "p1": "100101861", "requestParams": null, "accountNo": null, "p3": null, "merchantOrderNo": "cee58f07-600c-11ed-b4da-9e3b98c11598", "paySn": null, "subErrParam": "Incorrect password. Attempts left: 3", "httpMethod": null, "amount": "301800", "subErrCode": "403", "channelType": "02", "lipapayOrderNo": "K2211090859487004105", "channelUrl": null}"""
+
 
 def query_transaction(order_no):
     params = {
@@ -512,30 +516,30 @@ if __name__ == "__main__":
     #     custom_field_3=None, country_code="KE", remark="",
     #     use_installment=False)
 
-    # res = new_checkout_order(
-    #     amount=60000, currency="KES", merchant_id=merchant_id,
-    #     merchant_order_no="343435F3464252",
-    #     expiration_time="1000000", source_type="B", goods_list=goods_list,
-    #     email="34324@qq.com",  mobile="254714456852",
-    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
-    #     buyer_account="4444444", customer_ip="10.0.0.140", channels="",
-    #     payment_method="AP", custom_field_1="324324", custom_field_2=None,
-    #     custom_field_3=None, country_code="", remark="3432432",
-    #     use_installment=None)
+    res = new_checkout_order(
+        amount=60000, currency="KES", merchant_id=merchant_id,
+        merchant_order_no="343435F3464252",
+        expiration_time="1000000", source_type="B", goods_list=goods_list,
+        email="34324@qq.com",  mobile="254714456852",
+        seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+        buyer_account="4444444", customer_ip="10.0.0.140", channels="",
+        payment_method="AP", custom_field_1="324324", custom_field_2=None,
+        custom_field_3=None, country_code="", remark="3432432",
+        use_installment=None)
 
     """wallet020101,mpesa020106,mpesa020105,ipay010102"""
     password_encrypt = encrypt("123456")
     print(password_encrypt)
-    res = sdk_checkout_order(
-        amount=60000, currency="KES", merchant_id=merchant_id,
-        merchant_order_no="343432F32343232", expiration_time="1000000",
-        channel_code="ipay010102", goods_list=goods_list,
-        email="1159983582@qq.com", mobile="254714456852",
-        seller_id="33333333", seller_account="33333333", buyer_id="100100013",
-        buyer_account="4444444",
-        custom_field_1=None, custom_field_2=None,
-        custom_field_3=None,  remark="", password=password_encrypt
-    )
+    # res = sdk_checkout_order(
+    #     amount=60000, currency="KES", merchant_id=merchant_id,
+    #     merchant_order_no="343432F32343232", expiration_time="1000000",
+    #     channel_code="ipay010102", goods_list=goods_list,
+    #     email="1159983582@qq.com", mobile="254714456852",
+    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+    #     buyer_account="4444444",
+    #     custom_field_1=None, custom_field_2=None,
+    #     custom_field_3=None,  remark="", password=password_encrypt
+    # )
     # password_encrypt = encrypt("123456")
     # res = wallet_payment(
     #     merchant_order_id="343435F3464254", order_id="K2210180724381326032",

@@ -266,13 +266,13 @@ def create_return_order(
 	}],
 	"sign": "333d88994b02c799c9757dc11684b3eb"
 }
-    print(data)
     # headers["Authorization"] = token
     result = requests.post(
         base_url+create_return_order_api, json=data)
     print(result.status_code)
     res = result.json()
     print(res)
+    """{'data': {'logisticsNo': 'KEFBROKM7240426830', 'merchantOrderNo': 'KEA20221026121481477'}, 'code': 200, 'message': 'success'}"""
     if res.get("code") != 200:
         raise Exception(res.get("error"))
     return res
