@@ -102,6 +102,8 @@ def convert_time_str(date_time):
 def strip_string_name(name):
     if not name:
         return
+    if not isinstance(name, str):
+        name = str(name)
     name = name.strip()
     split_names = [s.capitalize() if "-" not in s else s for s in name.split(" ")]
     split_names = list(filter(None, split_names))
@@ -154,8 +156,8 @@ def pull_pickup_station(file_route, from_seller=False):
 def push_pickup_station(file_route):
     wb_obj = load_workbook(file_route, data_only=True)
     ks_sheet = wb_obj.get_sheet_by_name("KS&ward")
-    total_count = 612
-    for row in list(ks_sheet.iter_rows(min_row=612, max_row=678)):
+    total_count, error_stations = 2, []
+    for row in list(ks_sheet.iter_rows(min_row=3, max_row=679)):
         total_count += 1
         county, sub_county, area = strip_string_name(
             row[0].value), strip_string_name(row[1].value), strip_string_name(
@@ -178,8 +180,8 @@ def push_pickup_station(file_route):
             station = bee_common_db.PickupStation.find_one_and_update(
                 {"sourceStationId": shop_id},
                 {"$addToSet": {"leafAreaIds": area_dict["_id"]}})
-            # if not station:
-            #     continue
+            if not station:
+                error_stations.append(shop_id)
             bee_common_db.Areas.update_one(
                 {"_id": area_dict["_id"]},
                 {"$addToSet": {"pickupIds": shop_id}})
@@ -194,14 +196,15 @@ def push_pickup_station(file_route):
                     station = bee_common_db.PickupStation.find_one_and_update(
                         {"sourceStationId": shop_id},
                         {"$addToSet": {"leafAreaIds": res_area["_id"]}})
-                    # if not station:
-                    #     continue
+                    if not station:
+                        error_stations.append(shop_id)
                     bee_common_db.Areas.update_one(
                         {"_id": res_area["_id"]},
                         {"$addToSet": {"pickupIds": shop_id}})
                     print(
                         "update pickup area=%s,sourceStationId=%s,line=%s" % (
                             it, shop_id, total_count))
+    print("error_stations=%r" % error_stations)
 
 
 def get_not_match_address(file_route):
@@ -364,9 +367,8 @@ if __name__ == "__main__":
         member_db = get_db(url, env, "Member")
 
     # pull_pickup_station("./address Update V6.xlsx", from_seller=from_seller)
-    # push_pickup_station("./address Update V5.1.xlsx")
+    push_pickup_station("./address Update V6.xlsx")
     # get_not_match_address("./address Update V5.1.xlsx")
     # get_xed_address("ke_address.xlsx")
-    update_express_address()
-
+    # update_express_address()
 

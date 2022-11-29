@@ -345,7 +345,7 @@ if __name__ == "__main__":
     #     waybill_no="KE313248870", status=90, business_type="SO", remark=None)
     # res = waybill_track_notify(order_no="KEESSOSX2635426317")
     res = get_tracks(
-        token, merchant_order_no="", waybill_no="KEFBSOXD0437534201")
+        token, merchant_order_no="", waybill_no="KEFBSOXD7710308271")
     # res = get_area_tree(token=token)
     # res = get_pick_up_stations("100123")
     print(res)
