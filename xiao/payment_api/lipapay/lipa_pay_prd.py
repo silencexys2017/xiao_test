@@ -10,10 +10,10 @@ from copy import deepcopy
 order_checkout_url = "https://www.lipapay.com/api/excashier.html"
 query_transaction_url = "https://www.lipapay.com/api/queryExcashierOrder.htm"
 cancel_order_url = "https://www.lipapay.com/api/cancelOrder.htm"
-merchant_id = "LP1645525242888"
-# merchant_id = "kilimall-ke"
-sign_key = "Yx0qb3wWzzG1Je5W97jGTf54bjCZOVgL"
-# sign_key = "Gw416RCMO8tD5MSUg5dok5uQGvR3rPpx"
+# merchant_id = "LP1645525242888"  # supply
+merchant_id = "LP1652932882829"  # lite
+# sign_key = "Yx0qb3wWzzG1Je5W97jGTf54bjCZOVgL"
+sign_key = "Jd41ybDMvbCfatLo0EyUAZp2SvPU1p6E"
 notify_url = "https://uomnify.perfee.com/api/payment/lipapay/webhook"
 return_url = "https://uomnify.perfee.com/api/payment/lipapay/callback"
 sa = "eyIkYXBwX3ZlcnNpb24iOiI0LjQuMC5EIiwiJGxpYiI6IkFuZHJvaWQiLCIkbGliX3ZlcnNpb24iOiI0LjQuNSIsIiRtYW51ZmFjdHVyZXIiOiJIVUFXRUkiLCIkbW9kZWwiOiJITUEtQUwwMCIsIiRvcyI6IkFuZHJvaWQiLCIkb3NfdmVyc2lvbiI6IjUuMS4xIiwiJHNjcmVlbl9oZWlnaHQiOjE5MjAsIiRzY3JlZW5fd2lkdGgiOjEwODAsIiR3aWZpIjp0cnVlLCIkbmV0d29ya190eXBlIjoiV0lGSSIsIiRjYXJyaWVyIjoiXHU0ZTJkXHU1NmZkXHU3OWZiXHU1MmE4IiwiJGlzX2ZpcnN0X2RheSI6dHJ1ZSwiJGFwcF9pZCI6Im5ldC5raWxpbWFsbC5zaG9wIiwiJHRpbWV6b25lX29mZnNldCI6LTQ4MCwiJGRldmljZV9pZCI6ImI4ZTk0Y2RjOTYyMzIxZWEiLCIkYXBwX25hbWUiOiJLaWxpbWFsbChEKSIsImFwcF9tYXJrZXQiOiJERVYiLCJjbGllbnRfbmFtZSI6ImFuZHJvaWRfYnV5ZXIiLCJwbGF0Zm9ybV90eXBlIjoiQW5kcm9pZCIsImFub255bW91c0lkIjoiYjhlOTRjZGM5NjIzMjFlYSIsImFkanVzdGlkIjoiY2NhYmQ5MmU1YjdlMDY3Nzg0OTNlNjY0ZDZkOGUwYjQiLCIkaXAiOiIxNjAuMjAuNTUuNjYifQ=="
@@ -208,17 +208,17 @@ if __name__ == "__main__":
         }
 
     ]
-    res = checkout_order(
-        amount=18200, currency="KES", merchant_id=merchant_id,
-        merchant_order_no="P12022022600013",
-        expiration_time="172800", source_type="B", goods_list=goods_list,
-        email='9991234036@perfeetest.com',  mobile='13052262256',
-        seller_id="", seller_account="", buyer_id="2",
-        buyer_account="9**********", customer_ip='172.16.1.49', channels="",
-        payment_method="AP", custom_field_1="1029", custom_field_2=None,
-        custom_field_3=None, country_code="KE", remark="",
-        use_installment=None)
-    # res = query_transaction(order_no="P120220226000026")
+    # res = checkout_order(
+    #     amount=18200, currency="KES", merchant_id=merchant_id,
+    #     merchant_order_no="P12022022600013",
+    #     expiration_time="172800", source_type="B", goods_list=goods_list,
+    #     email='9991234036@perfeetest.com',  mobile='13052262256',
+    #     seller_id="", seller_account="", buyer_id="2",
+    #     buyer_account="9**********", customer_ip='172.16.1.49', channels="",
+    #     payment_method="AP", custom_field_1="1029", custom_field_2=None,
+    #     custom_field_3=None, country_code="KE", remark="",
+    #     use_installment=None)
+    res = query_transaction(order_no="a3ec84bd-6ff2-11ed-a008-b6d47b14f78f")
     # res = cancel_order(order_no="4WHDJ2UNAEQQF349", amount="2")
 
     print(res)
