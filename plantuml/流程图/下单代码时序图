@@ -13,8 +13,8 @@ participant   sellerService      as seller    order 9
 database      mongoDb            as db       order 10
 entity        ofs                as ofs      order 11
 queue         mq                 as mq       order 12
-database      redis              as redis       order 10
-database      kong               as kong     order 11
+database      redis              as redis       order 13
+database      kong               as kong     order 14
 
 
 cus -> api: [post] /v2/place-order
@@ -160,7 +160,37 @@ api -> goods: get_product_postage 获取lising运费设置
 api -> seller: get_store_postage 获取运费店铺设置
 api -> common: getRegionById 获取国家 重复+1
 api <-> ofs: [get] /ofs/{region_code}/map.json 获取仓库发货配置 重复+1
-
+end
+|||
+group 锁定库存
+autonumber 8.1
+api -> goods: add_reservations 锁定普通商品库存
+alt 非备货商品库存
+goods <-> db: SkuInventory.find_one_and_update 锁定非备货商品库存
+else ofc管理库存商品
+goods <-> ofs: [post] /ofc/open/update-product-stocks 锁定备货商品库存
+end
+goods -> api: bool
+api -> goods: 如果是非团购活动商品，锁定商品活动库存
+alt reed抵扣活动
+goods <-> db: RedeemSku.find_one 查找redeemSku库存
+goods <-> db: RedeemSku.find_one_and_update 锁定redeemSku库存
+else flash活动
+goods <-> db: activity_sku.find_one 查找redeemSku库存
+goods <-> db: activity_sku.find_one_and_update 锁定redeemSku库存
+end
+goods -> api: void
+end
+|||
+group 团购是否可以开启
+autonumber 9.1
+api -> pro: whether_can_start_a_team 是否可以开启团购
+pro <-> db: GroupBuying.find_one 查询团购
+pro -> api: bool
+api -> pro: whether_can_join_a_team 是否可以加入团购
+pro <-> db: GroupBuyingTeam.find_one 查询团购批次
+pro <-> db: GroupBuying.find_one 查询团购
+pro -> api: bool
 
 end
 @enduml
