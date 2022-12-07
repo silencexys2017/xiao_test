@@ -191,6 +191,38 @@ api -> pro: whether_can_join_a_team 是否可以加入团购
 pro <-> db: GroupBuyingTeam.find_one 查询团购批次
 pro <-> db: GroupBuying.find_one 查询团购
 pro -> api: bool
+end
+|||
+group 下单
+autonumber 10.1
+api -> order: place_order 得到订单的所有参数，下订单
+order -> order: 分摊抵扣，分摊运费，判断是否使用cod支付；\n拆分订单，计算税费，拆分coin分摊，优惠券使用与分摊，pre支付分摊
+order <-> db: OrderBatch.find_one 查询最近1s有没有下过单，防止重复下单
+order <-> db: db.parameter.find_one 查询PRODUCT_LIMIT_COD_AMOUNT
+order <-> db: db.parameter.find_one 查询BATCH_LIMIT_COD_AMOUNT
+order <-> db: AccountOrder.find_one 查询用户历史下单情况
+order <-> db:ShipPackage.find 查询最近一次完结订单的交付情况
+order <-> db:ShipmentRefusal.find_one 查询拒收详情
+order <-> db:SaleOrder.find_one 查询so创建时间
+order <-> db: parameter.find_one 查询税收开关配置
+order <-> db: parameter.find_one 查询税率
+order <-> db: OrderBatch.insert_one 生成OrderBatch
+order <-> db: SaleOrderDetail.insert_one 生成SaleOrderDetail
+order <-> db: OrderPromotionDetail.insert_one 创建订单商品活动
+order <-> db: SaleOrder.insert_one 根据warehous和店铺拆分创建多个so
+order <-> db: OrderLog.insert_one 创建订单track
+order <-> db: OrderOperateLog.insert_one 创建订单操作日志
+order <-> db: parameter.find_one 三次自动取消相关
+order <-> db: Bill.insert_one 创建账单Bill
+order <-> db: PayBill.insert_one 多次，按类型（redeem，voucher， online， cod)
+order <-> db: PreOrder.find_one_and_update 更新PreOrder
+order <-> db: VoucherBill.insert_one 多次，按优惠券数量
+order <-> db: AccountOrder.update_one 更新用户订单统计
+order -> api: obj(OrderBatch)
+end
+|||
+group 下单后续操作
+autonumber 11.1
 
 end
 @enduml

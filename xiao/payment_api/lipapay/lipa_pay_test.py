@@ -516,30 +516,30 @@ if __name__ == "__main__":
     #     custom_field_3=None, country_code="KE", remark="",
     #     use_installment=False)
 
-    res = new_checkout_order(
-        amount=60000, currency="KES", merchant_id=merchant_id,
-        merchant_order_no="343435F3464252",
-        expiration_time="1000000", source_type="B", goods_list=goods_list,
-        email="34324@qq.com",  mobile="254714456852",
-        seller_id="33333333", seller_account="33333333", buyer_id="100100013",
-        buyer_account="4444444", customer_ip="10.0.0.140", channels="",
-        payment_method="AP", custom_field_1="324324", custom_field_2=None,
-        custom_field_3=None, country_code="", remark="3432432",
-        use_installment=None)
+    # res = new_checkout_order(
+    #     amount=60000, currency="KES", merchant_id=merchant_id,
+    #     merchant_order_no="343435F3464252",
+    #     expiration_time="1000000", source_type="B", goods_list=goods_list,
+    #     email="34324@qq.com",  mobile="254714456852",
+    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+    #     buyer_account="4444444", customer_ip="10.0.0.140", channels="",
+    #     payment_method="AP", custom_field_1="324324", custom_field_2=None,
+    #     custom_field_3=None, country_code="", remark="3432432",
+    #     use_installment=None)
 
     """wallet020101,mpesa020106,mpesa020105,ipay010102"""
     password_encrypt = encrypt("123456")
     print(password_encrypt)
-    # res = sdk_checkout_order(
-    #     amount=60000, currency="KES", merchant_id=merchant_id,
-    #     merchant_order_no="343432F32343232", expiration_time="1000000",
-    #     channel_code="ipay010102", goods_list=goods_list,
-    #     email="1159983582@qq.com", mobile="254714456852",
-    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
-    #     buyer_account="4444444",
-    #     custom_field_1=None, custom_field_2=None,
-    #     custom_field_3=None,  remark="", password=password_encrypt
-    # )
+    res = sdk_checkout_order(
+        amount=60000, currency="KES", merchant_id=merchant_id,
+        merchant_order_no="343432F32343232", expiration_time="1000000",
+        channel_code="ipay010102", goods_list=goods_list,
+        email="1159983582@qq.com", mobile="254714456852",
+        seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+        buyer_account="4444444",
+        custom_field_1=None, custom_field_2=None,
+        custom_field_3=None,  remark="", password=password_encrypt
+    )
     # password_encrypt = encrypt("123456")
     # res = wallet_payment(
     #     merchant_order_id="343435F3464254", order_id="K2210180724381326032",
