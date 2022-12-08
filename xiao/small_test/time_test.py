@@ -5,9 +5,9 @@ from obs import ObsClient
 import traceback
 
 
-ACCESS_KEY_ID = "DGPPFA6T9KAA6L2JHEGP"
-SECRET_ACCESS_KEY = "fE83em0fUmE8RbBlGSXcZw4peohKGl2a27jHC1lp"
-SERVER_URL = "https://obs.ap-southeast-3.myhuaweicloud.com"
+ACCESS_KEY_ID = "BQAK1A35FNZRCLOIGPOV"
+SECRET_ACCESS_KEY = "pLIjnidp8PmHFKePxDPrGRTS5JaNYxeNWRbuGy4J"
+SERVER_URL = "https://obs.cn-south-4.myhuaweicloud.com"
 
 
 def utc2local(utc_st):
@@ -55,9 +55,31 @@ def return_test():
     return 1, 2
 
 
+def put_file(resource_name, file_name, content=None, is_temp=False):
+    suffix = file_name.split('.')[-1]
+    headers.contentType = CONTENT_TYPE[suffix]
+
+    if is_temp is True:
+        obj_key = '{}tmp/{}/{}'.format(
+            current_app.config.get("resource/prefix"), resource_name, file_name)
+    else:
+        obj_key = '{}{}/{}'.format(
+            current_app.config.get("resource/prefix"), resource_name, file_name)
+
+    resp = obs_client.putContent(
+        current_app.config["24.jpg"],
+        obj_key, content=content, headers=headers)
+    obs_client.close()
+    if resp.status >= 300:
+        abort(constants.HTTP_CODE_400,
+              code=DEF_EXCEPTIONS.ERROR_UPLOAD_RESOURCE_INVALID,
+              msg=resp.reason)
+    else:
+        # return resp.body.objectUrl
+        return resp
+
+
 def obs_test():
-
-
     obs_client = ObsClient(
         access_key_id=ACCESS_KEY_ID,
         secret_access_key=SECRET_ACCESS_KEY,
@@ -79,7 +101,7 @@ def obs_test():
         print(traceback.format_exc())
 
 
-def upload_file_to_obs(bucket_name, object_name, file_path):
+def upload_file_to_obs(bucket_name, object_name, file_path=None):
     obs_client = ObsClient(
         access_key_id=ACCESS_KEY_ID,
         secret_access_key=SECRET_ACCESS_KEY,
@@ -117,13 +139,17 @@ if __name__ == "__main__":
 
     # 本地转utc
     # utc_tran = local2utc(utc_time)
-    res = _local_time_to_utc("2021-05-05 21:27:34")
-    print(res)
+    # res = _local_time_to_utc("2021-05-05 21:27:34")
     # print(utc_tran)
     # output：2014-09-18 10:42:16
     # res = local_obj_time_to_utc(datetime(2020, 2, 1))
     # res = return_test()
     # obs_test()
-    # upload_file_to_obs()
+    object_name = '{}tmp/{}/{}'.format("dev/", "wms-public-temp-dev", "24.jpg")
+    upload_file_to_obs(bucket_name="k-fms-temp-cn",
+                       object_name='{}/{}/{}'.format("dev", "xiao-test", "24"),
+                       file_path="24.jpg")
+    print(res)
+
     # print(res)
     # time_zone_convert()
