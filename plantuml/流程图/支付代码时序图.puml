@@ -1,0 +1,77 @@
+@startuml
+title 支付代码流程时序图
+
+actor         app                as app      order 1
+participant   mallAPI            as api      order 2
+participant   orderService       as orders   order 3
+participant   memberService      as member   order 4
+participant   commonService      as common   order 5
+participant   authService        as auth     order 6
+participant   goodsService       as goods    order 7
+database      mongoDb            as db       order 10
+entity        lipaPay            as pay      order 11
+
+group 用户发起支付
+app -> api: [post] /bill-order-pay/<int:bill_id>  发起支付（增加参数 payCode，phone，email，password，sdkType）
+autonumber 1.1
+api -> api: 对增加的参数payCode，sdkType进行默认处理；对password解密
+api -> orders: get_one_bill 获取账单
+orders <-> db: Bill.find_one 查询账单
+orders <-> db: SaleOrder.distinct 获取bill下的so_ids
+orders <-> db: SaleOrderDetail.distinct 获取bill下的activityType
+orders -> api: obj(Bill)
+api <-> orders: get_sale_orders_by_bill_id 获取支付bill下的销售订单
+api <-> orders: check_pay_group_buying_order 如果是团购订单，看是否可以支付
+api <-> common: getRegionById 获取国家信息
+api <-> orders: get_batch_by_bill_id 获取batch下的sku
+api <-> goods: get_sku_info 获取sku信息 循环下多次
+api <-> auth: getAccountInfo 获取用户信息
+api -> orders: initiate_online_payment 开启在线支付
+orders -> db: Bill.find_one 查询账单
+orders -> db: PayBill.find_one 查询支付账单
+alt 如果是so cod付款
+orders -> db: SaleOrder.find_one 查询saleOrder
+else 预付款
+orders -> db: SaleOrder.find 查询bill下的saleOrder
+end
+orders -> db: PayTransactions.find_one 查询交易
+opt 没有创建交易
+orders -> db: PayTransactions.insert_one 创建交易
+end
+orders -> db: PaySession.find 查询最近一次发起的session
+opt 如果最后一个session已过期，则
+orders <-> db: PaySession.find_one_and_update 更新session失效
+end
+alt 如果是sdk支付
+orders <-> pay: [post] /cashier/v2/user/sdkSubmitPayment sdk支付
+else 收银台
+orders <-> pay: [post] /cashier/v2/app/excashierCreateOrder 收银台支付
+end
+orders -> db: PaySession.insert_one 创建PaySession
+orders -> api: obj(PaymentProduct)
+end
+|||
+group 用户支付过程
+autonumber 2.1
+api -> app: 打开或跳转到相关支付页面
+app -> app: 操作支付过程
+end
+|||
+group 支付回调
+pay -> api: [post] /api/payment/lipapay/webhook
+autonumber 3.1
+api -> orders: 支付结果通知
+orders -> orders: 验签
+orders <-> db: PaySession.find_one 查询支付session
+orders <-> db: PayTransactions.find_one 查询支付交易
+orders <-> db: PayTransactions.find_one_and_update 更新支付状态
+orders <-> db: PaySession.find_one_and_update 更新支付状态
+orders <-> db: Bill.find_one_and_update 更新支付状态
+orders <-> db: PayBill.find_one_and_update 更新支付状态
+alt due 支付
+orders <-> db: SaleOrder.find_one_and_update 更新支付状态
+else pre 支付
+orders <-> db: SaleOrder.update_many 更新支付状态
+end
+end
+@enduml
