@@ -212,7 +212,7 @@ order <-> db: OrderPromotionDetail.insert_one 创建订单商品活动
 order <-> db: SaleOrder.insert_one 根据warehous和店铺拆分创建多个so
 order <-> db: OrderLog.insert_one 创建订单track
 order <-> db: OrderOperateLog.insert_one 创建订单操作日志
-order <-> db: parameter.find_one 三次 自动取消订单相关参数
+order <-> db: parameter.find_one 三次自动取消相关
 order <-> db: Bill.insert_one 创建账单Bill
 order <-> db: PayBill.insert_one 多次，按类型（redeem，voucher， online， cod)
 order <-> db: PreOrder.find_one_and_update 更新PreOrder
