@@ -58,8 +58,8 @@ app -> app: 操作支付过程
 end
 |||
 group 支付回调
-pay -> api: [post] /api/payment/lipapay/webhook
 autonumber 3.1
+pay -> api: [post] /api/payment/lipapay/webhook
 api -> orders: 支付结果通知
 orders -> orders: 验签
 orders <-> db: PaySession.find_one 查询支付session
@@ -72,6 +72,35 @@ alt due 支付
 orders <-> db: SaleOrder.find_one_and_update 更新支付状态
 else pre 支付
 orders <-> db: SaleOrder.update_many 更新支付状态
+end
+end
+|||
+group 支付结果页
+alt 收银台支付
+autonumber 4.1.1
+pay -> api: [get] /api/payment/lipapay/callback 跳转到支付结果
+api -> orders: verify_transaction 验证结果
+orders -> db: PaySession.find_one 查询PaySession
+orders -> db: PayTransactions.find_one 查询交易 如果交易状态已支付，则return
+opt 如果未支付，api查询交易状态,如果交易完成，更新相关支付状态
+orders -> pay: [post] /cashier/api/queryExcashierOrder.htm 查询交易状态
+orders <-> db: PayTransactions.find_one_and_update 更新支付状态
+orders <-> db: PaySession.find_one_and_update 更新支付状态
+orders <-> db: Bill.find_one_and_update 更新支付状态
+orders <-> db: PayBill.find_one_and_update 更新支付状态
+alt due 支付
+orders <-> db: SaleOrder.find_one_and_update 更新支付状态
+else pre 支付
+orders <-> db: SaleOrder.update_many 更新支付状态
+end
+end
+orders -> api: obj(PaySession)
+api -> app: 重定向到支付结果页
+else sdk支付
+autonumber 4.2.1
+app -> api: [get] /bill-order-pay/<int:bill_id>
+api <-> orders: get_pay_status 获取支付状态
+api -> app: 支付结果展示
 end
 end
 @enduml
