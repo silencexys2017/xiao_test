@@ -103,4 +103,8 @@ api <-> orders: get_pay_status 获取支付状态
 api -> app: 支付结果展示
 end
 end
+note over app, pay
+1 get_sale_orders_by_bill_id 和 get_batch_by_bill_id重复
+2 其他支付方式未删除
+end note
 @enduml

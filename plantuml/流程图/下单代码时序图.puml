@@ -259,4 +259,16 @@ api <-> ofs: [get] /ofs/{region_code}/map.json 获取仓库发货配置 重复�
 api <-> api: calc_platform_postage 获取平台运费策略，重复多次
 api <-> order: get_parameter 获取收税开关设置
 end
+note over cus, redis
+1: 库表删减、新增、合并，比如OrderPromotionDetail，preOrder等考虑去掉， OrderLog表和OrderOperateLog表可以合并
+2：代码精简与规范，支付与物流去掉不再使用的服务商接口与配置，去掉相关代码；编码格式不一致（下划线，驼峰）；代码逻辑顺序问题；代码的可读性差，接口复杂没有写注释；很多地方用数字，没有用变量名，不知道含义
+3：接口合并，比如销售订单详情与发运单详情
+4：循环查询问题，多余的业务操作 get_sku_vendor_info
+5：仓库查询接口不规范，单个warehouse查询所有；多次查询同一个接口（api层查询了ofs warehouse，goods service又查询了ofs warehouse)
+6：代码逻辑重复，判断商品gs,ds,fbk类型重复判断逻辑；cod订单，compute_so_postage逻辑重复
+7：各个大的业务没有文档说明，导致不好维护
+8：同一库表多次查询，查询SpecOfLising等重复多次
+9：代码逻辑顺序问题，锁库存时是先下单，再锁库存，会导致下单成功，锁库失败；
+10： 预下单接口与下单接口很多地方共用，导致做了一些多余的操作
+end note
 @enduml
