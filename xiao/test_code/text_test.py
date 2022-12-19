@@ -14,3 +14,10 @@ params = json.dumps(a, separators=(',', ':'), ensure_ascii=False)
 sign_1 = hashlib.md5((params + "12345678").encode(
     encoding='utf-8')).hexdigest()
 print(sign_1)
+
+
+def argus_kw(**kwargs):
+    print(kwargs)
+
+
+argus_kw([32432])
