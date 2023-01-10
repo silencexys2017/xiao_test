@@ -16,8 +16,8 @@ sign_1 = hashlib.md5((params + "12345678").encode(
 print(sign_1)
 
 
-def argus_kw(**kwargs):
-    print(kwargs)
+def argus_kw(kwargs):
+    print(**kwargs)
 
-
-argus_kw([32432])
+a = {"xiao": 23}
+argus_kw(a)

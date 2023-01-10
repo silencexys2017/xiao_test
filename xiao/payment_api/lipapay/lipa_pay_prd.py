@@ -10,6 +10,7 @@ from copy import deepcopy
 order_checkout_url = "https://www.lipapay.com/api/excashier.html"
 query_transaction_url = "https://www.lipapay.com/api/queryExcashierOrder.htm"
 cancel_order_url = "https://www.lipapay.com/api/cancelOrder.htm"
+wallet_info_url = "https://pay.kilimall.com/balance/api/getWalletInfo.htm"
 # merchant_id = "LP1645525242888"  # supply
 merchant_id = "LP1652932882829"  # lite
 # sign_key = "Yx0qb3wWzzG1Je5W97jGTf54bjCZOVgL"
@@ -29,7 +30,7 @@ def get_signature(data_dict):
     sorted_keys = sorted(data_dict)
     plain_text = ""
     for key in sorted_keys:
-        if data_dict[key] is None or key in ["version", "sign", "countryCode"]:
+        if data_dict[key] is None or key in ["version", "sign"]:
             continue
         value = str(data_dict[key])
         plain_text = plain_text + str(key) + "=" + value + "&"
@@ -185,6 +186,23 @@ def cancel_order(order_no, amount):
     #     raise Exception(response.get("message"))
     # return response
 
+def get_wallet_info(account_id, phone=None):
+    data = {
+        "merchantId": merchant_id,
+        "merchantUserId": account_id,
+        "currencyCode": "KES",
+        "countryCode": "KE",
+        "signType": "MD5"
+    }
+    if phone:
+        data["phoneNo"] = phone
+    data["sign"] = get_signature(data)
+
+    result = requests.post(url=wallet_info_url, data=data, timeout=30,
+                           verify=False)
+    print(result.status_code)
+    print(result.json())
+
 
 if __name__ == "__main__":
     goods_list = [
@@ -218,7 +236,8 @@ if __name__ == "__main__":
     #     payment_method="AP", custom_field_1="1029", custom_field_2=None,
     #     custom_field_3=None, country_code="KE", remark="",
     #     use_installment=None)
-    res = query_transaction(order_no="a3ec84bd-6ff2-11ed-a008-b6d47b14f78f")
+    # res = query_transaction(order_no="a3ec84bd-6ff2-11ed-a008-b6d47b14f78f")
     # res = cancel_order(order_no="4WHDJ2UNAEQQF349", amount="2")
+    res = get_wallet_info(11166703)
 
     print(res)
