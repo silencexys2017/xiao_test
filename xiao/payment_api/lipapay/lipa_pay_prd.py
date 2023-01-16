@@ -197,6 +197,7 @@ def get_wallet_info(account_id, phone=None):
     if phone:
         data["phoneNo"] = phone
     data["sign"] = get_signature(data)
+    print(data["sign"])
 
     result = requests.post(url=wallet_info_url, data=data, timeout=30,
                            verify=False)
@@ -238,6 +239,6 @@ if __name__ == "__main__":
     #     use_installment=None)
     # res = query_transaction(order_no="a3ec84bd-6ff2-11ed-a008-b6d47b14f78f")
     # res = cancel_order(order_no="4WHDJ2UNAEQQF349", amount="2")
-    res = get_wallet_info(11166703)
+    res = get_wallet_info(100007985)  # 11166703
 
     print(res)
