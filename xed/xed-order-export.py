@@ -83,9 +83,10 @@ def utc2local(utc_datetime):
 
 def export_logistics_order(start_time, end_time):
     # 客户ID/姓名/地址/电话
-    logistics_li = list(logistics_db.LogisticsOrder.find(
-        {"userType": 1, "createdAt": {"$gte": start_time, "$lt": end_time}}
-    ).sort([("_id", -1)]))
+    # logistics_li = list(logistics_db.LogisticsOrder.find(
+    #     {"userType": 1, "createdAt": {"$gte": start_time, "$lt": end_time}}
+    # ).sort([("_id", -1)]))
+    logistics_li = [{"xiao": 1}]
     workbook = xlsxwriter.Workbook(FILE_NAME)
     worksheet = workbook.add_worksheet("orders")
     headings = [
@@ -104,6 +105,8 @@ def export_logistics_order(start_time, end_time):
         worksheet.write('A%d' % row, row-1)
         worksheet.write('B%d' % row, k.get("orderNo"))
         worksheet.write('C%d' % row, k.get("saleOrderId"))
+        worksheet.write(2, 2, k.get("xiao"))
+        continue
         sku_ids = ""
         sku_count = ""
         skus_ch_name = ""
@@ -144,14 +147,14 @@ def get_error_logistics_order():
 if __name__ == "__main__":
     usage = 'python3 Sxx.py prd|dev|test'
 
-    init_logging("xed-order-export.log")
-    if len(sys.argv) < 2:
-        logging.error(usage)
-        sys.exit(-1)
-
-    env = sys.argv[1]
-    config = load_config(_DEFAULT_CONFIG_FILE, env)
-    logistics_db = get_db(config, env, "BeeLogistics")
+    # init_logging("xed-order-export.log")
+    # if len(sys.argv) < 2:
+    #     logging.error(usage)
+    #     sys.exit(-1)
+    #
+    # env = sys.argv[1]
+    # config = load_config(_DEFAULT_CONFIG_FILE, env)
+    # logistics_db = get_db(config, env, "BeeLogistics")
     FILE_NAME = "xed-order.xlsx"
 
     start_time = datetime(2021, 12, 1)
