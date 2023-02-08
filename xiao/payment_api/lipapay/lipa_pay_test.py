@@ -23,6 +23,7 @@ order_checkout_url = "https://lipapay-cashier.kilitest.com/v2/app/excashierCreat
 query_transaction_url = "https://lipapay-cashier.kilitest.com/api/queryExcashierOrder.htm"
 cancel_order_url = "https://lipapay-cashier.kilitest.com/api/cancelOrder.htm"
 refund_order_url = "https://lipapay-cashier.kilitest.com/api/orderRefund.htm"
+query_refund_url = "https://lipapay-cashier.kilitest.com/api/queryRefundOrder.htm"
 merchant_id = "2016051112014649173095"
 # merchant_id = "kilimall-ke"
 password = "1234567890"
@@ -343,6 +344,25 @@ def query_transaction(order_no):
     return response
 
 
+def query_refund(merchant_refund_id=None, refund_id=None):
+    params = {
+        "merchantId": merchant_id,
+        "signType": "MD5",
+        "merchantRefundId": merchant_refund_id,
+        "refundId": refund_id
+    }
+    params["sign"] = get_signature(params)
+    result = requests.post(
+        url=query_refund_url, data=params, timeout=30)
+    print(result.text)
+    if str(result.status_code).startswith("5"):
+        raise Exception("Request method not recognised or implemented.")
+    response = result.json()
+    if response.get("status") is False:
+        raise Exception(response.get("message"))
+    return response
+
+
 def cancel_order(order_no, amount):
     params = {
         "merchantId": merchant_id,
@@ -530,25 +550,34 @@ if __name__ == "__main__":
     """wallet020101,mpesa020106,mpesa020105,ipay010102"""
     password_encrypt = encrypt("123456")
     print(password_encrypt)
-    res = sdk_checkout_order(
-        amount=60000, currency="KES", merchant_id=merchant_id,
-        merchant_order_no="343432F32343232", expiration_time="1000000",
-        channel_code="ipay010102", goods_list=goods_list,
-        email="1159983582@qq.com", mobile="254714456852",
-        seller_id="33333333", seller_account="33333333", buyer_id="100100013",
-        buyer_account="4444444",
-        custom_field_1=None, custom_field_2=None,
-        custom_field_3=None,  remark="", password=password_encrypt
-    )
+    # res = sdk_checkout_order(
+    #     amount=60000, currency="KES", merchant_id=merchant_id,
+    #     merchant_order_no="343432F32343232", expiration_time="1000000",
+    #     channel_code="ipay010102", goods_list=goods_list,
+    #     email="1159983582@qq.com", mobile="254714456852",
+    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+    #     buyer_account="4444444",
+    #     custom_field_1=None, custom_field_2=None,
+    #     custom_field_3=None,  remark="", password=password_encrypt
+    # )
     # password_encrypt = encrypt("123456")
     # res = wallet_payment(
     #     merchant_order_id="343435F3464254", order_id="K2210180724381326032",
     #     password=password_encrypt)
-    # res = query_transaction(order_no="C120220426000015")
+    # res = query_transaction(order_no="dc098038-8c9f-11ed-ba7d-a2e129364c3e")
+    # res = query_refund(
+    #     merchant_refund_id="13e2a4e6-9243-11ed-9343-2af363be1a47*822",
+    #     refund_id="")
     # res = cancel_order(order_no="343435F3464253", amount="60001")
     # res = refund_order(
-    #     merchant_refund_id="4", order_id="K2204220344557447114",
-    #     merchant_order_id="C120220422000071", amount="34342", reason=None,
-    #     p0=None, payment_trans_id=None, org_name=None, is_use_wallet="N")
-
+    #     merchant_refund_id="8be2ff4f-a2e1-11ed-8137-366296d04d89*110",
+    #     order_id="K2302021008355517011",
+    #     merchant_order_id="8be2ff4f-a2e1-11ed-8137-366296d04d89",
+    #     amount="37700", reason=None,
+    #     p0="110", payment_trans_id=None, org_name=None, is_use_wallet="N")
+    res = get_signature({'actualRefundAmount': '90300', 'errorCode': '00000', 'errorMsg': 'SUCCESS',
+'merchantOrderId': '65462cd4-3406-11ed-9f12-16e32b1b94a4',
+'merchantRefundId': '65462cd4-3406-11ed-9f12-16e32b1b94a4*66',
+'orderId': 'K2210310255288784677', 'refundAmount': '90300', 'refundOrg': 'wallet', 'refundStatus': 'SUCCESS',
+'sign': '2d468abba94ec65b9d08ac9f5d1dbbd7', 'signType': 'MD5'})
     print(res)
