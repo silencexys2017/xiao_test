@@ -253,7 +253,8 @@ def create_tables(cursor):
     name VARCHAR(128),
     province_id INTEGER,
     city_id INTEGER,
-    region_id INTEGER
+    region_id INTEGER,
+    region_code VARCHAR(28)
     );"""
     # cursor.execute("""DROP TABLE dim_area;""")
     cursor.execute(dim_area)
@@ -262,7 +263,8 @@ def create_tables(cursor):
     id INTEGER,
     name VARCHAR(128),
     province_id INTEGER,
-    region_id INTEGER
+    region_id INTEGER,
+    region_code VARCHAR(28)
     );"""
     # cursor.execute("""DROP TABLE dim_city;""")
     cursor.execute(dim_city)
@@ -270,7 +272,8 @@ def create_tables(cursor):
     dim_province = """CREATE TABLE dim_province (
     id INTEGER,
     name VARCHAR(128),
-    region_id INTEGER
+    region_id INTEGER,
+    region_code VARCHAR(28)
     );"""
     # cursor.execute("""DROP TABLE dim_province;""")
     cursor.execute(dim_province)
@@ -286,7 +289,8 @@ def create_tables(cursor):
     dim_warehouse = """CREATE TABLE dim_warehouse (
     id INTEGER,
     name VARCHAR(128),
-    region_id INTEGER
+    region_id INTEGER,
+    region_code VARCHAR(28)
     );"""
     # cursor.execute("""DROP TABLE dim_warehouse;""")
     cursor.execute(dim_warehouse)
@@ -308,7 +312,8 @@ def create_tables(cursor):
             id INTEGER,
             region_id INTEGER,
             name VARCHAR(128),
-            phone VARCHAR(28)
+            phone VARCHAR(28),
+            region_code VARCHAR(28)
             );"""
     # cursor.execute("""DROP TABLE dim_seller;""")
     cursor.execute(dim_seller)
@@ -318,7 +323,9 @@ def create_tables(cursor):
             seller_id INTEGER,
             region_id INTEGER,
             seller_region_id INTEGER,
-            name VARCHAR(128)
+            name VARCHAR(128),
+            region_code VARCHAR(28),
+            seller_region_code VARCHAR(28)
             );"""
     # cursor.execute("""DROP TABLE dim_store;""")
     cursor.execute(dim_store)
@@ -450,7 +457,8 @@ def create_tables(cursor):
         region_id INTEGER,
         phone_number VARCHAR(128),
         mailbox VARCHAR(128),
-        facebook_account VARCHAR(128)
+        facebook_account VARCHAR(128),
+        google_account VARCHAR(128)
         );"""
     # cursor.execute("""DROP TABLE actual_user_and_contact;""")
     cursor.execute(actual_user_and_contact)
@@ -484,8 +492,8 @@ def create_tables(cursor):
 
 
 def insert_user_and_contact_into_base(cursor, start_id, end_id):
-    query = {"id": {"$gte": start_id, "$lt": end_id}}
-    for item in auth_db.account.find(query).sort([("id", 1)]):
+    for item in auth_db.account.find().sort(
+            [("id", 1)]).skip(start_id).limit(end_id):
         user = {}
         for it in auth_db.contact.find({"accountId": item["id"]}):
             if it["type"] == 1:
@@ -494,6 +502,8 @@ def insert_user_and_contact_into_base(cursor, start_id, end_id):
                 user["email"] = it["value"]
             elif it["type"] == 3:
                 user["facebook"] = it["value"]
+            elif it["type"] == 6:
+                user["google"] = it["value"]
         logging.info(
             "insert into actual_user_and_contact user_id=%s" % item["id"])
         cursor.execute(
@@ -501,7 +511,8 @@ def insert_user_and_contact_into_base(cursor, start_id, end_id):
                 "insert into {} values (%s, %s, %s, %s, %s, %s, %s)").format(
                 sql.Identifier('actual_user_and_contact')), [
                 item["id"], item["nick"], item["timeCreated"], item["region"],
-                user.get("phone"), user.get("email"), user.get("facebook"), ])
+                user.get("phone"), user.get("email"), user.get("facebook"),
+                user.get("google")])
 
 
 def is_leap_year(years):
@@ -629,30 +640,33 @@ def get_all_day_per_year(year, cursor):
 
 
 def insert_datetime_into_base(cursor):
-    for it in range(2018, 2031):
+    for it in range(2022, 2031):
         get_all_day_per_year(it, cursor)
 
 
-def insert_store_into_base(cursor):
+def insert_store_into_base(cursor, region_dict):
     for it in seller_db.Store.find():
         cursor.execute(
-            sql.SQL("insert into {} values (%s, %s, %s, %s, %s)").format(
+            sql.SQL("insert into {} values (%s, %s, %s, %s, %s, %s,%s)").format(
                 sql.Identifier('dim_store')), [
                 it["_id"], it["sellerId"], it["regionId"], it["sellerRegionId"],
-                it["name"]])
+                it["name"], region_dict[it["regionId"]]["code"],
+                region_dict[it["sellerRegionId"]]["code"]])
     for it in seller_db.Seller.find():
         cursor.execute(
-            sql.SQL("insert into {} values (%s, %s, %s, %s)").format(
+            sql.SQL("insert into {} values (%s, %s, %s, %s, %s)").format(
                 sql.Identifier('dim_seller')), [
-                it["_id"], it["regionId"], it["name"], it["phone"]])
+                it["_id"], it["regionId"], it["name"], it["phone"],
+                region_dict[it["regionId"]]["code"]])
 
 
-def insert_warehouse_and_cat(cursor):
-    for it in goods_db.Warehouse.find():
+def insert_warehouse_and_cat(cursor, region_dict, warehouse_dict):
+    for it in warehouse_dict.values():
         cursor.execute(
             sql.SQL("insert into {} values (%s, %s, %s)").format(
                 sql.Identifier('dim_warehouse')), [
-                it["_id"], it["name"], it["regionId"]])
+                it["_id"], it["name"], region_dict[it["code"]]["id"],
+                it["code"]])
 
     for it in goods_db.Category.find({"depth": 2}):
         print(it)
@@ -681,30 +695,34 @@ def insert_warehouse_and_cat(cursor):
 
 
 def insert_address_into_base(cursor):
-    for it in common_db.region.find():
+    for deep_0 in common_db.Areas.find({"deep": 0}):
+        region = common_db.region.find_one({"code": deep_0["regionCode"]})
         cursor.execute(
             sql.SQL("insert into {} values (%s, %s, %s)").format(
                 sql.Identifier('dim_region')), [
-                it["id"], it["name"], it["code"]])
-
-    for it in common_db.state.find():
-        cursor.execute(
-            sql.SQL("insert into {} values (%s, %s, %s)").format(
-                sql.Identifier('dim_province')), [
-                it["id"], it["name"], it["regionId"]])
-
-    for it in common_db.city.find():
-        cursor.execute(
-            sql.SQL("insert into {} values (%s, %s, %s, %s)").format(
-                sql.Identifier('dim_city')), [
-                it["id"], it["name"], it["stateId"], it["regionId"]])
-
-    for it in common_db.area.find():
-        cursor.execute(
-            sql.SQL("insert into {} values (%s, %s, %s, %s, %s)").format(
-                sql.Identifier('dim_area')), [
-                it["id"], it["name"], it["stateId"], it["cityId"],
-                it["regionId"]])
+                region["id"], deep_0["name"], deep_0["regionCode"]])
+        for deep_1 in common_db.Areas.find(
+                {"regionCode": deep_0["regionCode"], "deep": 1}):
+            cursor.execute(
+                sql.SQL("insert into {} values (%s, %s, %s, %s)").format(
+                    sql.Identifier('dim_province')), [
+                    deep_1["_id"], deep_1["name"], region["id"],
+                    deep_0["regionCode"]])
+        for deep_2 in common_db.Areas.find(
+                {"regionCode": deep_0["regionCode"], "deep": 2}):
+            cursor.execute(
+                sql.SQL("insert into {} values (%s, %s, %s, %s, %s)").format(
+                    sql.Identifier('dim_city')), [
+                    deep_2["_id"], deep_2["name"], deep_2["parentId"],
+                    region["id"], deep_0["regionCode"]])
+        for deep_3 in common_db.Areas.find(
+                {"regionCode": deep_0["regionCode"], "deep": 3}):
+            deep_2 = common_db.Areas.find_one({"_id": deep_3["parentId"]})
+            cursor.execute(
+                sql.SQL("insert into {} values (%s,%s,%s,%s,%s,%s)").format(
+                    sql.Identifier('dim_area')), [
+                    deep_3["_id"], deep_3["name"], deep_3["parentId"],
+                    deep_2["parentId"], region["id"], deep_0["regionCode"]])
 
 
 def ratio_split_integer(split_num, each_ratio):
@@ -977,7 +995,7 @@ def create_dw_sale_order(
                     so["id"], order_tp, payment_type, order_state[2],
                     order_time, order_time, confirm_time or close_time])
 
-    elif so["status"] == 4:
+    elif so["status"] in [4, 7]:
         cursor.execute(
             sql.SQL("insert into {} values (%s, %s, %s, %s, %s, %s, %s)"
                     ).format(sql.Identifier('dw_sale_order')), [
@@ -1055,15 +1073,20 @@ def create_dw_sale_order(
                 order_time, end_time])
 
 
-def insert_order_into_base(cursor, start_id, end_id):
-    warehouse_di = {it["_id"]: it["regionId"] for it in
-                    goods_db.Warehouse.find({})}
-    so_query = {"id": {"$gte": start_id, "$lt": end_id}}
-    for so in order_db.SaleOrder.find(so_query).sort([("id", 1)]):
+def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
+    for so in order_db.SaleOrder.find().sort(
+            [("id", 1)]).skip(start_id).limit(end_id):
         if so.get("isRobot"):
             continue
         store = seller_db.Store.find_one({"_id": so["storeId"]})
         address = member_db.address.find_one({"id": so["addressId"]})
+        if address.get("areaId"):
+            area_id, city_id = address.get("areaId"), address["cityId"]
+        else:
+            area_dict, length = address["areaNames"], len(address["areaNames"])
+            area_id = int(list(area_dict[str(length)].keys())[0])
+            city_id = int(list(area_dict[str(length-1)].keys())[0])
+
         sod_count = so["skuCount"]
         each_ratio = {it+1: 1/sod_count for it in range(sod_count)}
         postage_di = ratio_split_integer(so["postage"], each_ratio)
@@ -1095,8 +1118,14 @@ def insert_order_into_base(cursor, start_id, end_id):
         for it in order_db.SaleOrderDetail.find({"orderId": so["id"]}):
             listing = goods_db.SpecOfListing.find_one({"_id": it["listingId"]})
             if not listing:
-                logging.error("listingId=%s not found in goods db")
+                logging.error(
+                    "listingId=%s not found in goods db" % it["listingId"])
                 continue
+            cate = goods_db.Category.find_one({"_id": listing["categoryId"]})
+            if cate["depth"] > 3:
+                category_id = cate["depth"].split(":")[2]
+            else:
+                category_id = listing["categoryId"]
             order_total = (it["amount"] + postage_di[postage_index] -
                            pos_dis_di[postage_index] - it["discount"])
             need_pay = order_total - it.get("redeem", 0) - it.get(
@@ -1110,16 +1139,15 @@ def insert_order_into_base(cursor, start_id, end_id):
                 paid = 0
                 cod_amount = need_pay
             create_date_key = int(so["createdAt"].strftime("%Y%m%d"))
-            warehouse_region_id = warehouse_di[so["warehouseId"]]
+            warehouse_region_id = warehouse_dict[so["warehouseId"]]["regionCode"]
             logging.info(
-                "insert into fact_sales values (%s, %s, %s, %s, %s, %s, %s, %s,"
+                "insert into fact_sales values (%s,%s, %s, %s, %s, %s, %s, %s,"
                 " %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,"
                 " %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
                 % (so["batchId"], so["billId"], it["orderId"], it["id"],
-                   create_date_key, listing["categoryId"], it["listingId"],
+                   create_date_key, category_id, it["listingId"],
                    it["skuId"], it["salePrice"], so["accountId"],
-                    store["sellerId"], so["storeId"],
-                    address["areaId"], address["cityId"],
+                    store["sellerId"], so["storeId"], area_id, city_id,
                     so["region"], so["warehouseId"], warehouse_region_id,
                     it["dealPrice"], it["count"], it["amount"],
                     postage_di[postage_index], it.get("redeem", 0),
@@ -1135,10 +1163,9 @@ def insert_order_into_base(cursor, start_id, end_id):
                         " %s, %s, %s)").format(
                     sql.Identifier('fact_sales')), [
                     so["batchId"], so["billId"], it["orderId"], it["id"],
-                    create_date_key, listing["categoryId"], it["listingId"],
+                    create_date_key, category_id, it["listingId"],
                     it["skuId"], it["salePrice"], so["accountId"],
-                    store["sellerId"], so["storeId"], address["areaId"],
-                    address["cityId"],
+                    store["sellerId"], so["storeId"], area_id, city_id,
                     so["region"], so["warehouseId"], warehouse_region_id,
                     it["dealPrice"], it["count"], it["amount"],
                     postage_di[postage_index], it.get("coin", 0),
@@ -1148,8 +1175,8 @@ def insert_order_into_base(cursor, start_id, end_id):
                     order_time, order_tp, pay_time, confirm_time, pay_during,
                     confirm_during])
             create_fact_sales_daily_detail(
-                cursor, so, it, create_date_key, listing["categoryId"],
-                store["sellerId"], address["areaId"], address["cityId"],
+                cursor, so, it, create_date_key, category_id,
+                store["sellerId"], area_id, city_id,
                 warehouse_region_id, postage_di[postage_index],
                 pos_dis_di[postage_index], order_total, need_pay, paid,
                 cod_amount, payment_type, order_tp, order_time, pay_time,
@@ -1158,17 +1185,24 @@ def insert_order_into_base(cursor, start_id, end_id):
 
 
 def insert_data_into_base(cursor):
+    regions = list(common_db.region.find())
+    region_id_dict = {it["id"]: it for it in regions}
+    region_code_dict = {it["code"]: it for it in regions}
+    warehouse_dict = {}
+    for it in wms_warehouse_db.Warehouse.find():
+        it["regionId"] = region_code_dict[it["regionCode"]]["code"]
+        warehouse_dict[it["_id"]] = it
     insert_datetime_into_base(cursor)
-    insert_store_into_base(cursor)
-    insert_warehouse_and_cat(cursor)
+    insert_store_into_base(cursor, region_id_dict)
+    insert_warehouse_and_cat(cursor, region_code_dict, warehouse_dict)
     insert_address_into_base(cursor)
     insert_enum_into_base(cursor)
     close_cursor(cursor)
 
-    thread_num_1 = 20
+    thread_num_1 = 30
     t_obj_1 = []
-    # interval_times = 25000
-    interval_times_1 = 24000
+    # prd 当前数量 2594457
+    interval_times_1 = 90000
     for item in range(thread_num_1):
         start_id = interval_times_1 + (item - 1) * interval_times_1
         end_id = interval_times_1 + item * interval_times_1
@@ -1178,20 +1212,20 @@ def insert_data_into_base(cursor):
             args=(cursor, start_id, end_id,))
         t_obj_1.append(t1)
         t1.start()
-
     for t1 in t_obj_1:
         t1.join()
 
-    thread_num = 20
+    thread_num = 10
     t_obj = []
-    # interval_times = 25000
-    interval_times = 18000
+    #  prd 当前数量 12973
+    interval_times = 1500
     for item in range(thread_num):
         start_id = interval_times + (item - 1) * interval_times
         end_id = interval_times + item * interval_times
         cursor = get_one_cursor(connect_oj)
         t1 = Thread(
-            target=insert_order_into_base, args=(cursor, start_id, end_id,))
+            target=insert_order_into_base, args=(
+                cursor, start_id, end_id, warehouse_dict))
         t_obj.append(t1)
         t1.start()
 
@@ -1215,6 +1249,7 @@ if __name__ == "__main__":
     order_db = get_db(config, env, "Order")
     goods_db = get_db(config, env, "Goods")
     member_db = get_db(config, env, "Member")
+    wms_warehouse_db = get_db(config, env, "WmsWarehouse")
     connect_oj = connect_post_gre_db(config, env)
 
     cursor_oj = get_one_cursor(connect_oj)
