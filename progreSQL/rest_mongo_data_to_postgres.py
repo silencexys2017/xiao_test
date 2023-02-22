@@ -275,8 +275,13 @@ def create_dw_sale_order(
 
 
 def insert_order_into_base(cursor, start_id, end_id):
-    warehouse_di = {it["_id"]: it["regionId"] for it in
-                    goods_db.Warehouse.find()}
+    regions = list(common_db.region.find())
+    region_code_dict = {it["code"]: it for it in regions}
+    warehouse_dict = {}
+    for it in wms_warehouse_db.Warehouse.find():
+        it["regionId"] = region_code_dict[it["regionCode"]]["code"]
+        warehouse_dict[it["_id"]] = it
+
     so_query = {"id": {"$gte": start_id, "$lt": end_id}}
     for so in order_db.SaleOrder.find(so_query).sort([("id", 1)]):
         if so.get("isRobot"):
@@ -384,6 +389,7 @@ if __name__ == "__main__":
     order_db = get_db(config, env, "Order")
     goods_db = get_db(config, env, "Goods")
     member_db = get_db(config, env, "Member")
+    wms_warehouse_db = get_db(config, env, "WmsWarehouse")
     connect_oj = connect_post_gre_db(config, env)
 
     cursor_oj = get_one_cursor(connect_oj)
