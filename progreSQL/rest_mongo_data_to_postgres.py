@@ -319,6 +319,7 @@ def insert_order_into_base(cursor, start_id, end_id):
         if confirm_time:
             confirm_during = confirm_time - order_time
         postage_index = 1
+        warehouse_region_id = warehouse_dict[so["warehouseId"]]["regionCode"]
         for it in order_db.SaleOrderDetail.find({"orderId": so["id"]}):
             listing = goods_db.SpecOfListing.find_one({"_id": it["listingId"]})
             if not listing:
@@ -343,7 +344,7 @@ def insert_order_into_base(cursor, start_id, end_id):
                     it["salePrice"], so["accountId"], user["nick"],
                     contact["value"], store["sellerId"], so["storeId"],
                     store["name"], address["areaId"], address["cityId"],
-                    so["region"], so["warehouseId"], warehouse_di[so["region"]],
+                    so["region"], so["warehouseId"], warehouse_region_id,
                     it["dealPrice"], it["count"], it["amount"],
                     postage_di[postage_index], it.get("redeem", 0),
                     it.get("voucherRedeem", 0), it.get("discount", 0),
@@ -362,7 +363,7 @@ def insert_order_into_base(cursor, start_id, end_id):
                     it["salePrice"], so["accountId"], user["nick"],
                     contact["value"], store["sellerId"], so["storeId"],
                     store["name"], address["areaId"], address["cityId"],
-                    so["region"], so["warehouseId"], warehouse_di[so["region"]],
+                    so["region"], so["warehouseId"], warehouse_region_id,
                     it["dealPrice"], it["count"], it["amount"],
                     postage_di[postage_index], it.get("coin", 0),
                     it.get("redeem", 0), it.get("voucherRedeem", 0),

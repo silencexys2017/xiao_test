@@ -1114,6 +1114,7 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
         confirm_during = None
         if confirm_time:
             confirm_during = confirm_time - order_time
+        warehouse_region_id = warehouse_dict[so["warehouseId"]]["regionCode"]
         postage_index = 1
         for it in order_db.SaleOrderDetail.find({"orderId": so["id"]}):
             listing = goods_db.SpecOfListing.find_one({"_id": it["listingId"]})
@@ -1139,7 +1140,7 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
                 paid = 0
                 cod_amount = need_pay
             create_date_key = int(so["createdAt"].strftime("%Y%m%d"))
-            warehouse_region_id = warehouse_dict[so["warehouseId"]]["regionCode"]
+
             logging.info(
                 "insert into fact_sales values (%s,%s, %s, %s, %s, %s, %s, %s,"
                 " %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,"
