@@ -25,7 +25,7 @@ map_pay_method = {
 X_DB_URL = {
     "dev": "mongodb://pf_dev_dbo:Bp2Q5j3Jb2cmQvn8L4kW@mongodb-paas-service/admin?replicaSet=rs0",
 	"test": "mongodb://pf_test_dbo:3f4k8aDHeQJBKmd3z7c9@159.138.90.30:30734/admin",
-    "prd": "mongodb://rwuser:pUvn39maqw%25rMcU8Kki9z#z@159.138.162.77:8635/test?authSource=admin&replicaSet=replica"
+    "prd": "mongodb://lite-prd"
 }
 
 
