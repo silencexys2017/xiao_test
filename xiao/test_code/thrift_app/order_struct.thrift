@@ -1,3 +1,44 @@
+enum AddressType {
+    NORMAL = 1,
+    PICKUP = 2
+}
+
+struct AreaIdName {
+    1: i64 id,
+    2: string name
+}
+
+enum AddressStatus {
+    AVAILABLE = 1,
+    UNAVAILABLE = 2
+}
+
+struct Address {
+	1: i64 id,
+	2: i64 accountId,
+	3: i32 regionId,
+	4: string regionCode,
+	5: string name,
+	6: map<string, AreaIdName> areaNames,
+	7: string address1,
+	8: string address2,
+	9: string pickupStationAddress,
+	10: AddressType addressType,
+	11: string phone,
+	12: bool verified,
+	13: bool isDefault,
+	14: optional bool deleted,
+	15: optional i64 pickupStationId,
+	16: optional bool isDraw,
+	17: optional string postcode,
+	18: optional bool isSelected,
+	19: optional string familyName,
+	20: optional string givenName,
+	21: optional i16 areaLevel,
+    22: optional bool isSupportToDoor,
+    23: optional list<AreaIdName> areaNameList,
+    24: optional AddressStatus status
+}
 enum DeliveryType {
     INTERNATIONAL = 1,
     LOCAL = 2,

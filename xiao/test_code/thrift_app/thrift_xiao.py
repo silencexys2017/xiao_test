@@ -20,6 +20,40 @@ def struct_to_json():
     assert {"id": 13, "phones": ["5234", "12346456"]} == json
 
 
-struct_to_json()
+def address_areas():
+    data = {"areaNames" : {
+                "1" : {
+                        "1348" : "Baringo"
+                },
+                "2" : {
+                        "1003439" : "Baringo Central"
+                },
+                # "3" : {
+                #         "1000032464" : "TestC"
+                # }
+        }}
+    res = DEF.Address()
+    res.areaLevel = len(data.get("areaNames", {}))
+    areas = {}
+    area_list = []
+    for index in sorted(data.get("areaNames", {})):
+        item = DEF.AreaIdName(
+            id=int(list(data["areaNames"][index].keys())[0]),
+            name=list(data["areaNames"][index].values())[0])
+        areas[index] = item
+        area_list.append(item)
+        print(index, res.areaLevel)
+        if index in ["2", 2] and res.areaLevel == 2:
+            print("3432423")
+            areas[3] = item
+    res.areaNames = areas
+    res.areaNameList = area_list
+    print(res)
 
-print(DEF.LOG_STATE_MAP_AF_STATE_BEFORE_AND_AFTER)
+
+# struct_to_json()
+address_areas()
+
+
+
+

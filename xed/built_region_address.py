@@ -147,12 +147,21 @@ def add_kili_address(region_code, address_sheet, depth=3, min_row=2):
         deep_4_start_id = it["_id"] + 100000
     if 0 in [deep_1_start_id, deep_2_start_id, deep_3_start_id]:
         raise Exception("error start id")
+    area_list = []
     area_name_1_list = []
     for row in list(address_sheet.iter_rows(min_row=min_row)):
         area_name_1 = strip_string_name(row[0].value)
         area_name_2 = strip_string_name(row[1].value)
         area_name_3 = strip_string_name(row[2].value)
         area_name_4 = strip_string_name(row[3].value)
+        if area_name_1 in [None]:
+            continue
+        if (area_name_1, area_name_2, area_name_3, area_name_4) in area_list:
+            continue
+        else:
+            area_list.append(
+                (area_name_1, area_name_2, area_name_3, area_name_4))
+
         if region_code in ["UG"]:
             area_name_2 = area_name_3
         if area_name_1 not in area_name_1_list:
