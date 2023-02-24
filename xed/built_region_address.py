@@ -100,7 +100,7 @@ def strip_string_name(name):
     return name
 
 
-def add_kili_address(region_code, address_sheet, depth=3):
+def add_kili_address(region_code, address_sheet, depth=3, min_row=2):
     # 删除fms，lite，wms Areas地址库数据
     bee_common_db.Areas.delete_many({"regionCode": region_code})
     common_db.Areas.delete_many({"regionCode": region_code})
@@ -136,24 +136,28 @@ def add_kili_address(region_code, address_sheet, depth=3):
     common_db.Areas.insert_one(data_0)
 
     deep_1_start_id, deep_2_start_id, deep_3_start_id = 0, 0, 0
+    deep_4_start_id = 1010000000
     for it in bee_common_db.Areas.find({"deep": 1}).sort([("_id", -1)]).limit(1):
         deep_1_start_id = it["_id"] + 300
     for it in bee_common_db.Areas.find({"deep": 2}).sort([("_id", -1)]).limit(1):
         deep_2_start_id = it["_id"] + 3000
     for it in bee_common_db.Areas.find({"deep": 3}).sort([("_id", -1)]).limit(1):
         deep_3_start_id = it["_id"] + 10000
+    for it in bee_common_db.Areas.find({"deep": 4}).sort([("_id", -1)]).limit(1):
+        deep_4_start_id = it["_id"] + 100000
     if 0 in [deep_1_start_id, deep_2_start_id, deep_3_start_id]:
         raise Exception("error start id")
-    province_list = []
-    for row in list(address_sheet.iter_rows(min_row=2)):
-        province = strip_string_name(row[0].value)
-        city = strip_string_name(row[1].value)
-        district = strip_string_name(row[2].value)
+    area_name_1_list = []
+    for row in list(address_sheet.iter_rows(min_row=min_row)):
+        area_name_1 = strip_string_name(row[0].value)
+        area_name_2 = strip_string_name(row[1].value)
+        area_name_3 = strip_string_name(row[2].value)
+        area_name_4 = strip_string_name(row[3].value)
         if region_code in ["UG"]:
-            city = district
-        if province not in province_list:
+            area_name_2 = area_name_3
+        if area_name_1 not in area_name_1_list:
             deep_1_start_id += 1
-            data_1 = {"_id": deep_1_start_id, "areaType": 1, "name": province,
+            data_1 = {"_id": deep_1_start_id, "areaType": 1, "name": area_name_1,
                       "code": region_code + "1" + str(deep_1_start_id),
                       "postcode": None, "sort": deep_1_start_id, "deep": 1,
                       "regionCode": region_code, "isSupportToDoor": False,
@@ -164,15 +168,15 @@ def add_kili_address(region_code, address_sheet, depth=3):
             wms_common_db.Areas.insert_one(data_1)
             data_1["parentId"] = deep_0_lite_id
             common_db.Areas.insert_one(data_1)
-            province_list.append(province)
+            area_name_1_list.append(area_name_1)
         area_2 = bee_common_db.Areas.find_one(
-            {"parentId": deep_1_start_id, "name": city})
+            {"parentId": deep_1_start_id, "name": area_name_2})
         if not area_2:
             deep_2_start_id += 1
             data_2 = {
                 "_id": deep_2_start_id,
                 "areaType": 1,
-                "name": city,
+                "name": area_name_2,
                 "code": region_code + "2" + str(deep_2_start_id),
                 "postcode": None,
                 "parentId": deep_1_start_id,
@@ -185,7 +189,7 @@ def add_kili_address(region_code, address_sheet, depth=3):
                 "pickupIds": [],
                 "lastUpdatedUserId": 1,
                 "lastUpdatedTime": utc_now,
-                "supportCod": False
+                "supportCod": True
             }
             bee_common_db.Areas.insert_one(data_2)
             common_db.Areas.insert_one(data_2)
@@ -193,13 +197,13 @@ def add_kili_address(region_code, address_sheet, depth=3):
         if depth < 3:
             continue
         area_3 = bee_common_db.Areas.find_one(
-            {"parentId": deep_2_start_id, "name": district})
+            {"parentId": deep_2_start_id, "name": area_name_3})
         if not area_3:
             deep_3_start_id += 1
             data_3 = {
                 "_id": deep_3_start_id,
                 "areaType": 1,
-                "name": district,
+                "name": area_name_3,
                 "code": region_code + "3" + str(deep_3_start_id),
                 "postcode": None,
                 "parentId": deep_2_start_id,
@@ -212,11 +216,39 @@ def add_kili_address(region_code, address_sheet, depth=3):
                 "pickupIds": [],
                 "lastUpdatedUserId": 1,
                 "lastUpdatedTime": utc_now,
-                "supportCod": False
+                "supportCod": True
             }
             bee_common_db.Areas.insert_one(data_3)
             common_db.Areas.insert_one(data_3)
             wms_common_db.Areas.insert_one(data_3)
+
+        if depth < 4:
+            continue
+        area_4 = bee_common_db.Areas.find_one(
+            {"parentId": deep_3_start_id, "name": area_name_4})
+        if not area_4:
+            deep_4_start_id += 1
+            data_4 = {
+                "_id": deep_4_start_id,
+                "areaType": 1,
+                "name": area_name_4,
+                "code": region_code + "3" + str(deep_4_start_id),
+                "postcode": None,
+                "parentId": deep_3_start_id,
+                "sort": deep_4_start_id,
+                "deep": 4,
+                "regionCode": region_code,
+                "isSupportToDoor": True,
+                "isLeaf": True if depth == 4 else False,
+                "state": 1,
+                "pickupIds": [],
+                "lastUpdatedUserId": 1,
+                "lastUpdatedTime": utc_now,
+                "supportCod": True
+            }
+            bee_common_db.Areas.insert_one(data_4)
+            common_db.Areas.insert_one(data_4)
+            wms_common_db.Areas.insert_one(data_4)
 
 
 def add_xed_region_config(region_code, fms_address_level, lite_address_level):
@@ -242,7 +274,7 @@ if __name__ == "__main__":
     common_db = get_db(K_DB_URL, env, "Common")
     wms_common_db = get_db(K_DB_URL, env, "WmsCommon")
     fms_address_level, lite_address_level, address_sheet = None, None, None
-    depth = 3
+    depth, from_row = 3, 2
     if code in ["UG", "TZ"]:
         wb_obj = load_workbook("region_address_excel/UG&TZ-地址库.xlsx")
         if code == "UG":
@@ -258,12 +290,23 @@ if __name__ == "__main__":
         else:
             address_sheet = wb_obj.get_sheet_by_name("坦桑")
     elif code == "NG":
-        pass
+        wb_obj = load_workbook("region_address_excel/NG-地址库.xlsx")
+        address_sheet = wb_obj.get_sheet_by_name("地址库")
+        fms_address_level = {
+            "addressLevel": 3, "addressNameMap": {
+                "1": "Region", "2": "State", "3": "LGA", "4": "Ward/City"},
+            "LogisticsProviders": []}
+        lite_address_level = {
+            "addressLevel": 3, "addressNameMap": {
+                "1": "Region", "2": "State", "3": "LGA", "4": "Ward/City"}}
+        depth = 4
+        from_row = 3
+
     elif code == "EG":
         pass
     elif code == "MA":
         pass
     add_xed_region_config(code, fms_address_level, lite_address_level)
-    add_kili_address(code, address_sheet, depth=depth)
+    add_kili_address(code, address_sheet, depth=depth, min_row=from_row)
     print("add_kili_address success")
 
