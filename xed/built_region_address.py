@@ -164,6 +164,7 @@ def add_kili_address(region_code, address_sheet, depth=3):
             wms_common_db.Areas.insert_one(data_1)
             data_1["parentId"] = deep_0_lite_id
             common_db.Areas.insert_one(data_1)
+            province_list.append(province)
         area_2 = bee_common_db.Areas.find_one(
             {"parentId": deep_1_start_id, "name": city})
         if not area_2:
