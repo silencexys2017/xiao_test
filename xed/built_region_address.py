@@ -109,9 +109,7 @@ def add_kili_address(region_code, address_sheet, depth=3, min_row=2):
     utc_now = datetime.utcnow()
     fms_region = bee_common_db.Region.find_one({"code": region_code})
     lite_region = common_db.region.find_one({"code": region_code})
-    wms_region = wms_common_db.Region.find_one({"code": region_code})
-    if None in [fms_region, lite_region, wms_region]:
-        raise Exception("fms or lite or wms this region not support")
+
     deep_0_fms_id, deep_0_lite_id = fms_region["_id"], lite_region["id"]
     data_0 = {
         "areaType": 1,
@@ -159,6 +157,10 @@ def add_kili_address(region_code, address_sheet, depth=3, min_row=2):
             continue
         if region_code in ["UG"]:
             area_name_2 = area_name_3
+        if region_code == "TZ":
+            middleman = area_name_1
+            area_name_1 = area_name_3
+            area_name_3 = middleman
 
         if tree.contains(area_name_1) is False:
             deep_1_start_id += 1
@@ -271,12 +273,41 @@ def add_kili_address(region_code, address_sheet, depth=3, min_row=2):
 
 
 def add_xed_region_config(region_code, fms_address_level, lite_address_level):
-    bee_common_db.Region.update_one(
-        {"code": region_code}, {"$set": fms_address_level})
-    common_db.region.update_one(
-        {"code": region_code}, {"$set": lite_address_level})
-    wms_common_db.Region.update_one(
-        {"code": region_code}, {"$set": fms_address_level})
+    lite_region = common_db.region.find_one_and_update(
+        {"code": region_code}, {"$set": lite_address_level},
+        return_document=True)
+    if lite_region is None:
+        raise Exception("lite this region not support")
+    fms_region = bee_common_db.Region.find_one({"code": region_code})
+
+    if not fms_region:
+        region_id = 0
+        for it in bee_common_db.Region.find({}).sort([("_id", -1)]).limit(1):
+            region_id = it["_id"] + 1
+        region_data = {
+            "_id": region_id,
+            "callingCode": lite_region["callingCode"],
+            "code": lite_region["code"],
+            "name": lite_region["name"],
+            "flag": lite_region["flag"],
+            "currency": lite_region["currency"],
+            "currencyId": lite_region["currencyId"],
+            "currencySymbol": lite_region["currencySymbol"],
+            "currencyConversion": lite_region["currencyConversion"],
+            "language": lite_region["language"],
+            "timeZone": lite_region["timeZone"],
+            "index": lite_region["index"]
+        }
+        region_data.update(fms_address_level)
+        bee_common_db.Region.insert_one(region_data)
+        region_data["id"] = region_id
+        del region_data["_id"]
+        wms_common_db.Region.insert_one(region_data)
+    else:
+        bee_common_db.Region.find_one_and_update(
+            {"code": region_code}, {"$set": fms_address_level})
+        wms_common_db.Region.find_one_and_update(
+            {"code": region_code}, {"$set": fms_address_level})
 
 
 if __name__ == "__main__":
@@ -292,8 +323,14 @@ if __name__ == "__main__":
     bee_logistics_db = get_db(K_DB_URL, env, "BeeLogistics")
     common_db = get_db(K_DB_URL, env, "Common")
     wms_common_db = get_db(K_DB_URL, env, "WmsCommon")
-    fms_address_level, lite_address_level, address_sheet = None, None, None
-    depth, from_row = 3, 2
+    depth, from_row, address_sheet = 3, 2, None
+    fms_address_level = {
+        "addressLevel": 3, "addressNameMap": {
+            "1": "Province", "2": "City", "3": "Area"},
+        "LogisticsProviders": []}
+    lite_address_level = {
+        "addressLevel": 3, "addressNameMap": {
+            "1": "Province", "2": "City", "3": "Area"}}
     if code in ["UG", "TZ"]:
         wb_obj = load_workbook("region_address_excel/UG&TZ-地址库.xlsx")
         if code == "UG":
@@ -322,9 +359,18 @@ if __name__ == "__main__":
         from_row = 3
 
     elif code == "EG":
-        pass
+        wb_obj = load_workbook("region_address_excel/EG-地址库（埃及）.xlsx")
+        address_sheet = wb_obj.get_sheet_by_name("Site coverage list")
+        fms_address_level = {
+            "addressLevel": 3, "addressNameMap": {
+                "1": "County", "2": "SubCounty", "3": "Ward"},
+            "LogisticsProviders": []}
+        lite_address_level = {
+             "addressLevel": 3, "addressNameMap": {
+                "1": "County", "2": "SubCounty", "3": "Ward"}}
     elif code == "MA":
-        pass
+        wb_obj = load_workbook("region_address_excel/MA-地址库（摩洛哥）.xlsx")
+        address_sheet = wb_obj.get_sheet_by_name("地址库")
     add_xed_region_config(code, fms_address_level, lite_address_level)
     add_kili_address(code, address_sheet, depth=depth, min_row=from_row)
     print("add_kili_address success")
