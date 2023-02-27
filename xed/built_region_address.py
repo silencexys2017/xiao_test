@@ -6,7 +6,7 @@ import pymongo
 import json
 from datetime import datetime, timedelta
 from openpyxl import load_workbook
-from prd_kiliexpress import get_pick_up_stations, get_area_tree, sign_in
+from treelib import Tree, Node
 
 
 _DEFAULT_CONFIG_FILE = '../kili_config.json'
@@ -147,8 +147,9 @@ def add_kili_address(region_code, address_sheet, depth=3, min_row=2):
         deep_4_start_id = it["_id"] + 100000
     if 0 in [deep_1_start_id, deep_2_start_id, deep_3_start_id]:
         raise Exception("error start id")
-    area_list = []
-    area_name_1_list = []
+
+    tree = Tree(tree=None, deep=False, node_class=None, identifier=region_code)
+    tree.create_node(tag='0', identifier="node-0", data=region_code)
     for row in list(address_sheet.iter_rows(min_row=min_row)):
         area_name_1 = strip_string_name(row[0].value)
         area_name_2 = strip_string_name(row[1].value)
@@ -156,40 +157,56 @@ def add_kili_address(region_code, address_sheet, depth=3, min_row=2):
         area_name_4 = strip_string_name(row[3].value)
         if area_name_1 in [None]:
             continue
-        if (area_name_1, area_name_2, area_name_3, area_name_4) in area_list:
-            continue
-        else:
-            area_list.append(
-                (area_name_1, area_name_2, area_name_3, area_name_4))
-
         if region_code in ["UG"]:
             area_name_2 = area_name_3
-        if area_name_1 not in area_name_1_list:
+
+        if tree.contains(area_name_1) is False:
             deep_1_start_id += 1
-            data_1 = {"_id": deep_1_start_id, "areaType": 1, "name": area_name_1,
-                      "code": region_code + "1" + str(deep_1_start_id),
-                      "postcode": None, "sort": deep_1_start_id, "deep": 1,
-                      "regionCode": region_code, "isSupportToDoor": False,
-                      "isLeaf": False, "state": 1, "pickupIds": [],
-                      "lastUpdatedUserId": 1, "lastUpdatedTime": utc_now,
-                      "supportCod": False, "parentId": deep_0_fms_id}
-            bee_common_db.Areas.insert_one(data_1)
-            wms_common_db.Areas.insert_one(data_1)
-            data_1["parentId"] = deep_0_lite_id
-            common_db.Areas.insert_one(data_1)
-            area_name_1_list.append(area_name_1)
-        area_2 = bee_common_db.Areas.find_one(
-            {"parentId": deep_1_start_id, "name": area_name_2})
-        if not area_2:
+            tree.create_node(tag=deep_1_start_id, identifier=area_name_1,
+                             parent='node-0', data=area_name_1)
+        depth_2_id = area_name_1 + ":" + area_name_2
+        if tree.contains(depth_2_id) is False:
             deep_2_start_id += 1
+            tree.create_node(tag=deep_2_start_id, identifier=depth_2_id,
+                             parent=area_name_1, data=area_name_2)
+        if depth < 3:
+            continue
+        depth_3_id = depth_2_id + ":" + area_name_3
+        if tree.contains(depth_3_id) is False:
+            deep_3_start_id += 1
+            tree.create_node(tag=deep_3_start_id, identifier=depth_3_id,
+                             parent=depth_2_id, data=area_name_3)
+        if depth < 4:
+            continue
+        depth_4_id = depth_3_id + ":" + area_name_4
+        if tree.contains(depth_4_id) is False:
+            deep_4_start_id += 1
+            tree.create_node(tag=deep_4_start_id, identifier=depth_4_id,
+                             parent=depth_3_id, data=area_name_4)
+
+    for node_1 in tree.children("node-0"):
+        data_1 = {"_id": node_1.tag, "areaType": 1, "name": node_1.data,
+                  "code": region_code + "1" + str(node_1.tag),
+                  "postcode": None, "sort": node_1.tag, "deep": 1,
+                  "regionCode": region_code, "isSupportToDoor": False,
+                  "isLeaf": False, "state": 1, "pickupIds": [],
+                  "lastUpdatedUserId": 1, "lastUpdatedTime": utc_now,
+                  "supportCod": False, "parentId": deep_0_fms_id}
+        bee_common_db.Areas.insert_one(data_1)
+        wms_common_db.Areas.insert_one(data_1)
+        data_1["parentId"] = deep_0_lite_id
+        common_db.Areas.insert_one(data_1)
+        if node_1.is_leaf() is True:
+            continue
+        for node_2 in tree.children(node_1.identifier):
             data_2 = {
-                "_id": deep_2_start_id,
+                "_id": node_2.tag,
                 "areaType": 1,
-                "name": area_name_2,
-                "code": region_code + "2" + str(deep_2_start_id),
+                "name": node_2.data,
+                "code": region_code + "2" + str(node_2.tag),
                 "postcode": None,
-                "parentId": deep_1_start_id,
-                "sort": deep_2_start_id,
+                "parentId": node_1.tag,
+                "sort": node_2.tag,
                 "deep": 2,
                 "regionCode": region_code,
                 "isSupportToDoor": True,
@@ -203,61 +220,54 @@ def add_kili_address(region_code, address_sheet, depth=3, min_row=2):
             bee_common_db.Areas.insert_one(data_2)
             common_db.Areas.insert_one(data_2)
             wms_common_db.Areas.insert_one(data_2)
-        if depth < 3:
-            continue
-        area_3 = bee_common_db.Areas.find_one(
-            {"parentId": deep_2_start_id, "name": area_name_3})
-        if not area_3:
-            deep_3_start_id += 1
-            data_3 = {
-                "_id": deep_3_start_id,
-                "areaType": 1,
-                "name": area_name_3,
-                "code": region_code + "3" + str(deep_3_start_id),
-                "postcode": None,
-                "parentId": deep_2_start_id,
-                "sort": deep_3_start_id,
-                "deep": 3,
-                "regionCode": region_code,
-                "isSupportToDoor": True,
-                "isLeaf": True if depth == 3 else False,
-                "state": 1,
-                "pickupIds": [],
-                "lastUpdatedUserId": 1,
-                "lastUpdatedTime": utc_now,
-                "supportCod": True
-            }
-            bee_common_db.Areas.insert_one(data_3)
-            common_db.Areas.insert_one(data_3)
-            wms_common_db.Areas.insert_one(data_3)
-
-        if depth < 4:
-            continue
-        area_4 = bee_common_db.Areas.find_one(
-            {"parentId": deep_3_start_id, "name": area_name_4})
-        if not area_4:
-            deep_4_start_id += 1
-            data_4 = {
-                "_id": deep_4_start_id,
-                "areaType": 1,
-                "name": area_name_4,
-                "code": region_code + "3" + str(deep_4_start_id),
-                "postcode": None,
-                "parentId": deep_3_start_id,
-                "sort": deep_4_start_id,
-                "deep": 4,
-                "regionCode": region_code,
-                "isSupportToDoor": True,
-                "isLeaf": True if depth == 4 else False,
-                "state": 1,
-                "pickupIds": [],
-                "lastUpdatedUserId": 1,
-                "lastUpdatedTime": utc_now,
-                "supportCod": True
-            }
-            bee_common_db.Areas.insert_one(data_4)
-            common_db.Areas.insert_one(data_4)
-            wms_common_db.Areas.insert_one(data_4)
+            if node_2.is_leaf() is True:
+                continue
+            for node_3 in tree.children(node_2.identifier):
+                data_3 = {
+                    "_id": node_3.tag,
+                    "areaType": 1,
+                    "name": node_3.data,
+                    "code": region_code + "3" + str(node_3.tag),
+                    "postcode": None,
+                    "parentId": node_2.tag,
+                    "sort": node_3.tag,
+                    "deep": 3,
+                    "regionCode": region_code,
+                    "isSupportToDoor": True,
+                    "isLeaf": True if depth == 3 else False,
+                    "state": 1,
+                    "pickupIds": [],
+                    "lastUpdatedUserId": 1,
+                    "lastUpdatedTime": utc_now,
+                    "supportCod": True
+                }
+                bee_common_db.Areas.insert_one(data_3)
+                common_db.Areas.insert_one(data_3)
+                wms_common_db.Areas.insert_one(data_3)
+                if node_3.is_leaf() is True:
+                    continue
+                for node_4 in tree.children(node_3.identifier):
+                    data_4 = {
+                        "_id": node_4.tag,
+                        "areaType": 1,
+                        "name": node_4.data,
+                        "code": region_code + "3" + str(node_4.tag),
+                        "postcode": None,
+                        "parentId": node_3.tag,
+                        "sort": node_4.tag,
+                        "deep": 4,
+                        "regionCode": region_code,
+                        "isSupportToDoor": True,
+                        "isLeaf": True if depth == 4 else False,
+                        "state": 1,
+                        "pickupIds": [],
+                        "lastUpdatedUserId": 1,
+                        "lastUpdatedTime": utc_now,
+                        "supportCod": True
+                    }
+                    bee_common_db.Areas.insert_one(data_4)
+                    common_db.Areas.insert_one(data_4)
+                    wms_common_db.Areas.insert_one(data_4)
 
 
 def add_xed_region_config(region_code, fms_address_level, lite_address_level):
