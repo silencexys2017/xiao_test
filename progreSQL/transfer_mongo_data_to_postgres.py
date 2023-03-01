@@ -500,10 +500,10 @@ def create_tables(cursor):
 
 
 def insert_user_and_contact_into_base(cursor, start_id, end_id):
-    for item in auth_db.account.find().sort(
+    for item in member_db.account.find().sort(
             [("id", 1)]).skip(start_id).limit(end_id):
         user = {}
-        for it in auth_db.contact.find({"accountId": item["id"]}):
+        for it in member_db.contact.find({"accountId": item["id"]}):
             if it["type"] == 1:
                 user["phone"] = it["value"]
             elif it["type"] == 2:
@@ -1265,7 +1265,6 @@ if __name__ == "__main__":
 
     seller_db = get_db(K_DB_URL[env], env, "Seller")
     common_db = get_db(K_DB_URL[env], env, "Common")
-    auth_db = get_db(K_DB_URL[env], env, "Auth")
     admin_db = get_db(K_DB_URL[env], env, "Admin")
     order_db = get_db(K_DB_URL[env], env, "Order")
     goods_db = get_db(K_DB_URL[env], env, "Goods")
