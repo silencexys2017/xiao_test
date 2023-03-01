@@ -23,7 +23,8 @@ map_pay_method = {
 K_DB_URL = {
     "dev": "mongodb://root:KB5NF1T0aP@mongodb-headless.os:27017/admin?replicaSet=rs0",
 	"test": "mongodb://root:IdrCgVpHzv@mongo-mongodb-headless.os:27017/admin?replicaSet=rs0&retrywrites=false",
-    "prd": "mongodb://lite-prd"
+    # "prd": "mongodb://lite-prd",
+    "prd": "mongodb://rwuser:pUvn39maqw%25rMcU8Kki9z#z@159.138.162.77:8635/test?authSource=admin"
 }
 
 
@@ -279,7 +280,6 @@ def add_xed_region_config(region_code, fms_address_level, lite_address_level):
     if lite_region is None:
         raise Exception("lite this region not support")
     fms_region = bee_common_db.Region.find_one({"code": region_code})
-
     if not fms_region:
         region_id = 0
         for it in bee_common_db.Region.find({}).sort([("_id", -1)]).limit(1):
@@ -303,11 +303,17 @@ def add_xed_region_config(region_code, fms_address_level, lite_address_level):
         region_data["id"] = region_id
         del region_data["_id"]
         wms_common_db.Region.insert_one(region_data)
-    else:
-        bee_common_db.Region.find_one_and_update(
-            {"code": region_code}, {"$set": fms_address_level})
-        wms_common_db.Region.find_one_and_update(
-            {"code": region_code}, {"$set": fms_address_level})
+    wms_region = wms_common_db.Region.find_one({"code": region_code})
+    if not wms_region:
+        fms_region = bee_common_db.Region.find_one({"code": region_code})
+        fms_region["id"] = fms_region["_id"]
+        del fms_region["_id"]
+        wms_common_db.Region.insert_one(fms_region)
+
+    bee_common_db.Region.find_one_and_update(
+        {"code": region_code}, {"$set": fms_address_level})
+    wms_common_db.Region.find_one_and_update(
+        {"code": region_code}, {"$set": fms_address_level})
 
 
 if __name__ == "__main__":

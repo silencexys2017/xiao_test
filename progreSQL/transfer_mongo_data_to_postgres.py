@@ -14,7 +14,6 @@ from threading import Thread
 from psycopg2.extras import execute_values
 
 _DEFAULT_LOG_FILE = 'pre_progress_sql_data.log'
-_DEFAULT_CONFIG_FILE = '../config.json'
 pay_method_di = {2: 'cod', 1: 'online', 3: 'pre'}
 order_type = {
     1: 'normal', 2: 'flash', 3: 'luckyDraw', 4: 'redeem', 5: 'mixed',
@@ -22,6 +21,19 @@ order_type = {
 order_state = {
     1: "pend_pay", 2: "pend_confirm", 3: "pend_ship", 4: "in_transit",
     5: "accept", -1: "cancel", -2: "reject"}
+
+K_DB_URL = {
+    "dev": "mongodb://root:KB5NF1T0aP@mongodb-headless.os:27017/admin?replicaSet=rs0",
+	"test": "mongodb://root:IdrCgVpHzv@mongo-mongodb-headless.os:27017/admin?replicaSet=rs0&retrywrites=false",
+    # "prd": "mongodb://lite-prd",
+
+}
+
+POSTGRES_URL = {
+    "dev": "postgresql://postgres:ydQ1JP6JqU@kong-postgresql.os:5432/data_centers",
+    "test": "postgresql://postgres:IcG934z3fC@kong-postgresql.os",
+    "prd": "postgresql://postgres-prd"
+}
 
 
 def init_logging(filename):
@@ -56,8 +68,7 @@ def load_cities(filename):
     return config
 
 
-def get_db(config, env, database):
-    uri = config['mongodb']['uri']
+def get_db(uri, env, database):
     client = pymongo.MongoClient(uri)
     db = '%s%s' % (env, database)
     return client[db]
@@ -77,10 +88,8 @@ def get_one_cursor(connect):
     return cursor
 
 
-def connect_post_gre_db(config=None, env=None):
+def connect_post_gre_db(uri, database, env=None):
     connection = None
-    uri = config['progresql']['uri']
-    database = env + "_data_centers"
     try:
         # connection = psycopg2.connect(
         #     user="postgres",
@@ -89,8 +98,7 @@ def connect_post_gre_db(config=None, env=None):
         #     port="5432",
         #     database=database
         # )
-        connection = psycopg2.connect(
-            uri, dbname=database)
+        connection = psycopg2.connect(uri, dbname=database)
         connection.autocommit = True
         """
         查看是否自动提交
@@ -1242,16 +1250,16 @@ if __name__ == "__main__":
         sys.exit(-1)
 
     env = sys.argv[1]
-    config = load_config(_DEFAULT_CONFIG_FILE, env)
-    seller_db = get_db(config, env, "Seller")
-    common_db = get_db(config, env, "Common")
-    auth_db = get_db(config, env, "Auth")
-    admin_db = get_db(config, env, "Admin")
-    order_db = get_db(config, env, "Order")
-    goods_db = get_db(config, env, "Goods")
-    member_db = get_db(config, env, "Member")
-    wms_warehouse_db = get_db(config, env, "WmsWarehouse")
-    connect_oj = connect_post_gre_db(config, env)
+
+    seller_db = get_db(K_DB_URL[env], env, "Seller")
+    common_db = get_db(K_DB_URL[env], env, "Common")
+    auth_db = get_db(K_DB_URL[env], env, "Auth")
+    admin_db = get_db(K_DB_URL[env], env, "Admin")
+    order_db = get_db(K_DB_URL[env], env, "Order")
+    goods_db = get_db(K_DB_URL[env], env, "Goods")
+    member_db = get_db(K_DB_URL[env], env, "Member")
+    wms_warehouse_db = get_db(K_DB_URL[env], env, "WmsWarehouse")
+    connect_oj = connect_post_gre_db(POSTGRES_URL[env], "data_centers")
 
     cursor_oj = get_one_cursor(connect_oj)
 

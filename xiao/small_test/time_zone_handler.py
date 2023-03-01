@@ -37,6 +37,12 @@ def mon_go_db_test(utc_time):
     unx_db.xiao.insert_one({"now": utc_time})
 
 
+local_tz = pytz.timezone("Africa/Nairobi")
+local_dt = pytz.utc.localize(datetime.strptime("2023-02-04T22:00:00.000000Z", "%Y-%m-%dT%H:%M:%S.%fZ"), is_dst=None)
+print(local_dt.astimezone(local_tz))
+
+
+"""
 if __name__ == "__main__":
     time_pass = datetime.utcnow()
     start = time_pass - timedelta(
@@ -56,3 +62,4 @@ if __name__ == "__main__":
     time_zone = datetime.now(pytz.timezone('Asia/Dhaka'))
     # print(time_zone)
     print(res)
+"""
