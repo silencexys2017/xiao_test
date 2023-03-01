@@ -668,13 +668,12 @@ def insert_store_into_base(cursor, region_dict):
                 region_dict[it["regionId"]]["code"]])
 
 
-def insert_warehouse_and_cat(cursor, region_dict, warehouse_dict):
+def insert_warehouse_and_cat(cursor, warehouse_dict):
     for it in warehouse_dict.values():
         cursor.execute(
-            sql.SQL("insert into {} values (%s, %s, %s)").format(
+            sql.SQL("insert into {} values (%s, %s, %s, %s)").format(
                 sql.Identifier('dim_warehouse')), [
-                it["_id"], it["name"], region_dict[it["code"]]["id"],
-                it["code"]])
+                it["_id"], it["name"], it["regionId"], it["regionCode"]])
 
     for it in goods_db.Category.find({"depth": 2}):
         print(it)
@@ -686,7 +685,6 @@ def insert_warehouse_and_cat(cursor, region_dict, warehouse_dict):
                 it["_id"], it["name"], cat_1])
 
     for it in goods_db.Category.find({"depth": 3}):
-        print(it)
         cat = it["path"].split(":")
         cat_1 = int(cat[0])
         cat_2 = int(cat[1])
@@ -702,19 +700,21 @@ def insert_warehouse_and_cat(cursor, region_dict, warehouse_dict):
                 it["_id"], it["name"]])
 
 
-def insert_address_into_base(cursor):
+def insert_address_into_base(cursor, region_code_dict):
     for deep_0 in common_db.Areas.find({"deep": 0}):
-        region = common_db.region.find_one({"code": deep_0["regionCode"]})
+        if region_code_dict.get(deep_0["regionCode"]) is None:
+            continue
+        region_id = region_code_dict[deep_0["regionCode"]]["id"]
         cursor.execute(
             sql.SQL("insert into {} values (%s, %s, %s)").format(
                 sql.Identifier('dim_region')), [
-                region["id"], deep_0["name"], deep_0["regionCode"]])
+                region_id, deep_0["name"], deep_0["regionCode"]])
         for deep_1 in common_db.Areas.find(
                 {"regionCode": deep_0["regionCode"], "deep": 1}):
             cursor.execute(
                 sql.SQL("insert into {} values (%s, %s, %s, %s)").format(
                     sql.Identifier('dim_province')), [
-                    deep_1["_id"], deep_1["name"], region["id"],
+                    deep_1["_id"], deep_1["name"], region_id,
                     deep_0["regionCode"]])
         for deep_2 in common_db.Areas.find(
                 {"regionCode": deep_0["regionCode"], "deep": 2}):
@@ -722,7 +722,7 @@ def insert_address_into_base(cursor):
                 sql.SQL("insert into {} values (%s, %s, %s, %s, %s)").format(
                     sql.Identifier('dim_city')), [
                     deep_2["_id"], deep_2["name"], deep_2["parentId"],
-                    region["id"], deep_0["regionCode"]])
+                    region_id, deep_0["regionCode"]])
         for deep_3 in common_db.Areas.find(
                 {"regionCode": deep_0["regionCode"], "deep": 3}):
             deep_2 = common_db.Areas.find_one({"_id": deep_3["parentId"]})
@@ -730,7 +730,7 @@ def insert_address_into_base(cursor):
                 sql.SQL("insert into {} values (%s,%s,%s,%s,%s,%s)").format(
                     sql.Identifier('dim_area')), [
                     deep_3["_id"], deep_3["name"], deep_3["parentId"],
-                    deep_2["parentId"], region["id"], deep_0["regionCode"]])
+                    deep_2["parentId"], region_id, deep_0["regionCode"]])
 
 
 def ratio_split_integer(split_num, each_ratio):
@@ -1122,7 +1122,9 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
         confirm_during = None
         if confirm_time:
             confirm_during = confirm_time - order_time
-        warehouse_region_id = warehouse_dict[so["warehouseId"]]["regionCode"]
+        if warehouse_dict.get(so["warehouseId"]) is None:
+            continue
+        warehouse_region_id = warehouse_dict[so["warehouseId"]]["regionId"]
         postage_index = 1
         for it in order_db.SaleOrderDetail.find({"orderId": so["id"]}):
             listing = goods_db.SpecOfListing.find_one({"_id": it["listingId"]})
@@ -1132,7 +1134,7 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
                 continue
             cate = goods_db.Category.find_one({"_id": listing["categoryId"]})
             if cate["depth"] > 3:
-                category_id = cate["depth"].split(":")[2]
+                category_id = cate["path"].split(":")[2]
             else:
                 category_id = listing["categoryId"]
             order_total = (it["amount"] + postage_di[postage_index] -
@@ -1199,13 +1201,21 @@ def insert_data_into_base(cursor):
     region_code_dict = {it["code"]: it for it in regions}
     warehouse_dict = {}
     for it in wms_warehouse_db.Warehouse.find():
-        it["regionId"] = region_code_dict[it["regionCode"]]["code"]
+        if not region_code_dict.get(it["regionCode"]):
+            continue
+
+        it["regionId"] = region_code_dict[it["regionCode"]]["id"]
         warehouse_dict[it["_id"]] = it
     insert_datetime_into_base(cursor)
+    print("insert_datetime_into_base success")
     insert_store_into_base(cursor, region_id_dict)
-    insert_warehouse_and_cat(cursor, region_code_dict, warehouse_dict)
-    insert_address_into_base(cursor)
+    print("insert_store_into_base success")
+    insert_warehouse_and_cat(cursor, warehouse_dict)
+    print("insert_warehouse_and_cat success")
+    insert_address_into_base(cursor, region_code_dict)
+    print("insert_address_into_base success")
     insert_enum_into_base(cursor)
+    print("insert_enum_into_base success")
     close_cursor(cursor)
 
     thread_num_1 = 30
@@ -1223,6 +1233,7 @@ def insert_data_into_base(cursor):
         t1.start()
     for t1 in t_obj_1:
         t1.join()
+    print("insert_user_and_contact_into_base success")
 
     thread_num = 10
     t_obj = []
@@ -1240,6 +1251,7 @@ def insert_data_into_base(cursor):
 
     for t1 in t_obj:
         t1.join()
+    print("insert_order_into_base success")
 
 
 if __name__ == "__main__":
@@ -1273,3 +1285,4 @@ if __name__ == "__main__":
     insert_data_into_base(cursor_oj)
     close_cursor(cursor_oj)
     close_connect(connect_oj)
+    print("------completed--------")
