@@ -502,6 +502,8 @@ def create_tables(cursor):
 def insert_user_and_contact_into_base(cursor, start_id, end_id):
     for item in member_db.account.find().sort(
             [("id", 1)]).skip(start_id).limit(end_id):
+        if item.get("nick") is None:
+            continue
         user = {}
         for it in member_db.contact.find({"accountId": item["id"]}):
             if it["type"] == 1:
@@ -516,7 +518,7 @@ def insert_user_and_contact_into_base(cursor, start_id, end_id):
             "insert into actual_user_and_contact user_id=%s" % item["id"])
         cursor.execute(
             sql.SQL(
-                "insert into {} values (%s, %s, %s, %s, %s, %s, %s)").format(
+                "insert into {} values (%s, %s,%s, %s, %s, %s, %s,%s)").format(
                 sql.Identifier('actual_user_and_contact')), [
                 item["id"], item["nick"], item["timeCreated"], item["region"],
                 user.get("phone"), user.get("email"), user.get("facebook"),
