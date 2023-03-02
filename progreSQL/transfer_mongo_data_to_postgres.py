@@ -501,7 +501,7 @@ def create_tables(cursor):
 
 def insert_user_and_contact_into_base(cursor, start_id, end_id):
     for item in member_db.account.find().sort(
-            [("id", 1)]).skip(start_id).limit(end_id):
+            [("_id", 1)]).skip(start_id).limit(end_id):
         if item.get("nick") is None:
             continue
         user = {}
@@ -1085,7 +1085,7 @@ def create_dw_sale_order(
 
 def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
     for so in order_db.SaleOrder.find().sort(
-            [("id", 1)]).skip(start_id).limit(end_id):
+            [("_id", 1)]).skip(start_id).limit(end_id):
         if so.get("isRobot"):
             continue
         store = seller_db.Store.find_one({"_id": so["storeId"]})
@@ -1283,7 +1283,10 @@ if __name__ == "__main__":
     # cursor_oj.execute(query, (201801,))
 
     create_tables(cursor_oj)
-    insert_data_into_base(cursor_oj)
+    try:
+        insert_data_into_base(cursor_oj)
+    except Exception as exp:
+        print("出现异常 %r" % exp)
     close_cursor(cursor_oj)
     close_connect(connect_oj)
     print("------completed--------")
