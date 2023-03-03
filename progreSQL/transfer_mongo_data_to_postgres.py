@@ -1284,8 +1284,8 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
                 confirm_time, ship_time, close_time)
             """
             create_fact_sales_daily(
-                cursor, so, it, create_date_key, listing["categoryId"],
-                store["sellerId"], address["areaId"], address["cityId"],
+                cursor, so, it, create_date_key, category_id,
+                store["sellerId"], area_id, city_id,
                 warehouse_region_id, postage_di[postage_index],
                 pos_dis_di[postage_index], order_total, need_pay, paid,
                 cod_amount, payment_type, order_tp, order_time, pay_time,
