@@ -181,54 +181,54 @@ def create_tables(cursor):
     cursor.execute(fact_sales_table)
 
     fact_sales_daily_detail = """CREATE TABLE fact_sales_daily_detail (
-                    date_key INTEGER,
-                    order_id INTEGER,
-                    order_type ORDER_TYPE Default 'normal',
-                    order_detail_id INTEGER,
-                    store_id INTEGER,
-                    seller_id INTEGER,
-                    cat_3_id INTEGER,
-                    sale_area_id INTEGER,
-                    sale_city_id INTEGER,
-                    sale_region_id INTEGER,
-                    warehouse_id INTEGER,
-                    from_region_id INTEGER,
-                    payment_type PAYMENT_TYPE,
-                    user_id INTEGER,
-                    listing_id BIGINT NOT NULL,
-                    sku_id BIGINT NOT NULL,
-                    order_total MONEY DEFAULT 0,
-                    item_total MONEY DEFAULT 0,
-                    postage MONEY DEFAULT 0,
-                    success_gmv MONEY DEFAULT 0,
-                    coins_redeem MONEY DEFAULT 0,
-                    voucher_redeem MONEY DEFAULT 0,
-                    success_voucher_redeem MONEY DEFAULT 0,
-                    success_coin_redeem MONEY DEFAULT 0,
-                    item_discount MONEY DEFAULT 0,
-                    success_item_discount MONEY DEFAULT 0,
-                    postage_discount MONEY DEFAULT 0,
-                    confirm_gmv MONEY DEFAULT 0,
-                    reject_gmv MONEY DEFAULT 0,
-                    cancel_gmv MONEY DEFAULT 0,
-                    online_paid MONEY DEFAULT 0,
-                    need_pay MONEY DEFAULT 0,
-                    cod_amount MONEY DEFAULT 0,
-                    order_count INTEGER DEFAULT 0,
-                    create_order_id INTEGER DEFAULT NULL,
-                    paid_count INTEGER DEFAULT 0,
-                    paid_order_id INTEGER DEFAULT NULL,
-                    confirm_count INTEGER DEFAULT 0, 
-                    confirm_order_id INTEGER DEFAULT NULL,
-                    cancel_count INTEGER DEFAULT 0,
-                    cancel_order_id INTEGER DEFAULT NULL,
-                    reject_count INTEGER DEFAULT 0,
-                    reject_order_id INTEGER DEFAULT NULL,
-                    success_count INTEGER DEFAULT 0, 
-                    success_order_id INTEGER DEFAULT NULL,
-                    product_qty INTEGER DEFAULT 0,
-                    success_qty_count INTEGER DEFAULT 0
-                    );"""
+                        date_key INTEGER,
+                        order_detail_id INTEGER,
+                        order_id INTEGER,
+                        order_type ORDER_TYPE Default 'normal',
+                        store_id INTEGER,
+                        seller_id INTEGER,
+                        cat_3_id INTEGER,
+                        sale_area_id INTEGER,
+                        sale_city_id INTEGER,
+                        sale_region_id INTEGER,
+                        warehouse_id INTEGER,
+                        from_region_id INTEGER,
+                        payment_type PAYMENT_TYPE,
+                        user_id INTEGER,
+                        listing_id BIGINT NOT NULL,
+                        sku_id BIGINT NOT NULL,
+                        item_total MONEY DEFAULT 0,
+                        postage MONEY DEFAULT 0,
+                        postage_discount MONEY DEFAULT 0,
+                        item_discount MONEY DEFAULT 0,
+                        order_total MONEY DEFAULT 0,
+                        coins_redeem MONEY DEFAULT 0,
+                        voucher_redeem MONEY DEFAULT 0,
+                        need_pay MONEY DEFAULT 0,
+                        cod_amount MONEY DEFAULT 0,
+                        order_count INTEGER DEFAULT 0,
+                        create_order_id INTEGER DEFAULT NULL,
+                        product_qty INTEGER DEFAULT 0,
+                        paid_count INTEGER DEFAULT 0,
+                        paid_order_id INTEGER DEFAULT NULL,
+                        online_paid MONEY DEFAULT 0,
+                        confirm_count INTEGER DEFAULT 0, 
+                        confirm_order_id INTEGER DEFAULT NULL,
+                        confirm_gmv MONEY DEFAULT 0,
+                        success_count INTEGER DEFAULT 0, 
+                        success_order_id INTEGER DEFAULT NULL,
+                        success_gmv MONEY DEFAULT 0,
+                        success_voucher_redeem MONEY DEFAULT 0,
+                        success_coin_redeem MONEY DEFAULT 0,
+                        success_item_discount MONEY DEFAULT 0,
+                        success_qty_count INTEGER DEFAULT 0,
+                        reject_count INTEGER DEFAULT 0,
+                        reject_order_id INTEGER DEFAULT NULL,
+                        reject_gmv MONEY DEFAULT 0,
+                        cancel_count INTEGER DEFAULT 0,
+                        cancel_order_id INTEGER DEFAULT NULL,
+                        cancel_gmv MONEY DEFAULT 0
+                        );"""
     # cursor.execute("""DROP TABLE fact_sales_daily_detail;""")
     cursor.execute(fact_sales_daily_detail)
 
@@ -775,29 +775,34 @@ def insert_enum_into_base(cursor):
         subject_name, target_name, display_name, is_selected, operator_id
         ) VALUES %s""", [
         ("sales_top", "gmv", "GMV", False, None),
-        ("sales_top", "orderCount", "OrderCNT", False, None),
-        ("sales_top", "successGmv", "SucGMV", False, None),
-        ("sales_top", "rejectAmount", "RejectAmount", False, None),
-        ("sales_top", "itemTotal", "ItemTotal", False, None),
-        ("sales_top", "productQty", "Qty", False, None),
+        ("sales_top", "orderCount", "Order Count", False, None),
+        ("sales_top", "successGmv", "Success GMV", False, None),
+        ("sales_top", "rejectAmount", "Reject Amount", False, None),
+        ("sales_top", "itemTotal", "Item Total", False, None),
+        ("sales_top", "productQty", "Product QTY", False, None),
         ("sales_top", "postage", "Postage", False, None),
-        ("sales_top", "coinsRedeem", "CoinsRedeem", False, None),
-        ("sales_top", "voucherRedeem", "VoucherRedeem", False, None),
+        ("sales_top", "coinsRedeem", "Coins Redeem", False, None),
+        ("sales_top", "voucherRedeem", "Voucher Redeem", False, None),
+        ('sales_top', 'successOrderCount', 'Success Order Count', False, None),
+        ('sales_normal', 'successOrderCount', 'Success Order Count', False,
+         None),
         ("sales_normal", "gmv", "GMV", True, None),
-        ("sales_normal", "orderCount", "OrderCNT", True, None),
-        ("sales_normal", "successGmv", "SucGMV", False, None),
-        ("sales_normal", "rejectAmount", "RejectAmount", False, None),
-        ("sales_normal", "itemTotal", "ItemTotal", False, None),
-        ("sales_normal", "productQty", "Qty", False, None),
+        ("sales_normal", "orderCount", "Order Count", True, None),
+        ("sales_normal", "successGmv", "Success GMV", False, None),
+        ("sales_normal", "rejectAmount", "Reject Amount", False, None),
+        ("sales_normal", "itemTotal", "Item Total", False, None),
+        ("sales_normal", "productQty", "Product QTY", False, None),
         ("sales_normal", "postage", "Postage", False, None),
-        ("sales_normal", "coinsRedeem", "CoinsRedeem", False, None),
-        ("sales_normal", "voucherRedeem", "VoucherRedeem", False, None)
+        ("sales_normal", "coinsRedeem", "Coins Redeem", False, None),
+        ("sales_normal", "voucherRedeem", "Voucher Redeem", False, None),
+        ("sales_normal", "paidOrderCount", "Paid Order Count", False, None),
+        ("sales_normal", "nmv", "NMV", False, None)
     ])
 
     execute_values(cursor, """INSERT INTO enum_sales_dimension (
         subject_name, dimension_name, display_name, is_selected, depth, 
         structure, select_type, operator_id) VALUES %s""", [
-        ("sales_top", "dateTime", "DateTime", False, 5,
+        ("sales_top", "dateTime", "Date Time", False, 5,
          '{{1,"year"},{2,"quarterly"},{3, "month"}, {4, "week"}, {5, "day"}}',
          None, None),
         ("sales_top", "category", "Category", False, 3,
@@ -805,30 +810,29 @@ def insert_enum_into_base(cursor):
          None, None),
         ("sales_top", "seller", "Seller", False, 2,
          '{{1,"seller"},{2,"store"}}', None, None),
-        ("sales_top", "salesRegions", "SalesRegions", False, 4,
+        ("sales_top", "salesRegions", "Sales Regions", False, 4,
          '{{1,"region"},{2,"state"},{3, "city"}, {4, "area"}}', None, None),
         ("sales_top", "store", "Store", False, 1, '{{1,"store"}}', None, None),
         ("sales_top", "listing", "Listing", True, 2,
          '{{1,"listing"},{2,"sku"}}', None, None),
         ("sales_top", "sku", "SKU", False, 1, '{{1,"sku"}}', None, None),
-        ("sales_normal", "dateTime", "DateTime", True, 5,
+        ("sales_normal", "dateTime", "Date Time", True, 5,
          '{{1,"year"},{2,"quarterly"},{3, "month"}, {4, "week"}, {5, "day"}}',
          "col", None),
         ("sales_normal", "category", "Category", True, 3,
          '{{1,"first level"},{2,"second level"},{3, "third level"}}',
          "row", None),
-        ("sales_normal", "paymentMethod", "PaymentMethod", False, 1,
+        ("sales_normal", "paymentMethod", "Payment Method", False, 1,
          '{{1,"paymentMethod"}}', None, None),
         ("sales_normal", "seller", "Seller", False, 2,
          '{{1,"seller"},{2,"store"}}', None, None),
-        ("sales_normal", "deliveryRegion", "DeliveryRegion", False, 1,
+        ("sales_normal", "deliveryRegion", "Delivery Region", False, 1,
          '{{1,"deliveryRegion"}}', None, None),
-        ("sales_normal", "deliveryWarehouse", "DeliveryWarehouse", False, 1,
+        ("sales_normal", "deliveryWarehouse", "Delivery Warehouse", False, 1,
          '{{1,"deliveryWarehouse"}}', None, None),
-        ("sales_normal", "salesRegions", "SalesRegions", False, 4,
+        ("sales_normal", "salesRegions", "Sales Regions", False, 4,
          '{{1,"region"},{2,"state"},{3, "city"}, {4, "area"}}', None, None),
     ])
-
 
 def create_fact_sales_daily_detail(
         cursor, so, sod, create_date_key, cat_3_id, seller_id, area_id, city_id,
@@ -1083,6 +1087,87 @@ def create_dw_sale_order(
                 order_time, end_time])
 
 
+def create_fact_sales_daily(
+        cursor, so, sod, create_date_key, cat_3_id, seller_id, area_id, city_id,
+        warehouse_region_id, postage, postage_discount, order_total,
+        need_pay, online_paid, cod_amount, payment_type, order_type,
+        order_time, pay_time, confirm_time, ship_time, close_time):
+    online_pay = 0
+    paid_count = 0
+    paid_order_id = None
+    confirm_count = 0
+    confirm_order_id = None
+    confirm_gmv = 0
+    success_count = 0
+    success_order_id = None
+    success_gmv = 0
+    success_voucher_redeem = 0
+    success_coin_redeem = 0
+    success_item_discount = 0
+    success_qty_count = 0
+    reject_count = 0
+    reject_order_id = None
+    reject_gmv = 0
+    cancel_count = 0
+    cancel_order_id = None
+    cancel_gmv = 0
+    if pay_time and payment_type == "online":
+        online_pay = online_paid
+        paid_count = 1
+        paid_order_id = so["id"]
+    if confirm_time:
+        confirm_gmv = order_total
+        confirm_count = 1
+        confirm_order_id = so["id"]
+    if so["status"] in [5, -1, -2]:
+        if so["status"] == 5:
+            success_gmv = order_total
+            success_voucher_redeem = sod.get("voucherRedeem", 0)
+            success_coin_redeem = sod.get("redeem", 0)
+            success_item_discount = sod.get("discount", 0)
+            success_count = 1
+            success_order_id = so["id"]
+            success_qty_count = sod["count"]
+        elif so["status"] == -1:
+            cancel_gmv = order_total
+            cancel_count = 1
+            cancel_order_id = so["id"]
+        elif so["status"] == -2:
+            reject_gmv = order_total
+            reject_count = 1
+            reject_order_id = so["id"]
+
+    cursor.execute(
+        """INSERT INTO fact_sales_daily_detail (
+        date_key, order_id, order_type, order_detail_id, store_id, seller_id,
+        cat_3_id, sale_area_id, sale_city_id, sale_region_id, warehouse_id,
+        from_region_id, payment_type, user_id, listing_id, sku_id, order_total,
+        item_total, postage, coins_redeem, voucher_redeem, item_discount,
+        postage_discount, need_pay, cod_amount, order_count, create_order_id,
+        product_qty,online_paid,paid_count,paid_order_id,
+        confirm_count,confirm_order_id,confirm_gmv,
+        success_count,success_order_id,success_gmv,
+        success_voucher_redeem,success_coin_redeem,
+        success_item_discount, success_qty_count,
+        reject_count,reject_order_id,reject_gmv,
+        cancel_count,cancel_order_id,cancel_gmv) 
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
+        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
+        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);""",
+        (create_date_key, so["id"], order_type, sod["id"], so["storeId"],
+         seller_id, cat_3_id, area_id, city_id, so["region"], so["warehouseId"],
+         warehouse_region_id, payment_type, so["accountId"], sod["listingId"],
+         sod["skuId"], order_total, sod["amount"], postage,
+         sod.get("redeem", 0), sod.get("voucherRedeem", 0),
+         sod.get("discount", 0), postage_discount, need_pay, cod_amount, 1,
+         so["id"], sod["count"], online_pay, paid_count, paid_order_id,
+         confirm_count, confirm_order_id, confirm_gmv, success_count,
+         success_order_id, success_gmv, success_voucher_redeem,
+         success_coin_redeem, success_item_discount, success_qty_count,
+         reject_count, reject_order_id, reject_gmv, cancel_count,
+         cancel_order_id, cancel_gmv))
+
+
 def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
     for so in order_db.SaleOrder.find().sort(
             [("_id", 1)]).skip(start_id).limit(end_id):
@@ -1113,6 +1198,8 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
         close_time = datetime_str_obj(so.get("closedAt"))
         confirm_time = datetime_str_obj(so.get("confirmAt"))
         pay_time = datetime_str_obj(so.get("paidAt"))
+        if warehouse_dict.get(so["warehouseId"]) is None:
+            continue
         create_dw_sale_order(
             cursor, so, order_tp, payment_type, order_time, end_time, ship_time,
             close_time, confirm_time, pay_time)
@@ -1124,8 +1211,7 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
         confirm_during = None
         if confirm_time:
             confirm_during = confirm_time - order_time
-        if warehouse_dict.get(so["warehouseId"]) is None:
-            continue
+
         warehouse_region_id = warehouse_dict[so["warehouseId"]]["regionId"]
         postage_index = 1
         for it in order_db.SaleOrderDetail.find({"orderId": so["id"]}):
@@ -1187,9 +1273,18 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
                     order_total, need_pay, paid, cod_amount, payment_type,
                     order_time, order_tp, pay_time, confirm_time, pay_during,
                     confirm_during])
+            """
             create_fact_sales_daily_detail(
                 cursor, so, it, create_date_key, category_id,
                 store["sellerId"], area_id, city_id,
+                warehouse_region_id, postage_di[postage_index],
+                pos_dis_di[postage_index], order_total, need_pay, paid,
+                cod_amount, payment_type, order_tp, order_time, pay_time,
+                confirm_time, ship_time, close_time)
+            """
+            create_fact_sales_daily(
+                cursor, so, it, create_date_key, listing["categoryId"],
+                store["sellerId"], address["areaId"], address["cityId"],
                 warehouse_region_id, postage_di[postage_index],
                 pos_dis_di[postage_index], order_total, need_pay, paid,
                 cod_amount, payment_type, order_tp, order_time, pay_time,
