@@ -834,6 +834,7 @@ def insert_enum_into_base(cursor):
          '{{1,"region"},{2,"state"},{3, "city"}, {4, "area"}}', None, None),
     ])
 
+
 def create_fact_sales_daily_detail(
         cursor, so, sod, create_date_key, cat_3_id, seller_id, area_id, city_id,
         warehouse_region_id, postage, postage_discount, order_total,
