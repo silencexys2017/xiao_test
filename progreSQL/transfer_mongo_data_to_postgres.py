@@ -766,7 +766,8 @@ def ratio_split_integer(split_num, each_ratio):
 
 def datetime_str_obj(utc_str):
     if type(utc_str) is str:
-        return datetime.strptime(utc_str, "%Y-%m-%dT%H:%M:%S.%fZ")
+        time_obj = datetime.strptime(utc_str, "%Y-%m-%dT%H:%M:%S.%fZ")
+        return time_obj + timedelta(hours=3)
     return utc_str
 
 
