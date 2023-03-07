@@ -1237,7 +1237,6 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
                 if pay_time:
                     paid = need_pay
             else:
-                paid = 0
                 cod_amount = need_pay
             create_date_key = int(so["createdAt"].strftime("%Y%m%d"))
 
@@ -1305,6 +1304,7 @@ def insert_data_into_base(cursor):
 
         it["regionId"] = region_code_dict[it["regionCode"]]["id"]
         warehouse_dict[it["_id"]] = it
+    """
     insert_datetime_into_base(cursor)
     print("insert_datetime_into_base success")
     insert_store_into_base(cursor, region_id_dict)
@@ -1333,6 +1333,7 @@ def insert_data_into_base(cursor):
     for t1 in t_obj_1:
         t1.join()
     print("insert_user_and_contact_into_base success")
+    """
 
     thread_num = 10
     t_obj = []
@@ -1379,7 +1380,7 @@ if __name__ == "__main__":
     #     pkey=sql.Identifier('week_key'))
     # cursor_oj.execute(query, (201801,))
 
-    create_tables(cursor_oj)
+    # create_tables(cursor_oj)
     try:
         insert_data_into_base(cursor_oj)
     except Exception as exp:
