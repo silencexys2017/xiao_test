@@ -32,7 +32,8 @@ K_DB_URL = {
 POSTGRES_URL = {
     "dev": "postgresql://postgres:ydQ1JP6JqU@kong-postgresql.os:5432/data_centers",
     "test": "postgresql://postgres:IcG934z3fC@kong-postgresql.os",
-    "prd": "postgresql://postgres-prd"
+    # "prd": "postgresql://postgres-prd"
+
 }
 
 
@@ -677,8 +678,7 @@ def insert_warehouse_and_cat(cursor, warehouse_dict):
                 sql.Identifier('dim_warehouse')), [
                 it["_id"], it["name"], it["regionId"], it["regionCode"]])
 
-    for it in goods_db.Category.find({"depth": 2}):
-        print(it)
+    for it in goods_db.Category.find({"depth": 2, "regions": 6}):
         cat = it["path"].split(":")
         cat_1 = int(cat[0])
         cursor.execute(
@@ -686,7 +686,7 @@ def insert_warehouse_and_cat(cursor, warehouse_dict):
                 sql.Identifier('dim_cat_2')), [
                 it["_id"], it["name"], cat_1])
 
-    for it in goods_db.Category.find({"depth": 3}):
+    for it in goods_db.Category.find({"depth": 3, "regions": 6}):
         cat = it["path"].split(":")
         cat_1 = int(cat[0])
         cat_2 = int(cat[1])
@@ -695,7 +695,7 @@ def insert_warehouse_and_cat(cursor, warehouse_dict):
                 sql.Identifier('dim_cat_3')), [
                 it["_id"], it["name"], cat_1, cat_2])
 
-    for it in goods_db.Category.find({"depth": 1}):
+    for it in goods_db.Category.find({"depth": 1, "regions": 6}):
         cursor.execute(
             sql.SQL("insert into {} values (%s, %s)").format(
                 sql.Identifier('dim_cat_1')), [
@@ -1171,8 +1171,7 @@ def create_fact_sales_daily(
 
 
 def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
-    for so in order_db.SaleOrder.find().sort(
-            [("_id", 1)]).skip(start_id).limit(end_id):
+    for so in order_db.SaleOrder.find({"id": {"$gte": start_id, "$lt": end_id}}):
         if so.get("isRobot"):
             continue
         store = seller_db.Store.find_one({"_id": so["storeId"]})
@@ -1201,6 +1200,10 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
         confirm_time = datetime_str_obj(so.get("confirmAt"))
         pay_time = datetime_str_obj(so.get("paidAt"))
         if warehouse_dict.get(so["warehouseId"]) is None:
+            continue
+        cursor.execute(
+            "SELECT * from fact_sales where order_id=%s;", (so["id"],))
+        if cursor.fetchone():
             continue
         create_dw_sale_order(
             cursor, so, order_tp, payment_type, order_time, end_time, ship_time,
@@ -1304,7 +1307,86 @@ def insert_data_into_base(cursor):
 
         it["regionId"] = region_code_dict[it["regionCode"]]["id"]
         warehouse_dict[it["_id"]] = it
-    """
+    warehouse_dict.update({10000: {
+            "_id": 10000,
+            "serialNumber": "KE01",
+            "name": "KE01",
+            "type": 1,
+            "regionId": 6,
+            "region": "Kenya",
+            "regionCode": "KE",
+            "state": "Nairobi",
+            "stateId": 1377,
+            "city": "Dagoreti",
+            "cityId": 1003643,
+            "area": "Gatina",
+            "areaId": 1000031956,
+            "createAt": 1583388144,
+            "fulfillment": 1,
+            "contact": "John",
+            "phone": "757393173",
+            "isFulfillmentIntegrative": True
+        },
+        10001: {
+            "_id": 10001,
+            "serialNumber": "KW-NRB-02",
+            "regionId": 6,
+            "name": "KW-NRB-02",
+            "type": 1,
+            "region": "Kenya",
+            "regionCode": "KE",
+            "state": "Nairobi",
+            "stateId": 1377,
+            "city": "Dagoreti",
+            "cityId": 1003643,
+            "area": "Gatina",
+            "areaId": 1000031956,
+            "createAt": 1583388144,
+            "fulfillment": 1,
+            "contact": "YUN LIU",
+            "phone": "0757075065",
+            "isFulfillmentIntegrative": True
+        },
+        10002: {
+            "_id": 10002,
+            "serialNumber": "CW_CS_01",
+            "name": "CW_CS_01",
+            "type": 1,
+            "region": "Kenya",
+            "regionId": 6,
+            "regionCode": "KE",
+            "state": "Nairobi",
+            "stateId": 1377,
+            "city": "Dagoreti",
+            "cityId": 1003643,
+            "area": "Gatina",
+            "areaId": 1000031956,
+            "createAt": 1583388144,
+            "fulfillment": 1,
+            "contact": "James",
+            "phone": "13249093922",
+            "isFulfillmentIntegrative": True
+        },
+        10003: {
+            "_id": 10003,
+            "serialNumber": "DG",
+            "name": "DG",
+            "type": 1,
+            "region": "Kenya",
+            "regionCode": "KE",
+            "regionId": 6,
+            "state": "Nairobi",
+            "stateId": 1377,
+            "city": "Dagoreti",
+            "cityId": 1003643,
+            "area": "Gatina",
+            "areaId": 1000031956,
+            "createAt": 1583388144,
+            "fulfillment": 1,
+            "contact": "James",
+            "phone": "13249093922",
+            "isFulfillmentIntegrative": True
+        }})
     insert_datetime_into_base(cursor)
     print("insert_datetime_into_base success")
     insert_store_into_base(cursor, region_id_dict)
@@ -1317,6 +1399,7 @@ def insert_data_into_base(cursor):
     print("insert_enum_into_base success")
     close_cursor(cursor)
 
+    """
     thread_num_1 = 30
     t_obj_1 = []
     # prd 当前数量 2594457
@@ -1340,8 +1423,8 @@ def insert_data_into_base(cursor):
     #  prd 当前数量 12973
     interval_times = 1500
     for item in range(thread_num):
-        start_id = interval_times + (item - 1) * interval_times
-        end_id = interval_times + item * interval_times
+        start_id = interval_times + (item - 1) * interval_times + 100004979
+        end_id = interval_times + item * interval_times + 100004979
         cursor = get_one_cursor(connect_oj)
         t1 = Thread(
             target=insert_order_into_base, args=(
@@ -1380,7 +1463,7 @@ if __name__ == "__main__":
     #     pkey=sql.Identifier('week_key'))
     # cursor_oj.execute(query, (201801,))
 
-    # create_tables(cursor_oj)
+    create_tables(cursor_oj)
     try:
         insert_data_into_base(cursor_oj)
     except Exception as exp:
