@@ -765,10 +765,9 @@ def ratio_split_integer(split_num, each_ratio):
 
 
 def datetime_str_obj(utc_str):
-    if type(utc_str) is str:
-        time_obj = datetime.strptime(utc_str, "%Y-%m-%dT%H:%M:%S.%fZ")
-        return time_obj + timedelta(hours=3)
-    return utc_str
+    if utc_str:
+        return utc_str + timedelta(hours=3)
+
 
 
 def insert_enum_into_base(cursor):
@@ -1241,8 +1240,7 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
                     paid = need_pay
             else:
                 cod_amount = need_pay
-            create_date_key = int(so["createdAt"].strftime("%Y%m%d"))
-
+            create_date_key = int(order_time.strftime("%Y%m%d"))
             logging.info(
                 "insert into fact_sales values (%s,%s, %s, %s, %s, %s, %s, %s,"
                 " %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,"
