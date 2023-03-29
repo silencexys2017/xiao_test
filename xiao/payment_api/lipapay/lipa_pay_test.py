@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+import time
 
 import requests
 import hashlib
@@ -33,6 +34,12 @@ wallet_key = "Lx0PuHxEOcIzaQbo"
 notify_url = "https://uomnify-test.perfee.com/api/payment/lipapay/webhook"
 return_url = "https://uomnify-test.perfee.com/api/payment/lipapay/callback"
 refund_notify_url = "https://uomnify-test.perfee.com/api/payment/lipapay/refund"
+
+create_merchant_info_url = "http://10.0.3.224:8080/v1/app/merchant/createMerchantInfo"
+get_account_info_url = "http://10.0.3.224:8080/v1/app/account/accountInfo"
+create_account_url = "http://10.0.3.224:8080/v1/app/account/createAccount"
+query_account_statement = "http://10.0.3.224:8080/v1/app/queryMerchantAccountStatement"
+
 channels = ['card', 'bank', 'ussd', 'qr', 'mobile_money', 'bank_transfer']
 
 Headers = {
@@ -41,23 +48,23 @@ Headers = {
 }
 
 
-def get_signature(data_dict, ignore_country_code=True):
+def get_signature(data_dict, ignore_country_code=True, has_sign_key=None):
     sorted_keys = sorted(data_dict)
     plain_text = ""
     for key in sorted_keys:
-        # if data_dict[key] is None or key in ["version", "sign"]:
-        #     continue
         if data_dict[key] in [None, ""] or key in ["version", "sign"]:
             continue
         if key == "countryCode" and ignore_country_code is True:
             continue
         value = str(data_dict[key])
         plain_text = plain_text + str(key) + "=" + value + "&"
-    plain_text = plain_text[:-1] + sign_key
+    plain_text = plain_text[:-1] + (has_sign_key or sign_key)
     print(plain_text)
     m_hash = hashlib.md5()
     m_hash.update(plain_text.encode("utf-8"))
-    return m_hash.hexdigest()
+    res_signature = m_hash.hexdigest()
+    print(res_signature)
+    return res_signature
 
 
 def save_html(file_content):
@@ -497,6 +504,179 @@ def refund_order(
     return result
 
 
+def signature_test():
+    res = get_signature({
+        'actualRefundAmount': '90300', 'errorCode': '00000',
+        'errorMsg': 'SUCCESS',
+        'merchantOrderId': '65462cd4-3406-11ed-9f12-16e32b1b94a4',
+        'merchantRefundId': '65462cd4-3406-11ed-9f12-16e32b1b94a4*66',
+        'orderId': 'K2210310255288784677', 'refundAmount': '90300',
+        'refundOrg': 'wallet', 'refundStatus': 'SUCCESS',
+        'sign': '2d468abba94ec65b9d08ac9f5d1dbbd7', 'signType': 'MD5'})
+    return res
+
+
+def create_merchant():
+    params = {
+          "address": "湖南长沙",
+          "appLogo": "https://mkp-cn.obs.cn-south-4.myhuaweicloud.com/c/test/public/store/100000004/goods/image/100100758.jpeg",
+          "contact": "17673294378",  # required
+          "countryCode": "KE",   # required
+          "email": "4953495439@qq.com",   # required
+          "fax": "3743879",
+          "fullName": "xiao",  # 商家全称   # required
+          "licenseNo": "43092234324324325X",   # required
+          "logo": "https://mkp-cn.obs.cn-south-4.myhuaweicloud.com/c/test/public/store/100000004/goods/image/100100758.jpeg",
+          "masterCurrency": "CNY",   # required
+          "merchantNo": merchant_id,  # 支付商户编号   # required
+          "merchantType": "P",  # 商户类型 P 个体，M 企业   # required
+          "platformMerchantId": "111",  # 平台商户id 如店铺id   # required
+          "remark": "test",
+          "shortName": "KiliLite",   # required
+          "signType": "MD5",    # required
+          "telephone": "1783439343",   # required
+          "timestamp": str(int(time.time())),   # required
+          "websiteUrl": "string"
+    }
+
+    params["sign"] = get_signature(params, ignore_country_code=False)
+    result = requests.post(
+        url=create_merchant_info_url, json=params, timeout=30)
+    print(json.loads(result.request.body))
+    print(result.status_code)
+    print(result.json())
+    if str(result.status_code).startswith("5"):
+        raise Exception("Request method not recognised or implemented.")
+    print(result.json())
+    """
+    {
+        "code": 200,
+        "msg": "success",
+        "data": {
+            "userId": "K2303291052536964966",
+            "platformMerchantId": "111",
+            "merchantNo": "LP1680058373197",
+            "merchantKey": "Ms6ZnFsveEMvxaYtehzz6xBNU9zJOy5f"
+        }
+    }
+    """
+
+
+def get_account_info(user_id, merchant_no):
+    params = {
+      "accountType": None,
+      "currency": None,
+      "merchantNo": merchant_no,
+      "signType": "MD5",
+      "timestamp": "1680061019",
+      "userId": user_id
+    }
+
+    params["sign"] = get_signature(
+        params, has_sign_key="Ms6ZnFsveEMvxaYtehzz6xBNU9zJOy5f")
+    result = requests.post(
+        url=get_account_info_url, json=params, timeout=30)
+    print(result.json())
+    print(json.loads(result.request.body))
+    if str(result.status_code).startswith("5"):
+        raise Exception("Request method not recognised or implemented.")
+    print(result.json())
+    """
+    {
+      "code": 0,
+      "data": [
+        {
+          "accountType": 0,
+          "currencyAccount": [
+            {
+              "credit": 0,
+              "currency": "string",
+              "currencyAccountId": "string",
+              "remark": "string",
+              "settleBalance": 0,
+              "status": "string"
+            }
+          ]
+        }
+      ],
+      "msg": "string"
+    }
+    """
+
+
+def create_account(user_id, merchant_no, key, account_infos) -> object:
+    """
+    现金账户256， 信用账户512， 分期账户513， 积分账户1280，结算户 128，头程充值户 144
+    :param user_id:
+    :return:
+    """
+    params = {
+        "merchantNo": merchant_no,
+        "signType": "MD5",
+        "timestamp": str(int(time.time())),
+        "userId": user_id
+    }
+    account_list = "["
+    for it in account_infos:
+        account_list += "AccountRequestInfo(accountType=%s, currency=%s, " \
+                        "remark=%s), " % (it["accountType"], it["currency"],
+                                          it["remark"])
+    account_list = account_list[:-2] + "]"
+    print(account_list)
+    params["accountInfos"] = account_list
+    params["sign"] = get_signature(params, has_sign_key=key)
+    params["accountInfos"] = account_infos
+    result = requests.post(
+        url=create_account_url, json=params, timeout=30)
+    print(json.loads(result.request.body))
+    if str(result.status_code).startswith("5"):
+        raise Exception("Request method not recognised or implemented.")
+    print(result.json())
+    """
+    {
+        "code": 200,
+        "msg": "success",
+        "data": [
+            {
+                "merchantAccountId": "K2303291525309539897",
+                "currency": "KES",
+                "accountType": 144
+            }
+        ]
+    }
+    """
+
+
+def query_merchant_account_statement(
+        user_id, merchant_no, merchant_account_id, biz_type=None, biz_id=None):
+    params = {
+      "accountId": merchant_account_id,  # 商户账号id
+      "bizId": biz_id,  # 业务id
+      "bizType": biz_type,  # 业务类型（100 转账，200 消费，300 营收，400 充值，500 提现，600 收费，610 结算收费，700 退款，800 贷款，900放贷）
+      "merchantNo": merchant_no,
+      "userId": user_id,
+      "paginator": {
+        "item": 0,
+        "items": 0,
+        "itemsPerPage": 0,
+        "page": 0
+      },
+      "signType": "MD5",
+      "startTime": 0,
+      "endTime": 0,
+      "timestamp": str(int(time.time()))
+    }
+    params["sign"] = get_signature(
+        params, has_sign_key="Ms6ZnFsveEMvxaYtehzz6xBNU9zJOy5f")
+    result = requests.post(
+        url=query_account_statement, json=params, timeout=30)
+    print(result.json())
+    print(json.loads(result.request.body))
+    if str(result.status_code).startswith("5"):
+        raise Exception("Request method not recognised or implemented.")
+    print(result.json())
+
+
 if __name__ == "__main__":
     # res = get_wallet_info(
     #     merchant_user_id=100101014, currency_code="KES", country_code="KE",
@@ -548,8 +728,6 @@ if __name__ == "__main__":
     #     use_installment=None)
 
     """wallet020101,mpesa020106,mpesa020105,ipay010102"""
-    password_encrypt = encrypt("123456")
-    print(password_encrypt)
     # res = sdk_checkout_order(
     #     amount=60000, currency="KES", merchant_id=merchant_id,
     #     merchant_order_no="343432F32343232", expiration_time="1000000",
@@ -558,9 +736,9 @@ if __name__ == "__main__":
     #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
     #     buyer_account="4444444",
     #     custom_field_1=None, custom_field_2=None,
-    #     custom_field_3=None,  remark="", password=password_encrypt
+    #     custom_field_3=None,  remark="", password=encrypt("123456")
     # )
-    # password_encrypt = encrypt("123456")
+
     # res = wallet_payment(
     #     merchant_order_id="343435F3464254", order_id="K2210180724381326032",
     #     password=password_encrypt)
@@ -575,9 +753,21 @@ if __name__ == "__main__":
     #     merchant_order_id="8be2ff4f-a2e1-11ed-8137-366296d04d89",
     #     amount="37700", reason=None,
     #     p0="110", payment_trans_id=None, org_name=None, is_use_wallet="N")
-    res = get_signature({'actualRefundAmount': '90300', 'errorCode': '00000', 'errorMsg': 'SUCCESS',
-'merchantOrderId': '65462cd4-3406-11ed-9f12-16e32b1b94a4',
-'merchantRefundId': '65462cd4-3406-11ed-9f12-16e32b1b94a4*66',
-'orderId': 'K2210310255288784677', 'refundAmount': '90300', 'refundOrg': 'wallet', 'refundStatus': 'SUCCESS',
-'sign': '2d468abba94ec65b9d08ac9f5d1dbbd7', 'signType': 'MD5'})
+    # res = create_merchant()
+    # res = get_account_info(user_id="K2303291052536964966",
+    #                        merchant_no="LP1680058373197")
+    res = create_account(
+        user_id="K2303291052536964966", merchant_no="LP1680058373197",
+        key="Ms6ZnFsveEMvxaYtehzz6xBNU9zJOy5f", account_infos=[
+            {
+                "accountType": 144,
+                "currency": "KES",
+                "remark": "test"
+            },
+            {
+                "accountType": 128,
+                "currency": "KES",
+                "remark": "test"
+            }
+        ])
     print(res)
