@@ -26,6 +26,7 @@ cancel_order_url = "https://lipapay-cashier.kilitest.com/api/cancelOrder.htm"
 refund_order_url = "https://lipapay-cashier.kilitest.com/api/orderRefund.htm"
 query_refund_url = "https://lipapay-cashier.kilitest.com/api/queryRefundOrder.htm"
 merchant_id = "2016051112014649173095"
+merchant_user_id = "K1707040253321492226"
 # merchant_id = "kilimall-ke"
 password = "1234567890"
 sign_key = "He4AXjdOmq1G2YH3RKVSS4kqU5VFa4aK"
@@ -39,7 +40,7 @@ create_merchant_info_url = "http://10.0.3.224:8080/v1/app/merchant/createMerchan
 get_account_info_url = "http://10.0.3.224:8080/v1/app/account/accountInfo"
 create_account_url = "http://10.0.3.224:8080/v1/app/account/createAccount"
 query_account_statement = "http://10.0.3.224:8080/v1/app/queryMerchantAccountStatement"
-
+add_statement_url = "http://10.0.3.224:8080/v1/app/addMerchantAccountStatement"
 channels = ['card', 'bank', 'ussd', 'qr', 'mobile_money', 'bank_transfer']
 
 Headers = {
@@ -573,7 +574,9 @@ def get_account_info(user_id, merchant_no):
     }
 
     params["sign"] = get_signature(
-        params, has_sign_key="Ms6ZnFsveEMvxaYtehzz6xBNU9zJOy5f")
+        params,
+        # has_sign_key="Ms6ZnFsveEMvxaYtehzz6xBNU9zJOy5f"
+    )
     result = requests.post(
         url=get_account_info_url, json=params, timeout=30)
     print(result.json())
@@ -677,6 +680,56 @@ def query_merchant_account_statement(
     print(result.json())
 
 
+def add_merchant_account_statement(
+        acc_amount, biz_id, currency, in_user_id, merchant_no):
+    params = {
+      "accAmount": acc_amount,  # int  账务金额 单位：分 # required
+      "accSummary": "test",  # 订单记账摘要
+      "accType": "RECEIVABLE",   # 账务类型：1 消费，3 收入 # required PAYABLE, RECEIVABLE
+      "bizId": biz_id,   # 业务id # required
+      "bizType": "SETTLEMENT",  # required 业务类型（100 转账，200 消费，300 营收，400 充值，500 提现，600 收费，610 结算收费，700 退款，800 贷款，900放贷 等）
+      "fundingType": "SETTLEMENT",
+      "subBizType": "SETTLEMENT_FEE",
+      "currency": currency,   # required 币种
+      "inUserId": in_user_id,
+      "merchantNo": merchant_no,   # required 商户号
+      "outUserId": "K1707040253321492226",  # required 出账账户
+      "remark": "test",  # 备注
+      "signType": "MD5",
+      "timestamp": str(int(time.time()))
+    }
+    params["sign"] = get_signature(
+        params, has_sign_key="Ms6ZnFsveEMvxaYtehzz6xBNU9zJOy5f")
+    result = requests.post(
+        url=add_statement_url, json=params, timeout=30)
+    print(result.json())
+    print(json.loads(result.request.body))
+    if str(result.status_code).startswith("5"):
+        raise Exception("Request method not recognised or implemented.")
+    print(result.json())
+    """
+    {
+      "code": 0,
+      "data": [
+        {
+          "accountType": 0,
+          "currencyAccount": [
+            {
+              "credit": 0,
+              "currency": "string",
+              "currencyAccountId": "string",
+              "remark": "string",
+              "settleBalance": 0,
+              "status": "string"
+            }
+          ]
+        }
+      ],
+      "msg": "string"
+    }
+    """
+
+
 if __name__ == "__main__":
     # res = get_wallet_info(
     #     merchant_user_id=100101014, currency_code="KES", country_code="KE",
@@ -756,18 +809,24 @@ if __name__ == "__main__":
     # res = create_merchant()
     # res = get_account_info(user_id="K2303291052536964966",
     #                        merchant_no="LP1680058373197")
-    res = create_account(
-        user_id="K2303291052536964966", merchant_no="LP1680058373197",
-        key="Ms6ZnFsveEMvxaYtehzz6xBNU9zJOy5f", account_infos=[
-            {
-                "accountType": 144,
-                "currency": "KES",
-                "remark": "test"
-            },
-            {
-                "accountType": 128,
-                "currency": "KES",
-                "remark": "test"
-            }
-        ])
+
+    # res = create_account(
+    #     user_id="K2303291052536964966", merchant_no="LP1680058373197",
+    #     key="Ms6ZnFsveEMvxaYtehzz6xBNU9zJOy5f", account_infos=[
+    #         {
+    #             "accountType": 144,
+    #             "currency": "KES",
+    #             "remark": "test"
+    #         },
+    #         {
+    #             "accountType": 128,
+    #             "currency": "KES",
+    #             "remark": "test"
+    #         }
+    #     ])
+    res = add_merchant_account_statement(
+        acc_amount=1900, biz_id="3243433343", currency="KES",
+        in_user_id="K2303291052536964966",
+        merchant_no="LP1680058373197"
+    )
     print(res)
