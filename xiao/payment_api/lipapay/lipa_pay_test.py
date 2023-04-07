@@ -40,7 +40,8 @@ create_merchant_info_url = "http://10.0.3.224:8080/v1/app/merchant/createMerchan
 get_account_info_url = "http://10.0.3.224:8080/v1/app/account/accountInfo"
 create_account_url = "http://10.0.3.224:8080/v1/app/account/createAccount"
 query_account_statement = "http://10.0.3.224:8080/v1/app/queryMerchantAccountStatement"
-add_statement_url = "http://10.0.3.224:8080/v1/app/addMerchantAccountStatement"
+# add_statement_url = "http://10.0.3.224:8080/v1/app/addMerchantAccountStatement"
+add_statement_url = "https://lipapay-wallet.kilitest.com/v1/app/addMerchantAccountStatement"
 channels = ['card', 'bank', 'ussd', 'qr', 'mobile_money', 'bank_transfer']
 
 Headers = {
@@ -541,8 +542,18 @@ def create_merchant():
     }
 
     params["sign"] = get_signature(params, ignore_country_code=False)
+    params = {'address': 'TestDeep1-1TestDeep2-1', 'contact': 'test_daisy_ug',
+     'countryCode': 'UG', 'email': '1551220048@qq.com', 'fax': None,
+     'fullName': 'test_daisy_ug', 'shortName': 'test_daisy_ug',
+     'licenseNo': 'ces',
+     'logo': 'https://kilimall-testing.s3.ap-northeast-1.amazonaws.com/lite-test/public/store-info/logo-100000120.jpg',
+     'masterCurrency': 'UGX', 'merchantNo': '2016051112014649173095',
+     'merchantType': 'M', 'platformMerchantId': 100000115, 'remark': '',
+     'signType': 'MD5', 'telephone': '741752745', 'timestamp': '1680857369',
+     'sign': '77026423aa3ce07062cdd20124874474'}
     result = requests.post(
-        url=create_merchant_info_url, json=params, timeout=30)
+        url="https://lipapay-wallet.kilitest.com/v1/app/merchant/createMerchantInfo", json=params, timeout=30)
+    print(result)
     print(json.loads(result.request.body))
     print(result.status_code)
     print(result.json())
@@ -806,7 +817,7 @@ if __name__ == "__main__":
     #     merchant_order_id="8be2ff4f-a2e1-11ed-8137-366296d04d89",
     #     amount="37700", reason=None,
     #     p0="110", payment_trans_id=None, org_name=None, is_use_wallet="N")
-    # res = create_merchant()
+    res = create_merchant()
     # res = get_account_info(user_id="K2303291052536964966",
     #                        merchant_no="LP1680058373197")
 
@@ -824,9 +835,9 @@ if __name__ == "__main__":
     #             "remark": "test"
     #         }
     #     ])
-    res = add_merchant_account_statement(
-        acc_amount=1900, biz_id="3243433343", currency="KES",
-        in_user_id="K2303291052536964966",
-        merchant_no="LP1680058373197"
-    )
+    # res = add_merchant_account_statement(
+    #     acc_amount=0, biz_id="3243433343", currency="KES",
+    #     in_user_id="K2303291052536964966",
+    #     merchant_no="LP1680058373197"
+    # )
     print(res)
