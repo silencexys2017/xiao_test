@@ -540,17 +540,17 @@ def create_merchant():
           "timestamp": str(int(time.time())),   # required
           "websiteUrl": "string"
     }
+    params = {'address': 'BaringoBaringo Central',
+              'contact': '112sellerstore2', 'countryCode': 'KE',
+              'email': 'yc310584221@163.com', 'fax': '',
+              'fullName': '112sellerstore2\t'.strip(), 'shortName': '0212seller',
+              'licenseNo': '213242342', 'logo': 'https://kilimall-testing.s3.ap-northeast-1.amazonaws.com/lite-test/public/store-info/logo-100000126.png', 'masterCurrency': 'KES',
+              'merchantNo': '2016051112014649173095', 'merchantType': 'M',
+              'platformMerchantId': 100000121, 'remark': '', 'signType': 'MD5',
+              'telephone': '789524155', 'timestamp': '1681107076', 'sign': '34e4bdbc5eadbd5fad9d4f3579d14b1e'}
 
     params["sign"] = get_signature(params, ignore_country_code=False)
-    params = {'address': 'TestDeep1-1TestDeep2-1', 'contact': 'test_daisy_ug',
-     'countryCode': 'UG', 'email': '1551220048@qq.com', 'fax': None,
-     'fullName': 'test_daisy_ug', 'shortName': 'test_daisy_ug',
-     'licenseNo': 'ces',
-     'logo': 'https://kilimall-testing.s3.ap-northeast-1.amazonaws.com/lite-test/public/store-info/logo-100000120.jpg',
-     'masterCurrency': 'UGX', 'merchantNo': '2016051112014649173095',
-     'merchantType': 'M', 'platformMerchantId': 100000115, 'remark': '',
-     'signType': 'MD5', 'telephone': '741752745', 'timestamp': '1680857369',
-     'sign': '77026423aa3ce07062cdd20124874474'}
+
     result = requests.post(
         url="https://lipapay-wallet.kilitest.com/v1/app/merchant/createMerchantInfo", json=params, timeout=30)
     print(result)
