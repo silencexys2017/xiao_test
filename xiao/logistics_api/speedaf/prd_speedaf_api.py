@@ -12,11 +12,11 @@ import base64
 # app_code = "TT660041"
 # secret_key = "9tLIDTfB"
 # customer_code = "860046"
-platform_source = "QINANXINXI"
-app_code = "880024"
-secret_key = "cs3d7791"
-customer_code = "2340024"
-prd_cn_customer_code = "860095"
+platform_source = "KILIMALL"
+app_code = "8800108"
+secret_key = "CoISpwG0"
+customer_code = "CN000325"
+prd_cn_customer_code = "CN000325"
 des_iv = 0x12, 0x34, 0x56, 0x78, 0x90, 0xAB, 0xCD, 0xEF
 
 place_order_api = "https://apis.speedaf.com/open-api/express/order/createOrder"
@@ -228,89 +228,106 @@ def place_order(
         insure_price=None, currency_type=None, small_code=None,
         packet_center_code=None, three_sections_code=None,
         pre_pick_up_time=None, remark=None):
+    """
+    0=no need
+    1=need go to customer home to pick
+    2=customer send goods to  logistics company
+    """
     data = {
-        "acceptAddress": accept_address,
+        "acceptAddress": accept_address,  # required
         "acceptCityCode": accept_city_code,
-        "acceptCityName": accept_city_name,
+        "acceptCityName": accept_city_name,  # required
         "acceptCompanyName": accept_company_name,
-        "acceptCountryCode": accept_country_code,
-        "acceptCountryName": accept_country_name,
+        "acceptCountryCode": accept_country_code,  # required
+        # "acceptCountryName": accept_country_name,
         "acceptDistrictCode": accept_district_code,
-        "acceptDistrictName": accept_district_name,
+        "acceptDistrictName": accept_district_name,  # required
         "acceptEmail": accept_email,
-        "acceptMobile": accept_mobile,
-        "acceptName": accept_name,
+        "acceptMobile": accept_mobile,  # required
+        "acceptName": accept_name,  # required
         "acceptPhone": accept_phone,
         "acceptPostCode": accept_post_code,
         "acceptProvinceCode": accept_province_code,
-        "acceptProvinceName": accept_province_name,
+        "acceptProvinceName": accept_province_name,  # required
         "currencyType": currency_type,
         "codFee": cod_fee,
         "customOrderNo": custom_order_no,
-        "customerCode": customer_code,
+        "customerCode": customer_code,   # required
         "parcelHigh": parcel_high,
         "parcelLength": parcel_length,
         "parcelVolume": parcel_volume,
-        "parcelWeight": parcel_weight,
+        "parcelWeight": parcel_weight,  # required
         "parcelWidth": parcel_width,
-        "goodsQTY": goods_qty,
+        "goodsQTY": goods_qty,  # required 商品总数
         "insurePrice": insure_price,
-        "piece": piece,
+        "piece": piece,  # required 包裹件数
         "remark": remark,
-        "sendAddress": send_address,
+        "sendAddress": send_address,  # required
         "sendCityCode": send_city_code,
-        "sendCityName": send_city_name,
+        "sendCityName": send_city_name,  # required
         "sendCompanyName": send_company_name,
-        "sendCountryCode": send_country_code,
+        "sendCountryCode": send_country_code,  # required
         "sendCountryName": send_country_name,
         "sendDistrictCode": send_district_code,
-        "sendDistrictName": send_district_name,
+        "sendDistrictName": send_district_name,  # required
         "sendMail": send_mail,
-        "sendMobile": send_mobile,
-        "sendName": send_name,
+        "sendMobile": send_mobile,  # required
+        "sendName": send_name,  # required
         "sendPhone": send_phone,
         "sendPostCode": send_post_code,
         "sendProvinceCode": send_province_code,
-        "sendProvinceName": send_province_name,
+        "sendProvinceName": send_province_name,  # required
         "shippingFee": shipping_fee,
-        "deliveryType": delivery_type,
-        "payMethod": pay_method,
-        "parcelType": parcel_type,
-        "shipType": ship_type,
-        "transportType": transport_type,
+        "deliveryType": delivery_type,  # required 派送方式 DE01 door to door，DE02 self pickup
+        "payMethod": pay_method,  # required 支付方式 PA02 Monthly to pay
+        "parcelType": parcel_type,  # required 快递类型，PT01 Express快递，PT02 MPS快运
+        "shipType": ship_type,  # required 订单发货类型 ST02  INT eparcel express
+        "transportType": transport_type,  # required 运输方式 TT01 Route,  TT01 Air
         "pickUpAging": pick_up_aging,
-        "prePickUpTime": pre_pick_up_time,
-        "platformSource": platform_source,
+        "prePickUpTime": pre_pick_up_time,  # required  揽件失效
+        "platformSource": "KILIMALL",  # required
         "smallCode": small_code,
         "threeSectionsCode": three_sections_code,
-        "packetCenterCode": packet_center_code
+        "packetCenterCode": packet_center_code,
+        "isAllowOpen": 0,  # 是否允许打开包裹  0 NOT OPEN，  1 allow  OPEN
+        "changeLable": 0,  # 是否更换面单 change  lable   0  ，  1 change
     }
     items = []
     for item in item_list:
         items.append(
             {
-                "battery": item["battery"],
-                "blInsure": item["blInsure"],
-                "dutyMoney": item.get("dutyMoney"),
-                "goodsId": item.get("goodsId"),
-                "goodsMaterial": item.get("goodsMaterial"),
+                "battery": item["battery"],  # 0-no battery , 1-battery
+                "blInsure": item["blInsure"],  # 0=no need
+                # "dutyMoney": item.get("dutyMoney"),
+                # "goodsId": item.get("goodsId"),
+                # "goodsMaterial": item.get("goodsMaterial"),
                 "goodsName": item["goodsName"],
-                "goodsNameDialect": item.get("goodsNameDialect"),
+                "goodsNameDialect": item["goodsNameDialect"],  # 商品名称，中文
                 "goodsQTY": item["goodsQTY"],
-                "goodsRemark": item.get("goodsRemark"),
-                "goodsRule": item.get("goodsRule"),
+                # "goodsRemark": item.get("goodsRemark"),
+                # "goodsRule": item.get("goodsRule"),
                 "goodsType": item["goodsType"],
+                """
+                Code Description
+                IT01 Normal
+                IT02 Doc.
+                IT03 Important
+                IT04 With battery
+                IT05 No battery
+                IT06 Pure battery
+                IT07 Sensitive items
+                """
                 "goodsUnitPrice": item.get("goodsUnitPrice"),
                 "goodsValue": item["goodsValue"],
                 "goodsWeight": item.get("goodsWeight"),
-                "goodsHigh": item.get("goodsHigh"),
-                "goodsLength": item.get("goodsLength"),
-                "goodsWidth": item.get("goodsWidth"),
-                "goodsVolume": item.get("goodsVolume"),
-                "makeCountry": item.get("makeCountry"),
-                "salePath": item.get("salePath"),
+                # "goodsHigh": item.get("goodsHigh"),
+                # "goodsLength": item.get("goodsLength"),
+                # "goodsWidth": item.get("goodsWidth"),
+                # "goodsVolume": item.get("goodsVolume"),
+                # "makeCountry": item.get("makeCountry"),
+                # "salePath": item.get("salePath"),
                 "sku": item["sku"],
-                "unit": item.get("unit"),
+                # "unit": item.get("unit"),
                 "currencyType": item.get("currencyType")
             }
         )
@@ -337,6 +354,10 @@ def place_order(
 
 
 def transport_created_order():
+    """
+    "billCode": "YBEAT5010890713YQ", FALSE, 速达非单号
+    :return:
+    """
     return place_order(
         accept_name="xiao", accept_address="#343street,200room",
         accept_country_code="NG", accept_province_name="test",
@@ -346,7 +367,7 @@ def transport_created_order():
         send_city_name="长沙市", send_district_name="岳麓区",
         parcel_weight="1.23", piece=1, goods_qty=3, parcel_type="PT01",
         delivery_type="DE01", transport_type="TT01", ship_type="ST01",
-        pick_up_aging=1, pay_method="PA01",
+        pick_up_aging=1, pay_method="PA02",
         item_list=[{
             "battery": 0, "blInsure": 0, "dutyMoney": 1000, "goodsId": "19999",
             "goodsMaterial": "", "goodsName": "item mane",
@@ -363,7 +384,7 @@ def transport_created_order():
         accept_email="123@Test.com", accept_company_name="Xiao COM",
         accept_country_name="Nigiera",
         accept_province_code=None, accept_city_code=None,
-        accept_district_code="acceptDistrictName", custom_order_no="E3434",
+        accept_district_code="acceptDistrictName", custom_order_no="E34334",
         send_company_name=None,
         send_post_code="413405", send_phone="1764343435",
         send_mail="34324532.qq.com",
@@ -377,7 +398,7 @@ def transport_created_order():
 
 
 if __name__ == "__main__":
-    # res = transport_created_order()
+    res = transport_created_order()
     # res = print_sheet(["47234208932022"], 1)
     # res = query_track(["47234208932022"])
     # res = subscribe_track("47234208932022", "860046")
@@ -391,7 +412,7 @@ if __name__ == "__main__":
     #     }
     # ])
     # res = get_areas(country_code="CN", parent_code=None, type=0)
-    res = get_area_tree(country_code="KE")
+    # res = get_area_tree(country_code="KE")
     # res = des_encrypt("3432432")
     # body = json.dumps({
     #     "data": "123456",
@@ -402,3 +423,4 @@ if __name__ == "__main__":
     # res = des_decrypt(
     #     "VUfHje/5d11FQaNBFssotZ5JzR29I9tWUbApM+qcmhLLFdRHbn83VYmtyK5/xSoKlHytnHckQeSV+L9v4PsWbdpdrsCGM3jT")
     print(res)
+
