@@ -22,17 +22,11 @@ map_pay_method = {
     3: 'Pre'
 }
 
-X_DB_URL = {
-    "dev": "mongodb://pf_dev_dbo:Bp2Q5j3Jb2cmQvn8L4kW@mongodb-paas-service/admin?replicaSet=rs0",
-	"test": "mongodb://pf_test_dbo:3f4k8aDHeQJBKmd3z7c9@159.138.90.30:30734/admin",
-    "prd": "mongodb://lite-prd"
-}
-
 
 K_DB_URL = {
     "dev": "mongodb://root:KB5NF1T0aP@mongodb-headless.os:27017/admin?replicaSet=rs0",
 	"test": "mongodb://root:IdrCgVpHzv@mongo-mongodb-headless.os:27017/admin?replicaSet=rs0&retrywrites=false",
-    "prd": "mongodb://sk2:Gmbz8i63mtswuMKz8Lk92zNM7UxwO5Txz1@ebes-db.cmxtf8qiglae.eu-central-1.docdb.amazonaws.com:27017/admin?replicaSet=rs0&retrywrites=false"
+    "prd": "mongodb://"
 }
 
 
@@ -351,12 +345,11 @@ if __name__ == "__main__":
         sys.exit(-1)
 
     env, source = sys.argv[1], sys.argv[2]
-    # config = load_config(_DEFAULT_CONFIG_FILE, env)
-    # southx_config = load_config(_SOUTHX_CONFIG_FILE, env)
-    if env == "prd" and source == "xed":
-        url = X_DB_URL
-    else:
-        url = K_DB_URL
+
+    url = K_DB_URL
+    bee_common_db = get_db(url, env, "BeeCommon")
+
+    """
     if source == "xed":
         bee_common_db = get_db(url, env, "BeeCommon")
         from_seller = False
@@ -365,10 +358,11 @@ if __name__ == "__main__":
         bee_common_db = get_db(url, env, "Common")
         from_seller = True
         member_db = get_db(url, env, "Member")
+    """
 
     # pull_pickup_station("./address Update V6.xlsx", from_seller=from_seller)
-    push_pickup_station("./address Update V6.xlsx")
+    # push_pickup_station("./address Update V6.xlsx")
     # get_not_match_address("./address Update V5.1.xlsx")
     # get_xed_address("ke_address.xlsx")
-    # update_express_address()
+    update_express_address()
 
