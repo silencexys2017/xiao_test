@@ -53,7 +53,7 @@ def des_encrypt(data):
     k = des(secret_key, CBC, IV=des_iv, pad=None, padmode=PAD_PKCS5)
     en = k.encrypt(data)
     data = base64.b64encode(en).decode("utf-8")
-    print(data)
+
     return data
 
 
