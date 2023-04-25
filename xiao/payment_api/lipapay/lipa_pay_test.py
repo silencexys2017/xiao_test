@@ -537,18 +537,9 @@ def create_merchant():
           "shortName": "KiliLite",   # required
           "signType": "MD5",    # required
           "telephone": "1783439343",   # required
-          "timestamp": str(int(time.time())),   # required
+          "timestamp": int(time.time()),   # required
           "websiteUrl": "string"
     }
-    params = {'address': 'BaringoBaringo Central',
-              'contact': '112sellerstore2', 'countryCode': 'KE',
-              'email': 'yc310584221@163.com', 'fax': '',
-              'fullName': '112sellerstore2\t'.strip(), 'shortName': '0212seller',
-              'licenseNo': '213242342', 'logo': 'https://kilimall-testing.s3.ap-northeast-1.amazonaws.com/lite-test/public/store-info/logo-100000126.png', 'masterCurrency': 'KES',
-              'merchantNo': '2016051112014649173095', 'merchantType': 'M',
-              'platformMerchantId': 100000121, 'remark': '', 'signType': 'MD5',
-              'telephone': '789524155', 'timestamp': '1681107076', 'sign': '34e4bdbc5eadbd5fad9d4f3579d14b1e'}
-
     params["sign"] = get_signature(params, ignore_country_code=False)
 
     result = requests.post(
@@ -580,7 +571,7 @@ def get_account_info(user_id, merchant_no):
       "currency": None,
       "merchantNo": merchant_no,
       "signType": "MD5",
-      "timestamp": "1680061019",
+      "timestamp": 1680061019,
       "userId": user_id
     }
 
@@ -627,7 +618,7 @@ def create_account(user_id, merchant_no, key, account_infos) -> object:
     params = {
         "merchantNo": merchant_no,
         "signType": "MD5",
-        "timestamp": str(int(time.time())),
+        "timestamp": int(time.time()),
         "userId": user_id
     }
     account_list = "["
@@ -678,7 +669,7 @@ def query_merchant_account_statement(
       "signType": "MD5",
       "startTime": 0,
       "endTime": 0,
-      "timestamp": str(int(time.time()))
+      "timestamp": int(time.time())
     }
     params["sign"] = get_signature(
         params, has_sign_key="Ms6ZnFsveEMvxaYtehzz6xBNU9zJOy5f")
@@ -707,7 +698,7 @@ def add_merchant_account_statement(
       "outUserId": "K1707040253321492226",  # required 出账账户
       "remark": "test",  # 备注
       "signType": "MD5",
-      "timestamp": str(int(time.time()))
+      "timestamp": int(time.time())
     }
     params["sign"] = get_signature(
         params, has_sign_key="Ms6ZnFsveEMvxaYtehzz6xBNU9zJOy5f")
