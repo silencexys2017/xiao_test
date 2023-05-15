@@ -37,6 +37,22 @@ def get_db(uri, env, database):
     return client[db]
 
 
+def update_vendor_settlement_cycle():
+    quark_vendor_db.Vendor.update_many({"settlementMethod": 3}, {"$set": {
+        "settlementMethod": 4}})
+    quark_vendor_db.Vendor.update_many({"settlementMethod": 2}, {"$set": {
+        "settlementMethod": 3}})
+    quark_vendor_db.Vendor.update_many({"settlementMethod": 1}, {"$set": {
+        "settlementMethod": 2}})
+
+    quark_vendor_db.VendorApplication.update_many(
+        {"settlementMethod": 3}, {"$set": {"settlementMethod": 4}})
+    quark_vendor_db.VendorApplication.update_many(
+        {"settlementMethod": 2}, {"$set": {"settlementMethod": 3}})
+    quark_vendor_db.VendorApplication.update_many(
+        {"settlementMethod": 1}, {"$set": {"settlementMethod": 2}})
+
+
 def record_settlement_cycle():
     for store in seller_db.Store.find():
         if not store.get("settlementAccount"):
@@ -122,4 +138,5 @@ if __name__ == "__main__":
     quark_vendor_db = get_db(K_DB_URL, env, "QuarkVendor")
     bee_auth_db = get_db(K_DB_URL, env, "BeeAuth")
 
+    update_vendor_settlement_cycle()
     record_settlement_cycle()
