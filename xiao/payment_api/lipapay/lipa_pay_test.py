@@ -783,16 +783,16 @@ if __name__ == "__main__":
     #     use_installment=None)
 
     """wallet020101,mpesa020106,mpesa020105,ipay010102"""
-    # res = sdk_checkout_order(
-    #     amount=60000, currency="KES", merchant_id=merchant_id,
-    #     merchant_order_no="343432F32343232", expiration_time="1000000",
-    #     channel_code="ipay010102", goods_list=goods_list,
-    #     email="1159983582@qq.com", mobile="254714456852",
-    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
-    #     buyer_account="4444444",
-    #     custom_field_1=None, custom_field_2=None,
-    #     custom_field_3=None,  remark="", password=encrypt("123456")
-    # )
+    res = sdk_checkout_order(
+        amount=60000, currency="KES", merchant_id=merchant_id,
+        merchant_order_no="343432F32343232", expiration_time="1000000",
+        channel_code="ipay010102", goods_list=goods_list,
+        email="1159983582@qq.com", mobile="254714456852",
+        seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+        buyer_account="4444444",
+        custom_field_1=None, custom_field_2=None,
+        custom_field_3=None,  remark="", password=encrypt("123456")
+    )
 
     # res = wallet_payment(
     #     merchant_order_id="343435F3464254", order_id="K2210180724381326032",
@@ -808,7 +808,7 @@ if __name__ == "__main__":
     #     merchant_order_id="8be2ff4f-a2e1-11ed-8137-366296d04d89",
     #     amount="37700", reason=None,
     #     p0="110", payment_trans_id=None, org_name=None, is_use_wallet="N")
-    res = create_merchant()
+    # res = create_merchant()
     # res = get_account_info(user_id="K2303291052536964966",
     #                        merchant_no="LP1680058373197")
 
