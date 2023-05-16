@@ -138,5 +138,5 @@ if __name__ == "__main__":
     quark_vendor_db = get_db(K_DB_URL, env, "QuarkVendor")
     bee_auth_db = get_db(K_DB_URL, env, "BeeAuth")
 
-    update_vendor_settlement_cycle()
+    # update_vendor_settlement_cycle()
     record_settlement_cycle()
