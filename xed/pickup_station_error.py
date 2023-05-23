@@ -26,7 +26,7 @@ map_pay_method = {
 K_DB_URL = {
     "dev": "mongodb://root:KB5NF1T0aP@mongodb-headless.os:27017/admin?replicaSet=rs0",
 	"test": "mongodb://root:IdrCgVpHzv@mongo-mongodb-headless.os:27017/admin?replicaSet=rs0&retrywrites=false",
-    "prd": "mongodb://"
+    "prd": ""
 }
 
 
@@ -273,6 +273,16 @@ def get_xed_address(file_name):
     workbook.close()
 
 
+def get_kiliexpress_unmatch_areas():
+    areas = []
+    for it in bee_common_db.LogisticsAddress.find(
+            {"deep": 2, "leafAreaIds": []}).sort([("_id", -1)]):
+        city = bee_common_db.LogisticsAddress.find_one({"_id": it["parentId"]})
+        areas.append((city["name"], it["name"]))
+        print(city["name"], it["name"])
+    print(areas)
+
+
 def update_express_address():
     deep_1_id, deep_2_id = 0, 0
     for it in bee_common_db.LogisticsAddress.find(
@@ -364,5 +374,5 @@ if __name__ == "__main__":
     # push_pickup_station("./address Update V6.xlsx")
     # get_not_match_address("./address Update V5.1.xlsx")
     # get_xed_address("ke_address.xlsx")
-    update_express_address()
-
+    # update_express_address()
+    get_kiliexpress_unmatch_areas()
