@@ -41,6 +41,20 @@ def get_signature(data_dict):
     return m_hash.hexdigest()
 
 
+def get_signature(data_dict):
+    sorted_keys = sorted(data_dict)
+    plain_text = ""
+    for key in sorted_keys:
+        if data_dict[key] in [None, ""] or key \
+                in ["version", "sign", "countryCode"]:
+            continue
+        plain_text = plain_text + str(key) + "=" + str(data_dict[key]) + "&"
+    plain_text = plain_text[:-1] + sign_key
+    m_hash = hashlib.md5()
+    m_hash.update(plain_text.encode("utf-8"))
+    return m_hash.hexdigest()
+
+
 def save_html(file_content):
     with open("lipa_payment" + ".html", "wb") as f:
         f.write(file_content)
@@ -239,6 +253,8 @@ if __name__ == "__main__":
     #     use_installment=None)
     # res = query_transaction(order_no="a3ec84bd-6ff2-11ed-a008-b6d47b14f78f")
     # res = cancel_order(order_no="4WHDJ2UNAEQQF349", amount="2")
-    res = get_wallet_info(100007985)  # 11166703
-
+    # res = get_wallet_info(100007985)  # 11166703
+    data = {'amount': '200', 'merchantId': 'LP1652932882829', 'merchantOrderNo': '2696f414-f51e-11ed-a751-0255ac10003a', 'orderId': 'K2305180149009409715', 'orgTransId': 'WAA-31243429-31243430', 'p1': '100011497', 'paymentChannel': 'wallet', 'paymentMethod': 'SDK_V1', 'sign': '7c977bf1789e657b376a1709c7efe37b', 'signType': 'MD5', 'status': 'SUCCESS'}
+    res = get_signature(data)
+    print(res==data.get("sign"))
     print(res)
