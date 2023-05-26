@@ -318,6 +318,7 @@ def sdk_checkout_order(
     response_url = response_url[:-1]
 
     result = requests.post(url=sdk_checkout_url,  json=data, verify=False)
+    result.raise_for_status()
     print(json.dumps(result.json()))
     print(json.loads(result.request.body))
     if str(result.status_code).startswith("5"):
