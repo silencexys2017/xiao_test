@@ -25,6 +25,8 @@ query_transaction_url = "https://lipapay-cashier.kilitest.com/api/queryExcashier
 cancel_order_url = "https://lipapay-cashier.kilitest.com/api/cancelOrder.htm"
 refund_order_url = "https://lipapay-cashier.kilitest.com/api/orderRefund.htm"
 query_refund_url = "https://lipapay-cashier.kilitest.com/api/queryRefundOrder.htm"
+get_payment_user_info_url = "https://lipapay-wallet.kilitest.com/v1/app/merchant/getPaymentUserInfoByLicenseNo"
+
 merchant_id = "2016051112014649173095"
 merchant_user_id = "K1707040253321492226"
 # merchant_id = "kilimall-ke"
@@ -733,6 +735,24 @@ def add_merchant_account_statement(
     """
 
 
+def get_payment_user_info_by_license_no(license_no):
+    params = {
+        "merchantNo": merchant_id,
+        "signType": "MD5",
+        # "timestamp": int(time.time()),
+        "licenseNo": license_no
+    }
+
+    params["sign"] = get_signature(params)
+    result = requests.post(
+        url=get_payment_user_info_url, json=params, timeout=30).json()
+    if result["code"] != 200:
+        print("get_payment_user_info failed, %s" % result.get("msg"))
+        raise Exception(
+            "get_payment_user_info failed, %s" % result.get("msg"))
+    return result["data"]
+
+
 if __name__ == "__main__":
     # res = get_wallet_info(
     #     merchant_user_id=100101014, currency_code="KES", country_code="KE",
@@ -784,16 +804,16 @@ if __name__ == "__main__":
     #     use_installment=None)
 
     """wallet020101,mpesa020106,mpesa020105,ipay010102"""
-    res = sdk_checkout_order(
-        amount=60000, currency="KES", merchant_id=merchant_id,
-        merchant_order_no="343432F32343232", expiration_time="1000000",
-        channel_code="ipay010102", goods_list=goods_list,
-        email="1159983582@qq.com", mobile="254714456852",
-        seller_id="33333333", seller_account="33333333", buyer_id="100100013",
-        buyer_account="4444444",
-        custom_field_1=None, custom_field_2=None,
-        custom_field_3=None,  remark="", password=encrypt("123456")
-    )
+    # res = sdk_checkout_order(
+    #     amount=60000, currency="KES", merchant_id=merchant_id,
+    #     merchant_order_no="343432F32343232", expiration_time="1000000",
+    #     channel_code="ipay010102", goods_list=goods_list,
+    #     email="1159983582@qq.com", mobile="254714456852",
+    #     seller_id="33333333", seller_account="33333333", buyer_id="100100013",
+    #     buyer_account="4444444",
+    #     custom_field_1=None, custom_field_2=None,
+    #     custom_field_3=None,  remark="", password=encrypt("123456")
+    # )
 
     # res = wallet_payment(
     #     merchant_order_id="343435F3464254", order_id="K2210180724381326032",
@@ -832,4 +852,5 @@ if __name__ == "__main__":
     #     in_user_id="K2303291052536964966",
     #     merchant_no="LP1680058373197"
     # )
+    res = get_payment_user_info_by_license_no("123456789")
     print(res)
