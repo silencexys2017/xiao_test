@@ -31,7 +31,6 @@ def send_sms_api(
     print(str(res.status_code).startswith("5"))
     resp_sms = res.json()
     print(resp_sms)
-    res.raise_for_status()
 """{'status': 400, 'message': 'Template Kilimall_lite_welcome_member_email does not configure channel type : sms'}"""
 
 config = {"message_api": {
@@ -65,6 +64,6 @@ def try_do():
 
 
 if __name__ == "__main__":
-    # send_sms_api(str(uuid.uuid1()), "Kilimall_lite_welcome_member_email",
-    #              "080", "17693438342", "CN", "1", "test")
-    try_do()
+    send_sms_api(str(uuid.uuid1()), "Kilimall_lite_welcome_member_email",
+                 "080", "17693438342", "CN", "1", "test")
+    # try_do()

@@ -1,7 +1,0 @@
-<ITEM>
-    <ITEMCD>{sku_id}</ITEMCD>
-    <ITEMNAME>{sku_name}</ITEMNAME>
-    <ORIGIN>{country_origin}</ORIGIN>
-    <PIECE>{count}</PIECE>
-    <UNITPRICE>{unit_price}</UNITPRICE>
-</ITEM>

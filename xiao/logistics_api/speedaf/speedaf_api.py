@@ -12,9 +12,9 @@ app_code = "TT660041"
 secret_key = "9tLIDTfB"
 customer_code = "860046"
 platform_source = "QINANXINXI"
-# app_code = "880024"
-# secret_key = "cs3d7791"
-# customer_code = "2340024"
+app_code = "880024"
+secret_key = "cs3d7791"
+customer_code = "2340024"
 prd_cn_customer_code = "860095"
 des_iv = 0x12, 0x34, 0x56, 0x78, 0x90, 0xAB, 0xCD, 0xEF
 
