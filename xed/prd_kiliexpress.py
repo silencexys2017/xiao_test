@@ -29,7 +29,7 @@ test_express_bill_url = "http://admin.kiliexpress.cn/#/pickup/expressSheet100mm?
 notify_url = "https://openapi.xedelivery.cn/express/kiliexpress/track/callback"
 headers = {"Content-Type": "application/json",
            "Authorization": ""}
-auth_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsInN1YiI6IjMyMDMiLCJuYmYiOjE2NTYwMzU1NzEsInNjb3BlcyI6W10sImV4cCI6MTY1NjEyMTk3MSwiaWF0IjoxNjU2MDM1NTcxLCJqdGkiOiI0YjFjYmVmZS0wMmRlLTQwNDAtYTg5Mi05Y2Q1YmI3OWY5MDAifQ.qhMSGXGzWzXL5Ik5U8EPlqDz36d8Qzk61t373CqdOHo"
+auth_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsInN1YiI6IjMyMDMiLCJuYmYiOjE2ODYxMDY0NjksInN1YnMiOnsiVUFDIjoiMzIwMyIsIlNZUy1YRURFTElWRVJZIjoiMzIwMyJ9LCJzY29wZXMiOltdLCJleHAiOjE2ODYxOTI4NjksImlhdCI6MTY4NjEwNjQ2OSwianRpIjoiZjg2Mzk0YjctZWU3OC00MzRmLTk3ZTUtOTc1MjBjYmRhOTMyIn0.-BLi78HYFgiX0SXY3Ej9LG69CSU2kmNa4D0wFjAfvmw"
 
 def hashlib_md5(data):
     return hashlib.md5(data.encode(encoding='utf-8')).hexdigest()
