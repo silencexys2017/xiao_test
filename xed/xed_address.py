@@ -620,22 +620,31 @@ if __name__ == "__main__":
     bee_common_db = get_db(X_DB_URL, env, "BeeCommon")
     bee_logistics_db = get_db(X_DB_URL, env, "BeeLogistics")
 
+    # 创建kili物流api地址库
     # create_kili_express_address()
     # print("create_kili_express_address success")
-    #
+
+    # 创建kili物流地址库
     # add_kili_express_address()
     # print("add_kili_express_address success")
-    #
+
+    # 将excel地址库数据，存到json （xed_address.json，mall_address.json）
     # import_ke_address_from_excel("./address Update V5.xlsx")
-    #
+
+    # 地址库导入到数据库
     # add_kili_ke_address()
     # print("add_kili_ke_address success")
-    #
+
+    # 增加国家配置
     # add_xed_region_config()
     # print("add_xed_region_config success")
     ki_li_data = {"stations": [], "areas": []}
+
+    # 自提点写入数据库
     add_kili_pickup_station()
     print("add_kili_pickup_station success")
+
+    # 自提点数据与地址areas汇总
     for it in bee_common_db.Areas.find(
             {"regionCode": {"$in": ["KE", "CN"]}}).sort([("deep", 1)]):
         it["lastUpdatedTime"] = convert_time_str(it["lastUpdatedTime"])

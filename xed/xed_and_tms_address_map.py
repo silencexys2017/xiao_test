@@ -295,8 +295,10 @@ if __name__ == "__main__":
 
     env = sys.argv[1]
     bee_common_db = get_db(K_DB_URL, env, "BeeCommon")
-    find_not_match_address()
-    # add_logistics_address()
-    # update_logistics_address_area_id()
 
+    # 查找没有匹配到物流二级地址的fms的三级地址库
+    find_not_match_address()
+
+
+    # update_logistics_address_area_id()
     # print("create_kili_express_address success")

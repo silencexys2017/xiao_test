@@ -159,6 +159,7 @@ if __name__ == "__main__":
 
     import_ke_address_from_excel("./address Update V6.xlsx")
 
+    # 把所有fms的地址数据和自提点数据导入ki_li_data.json
     ki_li_data = {"stations": [], "areas": []}
     for it in bee_common_db.PickupStation.find().sort([("_id", 1)]):
         if it.get("lastUpdatedTime"):

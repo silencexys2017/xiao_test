@@ -370,9 +370,20 @@ if __name__ == "__main__":
         member_db = get_db(url, env, "Member")
     """
 
+    # 更新PickupStation leafAreaIds字段；更新Areas pickupIds字段（减少）
     # pull_pickup_station("./address Update V6.xlsx", from_seller=from_seller)
+
+    # 更新PickupStation leafAreaIds字段；更新Areas pickupIds字段 （增加）
     # push_pickup_station("./address Update V6.xlsx")
+
+    # 获取没有找到自提点对应三级地址
     # get_not_match_address("./address Update V5.1.xlsx")
+
+    # 获取ke站地址excel
     # get_xed_address("ke_address.xlsx")
+
+    # 物流端新增地址的处理
     # update_express_address()
+
+    # 获取没有映射上的物流端二级地址
     get_kiliexpress_unmatch_areas()
