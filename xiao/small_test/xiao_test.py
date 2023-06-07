@@ -66,30 +66,6 @@ def get_next_year_month_str():
     return year_month
 
 
-def get_diff_data():
-    data_1 = [
-        "Gaibandha",
-        "Dinajpur",
-        "Joypurhat",
-        "Lalmonirhat",
-        "Pirojpur",
-        "Faridpur",
-        "Bandarban",
-        "Kurigram",
-        "Gopalganj",
-        "Manikganj",
-        "Sirajganj",
-        "Pabna",
-        "Naogaon"
-    ]
-    data_2 = {'Manikganj', 'Naogaon', 'Sirajganj', 'Bandarban', 'Dinajpur',
-              'Faridpur', 'Kurigram', 'Gopalganj', 'Lalmonirhat', 'Pabna',
-              'Gaibandha', 'Pirojpur', 'Rangamati', 'Joypurhat', 'Thakurgaon'}
-    for it in data_2:
-        if it not in data_1:
-            print(it)
-
-
 def gen_token(payload):
     """生成账户token"""
     token = jwt.encode(
@@ -108,6 +84,13 @@ def token_decode(token, algorithms='HS256'):
     print(payload)
 
 
+def my_function(*args, **kwargs):
+    if args:
+        print(args)
+    print(kwargs, "-------")
+    for arg in args:
+        print(arg)
+
 
 if __name__ == "__main__":
     # res = produce_code("xiao")
@@ -122,10 +105,8 @@ if __name__ == "__main__":
     #     ERROR_CODE_MAP = json.load(f)
     #     f.close()
     token = gen_token({"xiao": 1, "yong": 2, "sheng": 3})
-    print(token.decode('utf-8'))
-    a = b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyLCJhY2NvdW50IjoicGVyZmVldGVzdDAwMSIsInNlbGxlcl9pZCI6MiwicmVnaW9uX2lkX29mX3NlbGxlciI6MiwiZXhwIjoxNjIzNDc4OTUwfQ._MqUKyGGMiin0ODK2-wwgcVRO9D0yiGioZlzP4wovTs'
-    # token = "b'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50X2lkIjoyLCJhY2NvdW50IjoicGVyZmVldGVzdDAwMSIsInNlbGxlcl9pZCI6MiwicmVnaW9uX2lkX29mX3NlbGxlciI6MiwiZXhwIjoxNjIzNDc4OTUwfQ._MqUKyGGMiin0ODK2-wwgcVRO9D0yiGioZlzP4wovTs'"
-    token_decode(token)
+    my_function(**{"xiao": "yongsheng"})
+    # token_decode(token)
 
 
 

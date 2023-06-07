@@ -746,6 +746,7 @@ def get_payment_user_info_by_license_no(license_no):
     params["sign"] = get_signature(params)
     result = requests.post(
         url=get_payment_user_info_url, json=params, timeout=30).json()
+    print(result)
     if result["code"] != 200:
         print("get_payment_user_info failed, %s" % result.get("msg"))
         raise Exception(
@@ -852,5 +853,5 @@ if __name__ == "__main__":
     #     in_user_id="K2303291052536964966",
     #     merchant_no="LP1680058373197"
     # )
-    res = get_payment_user_info_by_license_no("123456789")
+    res = get_payment_user_info_by_license_no("kilitest001")
     print(res)
