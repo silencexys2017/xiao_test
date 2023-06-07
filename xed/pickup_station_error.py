@@ -255,7 +255,8 @@ def get_xed_address(file_name):
     worksheet_1.write("B1", "County", bold)
     worksheet_1.write("C1", "SubCounty", bold)
     worksheet_1.write("D1", "Word", bold)
-    worksheet_1.set_column('A:D', 20, other_bold)
+    worksheet_1.write("E1", "SupportToDoor", bold)
+    worksheet_1.set_column('A:E', 20, other_bold)
     worksheet_1.set_row(0, 20)
     current_row = 2
     for it in bee_common_db.Areas.find({"regionCode": "KE", "deep": 3}).sort(
@@ -267,6 +268,7 @@ def get_xed_address(file_name):
         worksheet_1.write('B%d' % current_row, county["name"])
         worksheet_1.write('C%d' % current_row, sub_county["name"])
         worksheet_1.write('D%d' % current_row, it["name"])
+        worksheet_1.write('E%d' % current_row, it.get("isSupportToDoor"))
         current_row += 1
         print(current_row, it.get("_id"))
 
@@ -356,8 +358,7 @@ if __name__ == "__main__":
 
     env, source = sys.argv[1], sys.argv[2]
 
-    url = K_DB_URL
-    bee_common_db = get_db(url, env, "BeeCommon")
+    bee_common_db = get_db(K_DB_URL, env, "BeeCommon")
 
     """
     if source == "xed":
@@ -380,10 +381,10 @@ if __name__ == "__main__":
     # get_not_match_address("./address Update V5.1.xlsx")
 
     # 获取ke站地址excel
-    # get_xed_address("ke_address.xlsx")
+    get_xed_address("ke_address.xlsx")
 
     # 物流端新增地址的处理
     # update_express_address()
 
     # 获取没有映射上的物流端二级地址
-    get_kiliexpress_unmatch_areas()
+    # get_kiliexpress_unmatch_areas()
