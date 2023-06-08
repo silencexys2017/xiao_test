@@ -10,7 +10,6 @@ import xlsxwriter
 from prd_kiliexpress import sign_in, get_area_tree
 
 
-
 _DEFAULT_CONFIG_FILE = '../kili_config.json'
 _SOUTHX_CONFIG_FILE = '../config.json'
 DATA_TIME_FORMAT = "%Y-%m-%dT%H:%M:%S.%fZ"

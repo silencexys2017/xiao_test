@@ -1,3 +1,4 @@
+import json
 import logging
 import sys
 import os
@@ -36,7 +37,7 @@ def get_db(uri, env, database):
 
 
 def strip_string_name(name):
-    if not name:
+    if name is None:
         return
     if not isinstance(name, str):
         name = str(name)
@@ -50,39 +51,65 @@ def add_pickup_station(file_route):
     start_id = None
     for it in bee_common_db.PickupStation.find().sort([("_id", -1)]).limit(1):
         start_id = it["_id"] + 1
-    for row in list(ks_sheet.iter_rows(min_row=2, max_row=1551)):
+    pickup_station_ids = set()
+    for row in list(ks_sheet.iter_rows(min_row=2, max_row=1515)):
         station_id = int(strip_string_name(row[0].value))
+        if station_id in pickup_station_ids:
+            print(station_id)
+        pickup_station_ids.add(station_id)
         station = bee_common_db.PickupStation.find_one(
             {"sourceStationId": station_id})
+        lite_station = common_db.PickupStation.find_one(
+            {"sourceStationId": station_id})
         if station:
+            if not lite_station:
+                common_db.PickupStation.insert_one(station)
             continue
+        print(station_id)
+        latitude = strip_string_name(row[10].value)
+        if "N" in latitude:
+            latitude = None
+        else:
+            latitude = float(latitude)
+        longitude = strip_string_name(row[11].value)
+        if "N" in longitude:
+            longitude = None
+        else:
+            longitude = float(longitude)
+        is_support_big = strip_string_name(row[4].value)
+        if "N" in is_support_big:
+            is_support_big = None
+        business_type = strip_string_name(row[7].value)
+        if "N" in business_type:
+            business_type = 3
+        else:
+            business_type = int(business_type)
+
         data = {
             "_id": start_id,
             "sourceStationId": station_id,
-            "status": 1,
-            "name": "Makadaraka HoneyComb KiliShop",
-            "address": "MAKADARA TOWN, Hamza, Gean Apartment GO3, Along Luka Cres Road",
-            "isSupportBigPackage": "1",
-            "areaId": 315,
-            "areaCode": "100140",
-            "businessType": 3,
-            "pickingCode": "1-105",
-            "businessTime": "Mon-Sat 9:000am-6:00pm",
-            "latitude": 36.873906,
-            "longitude": -1.29692,
-            "regionCode": "KE",
-            "county": "Nairobi",
-            "town": "Makadara",
-            "phone": null,
-            "leafAreaIds": [
-                1000032006
-            ]
+            "status": int(strip_string_name(row[1].value)),
+            "name": strip_string_name(row[2].value),
+            "address": strip_string_name(row[3].value),
+            "isSupportBigPackage": is_support_big,
+            "areaId": int(strip_string_name(row[5].value)),
+            "areaCode": strip_string_name(row[6].value),
+            "businessType": business_type,
+            "pickingCode": strip_string_name(row[8].value),
+            "businessTime": strip_string_name(row[9].value),
+            "latitude": latitude,
+            "longitude": longitude,
+            "regionCode": strip_string_name(row[12].value),
+            "county": strip_string_name(row[14].value),
+            "town": strip_string_name(row[13].value),
+            "phone": strip_string_name(row[15].value),
+            "leafAreaIds": []
         }
+        print(start_id, json.dumps(data))
+        bee_common_db.PickupStation.insert_one(data)
+        common_db.PickupStation.insert_one(data)
         start_id += 1
-        county, sub_county, area = strip_string_name(
-            row[0].value), strip_string_name(row[1].value), strip_string_name(
-            row[2].value)
-        shop_id = strip_string_name(row[4].value)
+    print(len(pickup_station_ids))
 
 
 if __name__ == "__main__":
@@ -93,5 +120,7 @@ if __name__ == "__main__":
         logging.error(usage)
         sys.exit(-1)
 
-    env, source = sys.argv[1], sys.argv[2]
+    env = sys.argv[1]
     bee_common_db = get_db(K_DB_URL, env, "BeeCommon")
+    common_db = get_db(K_DB_URL, env, "Common")
+    add_pickup_station("./自提点.xlsx")
