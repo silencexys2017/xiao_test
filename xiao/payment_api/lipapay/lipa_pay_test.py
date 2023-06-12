@@ -853,5 +853,5 @@ if __name__ == "__main__":
     #     in_user_id="K2303291052536964966",
     #     merchant_no="LP1680058373197"
     # )
-    res = get_payment_user_info_by_license_no("kilitest001")
+    res = get_payment_user_info_by_license_no("kilitest0013")
     print(res)
