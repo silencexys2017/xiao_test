@@ -705,13 +705,13 @@ def add_merchant_account_statement(
     }
     params["sign"] = get_signature(
         params, has_sign_key="Ms6ZnFsveEMvxaYtehzz6xBNU9zJOy5f")
+    params = {'accAmount': 7500, 'accSummary': '2023-06', 'accType': 'RECEIVABLE', 'bizId': '216100000259202406', 'bizType': 'SETTLEMENT', 'fundingType': 'SETTLEMENT', 'subBizType': 'SETTLEMENT_FEE', 'currency': 'KES', 'inUserId': 'K2306160740156852599', 'merchantNo': 'LP1686901215719', 'outUserId': 'K1707040253321492226', 'remark': '2023-06-01T03:00:00.000000Z-2023-07-01T03:00:00.000000Z', 'signType': 'MD5', 'timestamp': 1687142830, 'sign': '140178cf95ed99ecf401cf2559176da8'}
     result = requests.post(
         url=add_statement_url, json=params, timeout=30)
     print(result.json())
     print(json.loads(result.request.body))
     if str(result.status_code).startswith("5"):
         raise Exception("Request method not recognised or implemented.")
-    print(result.json())
     """
     {
       "code": 0,
@@ -848,10 +848,12 @@ if __name__ == "__main__":
     #             "remark": "test"
     #         }
     #     ])
-    # res = add_merchant_account_statement(
-    #     acc_amount=0, biz_id="3243433343", currency="KES",
-    #     in_user_id="K2303291052536964966",
-    #     merchant_no="LP1680058373197"
-    # )
-    res = get_payment_user_info_by_license_no("kilitest0013")
+    res = add_merchant_account_statement(
+        acc_amount=0, biz_id="3243433343", currency="KES",
+        in_user_id="K2303291052536964966",
+        merchant_no="LP1680058373197"
+    )
+    # kilitest001
+
+    # res = get_payment_user_info_by_license_no("91140109344422127T")
     print(res)

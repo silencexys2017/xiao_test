@@ -5,8 +5,17 @@ import thriftpy2
 import thrift_connector.connection_pool as connection_pool
 import thriftpy2.protocol.json as proto
 
+DEF_ORDER = thriftpy2.load("order.thrift")
 DEF = thriftpy2.load("order_struct.thrift")
-
+common_service = connection_pool.ClientPool(
+    DEF_ORDER.OrderService,
+    "kdfk",
+    "8",
+    timeout=120,
+    max_conn=120,
+    connection_class=connection_pool.ThriftPyCyClient,
+)
+DEF.receipt_domestic_transfer(32432, 43253, 134)
 b = DEF.PartnerProduct(
     skuId="13443", mapStr={"dkf": DEF.AreaIdName(id=34324, name="xiao")})
 
@@ -54,6 +63,7 @@ def address_areas():
 # struct_to_json()
 address_areas()
 
+DEF_ORDER.create_wms_warehouse_application(1,2,1)
 
 
 

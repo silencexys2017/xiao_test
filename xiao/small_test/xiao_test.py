@@ -1,5 +1,4 @@
 from datetime import datetime
-import json
 import jwt
 
 
@@ -84,12 +83,14 @@ def token_decode(token, algorithms='HS256'):
     print(payload)
 
 
-def my_function(*args, **kwargs):
+def my_function(a, *args, **kwargs):
+    print(a)
     if args:
         print(args)
     print(kwargs, "-------")
     for arg in args:
         print(arg)
+
 
 
 if __name__ == "__main__":
@@ -105,7 +106,7 @@ if __name__ == "__main__":
     #     ERROR_CODE_MAP = json.load(f)
     #     f.close()
     token = gen_token({"xiao": 1, "yong": 2, "sheng": 3})
-    my_function(**{"xiao": "yongsheng"})
+    my_function(a=1, **{"xiao": "yongsheng"})
     # token_decode(token)
 
 
