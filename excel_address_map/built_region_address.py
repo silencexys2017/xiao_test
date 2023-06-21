@@ -143,9 +143,12 @@ def add_kili_address(region_code, address_sheet, depth=3, min_row=2):
         "supportCod": False
     }
     data_0.update({"_id": deep_0_fms_id, "sort": deep_0_fms_id})
+    bee_common_db.Areas.delete_one({"_id": deep_0_fms_id})
     bee_common_db.Areas.insert_one(data_0)
+    wms_common_db.Areas.delete_one({"_id": deep_0_fms_id})
     wms_common_db.Areas.insert_one(data_0)
     data_0.update({"_id": deep_0_lite_id, "sort": deep_0_lite_id})
+    common_db.Areas.delete_one({"_id": deep_0_lite_id})
     common_db.Areas.insert_one(data_0)
 
     deep_1_start_id, deep_2_start_id, deep_3_start_id = 0, 0, 0
