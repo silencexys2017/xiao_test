@@ -157,10 +157,10 @@ def add_kili_address(region_code, address_sheet, depth=3, min_row=2):
             continue
         if region_code in ["UG"]:
             area_name_2 = area_name_3
-        if region_code == "TZ":
-            middleman = area_name_1
-            area_name_1 = area_name_3
-            area_name_3 = middleman
+        elif region_code == "TZ":
+            area_name_1 = area_name_2
+            area_name_2 = area_name_3
+            area_name_3 = area_name_4
 
         if tree.contains(area_name_1) is False:
             deep_1_start_id += 1
@@ -336,20 +336,23 @@ if __name__ == "__main__":
     lite_address_level = {
         "addressLevel": 3, "addressNameMap": {
             "1": "Province", "2": "City", "3": "Area"}}
-    if code in ["UG", "TZ"]:
+    if code in ["UG"]:
         wb_obj = load_workbook("region_address_excel/UG&TZ-地址库.xlsx")
-        if code == "UG":
-            address_sheet = wb_obj.get_sheet_by_name("乌干达")
-            fms_address_level = {
-                "addressLevel": 2, "addressNameMap": {
-                    "1": "Province", "2": "District"},
-                "LogisticsProviders": []}
-            lite_address_level = {
-                "addressLevel": 2, "addressNameMap": {
-                    "1": "Province", "2": "District"}}
-            depth = 2
-        else:
-            address_sheet = wb_obj.get_sheet_by_name("坦桑")
+        address_sheet = wb_obj.get_sheet_by_name("乌干达")
+        fms_address_level = {
+            "addressLevel": 2, "addressNameMap": {
+                "1": "Province", "2": "District"},
+            "LogisticsProviders": []}
+        lite_address_level = {
+            "addressLevel": 2, "addressNameMap": {
+                "1": "Province", "2": "District"}}
+        depth = 2
+        # else:
+        #     address_sheet = wb_obj.get_sheet_by_name("坦桑")
+    elif code == "TZ":
+        wb_obj = load_workbook(
+            "region_address_excel/坦桑B2C本地派送地址库-0601.xlsx")
+        address_sheet = wb_obj.get_sheet_by_name("派送区域明细")
     elif code == "NG":
         wb_obj = load_workbook("region_address_excel/NG-地址库.xlsx")
         address_sheet = wb_obj.get_sheet_by_name("地址库")
