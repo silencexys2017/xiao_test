@@ -101,12 +101,27 @@ def strip_string_name(name):
 
 
 def add_kili_address(region_code, address_sheet, depth=3, min_row=2):
+    # lite地址数据置为失效
+    member_db.address.update_many(
+        {"regionCode": region_code}, {"$set": {"status": 2}})
     # 删除fms，lite，wms Areas地址库数据
+    """ 
     bee_common_db.Areas.delete_many({"regionCode": region_code})
     common_db.Areas.delete_many({"regionCode": region_code})
     wms_common_db.Areas.delete_many({"regionCode": region_code})
-
+    """
+    # 更新为不可用
     utc_now = datetime.utcnow()
+    bee_common_db.Areas.update_many(
+        {"regionCode": region_code},
+        {"$set": {"state": -1, "lastUpdatedTime": utc_now}})
+    common_db.Areas.update_many(
+        {"regionCode": region_code},
+        {"$set": {"state": -1, "lastUpdatedTime": utc_now}})
+    wms_common_db.Areas.update_many(
+        {"regionCode": region_code},
+        {"$set": {"state": -1, "lastUpdatedTime": utc_now}})
+
     fms_region = bee_common_db.Region.find_one({"code": region_code})
     lite_region = common_db.region.find_one({"code": region_code})
 
@@ -327,6 +342,7 @@ if __name__ == "__main__":
     bee_common_db = get_db(K_DB_URL, env, "BeeCommon")
     bee_logistics_db = get_db(K_DB_URL, env, "BeeLogistics")
     common_db = get_db(K_DB_URL, env, "Common")
+    member_db = get_db(K_DB_URL, env, "Member")
     wms_common_db = get_db(K_DB_URL, env, "WmsCommon")
     depth, from_row, address_sheet = 3, 2, None
     fms_address_level = {
