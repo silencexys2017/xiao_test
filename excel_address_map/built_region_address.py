@@ -23,7 +23,7 @@ map_pay_method = {
 K_DB_URL = {
     "dev": "mongodb://root:KB5NF1T0aP@mongodb-headless.os:27017/admin?replicaSet=rs0",
 	"test": "mongodb://root:IdrCgVpHzv@mongo-mongodb-headless.os:27017/admin?replicaSet=rs0&retrywrites=false",
-    # "prd": "mongodb://lite-prd",
+    "prd": "mongodb://",
 }
 
 
