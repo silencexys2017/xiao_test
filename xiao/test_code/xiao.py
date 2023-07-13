@@ -7,6 +7,7 @@ from Crypto.Util.Padding import pad, unpad
 
 import base64
 import hashlib
+import hmac
 
 
 
@@ -263,6 +264,10 @@ def encrypt(plain_text, key, mode, kwargs=None):
     return str(base64.b64encode(encrypt_data), encoding='utf-8')
 
 
+def _hash_password(key, password):
+    return hmac.new(
+        key.encode("utf-8"), password.encode("utf-8"), digestmod=hashlib.sha256
+    ).hexdigest()
 
 if __name__ == "__main__":
     # res = currency_converter(0.54347824 * 92)
@@ -276,10 +281,12 @@ if __name__ == "__main__":
     # print(postage)
     # res = deduction_value_currency_converter(11314, 92, 92, "BDT")
     # res = ki_li_api_address_update(4343, msg_body=343434)
-    key = "Gs6GmD0PFWgdOfaC"
-    aes_str = "123456"
-
-    res = encrypt(aes_str, key, AES.MODE_ECB, {})
+    # key = "Gs6GmD0PFWgdOfaC"
+    # aes_str = "123456"
+    #
+    # res = encrypt(aes_str, key, AES.MODE_ECB, {})
+    res = _hash_password("kilimall", "kilimall#V2iY6X")
+    import urllib.parse
 
     print(res)
 

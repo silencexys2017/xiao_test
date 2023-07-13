@@ -831,8 +831,8 @@ if __name__ == "__main__":
     #     amount="37700", reason=None,
     #     p0="110", payment_trans_id=None, org_name=None, is_use_wallet="N")
     # res = create_merchant()
-    # res = get_account_info(user_id="K2303291052536964966",
-    #                        merchant_no="LP1680058373197")
+    res = get_account_info(user_id="K2303291052536964966",
+                           merchant_no="LP1680058373197")
 
     # res = create_account(
     #     user_id="K2303291052536964966", merchant_no="LP1680058373197",
@@ -848,11 +848,11 @@ if __name__ == "__main__":
     #             "remark": "test"
     #         }
     #     ])
-    res = add_merchant_account_statement(
-        acc_amount=0, biz_id="3243433343", currency="KES",
-        in_user_id="K2303291052536964966",
-        merchant_no="LP1680058373197"
-    )
+    # res = add_merchant_account_statement(
+    #     acc_amount=0, biz_id="3243433343", currency="KES",
+    #     in_user_id="K2303291052536964966",
+    #     merchant_no="LP1680058373197"
+    # )
     # kilitest001
 
     # res = get_payment_user_info_by_license_no("91140109344422127T")
