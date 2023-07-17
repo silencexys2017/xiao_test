@@ -269,6 +269,7 @@ def _hash_password(key, password):
         key.encode("utf-8"), password.encode("utf-8"), digestmod=hashlib.sha256
     ).hexdigest()
 
+
 if __name__ == "__main__":
     # res = currency_converter(0.54347824 * 92)
     # print(res)
