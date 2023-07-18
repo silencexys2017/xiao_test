@@ -26,14 +26,14 @@ K_DB_URL = {
     "dev": "mongodb://root:KB5NF1T0aP@mongodb-headless.os:27017/admin?replicaSet=rs0",
 	"test": "mongodb://root:IdrCgVpHzv@mongo-mongodb-headless.os:27017/admin?replicaSet=rs0&retrywrites=false",
     # "prd": "mongodb://lite-prd",
-
+    "prd": "mongodb://rwuser:"
 }
 
 POSTGRES_URL = {
     "dev": "postgresql://postgres:ydQ1JP6JqU@kong-postgresql.os:5432/data_centers",
     "test": "postgresql://postgres:IcG934z3fC@kong-postgresql.os",
     # "prd": "postgresql://postgres-prd"
-
+    "prd": "postgresql://root:"
 }
 
 
@@ -651,6 +651,7 @@ def get_all_day_per_year(year, cursor):
 
 
 def insert_datetime_into_base(cursor):
+
     for it in range(2022, 2031):
         get_all_day_per_year(it, cursor)
 
@@ -1295,6 +1296,10 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
 
 
 def insert_data_into_base(cursor):
+    insert_datetime_into_base(cursor)
+    print("insert_datetime_into_base success")
+    insert_enum_into_base(cursor)
+    print("insert_enum_into_base success")
     regions = list(common_db.region.find())
     region_id_dict = {it["id"]: it for it in regions}
     region_code_dict = {it["code"]: it for it in regions}
@@ -1385,16 +1390,13 @@ def insert_data_into_base(cursor):
             "phone": "13249093922",
             "isFulfillmentIntegrative": True
         }})
-    insert_datetime_into_base(cursor)
-    print("insert_datetime_into_base success")
+
     insert_store_into_base(cursor, region_id_dict)
     print("insert_store_into_base success")
     insert_warehouse_and_cat(cursor, warehouse_dict)
     print("insert_warehouse_and_cat success")
     insert_address_into_base(cursor, region_code_dict)
     print("insert_address_into_base success")
-    insert_enum_into_base(cursor)
-    print("insert_enum_into_base success")
     close_cursor(cursor)
 
     """
@@ -1419,7 +1421,7 @@ def insert_data_into_base(cursor):
     thread_num = 10
     t_obj = []
     #  prd 当前数量 12973
-    interval_times = 1500
+    interval_times = 2000
     for item in range(thread_num):
         start_id = interval_times + (item - 1) * interval_times + 100004979
         end_id = interval_times + item * interval_times + 100004979
