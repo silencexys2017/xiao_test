@@ -454,7 +454,7 @@ def create_tables(cursor):
 
     dim_time_year = """CREATE TABLE dim_time_year (
         year_key INTEGER PRIMARY KEY,
-        year_name VARCHAR(128)                                                               
+        year_name VARCHAR(128)
         );"""
     # cursor.execute("""DROP TABLE dim_time_year;""")
     cursor.execute(dim_time_year)
@@ -833,6 +833,10 @@ def insert_enum_into_base(cursor):
          '{{1,"deliveryWarehouse"}}', None, None),
         ("sales_normal", "salesRegions", "Sales Regions", False, 4,
          '{{1,"region"},{2,"state"},{3, "city"}, {4, "area"}}', None, None),
+        ('sales_normal', 'sourceClient', 'Source Client', False, 1,
+         '{{1,"sourceClient"}}', None, None),
+        ('sales_normal', 'orderType', 'Order Type', False, 1,
+         '{{1,"orderType"}}', None, None)
     ])
 
 
