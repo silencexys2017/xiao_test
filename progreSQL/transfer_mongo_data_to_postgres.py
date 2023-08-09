@@ -31,7 +31,8 @@ K_DB_URL = {
 
 POSTGRES_URL = {
     "dev": "postgresql://postgres:ydQ1JP6JqU@kong-postgresql.os:5432/data_centers",
-    "test": "postgresql://postgres:IcG934z3fC@kong-postgresql.os",
+    "test": "postgresql://root:fSwN24PtswjnsZ9nL2z3s8M1Sh@124.71.2.143:5432",
+    # "test": "postgresql://postgres:IcG934z3fC@kong-postgresql.os",
     # "prd": "postgresql://postgres-prd"
     "prd": "postgresql://root:"
 }
@@ -672,7 +673,7 @@ def get_all_day_per_year(year, cursor):
 
 def insert_datetime_into_base(cursor):
 
-    for it in range(2022, 2031):
+    for it in range(2022, 2025):
         get_all_day_per_year(it, cursor)
 
 
@@ -1208,6 +1209,8 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
             continue
         store = seller_db.Store.find_one({"_id": so["storeId"]})
         address = member_db.address.find_one({"id": so["addressId"]})
+        if not address:
+            continue
         if address.get("areaId"):
             area_id, city_id = address.get("areaId"), address["cityId"]
         else:
@@ -1307,7 +1310,7 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
                     it.get("discount", 0), pos_dis_di[postage_index],
                     order_total, need_pay, paid, cod_amount, payment_type,
                     so.get("deliveryType", 3), order_time, order_tp,
-                    it["platform"], pay_time, confirm_time, pay_during,
+                    so["platform"], pay_time, confirm_time, pay_during,
                     confirm_during])
             """
             create_fact_sales_daily_detail(
@@ -1323,7 +1326,7 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
                 area_id, city_id, warehouse_region_id,
                 postage_di[postage_index], pos_dis_di[postage_index],
                 order_total, need_pay, paid, cod_amount, payment_type,
-                so.get("deliveryType", 3), order_tp, it["platform"], order_time,
+                so.get("deliveryType", 3), order_tp, so["platform"], order_time,
                 pay_time, confirm_time, ship_time, close_time)
             postage_index += 1
 
@@ -1454,10 +1457,10 @@ def insert_data_into_base(cursor):
     thread_num = 10
     t_obj = []
     #  prd 当前数量 12973
-    interval_times = 2000
+    interval_times = 1000
     for item in range(thread_num):
-        start_id = interval_times + (item - 1) * interval_times + 100004979
-        end_id = interval_times + item * interval_times + 100004979
+        start_id = interval_times + (item - 1) * interval_times + 100100000
+        end_id = interval_times + item * interval_times + 100100000
         cursor = get_one_cursor(connect_oj)
         t1 = Thread(
             target=insert_order_into_base, args=(
