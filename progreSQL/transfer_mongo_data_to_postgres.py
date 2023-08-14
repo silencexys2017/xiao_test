@@ -24,7 +24,7 @@ order_state = {
 
 K_DB_URL = {
     "dev": "mongodb://root:KB5NF1T0aP@mongodb-headless.os:27017/admin?replicaSet=rs0",
-	"test": "mongodb://root:IdrCgVpHzv@mongo-mongodb-headless.os:27017/admin?replicaSet=rs0&retrywrites=false",
+	"test": "mongodb://rwuser:Ve3T27msyh%25PsOv8Llo2%231Rs5@139.159.216.111:8635/test?authSource=admin",
     # "prd": "mongodb://lite-prd",
     "prd": "mongodb://rwuser:"
 }
@@ -753,8 +753,8 @@ def insert_address_into_base(cursor, region_code_dict):
             cursor.execute(
                 sql.SQL("insert into {} values (%s,%s,%s,%s,%s,%s)").format(
                     sql.Identifier('dim_area')), [
-                    deep_3["_id"], deep_3["name"], deep_3["parentId"],
-                    deep_2["parentId"], region_id, deep_0["regionCode"]])
+                    deep_3["_id"], deep_3["name"], deep_2["parentId"],
+                    deep_3["parentId"], region_id, deep_0["regionCode"]])
 
 
 def ratio_split_integer(split_num, each_ratio):
@@ -840,7 +840,7 @@ def insert_enum_into_base(cursor):
         ("sales_normal", "dateTime", "Date Time", True, 5,
          '{{1,"year"},{2,"quarterly"},{3, "month"}, {4, "week"}, {5, "day"}}',
          "col", None),
-        ("sales_normal", "category", "Category", True, 3,
+        ("sales_normal", "category", "Category", False, 3,
          '{{1,"first level"},{2,"second level"},{3, "third level"}}',
          "row", None),
         ("sales_normal", "paymentMethod", "Payment Method", False, 1,
@@ -851,8 +851,8 @@ def insert_enum_into_base(cursor):
          '{{1,"deliveryRegion"}}', None, None),
         ("sales_normal", "deliveryWarehouse", "Delivery Warehouse", False, 1,
          '{{1,"deliveryWarehouse"}}', None, None),
-        ("sales_normal", "salesRegions", "Sales Regions", False, 4,
-         '{{1,"region"},{2,"state"},{3, "city"}, {4, "area"}}', None, None),
+        ("sales_normal", "salesRegions", "Sales Regions", True, 4,
+         '{{1,"region"},{2,"state"},{3, "city"}, {4, "area"}}', "row", None),
         ('sales_normal', 'sourceClient', 'Source Client', False, 1,
          '{{1,"sourceClient"}}', None, None),
         ('sales_normal', 'orderType', 'Order Type', False, 1,
@@ -1473,15 +1473,28 @@ def insert_data_into_base(cursor):
     print("insert_order_into_base success")
 
 
+def sql_test(cursor_oj):
+    # query = sql.SQL("select {field} from {table} where {pkey} = %s").format(
+    #     field=sql.Identifier('week_key'),
+    #     table=sql.Identifier('dim_time_week'),
+    #     pkey=sql.Identifier('week_key'))
+    # cursor_oj.execute(query, (201801,))
+    query = sql.SQL(
+        "select * from dim_time_date where {pkey} = %s;").format(
+            pkey=sql.Identifier('month_key')
+        )
+    cursor_oj.execute(query, (202301, ))
+    res = cursor_oj.fetchone()[0]
+    print(res)
+
+
 if __name__ == "__main__":
     usage = 'python3 Sxx.py prd|dev|test'
     init_logging(_DEFAULT_LOG_FILE)
     if len(sys.argv) < 2:
         logging.error(usage)
         sys.exit(-1)
-
     env = sys.argv[1]
-
     seller_db = get_db(K_DB_URL[env], env, "Seller")
     common_db = get_db(K_DB_URL[env], env, "Common")
     admin_db = get_db(K_DB_URL[env], env, "Admin")
@@ -1492,18 +1505,14 @@ if __name__ == "__main__":
     connect_oj = connect_post_gre_db(POSTGRES_URL[env], "data_centers")
 
     cursor_oj = get_one_cursor(connect_oj)
-
-    # query = sql.SQL("select {field} from {table} where {pkey} = %s").format(
-    #     field=sql.Identifier('week_key'),
-    #     table=sql.Identifier('dim_time_week'),
-    #     pkey=sql.Identifier('week_key'))
-    # cursor_oj.execute(query, (201801,))
+    # sql_test(cursor_oj)
 
     create_tables(cursor_oj)
     try:
         insert_data_into_base(cursor_oj)
     except Exception as exp:
         print("出现异常 %r" % exp)
+
     close_cursor(cursor_oj)
     close_connect(connect_oj)
     print("------completed--------")
