@@ -1453,14 +1453,19 @@ def insert_data_into_base(cursor):
         t1.join()
     print("insert_user_and_contact_into_base success")
     """
-
+    """
+    test 环境
+    interval_times = 1000
+    start_id = interval_times + (item - 1) * interval_times + 100100000  
+    end_id = interval_times + item * interval_times + 100100000   
+    """
     thread_num = 10
     t_obj = []
-    #  prd 当前数量 12973
-    interval_times = 1000
+    #  prd 当前数量 19826
+    interval_times = 2050
     for item in range(thread_num):
-        start_id = interval_times + (item - 1) * interval_times + 100100000
-        end_id = interval_times + item * interval_times + 100100000
+        start_id = interval_times + (item - 1) * interval_times + 100004970 #prd
+        end_id = interval_times + item * interval_times + 100004970    # prd
         cursor = get_one_cursor(connect_oj)
         t1 = Thread(
             target=insert_order_into_base, args=(
