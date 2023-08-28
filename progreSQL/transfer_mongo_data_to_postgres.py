@@ -156,6 +156,14 @@ def create_tables(cursor):
         """
     cursor.execute(delivery_type_table)
 
+    store_mode_table = """
+     CREATE TABLE store_mode (
+        id INTEGER NOT NULL,
+        name VARCHAR(28)
+        );
+    """
+    cursor.execute(store_mode_table)
+
     fact_sales_table = """CREATE TABLE fact_sales (
     batch_id INTEGER NOT NULL,
     bill_id INTEGER NOT NULL,
@@ -169,6 +177,7 @@ def create_tables(cursor):
     user_id INTEGER,
     seller_id INTEGER,
     store_id INTEGER,
+    store_mode INTEGER,
     sale_area_id INTEGER,
     sale_city_id INTEGER,
     sale_region_id INTEGER,
@@ -208,6 +217,7 @@ def create_tables(cursor):
                         source_client_id INTEGER,
                         store_id INTEGER,
                         seller_id INTEGER,
+                        store_mode INTEGER,
                         cat_3_id INTEGER,
                         sale_area_id INTEGER,
                         sale_city_id INTEGER,
@@ -867,6 +877,10 @@ def insert_enum_into_base(cursor):
     execute_values(cursor, """INSERT INTO delivery_type (id, name) VALUES %s""",
                    [(1, "GS"), (2, "DS"), (3, "FBK")])
 
+    execute_values(cursor, """INSERT INTO store_mode (id, name) VALUES %s""",
+                   [(1, "First Party"), (2, "Third Party"), (3, "Agent Sale"),
+                    (4, "Managed"), (5, "Full Managed")])
+
 
 def create_fact_sales_daily_detail(
         cursor, so, sod, create_date_key, cat_3_id, seller_id, area_id, city_id,
@@ -1123,7 +1137,7 @@ def create_dw_sale_order(
 
 def create_fact_sales_daily(
         cursor, so, sod, create_date_key, cat_3_id, seller_id, area_id, city_id,
-        warehouse_region_id, postage, postage_discount, order_total,
+        warehouse_region_id, store_mode, postage, postage_discount, order_total,
         need_pay, online_paid, cod_amount, payment_type, delivery_type,
         order_type, source_client_id, order_time, pay_time, confirm_time,
         ship_time, close_time):
@@ -1175,7 +1189,7 @@ def create_fact_sales_daily(
     cursor.execute(
         """INSERT INTO fact_sales_daily_detail (
         date_key, order_id, order_type, source_client_id, order_detail_id,
-        store_id, seller_id, cat_3_id, sale_area_id, sale_city_id, 
+        store_id, seller_id, store_mode, cat_3_id, sale_area_id, sale_city_id, 
         sale_region_id, warehouse_id, from_region_id, payment_type, delivery_id,
         user_id, listing_id, sku_id, order_total, item_total, postage, 
         coins_redeem, voucher_redeem, item_discount, postage_discount, need_pay,
@@ -1184,13 +1198,13 @@ def create_fact_sales_daily(
         success_count,success_order_id,success_gmv,success_voucher_redeem,
         success_coin_redeem,success_item_discount,success_qty_count,
         reject_count,reject_order_id,reject_gmv,
-        cancel_count,cancel_order_id,cancel_gmv) 
+        cancel_count,cancel_order_id,cancel_gmv)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
         %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 
-        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);""",
+        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);""",
         (create_date_key, so["id"], order_type, source_client_id, sod["id"],
-         so["storeId"], seller_id, cat_3_id, area_id, city_id, so["region"],
-         so["warehouseId"], warehouse_region_id, payment_type,
+         so["storeId"], seller_id, store_mode, cat_3_id, area_id, city_id,
+         so["region"], so["warehouseId"], warehouse_region_id, payment_type,
          so.get("deliveryType", 3), so["accountId"], sod["listingId"],
          sod["skuId"], order_total, sod["amount"], postage,
          sod.get("redeem", 0), sod.get("voucherRedeem", 0),
@@ -1208,6 +1222,7 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
         if so.get("isRobot"):
             continue
         store = seller_db.Store.find_one({"_id": so["storeId"]})
+        store_mode = store.get("businessType", 1)
         address = member_db.address.find_one({"id": so["addressId"]})
         if not address:
             continue
@@ -1280,14 +1295,14 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
             logging.info(
                 "insert into fact_sales values (%s,%s, %s, %s, %s, %s, %s, %s,"
                 " %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,"
-                " %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s)"
+                " %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s)"
                 % (so["batchId"], so["billId"], it["orderId"], it["id"],
                    create_date_key, category_id, it["listingId"],
                    it["skuId"], it["salePrice"], so["accountId"],
-                   store["sellerId"], so["storeId"], area_id, city_id,
-                    so["region"], so["warehouseId"], warehouse_region_id,
-                    it["dealPrice"], it["count"], it["amount"],
-                    postage_di[postage_index], it.get("redeem", 0),
+                   store["sellerId"], so["storeId"], store_mode, area_id,
+                   city_id, so["region"], so["warehouseId"],
+                   warehouse_region_id, it["dealPrice"], it["count"],
+                   it["amount"], postage_di[postage_index], it.get("redeem", 0),
                     it.get("voucherRedeem", 0), it.get("discount", 0),
                     pos_dis_di[postage_index], order_total, need_pay, paid,
                     payment_type, so.get("deliveryType", 3), order_time,
@@ -1297,15 +1312,15 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
                 sql.SQL("insert into {} values (%s, %s, %s, %s, %s, %s, %s, %s,"
                         " %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, "
                         "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,"
-                        " %s, %s, %s, %s, %s)").format(
+                        " %s, %s, %s, %s, %s, %s)").format(
                     sql.Identifier('fact_sales')), [
                     so["batchId"], so["billId"], it["orderId"], it["id"],
                     create_date_key, category_id, it["listingId"],
                     it["skuId"], it["salePrice"], so["accountId"],
-                    store["sellerId"], so["storeId"], area_id, city_id,
-                    so["region"], so["warehouseId"], warehouse_region_id,
-                    it["dealPrice"], it["count"], it["amount"],
-                    postage_di[postage_index], it.get("coin", 0),
+                    store["sellerId"], so["storeId"], store_mode, area_id,
+                    city_id, so["region"], so["warehouseId"],
+                    warehouse_region_id, it["dealPrice"], it["count"],
+                    it["amount"], postage_di[postage_index], it.get("coin", 0),
                     it.get("redeem", 0), it.get("voucherRedeem", 0),
                     it.get("discount", 0), pos_dis_di[postage_index],
                     order_total, need_pay, paid, cod_amount, payment_type,
@@ -1323,7 +1338,7 @@ def insert_order_into_base(cursor, start_id, end_id, warehouse_dict):
             """
             create_fact_sales_daily(
                 cursor, so, it, create_date_key, category_id, store["sellerId"],
-                area_id, city_id, warehouse_region_id,
+                area_id, city_id, warehouse_region_id, store_mode,
                 postage_di[postage_index], pos_dis_di[postage_index],
                 order_total, need_pay, paid, cod_amount, payment_type,
                 so.get("deliveryType", 3), order_tp, so["platform"], order_time,
