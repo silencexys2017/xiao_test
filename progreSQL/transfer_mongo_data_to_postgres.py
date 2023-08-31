@@ -25,16 +25,14 @@ order_state = {
 K_DB_URL = {
     "dev": "mongodb://root:KB5NF1T0aP@mongodb-headless.os:27017/admin?replicaSet=rs0",
 	"test": "mongodb://rwuser:Ve3T27msyh%25PsOv8Llo2%231Rs5@139.159.216.111:8635/test?authSource=admin",
-    # "prd": "mongodb://lite-prd",
-    "prd": "mongodb://rwuser:"
+    # "prd": "mongodb://rwuser",
 }
 
 POSTGRES_URL = {
     "dev": "postgresql://postgres:ydQ1JP6JqU@kong-postgresql.os:5432/data_centers",
     "test": "postgresql://root:fSwN24PtswjnsZ9nL2z3s8M1Sh@124.71.2.143:5432",
     # "test": "postgresql://postgres:IcG934z3fC@kong-postgresql.os",
-    # "prd": "postgresql://postgres-prd"
-    "prd": "postgresql://root:"
+    # "prd": "postgresql://root"
 }
 
 
@@ -868,7 +866,9 @@ def insert_enum_into_base(cursor):
         ('sales_normal', 'orderType', 'Order Type', False, 1,
          '{{1,"orderType"}}', None, None),
         ('sales_normal', 'deliveryType', 'Delivery Type', False, 1,
-         '{{1,"deliveryType"}}', None, None)
+         '{{1,"deliveryType"}}', None, None),
+        ('sales_normal', 'storeMode', 'Store Mode', False, 1,
+         '{{1,"storeMode"}}', None, None),
     ])
     execute_values(cursor, """INSERT INTO source_client (id, name) VALUES %s""",
                    [(1, "Android-App"), (2, "iOS-App"), (3, "Web"),
@@ -1478,9 +1478,12 @@ def insert_data_into_base(cursor):
     t_obj = []
     #  prd 当前数量 19826
     interval_times = 2050
+    # interval_times = 1000
     for item in range(thread_num):
         start_id = interval_times + (item - 1) * interval_times + 100004970 #prd
         end_id = interval_times + item * interval_times + 100004970    # prd
+        # start_id = interval_times + (item - 1) * interval_times + 100100000
+        # end_id = interval_times + item * interval_times + 100100000
         cursor = get_one_cursor(connect_oj)
         t1 = Thread(
             target=insert_order_into_base, args=(
