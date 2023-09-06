@@ -91,10 +91,6 @@ enum GatewayStatus {
     ENABLE = 1,
     DISABLE = -1
 }
-struct AreaIdName {
-    1: i64 id,
-    2: string name
-}
 
 struct PartnerProduct {
     1: string skuId,

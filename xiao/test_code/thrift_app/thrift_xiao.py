@@ -15,16 +15,19 @@ common_service = connection_pool.ClientPool(
     max_conn=120,
     connection_class=connection_pool.ThriftPyCyClient,
 )
-DEF.receipt_domestic_transfer(32432, 43253, 134)
+# DEF.receipt_domestic_transfer(32432, 43253, 134)
 b = DEF.PartnerProduct(
     skuId="13443", mapStr={"dkf": DEF.AreaIdName(id=34324, name="xiao")})
+products = [DEF.PartnerProduct(skuId="34234234", uomnifySkuId=12343),
+            DEF.PartnerProduct(skuId="3423423434", uomnifySkuId=12334343)]
+p_o = DEF.PartnerOrder(orderId=32423, orderNo="2342343", products=products)
 
-c = DEF.GatewayStatus
+# print(dir(c))
+# print(c.__dict__)
 
-print(dir(c))
-print(c.__dict__)
+
 def struct_to_json():
-    json = proto.struct_to_json(c)
+    json = proto.struct_to_json(p_o)
     print(json)
     assert {"id": 13, "phones": ["5234", "12346456"]} == json
 
@@ -60,10 +63,10 @@ def address_areas():
     print(res)
 
 
-# struct_to_json()
-address_areas()
+struct_to_json()
+# address_areas()
 
-DEF_ORDER.create_wms_warehouse_application(1,2,1)
+# DEF_ORDER.create_wms_warehouse_application(1,2,1)
 
 
 
