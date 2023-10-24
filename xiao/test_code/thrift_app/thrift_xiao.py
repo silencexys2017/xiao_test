@@ -27,7 +27,7 @@ p_o = DEF.PartnerOrder(orderId=32423, orderNo="2342343", products=products)
 
 
 def struct_to_json():
-    json = proto.struct_to_json(p_o)
+    json = proto.struct_to_json(products)
     print(json)
     assert {"id": 13, "phones": ["5234", "12346456"]} == json
 

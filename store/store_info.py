@@ -6,10 +6,8 @@ import pymongo
 import json
 import xlsxwriter
 
-_DEFAULT_LOG_FILE = 'store_info.log'
-DEFAULT_CONFIG_FILE = '../config.json'
-REGION_MATCH = {
-    1: "Bangladesh", 2: "China", 3: "Myanmar", 5: "Japan"}
+
+config = {}
 
 
 def init_logging(filename):
