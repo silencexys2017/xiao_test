@@ -123,17 +123,23 @@ end
 |||
 |||
 |||
-group 派送通知
+group 订单派送
 log -> api
 api -> od: 更新订单状态，记录尾程物流信息，记录日志等
 od -[#red]> mq: 订单派送后续业务处理与通知
 end
-group 签收通知
+group 订单签收
+alt 物流通知
 log -> api
+else 用户确认收货
+cus -> api
+else 系统超时确认
+mq -> mq
+end
 api -> od: 更新订单状态，记录日志等
 od -[#red]> mq: 签收后续业务处理与通知
 end
-group 拒收通知
+group 订单拒收
 log -> api
 api -> od: 更新订单状态，记录日志等,记录拒收原因
 od -> af: 创建售后退款单
