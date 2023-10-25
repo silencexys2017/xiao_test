@@ -20,7 +20,7 @@ participant   售后系统     as af order 15
 participant   消息系统     as message order 15
 participant   支付系统      as pay   order 16
 participant   交付系统      as log  order 17
-database      redis缓存              as redis    order 18
+'database      redis缓存              as redis    order 18
 
 group 下单
 cus -> api: 用户下单
@@ -153,7 +153,7 @@ group 物流申请取消通知
 log -> api
 api -> od: 创建订单取消申请
 end
-note over app, pay
+note over api, pay
 1 订单关闭增加系统自动关闭，用户确认关闭，通知签收关闭
 
 end note
