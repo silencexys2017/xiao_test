@@ -28,21 +28,22 @@ api -> api: 认证 提供用户信息
 api -> trade: 转发下单服务
 activate trade
 trade -> trade: 用户下单加锁
-trade -> trade: 支付方式验证，如果为cod，校验手机是否可用
-trade -> member: 获取下单地址信息，地址信息的相关校验，是否支持cod
+trade -> seller: 获取店铺相关信息，并检测店铺是否在正常状态
+trade -> member: 获取下单地址信息，地址信息的相关校验
+trade -> inv: 确定商品仓库，检测库存是否满足
 trade -> goods: 获取下单skus的相关信息
 trade -> pro: 获取skus的活动相关信息，判断活动（秒杀，团购等）是否失效, 并进行活动相关计算discount
-trade -> inv: 确定商品仓库，检测库存是否满足
-trade -> seller: 获取店铺相关信息，并检测店铺是否在正常状态
-trade -> goods: 计算运费相关，在线支付免运费，满减等
-trade -> goods: 获取kiliParter分佣数据，考虑放到异步处理
+trade -> goods: 计算运费相关，在线支付免运费，运费优惠券与自提点折扣满减等
 trade -> member: 判断选择的优惠券是否可用，计算优惠金额
 trade -> member: 判断选择的coins是否可用，并计算抵扣金额
-trade -> trade: 获取并计算的信息是否满足下单要求。\n 当前选择的支付方式是否支持，\n预支付计算支付比例。组装并拆分订单数据, \n商品信息，计算好的运费，coins抵扣，\n优惠券信息，参加的活动及discount等。\n创建订单快照。
+trade -> trade: 获取并计算的信息是否满足下单要求。\n 组装并拆分订单数据, \n商品信息，计算好的运费，coins抵扣，\n优惠券信息，参加的活动及discount等。\n创建订单快照。
+trade -[#green]> trade: @ 支付方式验证，如果为cod，校验地址cod，校验手机是否可用。当前选择的支付方式是否支持，\n预支付计算支付比例。
 trade -> inv: 前台库存锁定
 trade -> ofc: 物理锁定库存
 ofc -> log: 物理锁定库存
 trade -> od: 发起订单创建,传递相关计算的订单数据(创建bill,so,sos,paybill等)
+trade -> member: 更新优惠券使用状态
+trade -> member: 更新coin使用状态
 trade -[#red]> mq: 下单失败与成功的后续处理，
 alt 下单失败，回滚库存等相关处理
 activate mq
@@ -51,12 +52,11 @@ mq -[#red]> ofc: 物理库存释放
 else 下单成功，相关库表更新与后续操作
 mq -[#red]> account: 用户订单信息统计
 mq -[#red]> pro: 团购等相关活动是否生效并开启
-mq -[#red]> member: 更新优惠券使用状态
-mq -[#red]> member: 更新coin使用状态
 mq -[#red]> goods: 是否来源于购物车，并删除购物车商品
 mq -[#red]> message: 创建相关消息通知和会话
 mq -[#red]> goods:  更新listing下单数量统计
 mq -[#red]> member: 记录邀请订单转化记录
+mq -[#red]> goods: 获取kiliParter分佣数据，考虑放到异步处理
 deactivate mq
 end
 trade -> trade: 组装下单结果信息
